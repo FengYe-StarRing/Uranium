@@ -18,7 +18,7 @@ public class ScoreDummyCriteria implements IScoreObjectiveCriteria
         return this.dummyName;
     }
 
-    public int setScore(List<EntityPlayer> p_96635_1_)
+    public int func_96635_a(List<EntityPlayer> p_96635_1_)
     {
         return 0;
     }
@@ -28,8 +28,8 @@ public class ScoreDummyCriteria implements IScoreObjectiveCriteria
         return false;
     }
 
-    public IScoreObjectiveCriteria.EnumRenderType getRenderType()
+    public EnumRenderType getRenderType()
     {
-        return IScoreObjectiveCriteria.EnumRenderType.INTEGER;
+        return EnumRenderType.INTEGER;
     }
 }

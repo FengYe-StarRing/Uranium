@@ -292,6 +292,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
     /**
      * Sends a chat message from the player. Args: chatMessage
+     *  
+     * @param message used on EntityPlayerSP.sendChatMessage - as inbound message
      */
     public void sendChatMessage(String message)
     {
@@ -531,6 +533,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
     /**
      * Send a chat message to the CommandSender
+     *  
+     * @param component The ChatComponent to send
      */
     public void addChatMessage(IChatComponent component)
     {
@@ -539,6 +543,9 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
     /**
      * Returns {@code true} if the CommandSender is allowed to execute the command, {@code false} if not
+     *  
+     * @param permLevel The permission level required to execute the command
+     * @param commandName The name of the command
      */
     public boolean canCommandSenderUseCommand(int permLevel, String commandName)
     {

@@ -11,7 +11,7 @@ public class CrashReportCategory
 {
     private final CrashReport crashReport;
     private final String name;
-    private final List<CrashReportCategory.Entry> children = Lists.<CrashReportCategory.Entry>newArrayList();
+    private final List<Entry> children = Lists.<Entry>newArrayList();
     private StackTraceElement[] stackTrace = new StackTraceElement[0];
 
     public CrashReportCategory(CrashReport report, String name)
@@ -105,7 +105,7 @@ public class CrashReportCategory
      */
     public void addCrashSection(String sectionName, Object value)
     {
-        this.children.add(new CrashReportCategory.Entry(sectionName, value));
+        this.children.add(new Entry(sectionName, value));
     }
 
     /**
@@ -187,7 +187,7 @@ public class CrashReportCategory
         builder.append("-- ").append(this.name).append(" --\n");
         builder.append("Details:");
 
-        for (CrashReportCategory.Entry crashreportcategory$entry : this.children)
+        for (Entry crashreportcategory$entry : this.children)
         {
             builder.append("\n\t");
             builder.append(crashreportcategory$entry.getKey());

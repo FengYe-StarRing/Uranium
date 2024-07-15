@@ -538,12 +538,12 @@ public class EntityZombie extends EntityMob
 
         if (livingdata == null)
         {
-            livingdata = new EntityZombie.GroupData(this.worldObj.rand.nextFloat() < 0.05F, this.worldObj.rand.nextFloat() < 0.05F);
+            livingdata = new GroupData(this.worldObj.rand.nextFloat() < 0.05F, this.worldObj.rand.nextFloat() < 0.05F);
         }
 
-        if (livingdata instanceof EntityZombie.GroupData)
+        if (livingdata instanceof GroupData)
         {
-            EntityZombie.GroupData entityzombie$groupdata = (EntityZombie.GroupData)livingdata;
+            GroupData entityzombie$groupdata = (GroupData)livingdata;
 
             if (entityzombie$groupdata.isVillager)
             {
@@ -655,7 +655,7 @@ public class EntityZombie extends EntityMob
         this.worldObj.setEntityState(this, (byte)16);
     }
 
-    public void handleStatusUpdate(byte id)
+    public void handleHealthUpdate(byte id)
     {
         if (id == 16)
         {
@@ -666,7 +666,7 @@ public class EntityZombie extends EntityMob
         }
         else
         {
-            super.handleStatusUpdate(id);
+            super.handleHealthUpdate(id);
         }
     }
 
@@ -733,7 +733,7 @@ public class EntityZombie extends EntityMob
                 {
                     for (int i1 = (int)this.posZ - 4; i1 < (int)this.posZ + 4 && j < 14; ++i1)
                     {
-                        Block block = this.worldObj.getBlockState(blockpos$mutableblockpos.set(k, l, i1)).getBlock();
+                        Block block = this.worldObj.getBlockState(blockpos$mutableblockpos.func_181079_c(k, l, i1)).getBlock();
 
                         if (block == Blocks.iron_bars || block == Blocks.bed)
                         {
@@ -754,6 +754,9 @@ public class EntityZombie extends EntityMob
 
     /**
      * sets the size of the entity to be half of its current size if true.
+     *  
+     * @param isChild If the mob is a child it's height and width will be halved. Otherwise the size will remain the
+     * same.
      */
     public void setChildSize(boolean isChild)
     {
@@ -777,6 +780,8 @@ public class EntityZombie extends EntityMob
 
     /**
      * Multiplies the height and width by the provided float.
+     *  
+     * @param size The size to multiply the height and width of the entity by.
      */
     protected final void multiplySize(float size)
     {

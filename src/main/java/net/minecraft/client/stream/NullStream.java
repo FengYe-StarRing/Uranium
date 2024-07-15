@@ -156,9 +156,9 @@ public class NullStream implements IStream
         return false;
     }
 
-    public IStream.AuthFailureReason func_152918_H()
+    public AuthFailureReason func_152918_H()
     {
-        return IStream.AuthFailureReason.ERROR;
+        return AuthFailureReason.ERROR;
     }
 
     public Throwable func_152937_a()

@@ -51,19 +51,19 @@ import org.apache.logging.log4j.Logger;
 public abstract class BiomeGenBase
 {
     private static final Logger logger = LogManager.getLogger();
-    protected static final BiomeGenBase.Height height_Default = new BiomeGenBase.Height(0.1F, 0.2F);
-    protected static final BiomeGenBase.Height height_ShallowWaters = new BiomeGenBase.Height(-0.5F, 0.0F);
-    protected static final BiomeGenBase.Height height_Oceans = new BiomeGenBase.Height(-1.0F, 0.1F);
-    protected static final BiomeGenBase.Height height_DeepOceans = new BiomeGenBase.Height(-1.8F, 0.1F);
-    protected static final BiomeGenBase.Height height_LowPlains = new BiomeGenBase.Height(0.125F, 0.05F);
-    protected static final BiomeGenBase.Height height_MidPlains = new BiomeGenBase.Height(0.2F, 0.2F);
-    protected static final BiomeGenBase.Height height_LowHills = new BiomeGenBase.Height(0.45F, 0.3F);
-    protected static final BiomeGenBase.Height height_HighPlateaus = new BiomeGenBase.Height(1.5F, 0.025F);
-    protected static final BiomeGenBase.Height height_MidHills = new BiomeGenBase.Height(1.0F, 0.5F);
-    protected static final BiomeGenBase.Height height_Shores = new BiomeGenBase.Height(0.0F, 0.025F);
-    protected static final BiomeGenBase.Height height_RockyWaters = new BiomeGenBase.Height(0.1F, 0.8F);
-    protected static final BiomeGenBase.Height height_LowIslands = new BiomeGenBase.Height(0.2F, 0.3F);
-    protected static final BiomeGenBase.Height height_PartiallySubmerged = new BiomeGenBase.Height(-0.2F, 0.1F);
+    protected static final Height height_Default = new Height(0.1F, 0.2F);
+    protected static final Height height_ShallowWaters = new Height(-0.5F, 0.0F);
+    protected static final Height height_Oceans = new Height(-1.0F, 0.1F);
+    protected static final Height height_DeepOceans = new Height(-1.8F, 0.1F);
+    protected static final Height height_LowPlains = new Height(0.125F, 0.05F);
+    protected static final Height height_MidPlains = new Height(0.2F, 0.2F);
+    protected static final Height height_LowHills = new Height(0.45F, 0.3F);
+    protected static final Height height_HighPlateaus = new Height(1.5F, 0.025F);
+    protected static final Height height_MidHills = new Height(1.0F, 0.5F);
+    protected static final Height height_Shores = new Height(0.0F, 0.025F);
+    protected static final Height height_RockyWaters = new Height(0.1F, 0.8F);
+    protected static final Height height_LowIslands = new Height(0.2F, 0.3F);
+    protected static final Height height_PartiallySubmerged = new Height(-0.2F, 0.1F);
 
     /** An array of all the biomes, indexed by biome id. */
     private static final BiomeGenBase[] biomeList = new BiomeGenBase[256];
@@ -155,10 +155,10 @@ public abstract class BiomeGenBase
 
     /** The biome decorator. */
     public BiomeDecorator theBiomeDecorator;
-    protected List<BiomeGenBase.SpawnListEntry> spawnableMonsterList;
-    protected List<BiomeGenBase.SpawnListEntry> spawnableCreatureList;
-    protected List<BiomeGenBase.SpawnListEntry> spawnableWaterCreatureList;
-    protected List<BiomeGenBase.SpawnListEntry> spawnableCaveCreatureList;
+    protected List<SpawnListEntry> spawnableMonsterList;
+    protected List<SpawnListEntry> spawnableCreatureList;
+    protected List<SpawnListEntry> spawnableWaterCreatureList;
+    protected List<SpawnListEntry> spawnableCaveCreatureList;
 
     /** Set to true if snow is enabled for this biome. */
     protected boolean enableSnow;
@@ -187,10 +187,10 @@ public abstract class BiomeGenBase
         this.temperature = 0.5F;
         this.rainfall = 0.5F;
         this.waterColorMultiplier = 16777215;
-        this.spawnableMonsterList = Lists.<BiomeGenBase.SpawnListEntry>newArrayList();
-        this.spawnableCreatureList = Lists.<BiomeGenBase.SpawnListEntry>newArrayList();
-        this.spawnableWaterCreatureList = Lists.<BiomeGenBase.SpawnListEntry>newArrayList();
-        this.spawnableCaveCreatureList = Lists.<BiomeGenBase.SpawnListEntry>newArrayList();
+        this.spawnableMonsterList = Lists.<SpawnListEntry>newArrayList();
+        this.spawnableCreatureList = Lists.<SpawnListEntry>newArrayList();
+        this.spawnableWaterCreatureList = Lists.<SpawnListEntry>newArrayList();
+        this.spawnableCaveCreatureList = Lists.<SpawnListEntry>newArrayList();
         this.enableRain = true;
         this.worldGeneratorTrees = new WorldGenTrees(false);
         this.worldGeneratorBigTree = new WorldGenBigTree(false);
@@ -198,20 +198,20 @@ public abstract class BiomeGenBase
         this.biomeID = id;
         biomeList[id] = this;
         this.theBiomeDecorator = this.createBiomeDecorator();
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntitySheep.class, 12, 4, 4));
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityRabbit.class, 10, 3, 3));
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityPig.class, 10, 4, 4));
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityChicken.class, 10, 4, 4));
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityCow.class, 8, 4, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityCreeper.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 100, 4, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 10, 1, 4));
-        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityWitch.class, 5, 1, 1));
-        this.spawnableWaterCreatureList.add(new BiomeGenBase.SpawnListEntry(EntitySquid.class, 10, 4, 4));
-        this.spawnableCaveCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityBat.class, 10, 8, 8));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 12, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityRabbit.class, 10, 3, 3));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 10, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityCow.class, 8, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 10, 1, 4));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 5, 1, 1));
+        this.spawnableWaterCreatureList.add(new SpawnListEntry(EntitySquid.class, 10, 4, 4));
+        this.spawnableCaveCreatureList.add(new SpawnListEntry(EntityBat.class, 10, 8, 8));
     }
 
     /**
@@ -239,7 +239,7 @@ public abstract class BiomeGenBase
         }
     }
 
-    protected final BiomeGenBase setHeight(BiomeGenBase.Height heights)
+    protected final BiomeGenBase setHeight(Height heights)
     {
         this.minHeight = heights.rootHeight;
         this.maxHeight = heights.variation;
@@ -306,17 +306,17 @@ public abstract class BiomeGenBase
         return this;
     }
 
-    protected BiomeGenBase func_150557_a(int colorIn, boolean p_150557_2_)
+    protected BiomeGenBase func_150557_a(int p_150557_1_, boolean p_150557_2_)
     {
-        this.color = colorIn;
+        this.color = p_150557_1_;
 
         if (p_150557_2_)
         {
-            this.field_150609_ah = (colorIn & 16711422) >> 1;
+            this.field_150609_ah = (p_150557_1_ & 16711422) >> 1;
         }
         else
         {
-            this.field_150609_ah = colorIn;
+            this.field_150609_ah = p_150557_1_;
         }
 
         return this;
@@ -329,10 +329,10 @@ public abstract class BiomeGenBase
     {
         p_76731_1_ = p_76731_1_ / 3.0F;
         p_76731_1_ = MathHelper.clamp_float(p_76731_1_, -1.0F, 1.0F);
-        return MathHelper.hsvToRGB(0.62222224F - p_76731_1_ * 0.05F, 0.5F + p_76731_1_ * 0.1F, 1.0F);
+        return MathHelper.func_181758_c(0.62222224F - p_76731_1_ * 0.05F, 0.5F + p_76731_1_ * 0.1F, 1.0F);
     }
 
-    public List<BiomeGenBase.SpawnListEntry> getSpawnableList(EnumCreatureType creatureType)
+    public List<SpawnListEntry> getSpawnableList(EnumCreatureType creatureType)
     {
         switch (creatureType)
         {
@@ -349,7 +349,7 @@ public abstract class BiomeGenBase
                 return this.spawnableCaveCreatureList;
 
             default:
-                return Collections.<BiomeGenBase.SpawnListEntry>emptyList();
+                return Collections.<SpawnListEntry>emptyList();
         }
     }
 
@@ -362,9 +362,9 @@ public abstract class BiomeGenBase
     }
 
     /**
-     * Check if rain can occur in biome
+     * Return true if the biome supports lightning bolt spawn, either by have the bolts enabled and have rain enabled.
      */
-    public boolean canRain()
+    public boolean canSpawnLightningBolt()
     {
         return this.isSnowyBiome() ? false : this.enableRain;
     }
@@ -403,6 +403,8 @@ public abstract class BiomeGenBase
 
     /**
      * Gets a floating point representation of this biome's temperature
+     *  
+     * @param pos The coordinates for a block in the biome
      */
     public final float getFloatTemperature(BlockPos pos)
     {
@@ -441,30 +443,20 @@ public abstract class BiomeGenBase
         return this.enableSnow;
     }
 
-    public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int p_180622_4_, int p_180622_5_, double p_180622_6_)
     {
-        this.generateBiomeTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+        this.generateBiomeTerrain(worldIn, rand, chunkPrimerIn, p_180622_4_, p_180622_5_, p_180622_6_);
     }
 
-    /**
-     * Given x, z coordinates, we count down all the y positions starting at 255 and working our way down. When we hit a
-     * non-air block, we replace it with this.topBlock (default grass, descendants may set otherwise), and then a
-     * relatively shallow layer of blocks of type this.fillerBlock (default dirt). A random set of blocks below y == 5
-     * (but always including y == 0) is replaced with bedrock.
-     *  
-     * If we don't hit non-air until somewhat below sea level, we top with gravel and fill down with stone.
-     *  
-     * If this.fillerBlock is red sand, we replace some of that with red sandstone.
-     */
-    public final void generateBiomeTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    public final void generateBiomeTerrain(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int p_180628_4_, int p_180628_5_, double p_180628_6_)
     {
-        int i = worldIn.getSeaLevel();
+        int i = worldIn.func_181545_F();
         IBlockState iblockstate = this.topBlock;
         IBlockState iblockstate1 = this.fillerBlock;
         int j = -1;
-        int k = (int)(noiseVal / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
-        int l = x & 15;
-        int i1 = z & 15;
+        int k = (int)(p_180628_6_ / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
+        int l = p_180628_4_ & 15;
+        int i1 = p_180628_5_ & 15;
         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 
         for (int j1 = 255; j1 >= 0; --j1)
@@ -498,7 +490,7 @@ public abstract class BiomeGenBase
 
                         if (j1 < i && (iblockstate == null || iblockstate.getBlock().getMaterial() == Material.air))
                         {
-                            if (this.getFloatTemperature(blockpos$mutableblockpos.set(x, j1, z)) < 0.15F)
+                            if (this.getFloatTemperature(blockpos$mutableblockpos.func_181079_c(p_180628_4_, j1, p_180628_5_)) < 0.15F)
                             {
                                 iblockstate = Blocks.ice.getDefaultState();
                             }
@@ -568,9 +560,9 @@ public abstract class BiomeGenBase
         return biome == this ? true : (biome == null ? false : this.getBiomeClass() == biome.getBiomeClass());
     }
 
-    public BiomeGenBase.TempCategory getTempCategory()
+    public TempCategory getTempCategory()
     {
-        return (double)this.temperature < 0.2D ? BiomeGenBase.TempCategory.COLD : ((double)this.temperature < 1.0D ? BiomeGenBase.TempCategory.MEDIUM : BiomeGenBase.TempCategory.WARM);
+        return (double)this.temperature < 0.2D ? TempCategory.COLD : ((double)this.temperature < 1.0D ? TempCategory.MEDIUM : TempCategory.WARM);
     }
 
     public static BiomeGenBase[] getBiomeGenArray()
@@ -662,9 +654,9 @@ public abstract class BiomeGenBase
             this.variation = variationIn;
         }
 
-        public BiomeGenBase.Height attenuate()
+        public Height attenuate()
         {
-            return new BiomeGenBase.Height(this.rootHeight * 0.8F, this.variation * 0.6F);
+            return new Height(this.rootHeight * 0.8F, this.variation * 0.6F);
         }
     }
 

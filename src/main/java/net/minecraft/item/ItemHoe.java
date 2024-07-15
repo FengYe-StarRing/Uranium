@@ -13,9 +13,9 @@ import net.minecraft.world.World;
 
 public class ItemHoe extends Item
 {
-    protected Item.ToolMaterial theToolMaterial;
+    protected ToolMaterial theToolMaterial;
 
-    public ItemHoe(Item.ToolMaterial material)
+    public ItemHoe(ToolMaterial material)
     {
         this.theToolMaterial = material;
         this.maxStackSize = 1;
@@ -27,6 +27,9 @@ public class ItemHoe extends Item
 
     /**
      * Called when a Block is right-clicked with this Item
+     *  
+     * @param pos The block being right-clicked
+     * @param side The side being right-clicked
      */
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
     {

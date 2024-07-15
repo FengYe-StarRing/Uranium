@@ -35,14 +35,14 @@ public class EntitySpider extends EntityMob
         this.setSize(1.4F, 0.9F);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
-        this.tasks.addTask(4, new EntitySpider.AISpiderAttack(this, EntityPlayer.class));
-        this.tasks.addTask(4, new EntitySpider.AISpiderAttack(this, EntityIronGolem.class));
+        this.tasks.addTask(4, new AISpiderAttack(this, EntityPlayer.class));
+        this.tasks.addTask(4, new AISpiderAttack(this, EntityIronGolem.class));
         this.tasks.addTask(5, new EntityAIWander(this, 0.8D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(2, new EntitySpider.AISpiderTarget(this, EntityPlayer.class));
-        this.targetTasks.addTask(3, new EntitySpider.AISpiderTarget(this, EntityIronGolem.class));
+        this.targetTasks.addTask(2, new AISpiderTarget(this, EntityPlayer.class));
+        this.targetTasks.addTask(3, new AISpiderTarget(this, EntityIronGolem.class));
     }
 
     /**
@@ -123,16 +123,12 @@ public class EntitySpider extends EntityMob
 
     /**
      * Drop 0-2 items of this living's type
-     *  
-     * @param wasRecentlyHit true if this this entity was recently hit by appropriate entity (generally only if player
-     * or tameable)
-     * @param lootingModifier level of enchanment to be applied to this drop
      */
-    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier)
+    protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
     {
-        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        super.dropFewItems(p_70628_1_, p_70628_2_);
 
-        if (wasRecentlyHit && (this.rand.nextInt(3) == 0 || this.rand.nextInt(1 + lootingModifier) > 0))
+        if (p_70628_1_ && (this.rand.nextInt(3) == 0 || this.rand.nextInt(1 + p_70628_2_) > 0))
         {
             this.dropItem(Items.spider_eye, 1);
         }
@@ -214,17 +210,17 @@ public class EntitySpider extends EntityMob
 
         if (livingdata == null)
         {
-            livingdata = new EntitySpider.GroupData();
+            livingdata = new GroupData();
 
             if (this.worldObj.getDifficulty() == EnumDifficulty.HARD && this.worldObj.rand.nextFloat() < 0.1F * difficulty.getClampedAdditionalDifficulty())
             {
-                ((EntitySpider.GroupData)livingdata).func_111104_a(this.worldObj.rand);
+                ((GroupData)livingdata).func_111104_a(this.worldObj.rand);
             }
         }
 
-        if (livingdata instanceof EntitySpider.GroupData)
+        if (livingdata instanceof GroupData)
         {
-            int i = ((EntitySpider.GroupData)livingdata).potionEffectId;
+            int i = ((GroupData)livingdata).potionEffectId;
 
             if (i > 0 && Potion.potionTypes[i] != null)
             {
@@ -242,9 +238,9 @@ public class EntitySpider extends EntityMob
 
     static class AISpiderAttack extends EntityAIAttackOnCollide
     {
-        public AISpiderAttack(EntitySpider spider, Class <? extends Entity > targetClass)
+        public AISpiderAttack(EntitySpider p_i45819_1_, Class <? extends Entity > targetClass)
         {
-            super(spider, targetClass, 1.0D, true);
+            super(p_i45819_1_, targetClass, 1.0D, true);
         }
 
         public boolean continueExecuting()
@@ -270,9 +266,9 @@ public class EntitySpider extends EntityMob
 
     static class AISpiderTarget<T extends EntityLivingBase> extends EntityAINearestAttackableTarget
     {
-        public AISpiderTarget(EntitySpider spider, Class<T> classTarget)
+        public AISpiderTarget(EntitySpider p_i45818_1_, Class<T> classTarget)
         {
-            super(spider, classTarget, true);
+            super(p_i45818_1_, classTarget, true);
         }
 
         public boolean shouldExecute()

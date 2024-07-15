@@ -72,9 +72,9 @@ public class ItemArmor extends Item
     public final int renderIndex;
 
     /** The EnumArmorMaterial used for this ItemArmor */
-    private final ItemArmor.ArmorMaterial material;
+    private final ArmorMaterial material;
 
-    public ItemArmor(ItemArmor.ArmorMaterial material, int renderIndex, int armorType)
+    public ItemArmor(ArmorMaterial material, int renderIndex, int armorType)
     {
         this.material = material;
         this.armorType = armorType;
@@ -116,7 +116,7 @@ public class ItemArmor extends Item
     /**
      * Return the armor material for this armor item.
      */
-    public ItemArmor.ArmorMaterial getArmorMaterial()
+    public ArmorMaterial getArmorMaterial()
     {
         return this.material;
     }
@@ -126,7 +126,7 @@ public class ItemArmor extends Item
      */
     public boolean hasColor(ItemStack stack)
     {
-        return this.material != ItemArmor.ArmorMaterial.LEATHER ? false : (!stack.hasTagCompound() ? false : (!stack.getTagCompound().hasKey("display", 10) ? false : stack.getTagCompound().getCompoundTag("display").hasKey("color", 3)));
+        return this.material != ArmorMaterial.LEATHER ? false : (!stack.hasTagCompound() ? false : (!stack.getTagCompound().hasKey("display", 10) ? false : stack.getTagCompound().getCompoundTag("display").hasKey("color", 3)));
     }
 
     /**
@@ -134,7 +134,7 @@ public class ItemArmor extends Item
      */
     public int getColor(ItemStack stack)
     {
-        if (this.material != ItemArmor.ArmorMaterial.LEATHER)
+        if (this.material != ArmorMaterial.LEATHER)
         {
             return -1;
         }
@@ -161,7 +161,7 @@ public class ItemArmor extends Item
      */
     public void removeColor(ItemStack stack)
     {
-        if (this.material == ItemArmor.ArmorMaterial.LEATHER)
+        if (this.material == ArmorMaterial.LEATHER)
         {
             NBTTagCompound nbttagcompound = stack.getTagCompound();
 
@@ -182,7 +182,7 @@ public class ItemArmor extends Item
      */
     public void setColor(ItemStack stack, int color)
     {
-        if (this.material != ItemArmor.ArmorMaterial.LEATHER)
+        if (this.material != ArmorMaterial.LEATHER)
         {
             throw new UnsupportedOperationException("Can\'t dye non-leather!");
         }
@@ -209,6 +209,9 @@ public class ItemArmor extends Item
 
     /**
      * Return whether this item is repairable in an anvil.
+     *  
+     * @param toRepair The ItemStack to be repaired
+     * @param repair The ItemStack that should repair this Item (leather for leather armor, etc.)
      */
     public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {

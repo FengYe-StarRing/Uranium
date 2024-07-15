@@ -32,10 +32,10 @@ public class GuiStats extends GuiScreen implements IProgressMeter
 {
     protected GuiScreen parentScreen;
     protected String screenTitle = "Select world";
-    private GuiStats.StatsGeneral generalStats;
-    private GuiStats.StatsItem itemStats;
-    private GuiStats.StatsBlock blockStats;
-    private GuiStats.StatsMobsList mobStats;
+    private StatsGeneral generalStats;
+    private StatsItem itemStats;
+    private StatsBlock blockStats;
+    private StatsMobsList mobStats;
     private StatFileWriter field_146546_t;
     private GuiSlot displaySlot;
 
@@ -74,13 +74,13 @@ public class GuiStats extends GuiScreen implements IProgressMeter
 
     public void func_175366_f()
     {
-        this.generalStats = new GuiStats.StatsGeneral(this.mc);
+        this.generalStats = new StatsGeneral(this.mc);
         this.generalStats.registerScrollButtons(1, 1);
-        this.itemStats = new GuiStats.StatsItem(this.mc);
+        this.itemStats = new StatsItem(this.mc);
         this.itemStats.registerScrollButtons(1, 1);
-        this.blockStats = new GuiStats.StatsBlock(this.mc);
+        this.blockStats = new StatsBlock(this.mc);
         this.blockStats.registerScrollButtons(1, 1);
-        this.mobStats = new GuiStats.StatsMobsList(this.mc);
+        this.mobStats = new StatsMobsList(this.mc);
         this.mobStats.registerScrollButtons(1, 1);
     }
 
@@ -214,11 +214,11 @@ public class GuiStats extends GuiScreen implements IProgressMeter
         int j = 18;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos((double)(p_146527_1_ + 0), (double)(p_146527_2_ + 18), (double)this.zLevel).tex((double)((float)(p_146527_3_ + 0) * 0.0078125F), (double)((float)(p_146527_4_ + 18) * 0.0078125F)).endVertex();
-        worldrenderer.pos((double)(p_146527_1_ + 18), (double)(p_146527_2_ + 18), (double)this.zLevel).tex((double)((float)(p_146527_3_ + 18) * 0.0078125F), (double)((float)(p_146527_4_ + 18) * 0.0078125F)).endVertex();
-        worldrenderer.pos((double)(p_146527_1_ + 18), (double)(p_146527_2_ + 0), (double)this.zLevel).tex((double)((float)(p_146527_3_ + 18) * 0.0078125F), (double)((float)(p_146527_4_ + 0) * 0.0078125F)).endVertex();
-        worldrenderer.pos((double)(p_146527_1_ + 0), (double)(p_146527_2_ + 0), (double)this.zLevel).tex((double)((float)(p_146527_3_ + 0) * 0.0078125F), (double)((float)(p_146527_4_ + 0) * 0.0078125F)).endVertex();
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181662_b((double)(p_146527_1_ + 0), (double)(p_146527_2_ + 18), (double)this.zLevel).func_181673_a((double)((float)(p_146527_3_ + 0) * 0.0078125F), (double)((float)(p_146527_4_ + 18) * 0.0078125F)).func_181675_d();
+        worldrenderer.func_181662_b((double)(p_146527_1_ + 18), (double)(p_146527_2_ + 18), (double)this.zLevel).func_181673_a((double)((float)(p_146527_3_ + 18) * 0.0078125F), (double)((float)(p_146527_4_ + 18) * 0.0078125F)).func_181675_d();
+        worldrenderer.func_181662_b((double)(p_146527_1_ + 18), (double)(p_146527_2_ + 0), (double)this.zLevel).func_181673_a((double)((float)(p_146527_3_ + 18) * 0.0078125F), (double)((float)(p_146527_4_ + 0) * 0.0078125F)).func_181675_d();
+        worldrenderer.func_181662_b((double)(p_146527_1_ + 0), (double)(p_146527_2_ + 0), (double)this.zLevel).func_181673_a((double)((float)(p_146527_3_ + 0) * 0.0078125F), (double)((float)(p_146527_4_ + 0) * 0.0078125F)).func_181675_d();
         tessellator.draw();
     }
 
@@ -452,7 +452,7 @@ public class GuiStats extends GuiScreen implements IProgressMeter
         }
     }
 
-    class StatsBlock extends GuiStats.Stats
+    class StatsBlock extends Stats
     {
         public StatsBlock(Minecraft mcIn)
         {
@@ -624,7 +624,7 @@ public class GuiStats extends GuiScreen implements IProgressMeter
         }
     }
 
-    class StatsItem extends GuiStats.Stats
+    class StatsItem extends Stats
     {
         public StatsItem(Minecraft mcIn)
         {

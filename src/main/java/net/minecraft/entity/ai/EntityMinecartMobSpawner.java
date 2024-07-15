@@ -37,9 +37,9 @@ public class EntityMinecartMobSpawner extends EntityMinecart
         super(worldIn, p_i1726_2_, p_i1726_4_, p_i1726_6_);
     }
 
-    public EntityMinecart.EnumMinecartType getMinecartType()
+    public EnumMinecartType getMinecartType()
     {
-        return EntityMinecart.EnumMinecartType.SPAWNER;
+        return EnumMinecartType.SPAWNER;
     }
 
     public IBlockState getDefaultDisplayTile()
@@ -65,7 +65,7 @@ public class EntityMinecartMobSpawner extends EntityMinecart
         this.mobSpawnerLogic.writeToNBT(tagCompound);
     }
 
-    public void handleStatusUpdate(byte id)
+    public void handleHealthUpdate(byte id)
     {
         this.mobSpawnerLogic.setDelayToMin(id);
     }

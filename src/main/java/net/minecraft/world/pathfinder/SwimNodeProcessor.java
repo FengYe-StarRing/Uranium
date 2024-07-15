@@ -18,8 +18,8 @@ public class SwimNodeProcessor extends NodeProcessor
 
     /**
      * This method is called when all nodes have been processed and PathEntity is created.
-     *  {@link net.minecraft.world.pathfinder.WalkNodeProcessor WalkNodeProcessor} uses this to change its field {@link
-     * net.minecraft.world.pathfinder.WalkNodeProcessor#avoidsWater avoidsWater}
+     *  {@link WalkNodeProcessor WalkNodeProcessor} uses this to change its field {@link
+     * WalkNodeProcessor#avoidsWater avoidsWater}
      */
     public void postProcess()
     {
@@ -36,6 +36,11 @@ public class SwimNodeProcessor extends NodeProcessor
 
     /**
      * Returns PathPoint for given coordinates
+     *  
+     * @param entityIn entity which size will be used to center position
+     * @param x target x coordinate
+     * @param y target y coordinate
+     * @param target z coordinate
      */
     public PathPoint getPathPointToCoords(Entity entityIn, double x, double y, double target)
     {
@@ -78,7 +83,7 @@ public class SwimNodeProcessor extends NodeProcessor
             {
                 for (int k = z; k < z + this.entitySizeZ; ++k)
                 {
-                    Block block = this.blockaccess.getBlockState(blockpos$mutableblockpos.set(i, j, k)).getBlock();
+                    Block block = this.blockaccess.getBlockState(blockpos$mutableblockpos.func_181079_c(i, j, k)).getBlock();
 
                     if (block.getMaterial() != Material.water)
                     {

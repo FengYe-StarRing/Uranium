@@ -11,12 +11,12 @@ public class BiomeGenPlains extends BiomeGenBase
 {
     protected boolean field_150628_aC;
 
-    protected BiomeGenPlains(int id)
+    protected BiomeGenPlains(int p_i1986_1_)
     {
-        super(id);
+        super(p_i1986_1_);
         this.setTemperatureRainfall(0.8F, 0.4F);
         this.setHeight(height_LowPlains);
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityHorse.class, 5, 2, 6));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityHorse.class, 5, 2, 6));
         this.theBiomeDecorator.treesPerChunk = -999;
         this.theBiomeDecorator.flowersPerChunk = 4;
         this.theBiomeDecorator.grassPerChunk = 10;

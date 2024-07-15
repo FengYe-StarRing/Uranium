@@ -17,28 +17,28 @@ import net.minecraft.world.World;
 
 public class BlockRedstoneTorch extends BlockTorch
 {
-    private static Map<World, List<BlockRedstoneTorch.Toggle>> toggles = Maps.<World, List<BlockRedstoneTorch.Toggle>>newHashMap();
+    private static Map<World, List<Toggle>> toggles = Maps.<World, List<Toggle>>newHashMap();
     private final boolean isOn;
 
     private boolean isBurnedOut(World worldIn, BlockPos pos, boolean turnOff)
     {
         if (!toggles.containsKey(worldIn))
         {
-            toggles.put(worldIn, Lists.<BlockRedstoneTorch.Toggle>newArrayList());
+            toggles.put(worldIn, Lists.<Toggle>newArrayList());
         }
 
-        List<BlockRedstoneTorch.Toggle> list = (List)toggles.get(worldIn);
+        List<Toggle> list = (List)toggles.get(worldIn);
 
         if (turnOff)
         {
-            list.add(new BlockRedstoneTorch.Toggle(pos, worldIn.getTotalWorldTime()));
+            list.add(new Toggle(pos, worldIn.getTotalWorldTime()));
         }
 
         int i = 0;
 
         for (int j = 0; j < list.size(); ++j)
         {
-            BlockRedstoneTorch.Toggle blockredstonetorch$toggle = (BlockRedstoneTorch.Toggle)list.get(j);
+            Toggle blockredstonetorch$toggle = (Toggle)list.get(j);
 
             if (blockredstonetorch$toggle.pos.equals(pos))
             {
@@ -91,7 +91,7 @@ public class BlockRedstoneTorch extends BlockTorch
         }
     }
 
-    public int getWeakPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
+    public int isProvidingWeakPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
     {
         return this.isOn && state.getValue(FACING) != side ? 15 : 0;
     }
@@ -112,9 +112,9 @@ public class BlockRedstoneTorch extends BlockTorch
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         boolean flag = this.shouldBeOff(worldIn, pos, state);
-        List<BlockRedstoneTorch.Toggle> list = (List)toggles.get(worldIn);
+        List<Toggle> list = (List)toggles.get(worldIn);
 
-        while (list != null && !list.isEmpty() && worldIn.getTotalWorldTime() - ((BlockRedstoneTorch.Toggle)list.get(0)).time > 60L)
+        while (list != null && !list.isEmpty() && worldIn.getTotalWorldTime() - ((Toggle)list.get(0)).time > 60L)
         {
             list.remove(0);
         }
@@ -161,13 +161,15 @@ public class BlockRedstoneTorch extends BlockTorch
         }
     }
 
-    public int getStrongPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
+    public int isProvidingStrongPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
     {
-        return side == EnumFacing.DOWN ? this.getWeakPower(worldIn, pos, state, side) : 0;
+        return side == EnumFacing.DOWN ? this.isProvidingWeakPower(worldIn, pos, state, side) : 0;
     }
 
     /**
      * Get the Item that this Block should drop when harvested.
+     *  
+     * @param fortune the level of the Fortune enchantment on the player's tool
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
@@ -204,6 +206,9 @@ public class BlockRedstoneTorch extends BlockTorch
         }
     }
 
+    /**
+     * Used by pick block on the client to get a block's item form, if it exists.
+     */
     public Item getItem(World worldIn, BlockPos pos)
     {
         return Item.getItemFromBlock(Blocks.redstone_torch);

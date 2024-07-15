@@ -82,7 +82,7 @@ public class EntityList
     private static final Map < Integer, Class <? extends Entity >> idToClassMapping = Maps. < Integer, Class <? extends Entity >> newHashMap();
     private static final Map < Class <? extends Entity > , Integer > classToIDMapping = Maps. < Class <? extends Entity > , Integer > newHashMap();
     private static final Map<String, Integer> stringToIDMapping = Maps.<String, Integer>newHashMap();
-    public static final Map<Integer, EntityList.EntityEggInfo> entityEggs = Maps.<Integer, EntityList.EntityEggInfo>newLinkedHashMap();
+    public static final Map<Integer, EntityEggInfo> entityEggs = Maps.<Integer, EntityEggInfo>newLinkedHashMap();
 
     /**
      * adds a mapping between Entity classes and both a string representation and an ID
@@ -121,7 +121,7 @@ public class EntityList
     private static void addMapping(Class <? extends Entity > entityClass, String entityName, int entityID, int baseColor, int spotColor)
     {
         addMapping(entityClass, entityName, entityID);
-        entityEggs.put(Integer.valueOf(entityID), new EntityList.EntityEggInfo(entityID, baseColor, spotColor));
+        entityEggs.put(Integer.valueOf(entityID), new EntityEggInfo(entityID, baseColor, spotColor));
     }
 
     /**
@@ -150,6 +150,8 @@ public class EntityList
 
     /**
      * create a new instance of an entity from NBT store
+     *  
+     * @param nbt The NBT compound
      */
     public static Entity createEntityFromNBT(NBTTagCompound nbt, World worldIn)
     {

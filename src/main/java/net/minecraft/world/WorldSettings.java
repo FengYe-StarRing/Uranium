@@ -9,7 +9,7 @@ public final class WorldSettings
     private final long seed;
 
     /** The EnumGameType. */
-    private final WorldSettings.GameType theGameType;
+    private final GameType theGameType;
 
     /**
      * Switch for the map features. 'true' for enabled, 'false' for disabled.
@@ -27,7 +27,7 @@ public final class WorldSettings
     private boolean bonusChestEnabled;
     private String worldName;
 
-    public WorldSettings(long seedIn, WorldSettings.GameType gameType, boolean enableMapFeatures, boolean hardcoreMode, WorldType worldTypeIn)
+    public WorldSettings(long seedIn, GameType gameType, boolean enableMapFeatures, boolean hardcoreMode, WorldType worldTypeIn)
     {
         this.worldName = "";
         this.seed = seedIn;
@@ -85,7 +85,7 @@ public final class WorldSettings
     /**
      * Gets the game type.
      */
-    public WorldSettings.GameType getGameType()
+    public GameType getGameType()
     {
         return this.theGameType;
     }
@@ -122,9 +122,9 @@ public final class WorldSettings
     /**
      * Gets the GameType by ID
      */
-    public static WorldSettings.GameType getGameTypeById(int id)
+    public static GameType getGameTypeById(int id)
     {
-        return WorldSettings.GameType.getByID(id);
+        return GameType.getByID(id);
     }
 
     public String getWorldName()
@@ -200,9 +200,9 @@ public final class WorldSettings
             return this == SURVIVAL || this == ADVENTURE;
         }
 
-        public static WorldSettings.GameType getByID(int idIn)
+        public static GameType getByID(int idIn)
         {
-            for (WorldSettings.GameType worldsettings$gametype : values())
+            for (GameType worldsettings$gametype : values())
             {
                 if (worldsettings$gametype.id == idIn)
                 {
@@ -213,11 +213,11 @@ public final class WorldSettings
             return SURVIVAL;
         }
 
-        public static WorldSettings.GameType getByName(String gamemodeName)
+        public static GameType getByName(String p_77142_0_)
         {
-            for (WorldSettings.GameType worldsettings$gametype : values())
+            for (GameType worldsettings$gametype : values())
             {
-                if (worldsettings$gametype.name.equals(gamemodeName))
+                if (worldsettings$gametype.name.equals(p_77142_0_))
                 {
                     return worldsettings$gametype;
                 }

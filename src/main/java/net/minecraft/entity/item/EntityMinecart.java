@@ -56,30 +56,30 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
         this.setSize(0.98F, 0.7F);
     }
 
-    public static EntityMinecart getMinecart(World worldIn, double x, double y, double z, EntityMinecart.EnumMinecartType type)
+    public static EntityMinecart func_180458_a(World worldIn, double p_180458_1_, double p_180458_3_, double p_180458_5_, EnumMinecartType p_180458_7_)
     {
-        switch (type)
+        switch (p_180458_7_)
         {
             case CHEST:
-                return new EntityMinecartChest(worldIn, x, y, z);
+                return new EntityMinecartChest(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
 
             case FURNACE:
-                return new EntityMinecartFurnace(worldIn, x, y, z);
+                return new EntityMinecartFurnace(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
 
             case TNT:
-                return new EntityMinecartTNT(worldIn, x, y, z);
+                return new EntityMinecartTNT(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
 
             case SPAWNER:
-                return new EntityMinecartMobSpawner(worldIn, x, y, z);
+                return new EntityMinecartMobSpawner(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
 
             case HOPPER:
-                return new EntityMinecartHopper(worldIn, x, y, z);
+                return new EntityMinecartHopper(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
 
             case COMMAND_BLOCK:
-                return new EntityMinecartCommandBlock(worldIn, x, y, z);
+                return new EntityMinecartCommandBlock(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
 
             default:
-                return new EntityMinecartEmpty(worldIn, x, y, z);
+                return new EntityMinecartEmpty(worldIn, p_180458_1_, p_180458_3_, p_180458_5_);
         }
     }
 
@@ -192,11 +192,11 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
         }
     }
 
-    public void killMinecart(DamageSource source)
+    public void killMinecart(DamageSource p_94095_1_)
     {
         this.setDead();
 
-        if (this.worldObj.getGameRules().getBoolean("doEntityDrops"))
+        if (this.worldObj.getGameRules().getGameRuleBooleanValue("doEntityDrops"))
         {
             ItemStack itemstack = new ItemStack(Items.minecart, 1);
 
@@ -366,7 +366,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
 
             if (d0 * d0 + d2 * d2 > 0.001D)
             {
-                this.rotationYaw = (float)(MathHelper.atan2(d2, d0) * 180.0D / Math.PI);
+                this.rotationYaw = (float)(MathHelper.func_181159_b(d2, d0) * 180.0D / Math.PI);
 
                 if (this.isInReverse)
                 {
@@ -882,7 +882,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
             {
                 if (entityIn != this.riddenByEntity)
                 {
-                    if (entityIn instanceof EntityLivingBase && !(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityIronGolem) && this.getMinecartType() == EntityMinecart.EnumMinecartType.RIDEABLE && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.01D && this.riddenByEntity == null && entityIn.ridingEntity == null)
+                    if (entityIn instanceof EntityLivingBase && !(entityIn instanceof EntityPlayer) && !(entityIn instanceof EntityIronGolem) && this.getMinecartType() == EnumMinecartType.RIDEABLE && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.01D && this.riddenByEntity == null && entityIn.ridingEntity == null)
                     {
                         entityIn.mountEntity(this);
                     }
@@ -928,7 +928,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
                             double d7 = entityIn.motionX + this.motionX;
                             double d8 = entityIn.motionZ + this.motionZ;
 
-                            if (((EntityMinecart)entityIn).getMinecartType() == EntityMinecart.EnumMinecartType.FURNACE && this.getMinecartType() != EntityMinecart.EnumMinecartType.FURNACE)
+                            if (((EntityMinecart)entityIn).getMinecartType() == EnumMinecartType.FURNACE && this.getMinecartType() != EnumMinecartType.FURNACE)
                             {
                                 this.motionX *= 0.20000000298023224D;
                                 this.motionZ *= 0.20000000298023224D;
@@ -936,7 +936,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
                                 entityIn.motionX *= 0.949999988079071D;
                                 entityIn.motionZ *= 0.949999988079071D;
                             }
-                            else if (((EntityMinecart)entityIn).getMinecartType() != EntityMinecart.EnumMinecartType.FURNACE && this.getMinecartType() == EntityMinecart.EnumMinecartType.FURNACE)
+                            else if (((EntityMinecart)entityIn).getMinecartType() != EnumMinecartType.FURNACE && this.getMinecartType() == EnumMinecartType.FURNACE)
                             {
                                 entityIn.motionX *= 0.20000000298023224D;
                                 entityIn.motionZ *= 0.20000000298023224D;
@@ -1040,7 +1040,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
         return this.dataWatcher.getWatchableObjectInt(18);
     }
 
-    public abstract EntityMinecart.EnumMinecartType getMinecartType();
+    public abstract EnumMinecartType getMinecartType();
 
     public IBlockState getDisplayTile()
     {
@@ -1093,11 +1093,11 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
     }
 
     /**
-     * Get the name of this object. For players this returns their username
+     * Gets the name of this command sender (usually username, but possibly "Rcon")
      */
-    public String getName()
+    public String getCommandSenderName()
     {
-        return this.entityName != null ? this.entityName : super.getName();
+        return this.entityName != null ? this.entityName : super.getCommandSenderName();
     }
 
     /**
@@ -1127,7 +1127,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
         }
         else
         {
-            ChatComponentTranslation chatcomponenttranslation = new ChatComponentTranslation(this.getName(), new Object[0]);
+            ChatComponentTranslation chatcomponenttranslation = new ChatComponentTranslation(this.getCommandSenderName(), new Object[0]);
             chatcomponenttranslation.getChatStyle().setChatHoverEvent(this.getHoverEvent());
             chatcomponenttranslation.getChatStyle().setInsertion(this.getUniqueID().toString());
             return chatcomponenttranslation;
@@ -1144,7 +1144,7 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
         HOPPER(5, "MinecartHopper"),
         COMMAND_BLOCK(6, "MinecartCommandBlock");
 
-        private static final Map<Integer, EntityMinecart.EnumMinecartType> ID_LOOKUP = Maps.<Integer, EntityMinecart.EnumMinecartType>newHashMap();
+        private static final Map<Integer, EnumMinecartType> ID_LOOKUP = Maps.<Integer, EnumMinecartType>newHashMap();
         private final int networkID;
         private final String name;
 
@@ -1164,14 +1164,14 @@ public abstract class EntityMinecart extends Entity implements IWorldNameable
             return this.name;
         }
 
-        public static EntityMinecart.EnumMinecartType byNetworkID(int id)
+        public static EnumMinecartType byNetworkID(int id)
         {
-            EntityMinecart.EnumMinecartType entityminecart$enumminecarttype = (EntityMinecart.EnumMinecartType)ID_LOOKUP.get(Integer.valueOf(id));
+            EnumMinecartType entityminecart$enumminecarttype = (EnumMinecartType)ID_LOOKUP.get(Integer.valueOf(id));
             return entityminecart$enumminecarttype == null ? RIDEABLE : entityminecart$enumminecarttype;
         }
 
         static {
-            for (EntityMinecart.EnumMinecartType entityminecart$enumminecarttype : values())
+            for (EnumMinecartType entityminecart$enumminecarttype : values())
             {
                 ID_LOOKUP.put(Integer.valueOf(entityminecart$enumminecarttype.getNetworkID()), entityminecart$enumminecarttype);
             }

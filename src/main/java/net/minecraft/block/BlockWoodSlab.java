@@ -26,7 +26,7 @@ public abstract class BlockWoodSlab extends BlockSlab
 
         if (!this.isDouble())
         {
-            iblockstate = iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
+            iblockstate = iblockstate.withProperty(HALF, EnumBlockHalf.BOTTOM);
         }
 
         this.setDefaultState(iblockstate.withProperty(VARIANT, BlockPlanks.EnumType.OAK));
@@ -38,17 +38,22 @@ public abstract class BlockWoodSlab extends BlockSlab
      */
     public MapColor getMapColor(IBlockState state)
     {
-        return ((BlockPlanks.EnumType)state.getValue(VARIANT)).getMapColor();
+        return ((BlockPlanks.EnumType)state.getValue(VARIANT)).func_181070_c();
     }
 
     /**
      * Get the Item that this Block should drop when harvested.
+     *  
+     * @param fortune the level of the Fortune enchantment on the player's tool
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(Blocks.wooden_slab);
     }
 
+    /**
+     * Used by pick block on the client to get a block's item form, if it exists.
+     */
     public Item getItem(World worldIn, BlockPos pos)
     {
         return Item.getItemFromBlock(Blocks.wooden_slab);
@@ -95,7 +100,7 @@ public abstract class BlockWoodSlab extends BlockSlab
 
         if (!this.isDouble())
         {
-            iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ? BlockSlab.EnumBlockHalf.BOTTOM : BlockSlab.EnumBlockHalf.TOP);
+            iblockstate = iblockstate.withProperty(HALF, (meta & 8) == 0 ? EnumBlockHalf.BOTTOM : EnumBlockHalf.TOP);
         }
 
         return iblockstate;
@@ -109,7 +114,7 @@ public abstract class BlockWoodSlab extends BlockSlab
         int i = 0;
         i = i | ((BlockPlanks.EnumType)state.getValue(VARIANT)).getMetadata();
 
-        if (!this.isDouble() && state.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP)
+        if (!this.isDouble() && state.getValue(HALF) == EnumBlockHalf.TOP)
         {
             i |= 8;
         }

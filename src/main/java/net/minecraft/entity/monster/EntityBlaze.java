@@ -32,7 +32,7 @@ public class EntityBlaze extends EntityMob
         super(worldIn);
         this.isImmuneToFire = true;
         this.experienceValue = 10;
-        this.tasks.addTask(4, new EntityBlaze.AIFireballAttack(this));
+        this.tasks.addTask(4, new AIFireballAttack(this));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -164,16 +164,12 @@ public class EntityBlaze extends EntityMob
 
     /**
      * Drop 0-2 items of this living's type
-     *  
-     * @param wasRecentlyHit true if this this entity was recently hit by appropriate entity (generally only if player
-     * or tameable)
-     * @param lootingModifier level of enchanment to be applied to this drop
      */
-    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier)
+    protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
     {
-        if (wasRecentlyHit)
+        if (p_70628_1_)
         {
-            int i = this.rand.nextInt(2 + lootingModifier);
+            int i = this.rand.nextInt(2 + p_70628_2_);
 
             for (int j = 0; j < i; ++j)
             {

@@ -27,10 +27,10 @@ import net.minecraft.world.World;
 
 public class BlockRedstoneWire extends Block
 {
-    public static final PropertyEnum<BlockRedstoneWire.EnumAttachPosition> NORTH = PropertyEnum.<BlockRedstoneWire.EnumAttachPosition>create("north", BlockRedstoneWire.EnumAttachPosition.class);
-    public static final PropertyEnum<BlockRedstoneWire.EnumAttachPosition> EAST = PropertyEnum.<BlockRedstoneWire.EnumAttachPosition>create("east", BlockRedstoneWire.EnumAttachPosition.class);
-    public static final PropertyEnum<BlockRedstoneWire.EnumAttachPosition> SOUTH = PropertyEnum.<BlockRedstoneWire.EnumAttachPosition>create("south", BlockRedstoneWire.EnumAttachPosition.class);
-    public static final PropertyEnum<BlockRedstoneWire.EnumAttachPosition> WEST = PropertyEnum.<BlockRedstoneWire.EnumAttachPosition>create("west", BlockRedstoneWire.EnumAttachPosition.class);
+    public static final PropertyEnum<EnumAttachPosition> NORTH = PropertyEnum.<EnumAttachPosition>create("north", EnumAttachPosition.class);
+    public static final PropertyEnum<EnumAttachPosition> EAST = PropertyEnum.<EnumAttachPosition>create("east", EnumAttachPosition.class);
+    public static final PropertyEnum<EnumAttachPosition> SOUTH = PropertyEnum.<EnumAttachPosition>create("south", EnumAttachPosition.class);
+    public static final PropertyEnum<EnumAttachPosition> WEST = PropertyEnum.<EnumAttachPosition>create("west", EnumAttachPosition.class);
     public static final PropertyInteger POWER = PropertyInteger.create("power", 0, 15);
     private boolean canProvidePower = true;
     private final Set<BlockPos> blocksNeedingUpdate = Sets.<BlockPos>newHashSet();
@@ -38,7 +38,7 @@ public class BlockRedstoneWire extends Block
     public BlockRedstoneWire()
     {
         super(Material.circuits);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, BlockRedstoneWire.EnumAttachPosition.NONE).withProperty(EAST, BlockRedstoneWire.EnumAttachPosition.NONE).withProperty(SOUTH, BlockRedstoneWire.EnumAttachPosition.NONE).withProperty(WEST, BlockRedstoneWire.EnumAttachPosition.NONE).withProperty(POWER, Integer.valueOf(0)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, EnumAttachPosition.NONE).withProperty(EAST, EnumAttachPosition.NONE).withProperty(SOUTH, EnumAttachPosition.NONE).withProperty(WEST, EnumAttachPosition.NONE).withProperty(POWER, Integer.valueOf(0)));
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
     }
 
@@ -55,7 +55,7 @@ public class BlockRedstoneWire extends Block
         return state;
     }
 
-    private BlockRedstoneWire.EnumAttachPosition getAttachPosition(IBlockAccess worldIn, BlockPos pos, EnumFacing direction)
+    private EnumAttachPosition getAttachPosition(IBlockAccess worldIn, BlockPos pos, EnumFacing direction)
     {
         BlockPos blockpos = pos.offset(direction);
         Block block = worldIn.getBlockState(pos.offset(direction)).getBlock();
@@ -63,11 +63,11 @@ public class BlockRedstoneWire extends Block
         if (!canConnectTo(worldIn.getBlockState(blockpos), direction) && (block.isBlockNormalCube() || !canConnectUpwardsTo(worldIn.getBlockState(blockpos.down()))))
         {
             Block block1 = worldIn.getBlockState(pos.up()).getBlock();
-            return !block1.isBlockNormalCube() && block.isBlockNormalCube() && canConnectUpwardsTo(worldIn.getBlockState(blockpos.up())) ? BlockRedstoneWire.EnumAttachPosition.UP : BlockRedstoneWire.EnumAttachPosition.NONE;
+            return !block1.isBlockNormalCube() && block.isBlockNormalCube() && canConnectUpwardsTo(worldIn.getBlockState(blockpos.up())) ? EnumAttachPosition.UP : EnumAttachPosition.NONE;
         }
         else
         {
-            return BlockRedstoneWire.EnumAttachPosition.SIDE;
+            return EnumAttachPosition.SIDE;
         }
     }
 
@@ -309,18 +309,20 @@ public class BlockRedstoneWire extends Block
 
     /**
      * Get the Item that this Block should drop when harvested.
+     *  
+     * @param fortune the level of the Fortune enchantment on the player's tool
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Items.redstone;
     }
 
-    public int getStrongPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
+    public int isProvidingStrongPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
     {
-        return !this.canProvidePower ? 0 : this.getWeakPower(worldIn, pos, state, side);
+        return !this.canProvidePower ? 0 : this.isProvidingWeakPower(worldIn, pos, state, side);
     }
 
-    public int getWeakPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
+    public int isProvidingWeakPower(IBlockAccess worldIn, BlockPos pos, IBlockState state, EnumFacing side)
     {
         if (!this.canProvidePower)
         {
@@ -459,6 +461,9 @@ public class BlockRedstoneWire extends Block
         }
     }
 
+    /**
+     * Used by pick block on the client to get a block's item form, if it exists.
+     */
     public Item getItem(World worldIn, BlockPos pos)
     {
         return Items.redstone;

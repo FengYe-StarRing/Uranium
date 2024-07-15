@@ -15,30 +15,30 @@ import net.minecraft.world.WorldSettings;
 
 public class S38PacketPlayerListItem implements Packet<INetHandlerPlayClient>
 {
-    private S38PacketPlayerListItem.Action action;
-    private final List<S38PacketPlayerListItem.AddPlayerData> players = Lists.<S38PacketPlayerListItem.AddPlayerData>newArrayList();
+    private Action action;
+    private final List<AddPlayerData> players = Lists.<AddPlayerData>newArrayList();
 
     public S38PacketPlayerListItem()
     {
     }
 
-    public S38PacketPlayerListItem(S38PacketPlayerListItem.Action actionIn, EntityPlayerMP... players)
+    public S38PacketPlayerListItem(Action actionIn, EntityPlayerMP... players)
     {
         this.action = actionIn;
 
         for (EntityPlayerMP entityplayermp : players)
         {
-            this.players.add(new S38PacketPlayerListItem.AddPlayerData(entityplayermp.getGameProfile(), entityplayermp.ping, entityplayermp.theItemInWorldManager.getGameType(), entityplayermp.getTabListDisplayName()));
+            this.players.add(new AddPlayerData(entityplayermp.getGameProfile(), entityplayermp.ping, entityplayermp.theItemInWorldManager.getGameType(), entityplayermp.getTabListDisplayName()));
         }
     }
 
-    public S38PacketPlayerListItem(S38PacketPlayerListItem.Action actionIn, Iterable<EntityPlayerMP> players)
+    public S38PacketPlayerListItem(Action actionIn, Iterable<EntityPlayerMP> players)
     {
         this.action = actionIn;
 
         for (EntityPlayerMP entityplayermp : players)
         {
-            this.players.add(new S38PacketPlayerListItem.AddPlayerData(entityplayermp.getGameProfile(), entityplayermp.ping, entityplayermp.theItemInWorldManager.getGameType(), entityplayermp.getTabListDisplayName()));
+            this.players.add(new AddPlayerData(entityplayermp.getGameProfile(), entityplayermp.ping, entityplayermp.theItemInWorldManager.getGameType(), entityplayermp.getTabListDisplayName()));
         }
     }
 
@@ -47,7 +47,7 @@ public class S38PacketPlayerListItem implements Packet<INetHandlerPlayClient>
      */
     public void readPacketData(PacketBuffer buf) throws IOException
     {
-        this.action = (S38PacketPlayerListItem.Action)buf.readEnumValue(S38PacketPlayerListItem.Action.class);
+        this.action = (Action)buf.readEnumValue(Action.class);
         int i = buf.readVarIntFromBuffer();
 
         for (int j = 0; j < i; ++j)
@@ -113,7 +113,7 @@ public class S38PacketPlayerListItem implements Packet<INetHandlerPlayClient>
                     gameprofile = new GameProfile(buf.readUuid(), (String)null);
             }
 
-            this.players.add(new S38PacketPlayerListItem.AddPlayerData(gameprofile, k, worldsettings$gametype, ichatcomponent));
+            this.players.add(new AddPlayerData(gameprofile, k, worldsettings$gametype, ichatcomponent));
         }
     }
 
@@ -125,7 +125,7 @@ public class S38PacketPlayerListItem implements Packet<INetHandlerPlayClient>
         buf.writeEnumValue(this.action);
         buf.writeVarIntToBuffer(this.players.size());
 
-        for (S38PacketPlayerListItem.AddPlayerData s38packetplayerlistitem$addplayerdata : this.players)
+        for (AddPlayerData s38packetplayerlistitem$addplayerdata : this.players)
         {
             switch (this.action)
             {
@@ -204,12 +204,12 @@ public class S38PacketPlayerListItem implements Packet<INetHandlerPlayClient>
         handler.handlePlayerListItem(this);
     }
 
-    public List<S38PacketPlayerListItem.AddPlayerData> getEntries()
+    public List<AddPlayerData> func_179767_a()
     {
         return this.players;
     }
 
-    public S38PacketPlayerListItem.Action getAction()
+    public Action func_179768_b()
     {
         return this.action;
     }

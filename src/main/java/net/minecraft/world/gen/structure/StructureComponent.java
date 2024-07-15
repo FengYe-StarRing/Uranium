@@ -39,8 +39,8 @@ public abstract class StructureComponent
 
     /**
      * Writes structure base data (id, boundingbox, {@link
-     * net.minecraft.world.gen.structure.StructureComponent#coordBaseMode coordBase} and {@link
-     * net.minecraft.world.gen.structure.StructureComponent#componentType componentType}) to new NBTTagCompound and
+     * StructureComponent#coordBaseMode coordBase} and {@link
+     * StructureComponent#componentType componentType}) to new NBTTagCompound and
      * returns it.
      */
     public NBTTagCompound createStructureBaseNBT()
@@ -61,8 +61,8 @@ public abstract class StructureComponent
 
     /**
      * Reads and sets structure base data (boundingbox, {@link
-     * net.minecraft.world.gen.structure.StructureComponent#coordBaseMode coordBase} and {@link
-     * net.minecraft.world.gen.structure.StructureComponent#componentType componentType})
+     * StructureComponent#coordBaseMode coordBase} and {@link
+     * StructureComponent#componentType componentType})
      */
     public void readStructureBaseNBT(World worldIn, NBTTagCompound tagCompound)
     {
@@ -146,12 +146,12 @@ public abstract class StructureComponent
         {
             for (int l1 = k; l1 <= j1; ++l1)
             {
-                if (worldIn.getBlockState(blockpos$mutableblockpos.set(k1, j, l1)).getBlock().getMaterial().isLiquid())
+                if (worldIn.getBlockState(blockpos$mutableblockpos.func_181079_c(k1, j, l1)).getBlock().getMaterial().isLiquid())
                 {
                     return true;
                 }
 
-                if (worldIn.getBlockState(blockpos$mutableblockpos.set(k1, i1, l1)).getBlock().getMaterial().isLiquid())
+                if (worldIn.getBlockState(blockpos$mutableblockpos.func_181079_c(k1, i1, l1)).getBlock().getMaterial().isLiquid())
                 {
                     return true;
                 }
@@ -162,12 +162,12 @@ public abstract class StructureComponent
         {
             for (int k2 = j; k2 <= i1; ++k2)
             {
-                if (worldIn.getBlockState(blockpos$mutableblockpos.set(i2, k2, k)).getBlock().getMaterial().isLiquid())
+                if (worldIn.getBlockState(blockpos$mutableblockpos.func_181079_c(i2, k2, k)).getBlock().getMaterial().isLiquid())
                 {
                     return true;
                 }
 
-                if (worldIn.getBlockState(blockpos$mutableblockpos.set(i2, k2, j1)).getBlock().getMaterial().isLiquid())
+                if (worldIn.getBlockState(blockpos$mutableblockpos.func_181079_c(i2, k2, j1)).getBlock().getMaterial().isLiquid())
                 {
                     return true;
                 }
@@ -178,12 +178,12 @@ public abstract class StructureComponent
         {
             for (int l2 = j; l2 <= i1; ++l2)
             {
-                if (worldIn.getBlockState(blockpos$mutableblockpos.set(i, l2, j2)).getBlock().getMaterial().isLiquid())
+                if (worldIn.getBlockState(blockpos$mutableblockpos.func_181079_c(i, l2, j2)).getBlock().getMaterial().isLiquid())
                 {
                     return true;
                 }
 
-                if (worldIn.getBlockState(blockpos$mutableblockpos.set(l, l2, j2)).getBlock().getMaterial().isLiquid())
+                if (worldIn.getBlockState(blockpos$mutableblockpos.func_181079_c(l, l2, j2)).getBlock().getMaterial().isLiquid())
                 {
                     return true;
                 }
@@ -252,6 +252,8 @@ public abstract class StructureComponent
 
     /**
      * Returns the direction-shifted metadata for blocks that require orientation, e.g. doors, stairs, ladders.
+     *  
+     * @param meta block direction meta data
      */
     protected int getMetadataWithOffset(Block blockIn, int meta)
     {
@@ -627,6 +629,19 @@ public abstract class StructureComponent
 
     /**
      * Fill the given area with the selected blocks
+     *  
+     * @param worldIn World object
+     * @param boundingboxIn Building bounding box
+     * @param xMin Minimum X plotting coordinate, inclusive. Minimum must be less than or equal to the maximum
+     * @param yMin Minimum Y plotting coordinate, inclusive
+     * @param zMin Minimum Z plotting coordinate, inclusive
+     * @param xMax Maximum X plotting coordinate, inclusive
+     * @param yMax Maximum Y plotting coordinate, inclusive
+     * @param zMax Maximum Z plotting coordinate, inclusive
+     * @param boundaryBlockState This block is used for any position on the edge of the designated area
+     * @param insideBlockState This block is used for filling in the interior. For a hollow object, you'd pass in air.
+     * @param existingOnly Only replace non-air blocks. Set to true if you want caves and such to eat away your
+     * structure.
      */
     protected void fillWithBlocks(World worldIn, StructureBoundingBox boundingboxIn, int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, IBlockState boundaryBlockState, IBlockState insideBlockState, boolean existingOnly)
     {
@@ -656,7 +671,7 @@ public abstract class StructureComponent
      * arguments: World worldObj, StructureBoundingBox structBB, int minX, int minY, int minZ, int maxX, int maxY, int
      * maxZ, boolean alwaysreplace, Random rand, StructurePieceBlockSelector blockselector
      */
-    protected void fillWithRandomizedBlocks(World worldIn, StructureBoundingBox boundingboxIn, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, boolean alwaysReplace, Random rand, StructureComponent.BlockSelector blockselector)
+    protected void fillWithRandomizedBlocks(World worldIn, StructureBoundingBox boundingboxIn, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, boolean alwaysReplace, Random rand, BlockSelector blockselector)
     {
         for (int i = minY; i <= maxY; ++i)
         {
@@ -759,6 +774,8 @@ public abstract class StructureComponent
 
     /**
      * Replaces air and liquid from given position downwards. Stops when hitting anything else than air or liquid
+     *  
+     * @param blockstateIn replacement to use
      */
     protected void replaceAirAndLiquidDownwards(World worldIn, IBlockState blockstateIn, int x, int y, int z, StructureBoundingBox boundingboxIn)
     {

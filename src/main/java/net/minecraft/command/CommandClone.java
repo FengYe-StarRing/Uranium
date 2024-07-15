@@ -34,6 +34,8 @@ public class CommandClone extends CommandBase
 
     /**
      * Gets the usage string for the command.
+     *  
+     * @param sender The {@link ICommandSender} who is requesting usage details.
      */
     public String getCommandUsage(ICommandSender sender)
     {
@@ -42,6 +44,9 @@ public class CommandClone extends CommandBase
 
     /**
      * Callback when the command is invoked
+     *  
+     * @param sender The {@link ICommandSender sender} who executed the command
+     * @param args The arguments that were passed with the command
      */
     public void processCommand(ICommandSender sender, String[] args) throws CommandException
     {
@@ -110,9 +115,9 @@ public class CommandClone extends CommandBase
                                 }
                             }
 
-                            List<CommandClone.StaticCloneData> list = Lists.<CommandClone.StaticCloneData>newArrayList();
-                            List<CommandClone.StaticCloneData> list1 = Lists.<CommandClone.StaticCloneData>newArrayList();
-                            List<CommandClone.StaticCloneData> list2 = Lists.<CommandClone.StaticCloneData>newArrayList();
+                            List<StaticCloneData> list = Lists.<StaticCloneData>newArrayList();
+                            List<StaticCloneData> list1 = Lists.<StaticCloneData>newArrayList();
+                            List<StaticCloneData> list2 = Lists.<StaticCloneData>newArrayList();
                             LinkedList<BlockPos> linkedlist = Lists.<BlockPos>newLinkedList();
                             BlockPos blockpos3 = new BlockPos(structureboundingbox1.minX - structureboundingbox.minX, structureboundingbox1.minY - structureboundingbox.minY, structureboundingbox1.minZ - structureboundingbox.minZ);
 
@@ -134,17 +139,17 @@ public class CommandClone extends CommandBase
                                             {
                                                 NBTTagCompound nbttagcompound = new NBTTagCompound();
                                                 tileentity.writeToNBT(nbttagcompound);
-                                                list1.add(new CommandClone.StaticCloneData(blockpos5, iblockstate, nbttagcompound));
+                                                list1.add(new StaticCloneData(blockpos5, iblockstate, nbttagcompound));
                                                 linkedlist.addLast(blockpos4);
                                             }
                                             else if (!iblockstate.getBlock().isFullBlock() && !iblockstate.getBlock().isFullCube())
                                             {
-                                                list2.add(new CommandClone.StaticCloneData(blockpos5, iblockstate, (NBTTagCompound)null));
+                                                list2.add(new StaticCloneData(blockpos5, iblockstate, (NBTTagCompound)null));
                                                 linkedlist.addFirst(blockpos4);
                                             }
                                             else
                                             {
-                                                list.add(new CommandClone.StaticCloneData(blockpos5, iblockstate, (NBTTagCompound)null));
+                                                list.add(new StaticCloneData(blockpos5, iblockstate, (NBTTagCompound)null));
                                                 linkedlist.addLast(blockpos4);
                                             }
                                         }
@@ -172,53 +177,53 @@ public class CommandClone extends CommandBase
                                 }
                             }
 
-                            List<CommandClone.StaticCloneData> list3 = Lists.<CommandClone.StaticCloneData>newArrayList();
+                            List<StaticCloneData> list3 = Lists.<StaticCloneData>newArrayList();
                             list3.addAll(list);
                             list3.addAll(list1);
                             list3.addAll(list2);
-                            List<CommandClone.StaticCloneData> list4 = Lists.<CommandClone.StaticCloneData>reverse(list3);
+                            List<StaticCloneData> list4 = Lists.<StaticCloneData>reverse(list3);
 
-                            for (CommandClone.StaticCloneData commandclone$staticclonedata : list4)
+                            for (StaticCloneData commandclone$staticclonedata : list4)
                             {
-                                TileEntity tileentity2 = world.getTileEntity(commandclone$staticclonedata.pos);
+                                TileEntity tileentity2 = world.getTileEntity(commandclone$staticclonedata.field_179537_a);
 
                                 if (tileentity2 instanceof IInventory)
                                 {
                                     ((IInventory)tileentity2).clear();
                                 }
 
-                                world.setBlockState(commandclone$staticclonedata.pos, Blocks.barrier.getDefaultState(), 2);
+                                world.setBlockState(commandclone$staticclonedata.field_179537_a, Blocks.barrier.getDefaultState(), 2);
                             }
 
                             i = 0;
 
-                            for (CommandClone.StaticCloneData commandclone$staticclonedata1 : list3)
+                            for (StaticCloneData commandclone$staticclonedata1 : list3)
                             {
-                                if (world.setBlockState(commandclone$staticclonedata1.pos, commandclone$staticclonedata1.blockState, 2))
+                                if (world.setBlockState(commandclone$staticclonedata1.field_179537_a, commandclone$staticclonedata1.blockState, 2))
                                 {
                                     ++i;
                                 }
                             }
 
-                            for (CommandClone.StaticCloneData commandclone$staticclonedata2 : list1)
+                            for (StaticCloneData commandclone$staticclonedata2 : list1)
                             {
-                                TileEntity tileentity3 = world.getTileEntity(commandclone$staticclonedata2.pos);
+                                TileEntity tileentity3 = world.getTileEntity(commandclone$staticclonedata2.field_179537_a);
 
-                                if (commandclone$staticclonedata2.compound != null && tileentity3 != null)
+                                if (commandclone$staticclonedata2.field_179536_c != null && tileentity3 != null)
                                 {
-                                    commandclone$staticclonedata2.compound.setInteger("x", commandclone$staticclonedata2.pos.getX());
-                                    commandclone$staticclonedata2.compound.setInteger("y", commandclone$staticclonedata2.pos.getY());
-                                    commandclone$staticclonedata2.compound.setInteger("z", commandclone$staticclonedata2.pos.getZ());
-                                    tileentity3.readFromNBT(commandclone$staticclonedata2.compound);
+                                    commandclone$staticclonedata2.field_179536_c.setInteger("x", commandclone$staticclonedata2.field_179537_a.getX());
+                                    commandclone$staticclonedata2.field_179536_c.setInteger("y", commandclone$staticclonedata2.field_179537_a.getY());
+                                    commandclone$staticclonedata2.field_179536_c.setInteger("z", commandclone$staticclonedata2.field_179537_a.getZ());
+                                    tileentity3.readFromNBT(commandclone$staticclonedata2.field_179536_c);
                                     tileentity3.markDirty();
                                 }
 
-                                world.setBlockState(commandclone$staticclonedata2.pos, commandclone$staticclonedata2.blockState, 2);
+                                world.setBlockState(commandclone$staticclonedata2.field_179537_a, commandclone$staticclonedata2.blockState, 2);
                             }
 
-                            for (CommandClone.StaticCloneData commandclone$staticclonedata3 : list4)
+                            for (StaticCloneData commandclone$staticclonedata3 : list4)
                             {
-                                world.notifyNeighborsRespectDebug(commandclone$staticclonedata3.pos, commandclone$staticclonedata3.blockState.getBlock());
+                                world.notifyNeighborsRespectDebug(commandclone$staticclonedata3.field_179537_a, commandclone$staticclonedata3.blockState.getBlock());
                             }
 
                             List<NextTickListEntry> list5 = world.func_175712_a(structureboundingbox, false);
@@ -266,15 +271,15 @@ public class CommandClone extends CommandBase
 
     static class StaticCloneData
     {
-        public final BlockPos pos;
+        public final BlockPos field_179537_a;
         public final IBlockState blockState;
-        public final NBTTagCompound compound;
+        public final NBTTagCompound field_179536_c;
 
-        public StaticCloneData(BlockPos posIn, IBlockState stateIn, NBTTagCompound compoundIn)
+        public StaticCloneData(BlockPos p_i46037_1_, IBlockState p_i46037_2_, NBTTagCompound p_i46037_3_)
         {
-            this.pos = posIn;
-            this.blockState = stateIn;
-            this.compound = compoundIn;
+            this.field_179537_a = p_i46037_1_;
+            this.blockState = p_i46037_2_;
+            this.field_179536_c = p_i46037_3_;
         }
     }
 }

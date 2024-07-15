@@ -23,7 +23,7 @@ public class MusicTicker implements ITickable
      */
     public void update()
     {
-        MusicTicker.MusicType musicticker$musictype = this.mc.getAmbientMusicType();
+        MusicType musicticker$musictype = this.mc.getAmbientMusicType();
 
         if (this.currentMusic != null)
         {
@@ -46,7 +46,7 @@ public class MusicTicker implements ITickable
         }
     }
 
-    public void func_181558_a(MusicTicker.MusicType p_181558_1_)
+    public void func_181558_a(MusicType p_181558_1_)
     {
         this.currentMusic = PositionedSoundRecord.create(p_181558_1_.getMusicLocation());
         this.mc.getSoundHandler().playSound(this.currentMusic);

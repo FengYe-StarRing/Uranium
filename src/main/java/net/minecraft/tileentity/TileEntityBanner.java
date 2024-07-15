@@ -19,7 +19,7 @@ public class TileEntityBanner extends TileEntity
     /** A list of all the banner patterns. */
     private NBTTagList patterns;
     private boolean field_175119_g;
-    private List<TileEntityBanner.EnumBannerPattern> patternList;
+    private List<EnumBannerPattern> patternList;
     private List<EnumDyeColor> colorList;
 
     /**
@@ -63,16 +63,16 @@ public class TileEntityBanner extends TileEntity
     public void writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);
-        setBaseColorAndPatterns(compound, this.baseColor, this.patterns);
+        func_181020_a(compound, this.baseColor, this.patterns);
     }
 
-    public static void setBaseColorAndPatterns(NBTTagCompound compound, int baseColorIn, NBTTagList patternsIn)
+    public static void func_181020_a(NBTTagCompound p_181020_0_, int p_181020_1_, NBTTagList p_181020_2_)
     {
-        compound.setInteger("Base", baseColorIn);
+        p_181020_0_.setInteger("Base", p_181020_1_);
 
-        if (patternsIn != null)
+        if (p_181020_2_ != null)
         {
-            compound.setTag("Patterns", patternsIn);
+            p_181020_0_.setTag("Patterns", p_181020_2_);
         }
     }
 
@@ -111,6 +111,8 @@ public class TileEntityBanner extends TileEntity
 
     /**
      * Retrieves the amount of patterns stored on an ItemStack. If the tag does not exist this value will be 0.
+     *  
+     * @param stack The ItemStack which contains the NBTTagCompound data for banner patterns.
      */
     public static int getPatterns(ItemStack stack)
     {
@@ -118,13 +120,13 @@ public class TileEntityBanner extends TileEntity
         return nbttagcompound != null && nbttagcompound.hasKey("Patterns") ? nbttagcompound.getTagList("Patterns", 10).tagCount() : 0;
     }
 
-    public List<TileEntityBanner.EnumBannerPattern> getPatternList()
+    public List<EnumBannerPattern> getPatternList()
     {
         this.initializeBannerData();
         return this.patternList;
     }
 
-    public NBTTagList getPatterns()
+    public NBTTagList func_181021_d()
     {
         return this.patterns;
     }
@@ -135,7 +137,7 @@ public class TileEntityBanner extends TileEntity
         return this.colorList;
     }
 
-    public String getPatternResourceLocation()
+    public String func_175116_e()
     {
         this.initializeBannerData();
         return this.patternResourceLocation;
@@ -155,9 +157,9 @@ public class TileEntityBanner extends TileEntity
             }
             else
             {
-                this.patternList = Lists.<TileEntityBanner.EnumBannerPattern>newArrayList();
+                this.patternList = Lists.<EnumBannerPattern>newArrayList();
                 this.colorList = Lists.<EnumDyeColor>newArrayList();
-                this.patternList.add(TileEntityBanner.EnumBannerPattern.BASE);
+                this.patternList.add(EnumBannerPattern.BASE);
                 this.colorList.add(EnumDyeColor.byDyeDamage(this.baseColor));
                 this.patternResourceLocation = "b" + this.baseColor;
 
@@ -166,7 +168,7 @@ public class TileEntityBanner extends TileEntity
                     for (int i = 0; i < this.patterns.tagCount(); ++i)
                     {
                         NBTTagCompound nbttagcompound = this.patterns.getCompoundTagAt(i);
-                        TileEntityBanner.EnumBannerPattern tileentitybanner$enumbannerpattern = TileEntityBanner.EnumBannerPattern.getPatternByID(nbttagcompound.getString("Pattern"));
+                        EnumBannerPattern tileentitybanner$enumbannerpattern = EnumBannerPattern.getPatternByID(nbttagcompound.getString("Pattern"));
 
                         if (tileentitybanner$enumbannerpattern != null)
                         {
@@ -183,6 +185,8 @@ public class TileEntityBanner extends TileEntity
 
     /**
      * Removes all the banner related data from a provided instance of ItemStack.
+     *  
+     * @param stack The instance of an ItemStack which will have the relevant nbt tags removed.
      */
     public static void removeBannerData(ItemStack stack)
     {
@@ -307,9 +311,9 @@ public class TileEntityBanner extends TileEntity
             return this.patternCraftingStack;
         }
 
-        public static TileEntityBanner.EnumBannerPattern getPatternByID(String id)
+        public static EnumBannerPattern getPatternByID(String id)
         {
-            for (TileEntityBanner.EnumBannerPattern tileentitybanner$enumbannerpattern : values())
+            for (EnumBannerPattern tileentitybanner$enumbannerpattern : values())
             {
                 if (tileentitybanner$enumbannerpattern.patternID.equals(id))
                 {

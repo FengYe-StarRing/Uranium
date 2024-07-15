@@ -42,9 +42,9 @@ public class BiomeGenMutated extends BiomeGenBase
         this.baseBiome.theBiomeDecorator.decorate(worldIn, rand, this, pos);
     }
 
-    public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int p_180622_4_, int p_180622_5_, double p_180622_6_)
     {
-        this.baseBiome.genTerrainBlocks(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+        this.baseBiome.genTerrainBlocks(worldIn, rand, chunkPrimerIn, p_180622_4_, p_180622_5_, p_180622_6_);
     }
 
     /**
@@ -83,7 +83,7 @@ public class BiomeGenMutated extends BiomeGenBase
         return this.baseBiome.isEqualTo(biome);
     }
 
-    public BiomeGenBase.TempCategory getTempCategory()
+    public TempCategory getTempCategory()
     {
         return this.baseBiome.getTempCategory();
     }

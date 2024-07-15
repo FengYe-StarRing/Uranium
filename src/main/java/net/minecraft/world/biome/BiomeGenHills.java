@@ -20,9 +20,9 @@ public class BiomeGenHills extends BiomeGenBase
     private int field_150637_aG = 2;
     private int field_150638_aH;
 
-    protected BiomeGenHills(int id, boolean p_i45373_2_)
+    protected BiomeGenHills(int p_i45373_1_, boolean p_i45373_2_)
     {
-        super(id);
+        super(p_i45373_1_);
         this.field_150638_aH = this.field_150635_aE;
 
         if (p_i45373_2_)
@@ -64,23 +64,23 @@ public class BiomeGenHills extends BiomeGenBase
         }
     }
 
-    public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
+    public void genTerrainBlocks(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int p_180622_4_, int p_180622_5_, double p_180622_6_)
     {
         this.topBlock = Blocks.grass.getDefaultState();
         this.fillerBlock = Blocks.dirt.getDefaultState();
 
-        if ((noiseVal < -1.0D || noiseVal > 2.0D) && this.field_150638_aH == this.field_150637_aG)
+        if ((p_180622_6_ < -1.0D || p_180622_6_ > 2.0D) && this.field_150638_aH == this.field_150637_aG)
         {
             this.topBlock = Blocks.gravel.getDefaultState();
             this.fillerBlock = Blocks.gravel.getDefaultState();
         }
-        else if (noiseVal > 1.0D && this.field_150638_aH != this.field_150636_aF)
+        else if (p_180622_6_ > 1.0D && this.field_150638_aH != this.field_150636_aF)
         {
             this.topBlock = Blocks.stone.getDefaultState();
             this.fillerBlock = Blocks.stone.getDefaultState();
         }
 
-        this.generateBiomeTerrain(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
+        this.generateBiomeTerrain(worldIn, rand, chunkPrimerIn, p_180622_4_, p_180622_5_, p_180622_6_);
     }
 
     /**
@@ -91,7 +91,7 @@ public class BiomeGenHills extends BiomeGenBase
         this.field_150638_aH = this.field_150637_aG;
         this.func_150557_a(p_150633_1_.color, true);
         this.setBiomeName(p_150633_1_.biomeName + " M");
-        this.setHeight(new BiomeGenBase.Height(p_150633_1_.minHeight, p_150633_1_.maxHeight));
+        this.setHeight(new Height(p_150633_1_.minHeight, p_150633_1_.maxHeight));
         this.setTemperatureRainfall(p_150633_1_.temperature, p_150633_1_.rainfall);
         return this;
     }

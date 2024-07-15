@@ -28,9 +28,9 @@ public class BiomeGenJungle extends BiomeGenBase
     private static final IBlockState field_181621_aF = Blocks.leaves.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
     private static final IBlockState field_181622_aG = Blocks.leaves.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.OAK).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
 
-    public BiomeGenJungle(int id, boolean p_i45379_2_)
+    public BiomeGenJungle(int p_i45379_1_, boolean p_i45379_2_)
     {
-        super(id);
+        super(p_i45379_1_);
         this.field_150614_aC = p_i45379_2_;
 
         if (p_i45379_2_)
@@ -47,10 +47,10 @@ public class BiomeGenJungle extends BiomeGenBase
 
         if (!p_i45379_2_)
         {
-            this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityOcelot.class, 2, 1, 1));
+            this.spawnableMonsterList.add(new SpawnListEntry(EntityOcelot.class, 2, 1, 1));
         }
 
-        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityChicken.class, 10, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 10, 4, 4));
     }
 
     public WorldGenAbstractTree genBigTreeChance(Random rand)

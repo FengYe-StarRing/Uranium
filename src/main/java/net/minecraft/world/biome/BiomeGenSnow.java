@@ -15,9 +15,9 @@ public class BiomeGenSnow extends BiomeGenBase
     private WorldGenIceSpike field_150616_aD = new WorldGenIceSpike();
     private WorldGenIcePath field_150617_aE = new WorldGenIcePath(4);
 
-    public BiomeGenSnow(int id, boolean p_i45378_2_)
+    public BiomeGenSnow(int p_i45378_1_, boolean p_i45378_2_)
     {
-        super(id);
+        super(p_i45378_1_);
         this.field_150615_aC = p_i45378_2_;
 
         if (p_i45378_2_)
@@ -57,7 +57,7 @@ public class BiomeGenSnow extends BiomeGenBase
 
     protected BiomeGenBase createMutatedBiome(int p_180277_1_)
     {
-        BiomeGenBase biomegenbase = (new BiomeGenSnow(p_180277_1_, true)).func_150557_a(13828095, true).setBiomeName(this.biomeName + " Spikes").setEnableSnow().setTemperatureRainfall(0.0F, 0.5F).setHeight(new BiomeGenBase.Height(this.minHeight + 0.1F, this.maxHeight + 0.1F));
+        BiomeGenBase biomegenbase = (new BiomeGenSnow(p_180277_1_, true)).func_150557_a(13828095, true).setBiomeName(this.biomeName + " Spikes").setEnableSnow().setTemperatureRainfall(0.0F, 0.5F).setHeight(new Height(this.minHeight + 0.1F, this.maxHeight + 0.1F));
         biomegenbase.minHeight = this.minHeight + 0.3F;
         biomegenbase.maxHeight = this.maxHeight + 0.4F;
         return biomegenbase;

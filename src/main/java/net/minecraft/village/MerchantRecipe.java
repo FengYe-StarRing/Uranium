@@ -112,8 +112,8 @@ public class MerchantRecipe
     }
 
     /**
-     * Compensates {@link net.minecraft.village.MerchantRecipe#toolUses toolUses} with {@link
-     * net.minecraft.village.MerchantRecipe#maxTradeUses maxTradeUses}
+     * Compensates {@link MerchantRecipe#toolUses toolUses} with {@link
+     * MerchantRecipe#maxTradeUses maxTradeUses}
      */
     public void compensateToolUses()
     {

@@ -7,13 +7,13 @@ import net.minecraft.network.play.INetHandlerPlayServer;
 
 public class C16PacketClientStatus implements Packet<INetHandlerPlayServer>
 {
-    private C16PacketClientStatus.EnumState status;
+    private EnumState status;
 
     public C16PacketClientStatus()
     {
     }
 
-    public C16PacketClientStatus(C16PacketClientStatus.EnumState statusIn)
+    public C16PacketClientStatus(EnumState statusIn)
     {
         this.status = statusIn;
     }
@@ -23,7 +23,7 @@ public class C16PacketClientStatus implements Packet<INetHandlerPlayServer>
      */
     public void readPacketData(PacketBuffer buf) throws IOException
     {
-        this.status = (C16PacketClientStatus.EnumState)buf.readEnumValue(C16PacketClientStatus.EnumState.class);
+        this.status = (EnumState)buf.readEnumValue(EnumState.class);
     }
 
     /**
@@ -42,7 +42,7 @@ public class C16PacketClientStatus implements Packet<INetHandlerPlayServer>
         handler.processClientStatus(this);
     }
 
-    public C16PacketClientStatus.EnumState getStatus()
+    public EnumState getStatus()
     {
         return this.status;
     }

@@ -53,7 +53,7 @@ public class UserList<K, V extends UserListEntry<K>>
     {
         this.saveFile = saveFile;
         GsonBuilder gsonbuilder = (new GsonBuilder()).setPrettyPrinting();
-        gsonbuilder.registerTypeHierarchyAdapter(UserListEntry.class, new UserList.Serializer());
+        gsonbuilder.registerTypeHierarchyAdapter(UserListEntry.class, new Serializer());
         this.gson = gsonbuilder.create();
     }
 
@@ -90,9 +90,9 @@ public class UserList<K, V extends UserListEntry<K>>
         return (V)((UserListEntry)this.values.get(this.getObjectKey(obj)));
     }
 
-    public void removeEntry(K entry)
+    public void removeEntry(K p_152684_1_)
     {
-        this.values.remove(this.getObjectKey(entry));
+        this.values.remove(this.getObjectKey(p_152684_1_));
 
         try
         {

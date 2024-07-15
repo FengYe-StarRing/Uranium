@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public abstract class BlockSlab extends Block
 {
-    public static final PropertyEnum<BlockSlab.EnumBlockHalf> HALF = PropertyEnum.<BlockSlab.EnumBlockHalf>create("half", BlockSlab.EnumBlockHalf.class);
+    public static final PropertyEnum<EnumBlockHalf> HALF = PropertyEnum.<EnumBlockHalf>create("half", EnumBlockHalf.class);
 
     public BlockSlab(Material materialIn)
     {
@@ -54,7 +54,7 @@ public abstract class BlockSlab extends Block
 
             if (iblockstate.getBlock() == this)
             {
-                if (iblockstate.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP)
+                if (iblockstate.getValue(HALF) == EnumBlockHalf.TOP)
                 {
                     this.setBlockBounds(0.0F, 0.5F, 0.0F, 1.0F, 1.0F, 1.0F);
                 }
@@ -83,6 +83,8 @@ public abstract class BlockSlab extends Block
 
     /**
      * Add all collision boxes of this Block to the list that intersect with the given mask.
+     *  
+     * @param collidingEntity the Entity colliding with this Block
      */
     public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List<AxisAlignedBB> list, Entity collidingEntity)
     {
@@ -104,8 +106,8 @@ public abstract class BlockSlab extends Block
      */
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
-        IBlockState iblockstate = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(HALF, BlockSlab.EnumBlockHalf.BOTTOM);
-        return this.isDouble() ? iblockstate : (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double)hitY <= 0.5D) ? iblockstate : iblockstate.withProperty(HALF, BlockSlab.EnumBlockHalf.TOP));
+        IBlockState iblockstate = super.onBlockPlaced(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(HALF, EnumBlockHalf.BOTTOM);
+        return this.isDouble() ? iblockstate : (facing != EnumFacing.DOWN && (facing == EnumFacing.UP || (double)hitY <= 0.5D) ? iblockstate : iblockstate.withProperty(HALF, EnumBlockHalf.TOP));
     }
 
     /**
@@ -136,8 +138,8 @@ public abstract class BlockSlab extends Block
             BlockPos blockpos = pos.offset(side.getOpposite());
             IBlockState iblockstate = worldIn.getBlockState(pos);
             IBlockState iblockstate1 = worldIn.getBlockState(blockpos);
-            boolean flag = isSlab(iblockstate.getBlock()) && iblockstate.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP;
-            boolean flag1 = isSlab(iblockstate1.getBlock()) && iblockstate1.getValue(HALF) == BlockSlab.EnumBlockHalf.TOP;
+            boolean flag = isSlab(iblockstate.getBlock()) && iblockstate.getValue(HALF) == EnumBlockHalf.TOP;
+            boolean flag1 = isSlab(iblockstate1.getBlock()) && iblockstate1.getValue(HALF) == EnumBlockHalf.TOP;
             return flag1 ? (side == EnumFacing.DOWN ? true : (side == EnumFacing.UP && super.shouldSideBeRendered(worldIn, pos, side) ? true : !isSlab(iblockstate.getBlock()) || !flag)) : (side == EnumFacing.UP ? true : (side == EnumFacing.DOWN && super.shouldSideBeRendered(worldIn, pos, side) ? true : !isSlab(iblockstate.getBlock()) || flag));
         }
     }
@@ -152,9 +154,6 @@ public abstract class BlockSlab extends Block
      */
     public abstract String getUnlocalizedName(int meta);
 
-    /**
-     * Gets the meta to use for the Pick Block ItemStack result
-     */
     public int getDamageValue(World worldIn, BlockPos pos)
     {
         return super.getDamageValue(worldIn, pos) & 7;

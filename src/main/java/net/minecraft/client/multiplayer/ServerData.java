@@ -29,17 +29,15 @@ public class ServerData
     public String gameVersion = "1.8.9";
     public boolean field_78841_f;
     public String playerList;
-    private ServerData.ServerResourceMode resourceMode = ServerData.ServerResourceMode.PROMPT;
+    private ServerResourceMode resourceMode = ServerResourceMode.PROMPT;
     private String serverIcon;
+    private boolean field_181042_l;
 
-    /** True if the server is a LAN server */
-    private boolean lanServer;
-
-    public ServerData(String name, String ip, boolean isLan)
+    public ServerData(String p_i46420_1_, String p_i46420_2_, boolean p_i46420_3_)
     {
-        this.serverName = name;
-        this.serverIP = ip;
-        this.lanServer = isLan;
+        this.serverName = p_i46420_1_;
+        this.serverIP = p_i46420_2_;
+        this.field_181042_l = p_i46420_3_;
     }
 
     /**
@@ -56,11 +54,11 @@ public class ServerData
             nbttagcompound.setString("icon", this.serverIcon);
         }
 
-        if (this.resourceMode == ServerData.ServerResourceMode.ENABLED)
+        if (this.resourceMode == ServerResourceMode.ENABLED)
         {
             nbttagcompound.setBoolean("acceptTextures", true);
         }
-        else if (this.resourceMode == ServerData.ServerResourceMode.DISABLED)
+        else if (this.resourceMode == ServerResourceMode.DISABLED)
         {
             nbttagcompound.setBoolean("acceptTextures", false);
         }
@@ -68,12 +66,12 @@ public class ServerData
         return nbttagcompound;
     }
 
-    public ServerData.ServerResourceMode getResourceMode()
+    public ServerResourceMode getResourceMode()
     {
         return this.resourceMode;
     }
 
-    public void setResourceMode(ServerData.ServerResourceMode mode)
+    public void setResourceMode(ServerResourceMode mode)
     {
         this.resourceMode = mode;
     }
@@ -94,16 +92,16 @@ public class ServerData
         {
             if (nbtCompound.getBoolean("acceptTextures"))
             {
-                serverdata.setResourceMode(ServerData.ServerResourceMode.ENABLED);
+                serverdata.setResourceMode(ServerResourceMode.ENABLED);
             }
             else
             {
-                serverdata.setResourceMode(ServerData.ServerResourceMode.DISABLED);
+                serverdata.setResourceMode(ServerResourceMode.DISABLED);
             }
         }
         else
         {
-            serverdata.setResourceMode(ServerData.ServerResourceMode.PROMPT);
+            serverdata.setResourceMode(ServerResourceMode.PROMPT);
         }
 
         return serverdata;
@@ -122,12 +120,9 @@ public class ServerData
         this.serverIcon = icon;
     }
 
-    /**
-     * Return true if the server is a LAN server
-     */
-    public boolean isOnLAN()
+    public boolean func_181041_d()
     {
-        return this.lanServer;
+        return this.field_181042_l;
     }
 
     public void copyFrom(ServerData serverDataIn)
@@ -136,7 +131,7 @@ public class ServerData
         this.serverName = serverDataIn.serverName;
         this.setResourceMode(serverDataIn.getResourceMode());
         this.serverIcon = serverDataIn.serverIcon;
-        this.lanServer = serverDataIn.lanServer;
+        this.field_181042_l = serverDataIn.field_181042_l;
     }
 
     public static enum ServerResourceMode
@@ -147,9 +142,9 @@ public class ServerData
 
         private final IChatComponent motd;
 
-        private ServerResourceMode(String name)
+        private ServerResourceMode(String p_i1053_3_)
         {
-            this.motd = new ChatComponentTranslation("addServer.resourcePack." + name, new Object[0]);
+            this.motd = new ChatComponentTranslation("addServer.resourcePack." + p_i1053_3_, new Object[0]);
         }
 
         public IChatComponent getMotd()

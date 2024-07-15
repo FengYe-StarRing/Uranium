@@ -16,7 +16,7 @@ public class EntityFirework
     {
         public EntityFX getEntityFX(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... p_178902_15_)
         {
-            EntityFirework.SparkFX entityfirework$sparkfx = new EntityFirework.SparkFX(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn, Minecraft.getMinecraft().effectRenderer);
+            SparkFX entityfirework$sparkfx = new SparkFX(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn, Minecraft.getMinecraft().effectRenderer);
             entityfirework$sparkfx.setAlphaF(0.99F);
             return entityfirework$sparkfx;
         }
@@ -30,7 +30,7 @@ public class EntityFirework
             this.particleMaxAge = 4;
         }
 
-        public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ)
+        public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float p_180434_4_, float p_180434_5_, float p_180434_6_, float p_180434_7_, float p_180434_8_)
         {
             float f = 0.25F;
             float f1 = 0.5F;
@@ -44,10 +44,10 @@ public class EntityFirework
             int i = this.getBrightnessForRender(partialTicks);
             int j = i >> 16 & 65535;
             int k = i & 65535;
-            worldRendererIn.pos((double)(f5 - rotationX * f4 - rotationXY * f4), (double)(f6 - rotationZ * f4), (double)(f7 - rotationYZ * f4 - rotationXZ * f4)).tex(0.5D, 0.375D).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-            worldRendererIn.pos((double)(f5 - rotationX * f4 + rotationXY * f4), (double)(f6 + rotationZ * f4), (double)(f7 - rotationYZ * f4 + rotationXZ * f4)).tex(0.5D, 0.125D).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-            worldRendererIn.pos((double)(f5 + rotationX * f4 + rotationXY * f4), (double)(f6 + rotationZ * f4), (double)(f7 + rotationYZ * f4 + rotationXZ * f4)).tex(0.25D, 0.125D).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
-            worldRendererIn.pos((double)(f5 + rotationX * f4 - rotationXY * f4), (double)(f6 - rotationZ * f4), (double)(f7 + rotationYZ * f4 - rotationXZ * f4)).tex(0.25D, 0.375D).color(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).lightmap(j, k).endVertex();
+            worldRendererIn.func_181662_b((double)(f5 - p_180434_4_ * f4 - p_180434_7_ * f4), (double)(f6 - p_180434_5_ * f4), (double)(f7 - p_180434_6_ * f4 - p_180434_8_ * f4)).func_181673_a(0.5D, 0.375D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).func_181671_a(j, k).func_181675_d();
+            worldRendererIn.func_181662_b((double)(f5 - p_180434_4_ * f4 + p_180434_7_ * f4), (double)(f6 + p_180434_5_ * f4), (double)(f7 - p_180434_6_ * f4 + p_180434_8_ * f4)).func_181673_a(0.5D, 0.125D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).func_181671_a(j, k).func_181675_d();
+            worldRendererIn.func_181662_b((double)(f5 + p_180434_4_ * f4 + p_180434_7_ * f4), (double)(f6 + p_180434_5_ * f4), (double)(f7 + p_180434_6_ * f4 + p_180434_8_ * f4)).func_181673_a(0.25D, 0.125D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).func_181671_a(j, k).func_181675_d();
+            worldRendererIn.func_181662_b((double)(f5 + p_180434_4_ * f4 - p_180434_7_ * f4), (double)(f6 - p_180434_5_ * f4), (double)(f7 + p_180434_6_ * f4 - p_180434_8_ * f4)).func_181673_a(0.25D, 0.375D).func_181666_a(this.particleRed, this.particleGreen, this.particleBlue, this.particleAlpha).func_181671_a(j, k).func_181675_d();
         }
     }
 
@@ -111,11 +111,11 @@ public class EntityFirework
             return false;
         }
 
-        public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ)
+        public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float p_180434_4_, float p_180434_5_, float p_180434_6_, float p_180434_7_, float p_180434_8_)
         {
             if (!this.twinkle || this.particleAge < this.particleMaxAge / 3 || (this.particleAge + this.particleMaxAge) / 3 % 2 == 0)
             {
-                super.renderParticle(worldRendererIn, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
+                super.renderParticle(worldRendererIn, entityIn, partialTicks, p_180434_4_, p_180434_5_, p_180434_6_, p_180434_7_, p_180434_8_);
             }
         }
 
@@ -157,7 +157,7 @@ public class EntityFirework
 
             if (this.trail && this.particleAge < this.particleMaxAge / 2 && (this.particleAge + this.particleMaxAge) % 2 == 0)
             {
-                EntityFirework.SparkFX entityfirework$sparkfx = new EntityFirework.SparkFX(this.worldObj, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, this.field_92047_az);
+                SparkFX entityfirework$sparkfx = new SparkFX(this.worldObj, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, this.field_92047_az);
                 entityfirework$sparkfx.setAlphaF(0.99F);
                 entityfirework$sparkfx.setRBGColorF(this.particleRed, this.particleGreen, this.particleBlue);
                 entityfirework$sparkfx.particleAge = entityfirework$sparkfx.particleMaxAge / 2;
@@ -229,7 +229,7 @@ public class EntityFirework
             }
         }
 
-        public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ)
+        public void renderParticle(WorldRenderer worldRendererIn, Entity entityIn, float partialTicks, float p_180434_4_, float p_180434_5_, float p_180434_6_, float p_180434_7_, float p_180434_8_)
         {
         }
 
@@ -302,7 +302,7 @@ public class EntityFirework
                 float f = (float)((j & 16711680) >> 16) / 255.0F;
                 float f1 = (float)((j & 65280) >> 8) / 255.0F;
                 float f2 = (float)((j & 255) >> 0) / 255.0F;
-                EntityFirework.OverlayFX entityfirework$overlayfx = new EntityFirework.OverlayFX(this.worldObj, this.posX, this.posY, this.posZ);
+                OverlayFX entityfirework$overlayfx = new OverlayFX(this.worldObj, this.posX, this.posY, this.posZ);
                 entityfirework$overlayfx.setRBGColorF(f, f1, f2);
                 this.theEffectRenderer.addEffect(entityfirework$overlayfx);
             }
@@ -330,7 +330,7 @@ public class EntityFirework
 
         private void createParticle(double p_92034_1_, double p_92034_3_, double p_92034_5_, double p_92034_7_, double p_92034_9_, double p_92034_11_, int[] p_92034_13_, int[] p_92034_14_, boolean p_92034_15_, boolean p_92034_16_)
         {
-            EntityFirework.SparkFX entityfirework$sparkfx = new EntityFirework.SparkFX(this.worldObj, p_92034_1_, p_92034_3_, p_92034_5_, p_92034_7_, p_92034_9_, p_92034_11_, this.theEffectRenderer);
+            SparkFX entityfirework$sparkfx = new SparkFX(this.worldObj, p_92034_1_, p_92034_3_, p_92034_5_, p_92034_7_, p_92034_9_, p_92034_11_, this.theEffectRenderer);
             entityfirework$sparkfx.setAlphaF(0.99F);
             entityfirework$sparkfx.setTrail(p_92034_15_);
             entityfirework$sparkfx.setTwinkle(p_92034_16_);

@@ -25,12 +25,12 @@ public class BlockTrapDoor extends Block
 {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     public static final PropertyBool OPEN = PropertyBool.create("open");
-    public static final PropertyEnum<BlockTrapDoor.DoorHalf> HALF = PropertyEnum.<BlockTrapDoor.DoorHalf>create("half", BlockTrapDoor.DoorHalf.class);
+    public static final PropertyEnum<DoorHalf> HALF = PropertyEnum.<DoorHalf>create("half", DoorHalf.class);
 
     protected BlockTrapDoor(Material materialIn)
     {
         super(materialIn);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, Boolean.valueOf(false)).withProperty(HALF, BlockTrapDoor.DoorHalf.BOTTOM));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(OPEN, Boolean.valueOf(false)).withProperty(HALF, DoorHalf.BOTTOM));
         float f = 0.5F;
         float f1 = 1.0F;
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
@@ -85,7 +85,7 @@ public class BlockTrapDoor extends Block
     {
         if (state.getBlock() == this)
         {
-            boolean flag = state.getValue(HALF) == BlockTrapDoor.DoorHalf.TOP;
+            boolean flag = state.getValue(HALF) == DoorHalf.TOP;
             Boolean obool = (Boolean)state.getValue(OPEN);
             EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
             float f = 0.1875F;
@@ -173,6 +173,9 @@ public class BlockTrapDoor extends Block
 
     /**
      * Ray traces through the blocks collision from start vector to end vector returning a ray trace hit.
+     *  
+     * @param start The start vector
+     * @param end The end vector
      */
     public MovingObjectPosition collisionRayTrace(World worldIn, BlockPos pos, Vec3 start, Vec3 end)
     {
@@ -191,7 +194,7 @@ public class BlockTrapDoor extends Block
         if (facing.getAxis().isHorizontal())
         {
             iblockstate = iblockstate.withProperty(FACING, facing).withProperty(OPEN, Boolean.valueOf(false));
-            iblockstate = iblockstate.withProperty(HALF, hitY > 0.5F ? BlockTrapDoor.DoorHalf.TOP : BlockTrapDoor.DoorHalf.BOTTOM);
+            iblockstate = iblockstate.withProperty(HALF, hitY > 0.5F ? DoorHalf.TOP : DoorHalf.BOTTOM);
         }
 
         return iblockstate;
@@ -258,7 +261,7 @@ public class BlockTrapDoor extends Block
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(OPEN, Boolean.valueOf((meta & 4) != 0)).withProperty(HALF, (meta & 8) == 0 ? BlockTrapDoor.DoorHalf.BOTTOM : BlockTrapDoor.DoorHalf.TOP);
+        return this.getDefaultState().withProperty(FACING, getFacing(meta)).withProperty(OPEN, Boolean.valueOf((meta & 4) != 0)).withProperty(HALF, (meta & 8) == 0 ? DoorHalf.BOTTOM : DoorHalf.TOP);
     }
 
     /**
@@ -274,7 +277,7 @@ public class BlockTrapDoor extends Block
             i |= 4;
         }
 
-        if (state.getValue(HALF) == BlockTrapDoor.DoorHalf.TOP)
+        if (state.getValue(HALF) == DoorHalf.TOP)
         {
             i |= 8;
         }

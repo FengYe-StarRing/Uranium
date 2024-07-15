@@ -26,9 +26,9 @@ public class MapData extends WorldSavedData
 
     /** colours */
     public byte[] colors = new byte[16384];
-    public List<MapData.MapInfo> playersArrayList = Lists.<MapData.MapInfo>newArrayList();
-    private Map<EntityPlayer, MapData.MapInfo> playersHashMap = Maps.<EntityPlayer, MapData.MapInfo>newHashMap();
-    public Map<String, Vec4b> mapDecorations = Maps.<String, Vec4b>newLinkedHashMap();
+    public List<MapInfo> playersArrayList = Lists.<MapInfo>newArrayList();
+    private Map<EntityPlayer, MapInfo> playersHashMap = Maps.<EntityPlayer, MapInfo>newHashMap();
+    public Map<String, Vec4b> playersVisibleOnMap = Maps.<String, Vec4b>newLinkedHashMap();
 
     public MapData(String mapname)
     {
@@ -109,25 +109,25 @@ public class MapData extends WorldSavedData
     {
         if (!this.playersHashMap.containsKey(player))
         {
-            MapData.MapInfo mapdata$mapinfo = new MapData.MapInfo(player);
+            MapInfo mapdata$mapinfo = new MapInfo(player);
             this.playersHashMap.put(player, mapdata$mapinfo);
             this.playersArrayList.add(mapdata$mapinfo);
         }
 
         if (!player.inventory.hasItemStack(mapStack))
         {
-            this.mapDecorations.remove(player.getName());
+            this.playersVisibleOnMap.remove(player.getCommandSenderName());
         }
 
         for (int i = 0; i < this.playersArrayList.size(); ++i)
         {
-            MapData.MapInfo mapdata$mapinfo1 = (MapData.MapInfo)this.playersArrayList.get(i);
+            MapInfo mapdata$mapinfo1 = (MapInfo)this.playersArrayList.get(i);
 
             if (!mapdata$mapinfo1.entityplayerObj.isDead && (mapdata$mapinfo1.entityplayerObj.inventory.hasItemStack(mapStack) || mapStack.isOnItemFrame()))
             {
                 if (!mapStack.isOnItemFrame() && mapdata$mapinfo1.entityplayerObj.dimension == this.dimension)
                 {
-                    this.updateDecorations(0, mapdata$mapinfo1.entityplayerObj.worldObj, mapdata$mapinfo1.entityplayerObj.getName(), mapdata$mapinfo1.entityplayerObj.posX, mapdata$mapinfo1.entityplayerObj.posZ, (double)mapdata$mapinfo1.entityplayerObj.rotationYaw);
+                    this.updatePlayersVisibleOnMap(0, mapdata$mapinfo1.entityplayerObj.worldObj, mapdata$mapinfo1.entityplayerObj.getCommandSenderName(), mapdata$mapinfo1.entityplayerObj.posX, mapdata$mapinfo1.entityplayerObj.posZ, (double)mapdata$mapinfo1.entityplayerObj.rotationYaw);
                 }
             }
             else
@@ -141,7 +141,7 @@ public class MapData extends WorldSavedData
         {
             EntityItemFrame entityitemframe = mapStack.getItemFrame();
             BlockPos blockpos = entityitemframe.getHangingPosition();
-            this.updateDecorations(1, player.worldObj, "frame-" + entityitemframe.getEntityId(), (double)blockpos.getX(), (double)blockpos.getZ(), (double)(entityitemframe.facingDirection.getHorizontalIndex() * 90));
+            this.updatePlayersVisibleOnMap(1, player.worldObj, "frame-" + entityitemframe.getEntityId(), (double)blockpos.getX(), (double)blockpos.getZ(), (double)(entityitemframe.facingDirection.getHorizontalIndex() * 90));
         }
 
         if (mapStack.hasTagCompound() && mapStack.getTagCompound().hasKey("Decorations", 9))
@@ -152,15 +152,15 @@ public class MapData extends WorldSavedData
             {
                 NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(j);
 
-                if (!this.mapDecorations.containsKey(nbttagcompound.getString("id")))
+                if (!this.playersVisibleOnMap.containsKey(nbttagcompound.getString("id")))
                 {
-                    this.updateDecorations(nbttagcompound.getByte("type"), player.worldObj, nbttagcompound.getString("id"), nbttagcompound.getDouble("x"), nbttagcompound.getDouble("z"), nbttagcompound.getDouble("rot"));
+                    this.updatePlayersVisibleOnMap(nbttagcompound.getByte("type"), player.worldObj, nbttagcompound.getString("id"), nbttagcompound.getDouble("x"), nbttagcompound.getDouble("z"), nbttagcompound.getDouble("rot"));
                 }
             }
         }
     }
 
-    private void updateDecorations(int type, World worldIn, String entityIdentifier, double worldX, double worldZ, double rotation)
+    private void updatePlayersVisibleOnMap(int type, World worldIn, String entityIdentifier, double worldX, double worldZ, double rotation)
     {
         int i = 1 << this.scale;
         float f = (float)(worldX - (double)this.xCenter) / (float)i;
@@ -185,7 +185,7 @@ public class MapData extends WorldSavedData
         {
             if (Math.abs(f) >= 320.0F || Math.abs(f1) >= 320.0F)
             {
-                this.mapDecorations.remove(entityIdentifier);
+                this.playersVisibleOnMap.remove(entityIdentifier);
                 return;
             }
 
@@ -213,12 +213,12 @@ public class MapData extends WorldSavedData
             }
         }
 
-        this.mapDecorations.put(entityIdentifier, new Vec4b((byte)type, b0, b1, b2));
+        this.playersVisibleOnMap.put(entityIdentifier, new Vec4b((byte)type, b0, b1, b2));
     }
 
     public Packet getMapPacket(ItemStack mapStack, World worldIn, EntityPlayer player)
     {
-        MapData.MapInfo mapdata$mapinfo = (MapData.MapInfo)this.playersHashMap.get(player);
+        MapInfo mapdata$mapinfo = (MapInfo)this.playersHashMap.get(player);
         return mapdata$mapinfo == null ? null : mapdata$mapinfo.getPacket(mapStack);
     }
 
@@ -226,19 +226,19 @@ public class MapData extends WorldSavedData
     {
         super.markDirty();
 
-        for (MapData.MapInfo mapdata$mapinfo : this.playersArrayList)
+        for (MapInfo mapdata$mapinfo : this.playersArrayList)
         {
             mapdata$mapinfo.update(x, y);
         }
     }
 
-    public MapData.MapInfo getMapInfo(EntityPlayer player)
+    public MapInfo getMapInfo(EntityPlayer player)
     {
-        MapData.MapInfo mapdata$mapinfo = (MapData.MapInfo)this.playersHashMap.get(player);
+        MapInfo mapdata$mapinfo = (MapInfo)this.playersHashMap.get(player);
 
         if (mapdata$mapinfo == null)
         {
-            mapdata$mapinfo = new MapData.MapInfo(player);
+            mapdata$mapinfo = new MapInfo(player);
             this.playersHashMap.put(player, mapdata$mapinfo);
             this.playersArrayList.add(mapdata$mapinfo);
         }
@@ -267,11 +267,11 @@ public class MapData extends WorldSavedData
             if (this.field_176105_d)
             {
                 this.field_176105_d = false;
-                return new S34PacketMaps(stack.getMetadata(), MapData.this.scale, MapData.this.mapDecorations.values(), MapData.this.colors, this.minX, this.minY, this.maxX + 1 - this.minX, this.maxY + 1 - this.minY);
+                return new S34PacketMaps(stack.getMetadata(), MapData.this.scale, MapData.this.playersVisibleOnMap.values(), MapData.this.colors, this.minX, this.minY, this.maxX + 1 - this.minX, this.maxY + 1 - this.minY);
             }
             else
             {
-                return this.field_176109_i++ % 5 == 0 ? new S34PacketMaps(stack.getMetadata(), MapData.this.scale, MapData.this.mapDecorations.values(), MapData.this.colors, 0, 0, 0, 0) : null;
+                return this.field_176109_i++ % 5 == 0 ? new S34PacketMaps(stack.getMetadata(), MapData.this.scale, MapData.this.playersVisibleOnMap.values(), MapData.this.colors, 0, 0, 0, 0) : null;
             }
         }
 

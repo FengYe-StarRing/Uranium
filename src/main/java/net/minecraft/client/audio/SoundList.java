@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SoundList
 {
-    private final List<SoundList.SoundEntry> soundList = Lists.<SoundList.SoundEntry>newArrayList();
+    private final List<SoundEntry> soundList = Lists.<SoundEntry>newArrayList();
 
     /**
      * if true it will override all the sounds from the resourcepacks loaded before
@@ -13,7 +13,7 @@ public class SoundList
     private boolean replaceExisting;
     private SoundCategory category;
 
-    public List<SoundList.SoundEntry> getSoundList()
+    public List<SoundEntry> getSoundList()
     {
         return this.soundList;
     }
@@ -44,7 +44,7 @@ public class SoundList
         private float volume = 1.0F;
         private float pitch = 1.0F;
         private int weight = 1;
-        private SoundList.SoundEntry.Type type = SoundList.SoundEntry.Type.FILE;
+        private Type type = Type.FILE;
         private boolean streaming = false;
 
         public String getSoundEntryName()
@@ -87,12 +87,12 @@ public class SoundList
             this.weight = weightIn;
         }
 
-        public SoundList.SoundEntry.Type getSoundEntryType()
+        public Type getSoundEntryType()
         {
             return this.type;
         }
 
-        public void setSoundEntryType(SoundList.SoundEntry.Type typeIn)
+        public void setSoundEntryType(Type typeIn)
         {
             this.type = typeIn;
         }
@@ -119,9 +119,9 @@ public class SoundList
                 this.field_148583_c = p_i45109_3_;
             }
 
-            public static SoundList.SoundEntry.Type getType(String p_148580_0_)
+            public static Type getType(String p_148580_0_)
             {
-                for (SoundList.SoundEntry.Type soundlist$soundentry$type : values())
+                for (Type soundlist$soundentry$type : values())
                 {
                     if (soundlist$soundentry$type.field_148583_c.equals(p_148580_0_))
                     {

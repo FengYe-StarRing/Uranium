@@ -65,7 +65,7 @@ public class BlockAnvil extends BlockFalling
     {
         if (!worldIn.isRemote)
         {
-            playerIn.displayGui(new BlockAnvil.Anvil(worldIn, pos));
+            playerIn.displayGui(new Anvil(worldIn, pos));
         }
 
         return true;
@@ -162,7 +162,7 @@ public class BlockAnvil extends BlockFalling
             this.position = pos;
         }
 
-        public String getName()
+        public String getCommandSenderName()
         {
             return "anvil";
         }

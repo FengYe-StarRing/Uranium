@@ -25,7 +25,7 @@ public class GuiCreateFlatWorld extends GuiScreen
     private String flatWorldTitle;
     private String field_146394_i;
     private String field_146391_r;
-    private GuiCreateFlatWorld.Details createFlatWorldListSlotGui;
+    private Details createFlatWorldListSlotGui;
     private GuiButton field_146389_t;
     private GuiButton field_146388_u;
     private GuiButton field_146386_v;
@@ -56,7 +56,7 @@ public class GuiCreateFlatWorld extends GuiScreen
         this.flatWorldTitle = I18n.format("createWorld.customize.flat.title", new Object[0]);
         this.field_146394_i = I18n.format("createWorld.customize.flat.tile", new Object[0]);
         this.field_146391_r = I18n.format("createWorld.customize.flat.height", new Object[0]);
-        this.createFlatWorldListSlotGui = new GuiCreateFlatWorld.Details();
+        this.createFlatWorldListSlotGui = new Details();
         this.buttonList.add(this.field_146389_t = new GuiButton(2, this.width / 2 - 154, this.height - 52, 100, 20, I18n.format("createWorld.customize.flat.addLayer", new Object[0]) + " (NYI)"));
         this.buttonList.add(this.field_146388_u = new GuiButton(3, this.width / 2 - 50, this.height - 52, 100, 20, I18n.format("createWorld.customize.flat.editLayer", new Object[0]) + " (NYI)"));
         this.buttonList.add(this.field_146386_v = new GuiButton(4, this.width / 2 - 155, this.height - 52, 150, 20, I18n.format("createWorld.customize.flat.removeLayer", new Object[0])));
@@ -174,11 +174,11 @@ public class GuiCreateFlatWorld extends GuiScreen
             int j = 18;
             Tessellator tessellator = Tessellator.getInstance();
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-            worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-            worldrenderer.pos((double)(p_148224_1_ + 0), (double)(p_148224_2_ + 18), (double)GuiCreateFlatWorld.this.zLevel).tex((double)((float)(p_148224_3_ + 0) * 0.0078125F), (double)((float)(p_148224_4_ + 18) * 0.0078125F)).endVertex();
-            worldrenderer.pos((double)(p_148224_1_ + 18), (double)(p_148224_2_ + 18), (double)GuiCreateFlatWorld.this.zLevel).tex((double)((float)(p_148224_3_ + 18) * 0.0078125F), (double)((float)(p_148224_4_ + 18) * 0.0078125F)).endVertex();
-            worldrenderer.pos((double)(p_148224_1_ + 18), (double)(p_148224_2_ + 0), (double)GuiCreateFlatWorld.this.zLevel).tex((double)((float)(p_148224_3_ + 18) * 0.0078125F), (double)((float)(p_148224_4_ + 0) * 0.0078125F)).endVertex();
-            worldrenderer.pos((double)(p_148224_1_ + 0), (double)(p_148224_2_ + 0), (double)GuiCreateFlatWorld.this.zLevel).tex((double)((float)(p_148224_3_ + 0) * 0.0078125F), (double)((float)(p_148224_4_ + 0) * 0.0078125F)).endVertex();
+            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+            worldrenderer.func_181662_b((double)(p_148224_1_ + 0), (double)(p_148224_2_ + 18), (double)GuiCreateFlatWorld.this.zLevel).func_181673_a((double)((float)(p_148224_3_ + 0) * 0.0078125F), (double)((float)(p_148224_4_ + 18) * 0.0078125F)).func_181675_d();
+            worldrenderer.func_181662_b((double)(p_148224_1_ + 18), (double)(p_148224_2_ + 18), (double)GuiCreateFlatWorld.this.zLevel).func_181673_a((double)((float)(p_148224_3_ + 18) * 0.0078125F), (double)((float)(p_148224_4_ + 18) * 0.0078125F)).func_181675_d();
+            worldrenderer.func_181662_b((double)(p_148224_1_ + 18), (double)(p_148224_2_ + 0), (double)GuiCreateFlatWorld.this.zLevel).func_181673_a((double)((float)(p_148224_3_ + 18) * 0.0078125F), (double)((float)(p_148224_4_ + 0) * 0.0078125F)).func_181675_d();
+            worldrenderer.func_181662_b((double)(p_148224_1_ + 0), (double)(p_148224_2_ + 0), (double)GuiCreateFlatWorld.this.zLevel).func_181673_a((double)((float)(p_148224_3_ + 0) * 0.0078125F), (double)((float)(p_148224_4_ + 0) * 0.0078125F)).func_181675_d();
             tessellator.draw();
         }
 
@@ -205,7 +205,7 @@ public class GuiCreateFlatWorld extends GuiScreen
         protected void drawSlot(int entryID, int p_180791_2_, int p_180791_3_, int p_180791_4_, int mouseXIn, int mouseYIn)
         {
             FlatLayerInfo flatlayerinfo = (FlatLayerInfo)GuiCreateFlatWorld.this.theFlatGeneratorInfo.getFlatLayers().get(GuiCreateFlatWorld.this.theFlatGeneratorInfo.getFlatLayers().size() - entryID - 1);
-            IBlockState iblockstate = flatlayerinfo.getLayerMaterial();
+            IBlockState iblockstate = flatlayerinfo.func_175900_c();
             Block block = iblockstate.getBlock();
             Item item = Item.getItemFromBlock(block);
             ItemStack itemstack = block != Blocks.air && item != null ? new ItemStack(item, 1, block.getMetaFromState(iblockstate)) : null;

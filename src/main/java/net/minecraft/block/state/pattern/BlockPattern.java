@@ -55,7 +55,7 @@ public class BlockPattern
     /**
      * checks that the given pattern & rotation is at the block co-ordinates.
      */
-    private BlockPattern.PatternHelper checkPatternAt(BlockPos pos, EnumFacing finger, EnumFacing thumb, LoadingCache<BlockPos, BlockWorldState> lcache)
+    private PatternHelper checkPatternAt(BlockPos pos, EnumFacing finger, EnumFacing thumb, LoadingCache<BlockPos, BlockWorldState> lcache)
     {
         for (int i = 0; i < this.palmLength; ++i)
         {
@@ -71,14 +71,14 @@ public class BlockPattern
             }
         }
 
-        return new BlockPattern.PatternHelper(pos, finger, thumb, lcache, this.palmLength, this.thumbLength, this.fingerLength);
+        return new PatternHelper(pos, finger, thumb, lcache, this.palmLength, this.thumbLength, this.fingerLength);
     }
 
     /**
      * Calculates whether the given world position matches the pattern. Warning, fairly heavy function. @return a
      * BlockPattern.PatternHelper if found, null otherwise.
      */
-    public BlockPattern.PatternHelper match(World worldIn, BlockPos pos)
+    public PatternHelper match(World worldIn, BlockPos pos)
     {
         LoadingCache<BlockPos, BlockWorldState> loadingcache = func_181627_a(worldIn, false);
         int i = Math.max(Math.max(this.palmLength, this.thumbLength), this.fingerLength);
@@ -91,7 +91,7 @@ public class BlockPattern
                 {
                     if (enumfacing1 != enumfacing && enumfacing1 != enumfacing.getOpposite())
                     {
-                        BlockPattern.PatternHelper blockpattern$patternhelper = this.checkPatternAt(blockpos, enumfacing, enumfacing1, loadingcache);
+                        PatternHelper blockpattern$patternhelper = this.checkPatternAt(blockpos, enumfacing, enumfacing1, loadingcache);
 
                         if (blockpattern$patternhelper != null)
                         {
@@ -107,12 +107,20 @@ public class BlockPattern
 
     public static LoadingCache<BlockPos, BlockWorldState> func_181627_a(World p_181627_0_, boolean p_181627_1_)
     {
-        return CacheBuilder.newBuilder().<BlockPos, BlockWorldState>build(new BlockPattern.CacheLoader(p_181627_0_, p_181627_1_));
+        return CacheBuilder.newBuilder().<BlockPos, BlockWorldState>build(new CacheLoader(p_181627_0_, p_181627_1_));
     }
 
     /**
      * Offsets the position of pos in the direction of finger and thumb facing by offset amounts, follows the right-hand
      * rule for cross products (finger, thumb, palm) @return A new BlockPos offset in the facing directions
+     *  
+     * @param pos The original block position
+     * @param finger Finger direction
+     * @param thumb Thumb direction
+     * @param palmOffset An amount to offset in the palm direction. Palm is the direction of the result of the cross-
+     * product between finger and thumb
+     * @param thumbOffset An amount to offset in the thumb direction
+     * @param fingerOffset An amount to offset in the finger direction
      */
     protected static BlockPos translateOffset(BlockPos pos, EnumFacing finger, EnumFacing thumb, int palmOffset, int thumbOffset, int fingerOffset)
     {
@@ -134,9 +142,9 @@ public class BlockPattern
         private final World world;
         private final boolean field_181626_b;
 
-        public CacheLoader(World worldIn, boolean p_i46460_2_)
+        public CacheLoader(World p_i46460_1_, boolean p_i46460_2_)
         {
-            this.world = worldIn;
+            this.world = p_i46460_1_;
             this.field_181626_b = p_i46460_2_;
         }
 
@@ -156,18 +164,18 @@ public class BlockPattern
         private final int field_181121_f;
         private final int field_181122_g;
 
-        public PatternHelper(BlockPos posIn, EnumFacing fingerIn, EnumFacing thumbIn, LoadingCache<BlockPos, BlockWorldState> lcacheIn, int p_i46378_5_, int p_i46378_6_, int p_i46378_7_)
+        public PatternHelper(BlockPos p_i46378_1_, EnumFacing p_i46378_2_, EnumFacing p_i46378_3_, LoadingCache<BlockPos, BlockWorldState> p_i46378_4_, int p_i46378_5_, int p_i46378_6_, int p_i46378_7_)
         {
-            this.pos = posIn;
-            this.finger = fingerIn;
-            this.thumb = thumbIn;
-            this.lcache = lcacheIn;
+            this.pos = p_i46378_1_;
+            this.finger = p_i46378_2_;
+            this.thumb = p_i46378_3_;
+            this.lcache = p_i46378_4_;
             this.field_181120_e = p_i46378_5_;
             this.field_181121_f = p_i46378_6_;
             this.field_181122_g = p_i46378_7_;
         }
 
-        public BlockPos getPos()
+        public BlockPos func_181117_a()
         {
             return this.pos;
         }

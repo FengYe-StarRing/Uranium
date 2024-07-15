@@ -50,9 +50,9 @@ public class BlockJukebox extends BlockContainer
         {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof BlockJukebox.TileEntityJukebox)
+            if (tileentity instanceof TileEntityJukebox)
             {
-                ((BlockJukebox.TileEntityJukebox)tileentity).setRecord(new ItemStack(recordStack.getItem(), 1, recordStack.getMetadata()));
+                ((TileEntityJukebox)tileentity).setRecord(new ItemStack(recordStack.getItem(), 1, recordStack.getMetadata()));
                 worldIn.setBlockState(pos, state.withProperty(HAS_RECORD, Boolean.valueOf(true)), 2);
             }
         }
@@ -64,9 +64,9 @@ public class BlockJukebox extends BlockContainer
         {
             TileEntity tileentity = worldIn.getTileEntity(pos);
 
-            if (tileentity instanceof BlockJukebox.TileEntityJukebox)
+            if (tileentity instanceof TileEntityJukebox)
             {
-                BlockJukebox.TileEntityJukebox blockjukebox$tileentityjukebox = (BlockJukebox.TileEntityJukebox)tileentity;
+                TileEntityJukebox blockjukebox$tileentityjukebox = (TileEntityJukebox)tileentity;
                 ItemStack itemstack = blockjukebox$tileentityjukebox.getRecord();
 
                 if (itemstack != null)
@@ -95,6 +95,9 @@ public class BlockJukebox extends BlockContainer
 
     /**
      * Spawns this Block's drops into the World as EntityItems.
+     *  
+     * @param chance The chance that each Item is actually spawned (1.0 = always, 0.0 = never)
+     * @param fortune The player's fortune level
      */
     public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
     {
@@ -109,7 +112,7 @@ public class BlockJukebox extends BlockContainer
      */
     public TileEntity createNewTileEntity(World worldIn, int meta)
     {
-        return new BlockJukebox.TileEntityJukebox();
+        return new TileEntityJukebox();
     }
 
     public boolean hasComparatorInputOverride()
@@ -121,9 +124,9 @@ public class BlockJukebox extends BlockContainer
     {
         TileEntity tileentity = worldIn.getTileEntity(pos);
 
-        if (tileentity instanceof BlockJukebox.TileEntityJukebox)
+        if (tileentity instanceof TileEntityJukebox)
         {
-            ItemStack itemstack = ((BlockJukebox.TileEntityJukebox)tileentity).getRecord();
+            ItemStack itemstack = ((TileEntityJukebox)tileentity).getRecord();
 
             if (itemstack != null)
             {

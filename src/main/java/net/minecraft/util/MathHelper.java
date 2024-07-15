@@ -2,10 +2,22 @@ package net.minecraft.util;
 
 import java.util.Random;
 import java.util.UUID;
+import net.optifine.util.MathUtils;
 
 public class MathHelper
 {
     public static final float SQRT_2 = sqrt_float(2.0F);
+    private static final int SIN_BITS = 12;
+    private static final int SIN_MASK = 4095;
+    private static final int SIN_COUNT = 4096;
+    private static final int SIN_COUNT_D4 = 1024;
+    public static final float PI = MathUtils.roundToFloat(Math.PI);
+    public static final float PI2 = MathUtils.roundToFloat((Math.PI * 2D));
+    public static final float PId2 = MathUtils.roundToFloat((Math.PI / 2D));
+    private static final float radToIndex = MathUtils.roundToFloat(651.8986469044033D);
+    public static final float deg2Rad = MathUtils.roundToFloat(0.017453292519943295D);
+    private static final float[] SIN_TABLE_FAST = new float[4096];
+    public static boolean fastMath = false;
 
     /**
      * A table of sin values computed from 0 (inclusive) to 2*pi (exclusive), with steps of 2*PI / 65536.
@@ -29,7 +41,7 @@ public class MathHelper
      */
     public static float sin(float p_76126_0_)
     {
-        return SIN_TABLE[(int)(p_76126_0_ * 10430.378F) & 65535];
+        return fastMath ? SIN_TABLE_FAST[(int)(p_76126_0_ * radToIndex) & 4095] : SIN_TABLE[(int)(p_76126_0_ * 10430.378F) & 65535];
     }
 
     /**
@@ -37,7 +49,7 @@ public class MathHelper
      */
     public static float cos(float value)
     {
-        return SIN_TABLE[(int)(value * 10430.378F + 16384.0F) & 65535];
+        return fastMath ? SIN_TABLE_FAST[(int)(value * radToIndex + 1024.0F) & 4095] : SIN_TABLE[(int)(value * 10430.378F + 16384.0F) & 65535];
     }
 
     public static float sqrt_float(float value)
@@ -138,9 +150,9 @@ public class MathHelper
         return num < min ? min : (num > max ? max : num);
     }
 
-    public static double denormalizeClamp(double lowerBnd, double upperBnd, double slide)
+    public static double denormalizeClamp(double p_151238_0_, double p_151238_2_, double p_151238_4_)
     {
-        return slide < 0.0D ? lowerBnd : (slide > 1.0D ? upperBnd : lowerBnd + (upperBnd - lowerBnd) * slide);
+        return p_151238_4_ < 0.0D ? p_151238_0_ : (p_151238_4_ > 1.0D ? p_151238_2_ : p_151238_0_ + (p_151238_2_ - p_151238_0_) * p_151238_4_);
     }
 
     /**
@@ -331,7 +343,7 @@ public class MathHelper
         return calculateLogBaseTwoDeBruijn(value) - (isPowerOfTwo(value) ? 0 : 1);
     }
 
-    public static int roundUp(int p_154354_0_, int p_154354_1_)
+    public static int func_154354_b(int p_154354_0_, int p_154354_1_)
     {
         if (p_154354_1_ == 0)
         {
@@ -360,9 +372,9 @@ public class MathHelper
 
     public static int func_180181_b(int p_180181_0_, int p_180181_1_, int p_180181_2_)
     {
-        int lvt_3_1_ = (p_180181_0_ << 8) + p_180181_1_;
-        lvt_3_1_ = (lvt_3_1_ << 8) + p_180181_2_;
-        return lvt_3_1_;
+        int i = (p_180181_0_ << 8) + p_180181_1_;
+        i = (i << 8) + p_180181_2_;
+        return i;
     }
 
     public static int func_180188_d(int p_180188_0_, int p_180188_1_)
@@ -408,7 +420,7 @@ public class MathHelper
         return (p_181160_0_ - p_181160_2_) / (p_181160_4_ - p_181160_2_);
     }
 
-    public static double atan2(double p_181159_0_, double p_181159_2_)
+    public static double func_181159_b(double p_181159_0_, double p_181159_2_)
     {
         double d0 = p_181159_2_ * p_181159_2_ + p_181159_0_ * p_181159_0_;
 
@@ -482,7 +494,7 @@ public class MathHelper
         return p_181161_0_;
     }
 
-    public static int hsvToRGB(float p_181758_0_, float p_181758_1_, float p_181758_2_)
+    public static int func_181758_c(float p_181758_0_, float p_181758_1_, float p_181758_2_)
     {
         int i = (int)(p_181758_0_ * 6.0F) % 6;
         float f = p_181758_0_ * 6.0F - (float)i;
@@ -548,17 +560,22 @@ public class MathHelper
             SIN_TABLE[i] = (float)Math.sin((double)i * Math.PI * 2.0D / 65536.0D);
         }
 
+        for (int j = 0; j < SIN_TABLE_FAST.length; ++j)
+        {
+            SIN_TABLE_FAST[j] = MathUtils.roundToFloat(Math.sin((double)j * Math.PI * 2.0D / 4096.0D));
+        }
+
         multiplyDeBruijnBitPosition = new int[] {0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8, 31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9};
         field_181163_d = Double.longBitsToDouble(4805340802404319232L);
         field_181164_e = new double[257];
         field_181165_f = new double[257];
 
-        for (int j = 0; j < 257; ++j)
+        for (int k = 0; k < 257; ++k)
         {
-            double d0 = (double)j / 256.0D;
+            double d0 = (double)k / 256.0D;
             double d1 = Math.asin(d0);
-            field_181165_f[j] = Math.cos(d1);
-            field_181164_e[j] = d1;
+            field_181165_f[k] = Math.cos(d1);
+            field_181164_e[k] = d1;
         }
     }
 }

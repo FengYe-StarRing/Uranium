@@ -98,7 +98,7 @@ public abstract class EntityAIMoveToBlock extends EntityAIBase
 
     /**
      * Searches and sets new destination block and returns true if a suitable block (specified in {@link
-     * net.minecraft.entity.ai.EntityAIMoveToBlock#shouldMoveTo(World, BlockPos) EntityAIMoveToBlock#shouldMoveTo(World,
+     * EntityAIMoveToBlock#shouldMoveTo(World, BlockPos) EntityAIMoveToBlock#shouldMoveTo(World,
      * BlockPos)}) can be found.
      */
     private boolean searchForDestination()

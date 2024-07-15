@@ -22,7 +22,7 @@ import net.minecraft.world.WorldSettings;
 
 public class GuiPlayerTabOverlay extends Gui
 {
-    private static final Ordering<NetworkPlayerInfo> field_175252_a = Ordering.from(new GuiPlayerTabOverlay.PlayerComparator());
+    private static final Ordering<NetworkPlayerInfo> field_175252_a = Ordering.from(new PlayerComparator());
     private final Minecraft mc;
     private final GuiIngame guiIngame;
     private IChatComponent footer;
@@ -53,6 +53,8 @@ public class GuiPlayerTabOverlay extends Gui
     /**
      * Called by GuiIngame to update the information stored in the playerlist, does not actually render the list,
      * however.
+     *  
+     * @param willBeRendered True if the playerlist is intended to be renderd subsequently.
      */
     public void updatePlayerList(boolean willBeRendered)
     {
@@ -377,7 +379,7 @@ public class GuiPlayerTabOverlay extends Gui
         this.header = headerIn;
     }
 
-    public void resetFooterHeader()
+    public void func_181030_a()
     {
         this.header = null;
         this.footer = null;
