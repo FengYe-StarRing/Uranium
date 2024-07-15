@@ -2,8 +2,9 @@ plugins {
     id 'java'
 }
 
-group 'me.Symb0ls'
-version 'MC_1.8.9'
+group 'com.github.fengye.starring.uranium'
+version ''
+archivesBaseName = 'Uranium'
 
 repositories {
     mavenCentral()
@@ -61,4 +62,8 @@ jar {
             }
         }
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

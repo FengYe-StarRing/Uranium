@@ -1,5 +1,6 @@
 package net.minecraft.client.main;
 
+import com.github.fengye.starring.uranium.Client;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.authlib.properties.PropertyMap;
@@ -21,6 +22,8 @@ public class Main
 {
     public static void main(String[] p_main_0_)
     {
+        Client.instance.init();
+
         System.setProperty("java.net.preferIPv4Stack", "true");
         OptionParser optionparser = new OptionParser();
         optionparser.allowsUnrecognizedOptions();
