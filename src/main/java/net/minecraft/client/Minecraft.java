@@ -1,5 +1,10 @@
 package net.minecraft.client;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
+import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -560,6 +565,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.checkGLError("Post startup");
         this.ingameGUI = new GuiIngame(this);
 
+        MinecraftInstance.init();
+
         if (this.serverName != null)
         {
             this.displayGuiScreen(new GuiConnecting(new GuiMainMenu(), this, this.serverName, this.serverPort));
@@ -670,8 +677,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
             try
             {
-                inputstream = this.mcDefaultResourcePack.getInputStreamAssets(new ResourceLocation("icons/icon_16x16.png"));
-                inputstream1 = this.mcDefaultResourcePack.getInputStreamAssets(new ResourceLocation("icons/icon_32x32.png"));
+                inputstream = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icon/Icon_16x16.png"));
+                inputstream1 = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icon/Icon_32x32.png"));
 
                 if (inputstream != null && inputstream1 != null)
                 {
@@ -1715,6 +1722,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
      */
     public void runTick() throws IOException
     {
+        Client.instance.eventManager.callEvent(new TickEvent());
+
         if (this.rightClickDelayTimer > 0)
         {
             --this.rightClickDelayTimer;
@@ -1918,6 +1927,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
+                        k = ((KeyEvent)Client.instance.eventManager.callEvent(new KeyEvent(k))).getKey();
                         if (k == 1)
                         {
                             this.displayInGameMenu();

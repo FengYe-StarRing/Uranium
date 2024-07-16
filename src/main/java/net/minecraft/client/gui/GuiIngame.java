@@ -1,5 +1,7 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.Render2DEvent;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -334,6 +336,8 @@ public class GuiIngame extends Gui
         this.mc.mcProfiler.endSection();
         GlStateManager.popMatrix();
         scoreobjective1 = scoreboard.getObjectiveInDisplaySlot(0);
+
+        Client.instance.eventManager.callEvent(new Render2DEvent(scaledresolution,partialTicks));
 
         if (this.mc.gameSettings.keyBindPlayerList.isKeyDown() && (!this.mc.isIntegratedServerRunning() || this.mc.thePlayer.sendQueue.getPlayerInfoMap().size() > 1 || scoreobjective1 != null))
         {

@@ -1,0 +1,13 @@
+Language.Name=繁体中文
+
+Client.Name=鈾
+
+Module.Category.Combat=戰鬥
+Module.Category.Render=渲染
+Module.Category.Movement=移動
+Module.Category.Player=玩家
+Module.Category.World=世界
+Module.Category.Misc=雜項
+
+L.Module.Sprint=衝刺
+L.Module.Sprint.Description=始終自動衝刺。

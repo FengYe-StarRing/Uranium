@@ -1,3 +1,13 @@
 Language.Name=日本語
 
 Client.Name=ウラン
+
+Module.Category.Combat=戦う
+Module.Category.Render=レンダリング
+Module.Category.Movement=運動
+Module.Category.Player=プレイヤー
+Module.Category.World=世界
+Module.Category.Misc=その他
+
+L.Module.Sprint=ダッシュ
+L.Module.Sprint.Description=常に自動ダッシュ。

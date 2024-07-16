@@ -1,3 +1,13 @@
-Language.Name=中文
+Language.Name=简体中文
 
 Client.Name=铀
+
+Module.Category.Combat=战斗
+Module.Category.Render=渲染
+Module.Category.Movement=运动
+Module.Category.Player=玩家
+Module.Category.World=世界
+Module.Category.Misc=杂项
+
+L.Module.Sprint=冲刺
+L.Module.Sprint.Description=始终自动冲刺。

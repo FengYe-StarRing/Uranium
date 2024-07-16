@@ -1,3 +1,13 @@
 Language.Name=English
 
 Client.Name=Uranium
+
+Module.Category.Combat=Combat
+Module.Category.Render=Render
+Module.Category.Movement=Movement
+Module.Category.Player=Player
+Module.Category.World=World
+Module.Category.Misc=Misc
+
+L.Module.Sprint=Sprint
+L.Module.Sprint.Description=Automatically sprints all the time.

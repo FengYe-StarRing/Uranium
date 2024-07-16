@@ -4,80 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="添加Optfine">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/CancellableEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Event.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/EventHandle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Priority.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/UpdateEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/log/LogMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/log/LogUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/AxisAngle4d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/AxisAngle4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Color3b.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Color3f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Color4b.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Color4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/ExceptionStrings.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/GMatrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/GVector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Matrix3d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Matrix3f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Matrix4d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Matrix4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/MismatchedSizeException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point2d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point2f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point2i.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point3d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point3f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point3i.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point4d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Point4i.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Quat4d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Quat4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/SingularMatrixException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/TexCoord2f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/TexCoord3f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/TexCoord4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple2d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple2f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple2i.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple3b.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple3d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple3f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple3i.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple4b.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple4d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Tuple4i.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/VecMathI18N.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/VecMathUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Vector2d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Vector2f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Vector3d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Vector3f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Vector4d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/Vector4f.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/javax/vecmath/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Icon/Icon_128x128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Icon/Icon_16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Icon/Icon_32x32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Icon/Icon_64x64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" afterDir="false" />
+    <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="...">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Listenable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/KeyEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/Render2DEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/Render3DEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/TickEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Module.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/ModuleInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/Sprint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ModuleManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/resources/model/ModelRotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/resources/model/ModelRotation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/EventHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/EventHandle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Priority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Priority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/Minecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/Minecraft.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/entity/EntityPlayerSP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/entity/EntityPlayerSP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiIngame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiIngame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/renderer/EntityRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/renderer/EntityRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/resources/DefaultResourcePack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/resources/DefaultResourcePack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/settings/KeyBinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/settings/KeyBinding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,8 +62,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="AnnotationType" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -127,19 +85,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Administrator/Project/Uranium/src/main/java",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Administrator/Project/Uranium/src/main/resources/assets/minecraft/Uranium/Lang&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;库&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\Lang" />
       <recent name="D:\Administrator\Project\Uranium\src\main\java" />
       <recent name="D:\Administrator\Project\Uranium\src\main\resources" />
     </key>
@@ -206,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721043861670</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="...">
+      <option name="closed" value="true" />
+      <created>1721052123979</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721052123979</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,8 +188,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="..." />
     <MESSAGE value="添加Optfine" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加Optfine" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
 </project>

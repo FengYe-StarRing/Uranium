@@ -1,5 +1,7 @@
 package net.minecraft.client.renderer;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.Render3DEvent;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
@@ -1893,6 +1895,11 @@ public class EntityRenderer implements IResourceManagerReloadListener
         }
 
         this.mc.mcProfiler.endStartSection("hand");
+
+        GL11.glPushMatrix();
+        Client.instance.eventManager.callEvent(new Render3DEvent(partialTicks));
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        GL11.glPopMatrix();
 
         if (this.renderHand && !Shaders.isShadowPass)
         {

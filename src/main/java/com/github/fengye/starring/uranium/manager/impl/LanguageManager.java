@@ -20,6 +20,8 @@ public class LanguageManager extends Manager {
     @Override
     public void init() {
         super.init();
+        packs.clear();
+        texts.clear();
         InputStream stream = getLangStream();
         String data = "";
         try {
@@ -62,16 +64,17 @@ public class LanguageManager extends Manager {
 
     public String getText(String pack) {
         int index = 0;
-        for (String string : packs) {
-            if(string.equals(pack)) {
-                break;
+        String text = null;
+        while (index < packs.size()) {
+            if(packs.get(index).equals(pack)) {
+                text = texts.get(index);
             }
             index++;
         }
-        return texts.get(index);
+        return text;
     }
 
     public enum LangMode {
-        English,Chinese,Japanese
+        English,Chinese,Japanese,TChinese
     }
 }

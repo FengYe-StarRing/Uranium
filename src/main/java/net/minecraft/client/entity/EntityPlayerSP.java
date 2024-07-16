@@ -1,5 +1,7 @@
 package net.minecraft.client.entity;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -721,6 +723,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
      */
     public void onLivingUpdate()
     {
+        Client.instance.eventManager.callEvent(new UpdateEvent());
+
         if (this.sprintingTicksLeft > 0)
         {
             --this.sprintingTicksLeft;
