@@ -3,17 +3,16 @@ package com.github.fengye.starring.uranium.manager.impl;
 import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
+import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class EventManager extends Manager {
-    private final List<HandleClass> handleClasses = new ArrayList<>();
+    private final List<HandleMethod> handleMethods = new ArrayList<>();
 
     public EventManager() {
         super("EventManager");
@@ -22,12 +21,11 @@ public class EventManager extends Manager {
     @Override
     public void init() {
         super.init();
-        handleClasses.clear();
+        handleMethods.clear();
     }
 
     public void registerListener(Listenable listenable) {
         List<Method> methods = JavaUtils.getDeclaredMethods(JavaUtils.getClassLoader(listenable));
-        List<HandleMethod> handleMethods = new ArrayList<>();
         for (Method method : methods) {
             if (method.isAnnotationPresent(EventHandle.class) && method.getParameterTypes().length == 1) {
                 if (!method.isAccessible()) {
@@ -35,59 +33,41 @@ public class EventManager extends Manager {
                 }
                 Class<? extends Event> eventClass = (Class<? extends Event>) method.getParameterTypes()[0];
                 EventHandle eventHandle = method.getAnnotation(EventHandle.class);
-                handleMethods.add(new HandleMethod(eventClass,eventHandle,method));
+                handleMethods.add(new HandleMethod(listenable,eventClass,eventHandle,method));
             }
         }
         handleMethods.sort(Comparator.comparingInt(h -> h.getEventHandle().priority()));
-        handleClasses.add(new HandleClass(listenable,handleMethods));
     }
 
     public Event callEvent(Event event) {
-        for (HandleClass handleClass : handleClasses) {
-            Listenable listenable = handleClass.getListenable();
-            if(!listenable.handleEvents()) {
+        for (HandleMethod handleMethod : handleMethods) {
+            Listenable l = handleMethod.getListenable();
+            if(!l.handleEvents()) {
                 continue;
             }
-            for (HandleMethod method : handleClass.getMethods()) {
-                if(method.getEventClass() != JavaUtils.getClassLoader(event)) {
-                    continue;
-                }
-                try {
-                    method.getMethod().invoke(listenable,event);
-                } catch (IllegalAccessException | InvocationTargetException ignored) {}
+            Class<?> eventClass = handleMethod.getEventClass();
+            if(eventClass != JavaUtils.getClassLoader(event) && eventClass != Event.class && eventClass != event.getaClass()) {
+                continue;
             }
+            try {
+                handleMethod.getMethod().invoke(l,event);
+            } catch (IllegalAccessException | InvocationTargetException ignored) {}
         }
         return event;
     }
 
-    public List<HandleClass> getHandleClasses() {
-        return handleClasses;
-    }
-
-    public static class HandleClass {
-        private final Listenable listenable;
-        private final List<HandleMethod> methods;
-
-        public HandleClass(Listenable listenable,List<HandleMethod> methods) {
-            this.listenable = listenable;
-            this.methods = methods;
-        }
-
-        public Listenable getListenable() {
-            return listenable;
-        }
-
-        public List<HandleMethod> getMethods() {
-            return methods;
-        }
+    public List<HandleMethod> getHandleMethods() {
+        return handleMethods;
     }
 
     public static class HandleMethod {
+        private final Listenable listenable;
         private final Class<? extends Event> eventClass;
         private final EventHandle eventHandle;
         private final Method method;
 
-        public HandleMethod(Class<? extends Event> eventClass,EventHandle eventHandle,Method method) {
+        public HandleMethod(Listenable l,Class<? extends Event> eventClass,EventHandle eventHandle,Method method) {
+            listenable = l;
             this.eventClass = eventClass;
             this.eventHandle = eventHandle;
             this.method = method;
@@ -103,6 +83,10 @@ public class EventManager extends Manager {
 
         public Method getMethod() {
             return method;
+        }
+
+        public Listenable getListenable() {
+            return listenable;
         }
     }
 }

@@ -8,6 +8,7 @@ public class Render2DEvent extends Event {
     private final float partialTicks;
 
     public Render2DEvent(ScaledResolution sr,float partialTicks) {
+        super(Render2DEvent.class);
         this.sr = sr;
         this.partialTicks = partialTicks;
     }

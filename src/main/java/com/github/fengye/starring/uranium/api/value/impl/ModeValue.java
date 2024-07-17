@@ -13,4 +13,8 @@ public class ModeValue extends Value<Enum<?>> {
     public Enum<?>[] getMODES() {
         return MODES;
     }
+
+    public String getAsString() {
+        return get().name();
+    }
 }

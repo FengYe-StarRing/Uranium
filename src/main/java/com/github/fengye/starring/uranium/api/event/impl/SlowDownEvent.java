@@ -7,6 +7,7 @@ public class SlowDownEvent extends Event {
     private float forward;
 
     public SlowDownEvent(float strafe,float forward) {
+        super(SlowDownEvent.class);
         this.strafe = strafe;
         this.forward = forward;
     }

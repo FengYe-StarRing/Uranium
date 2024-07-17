@@ -2,8 +2,8 @@ package com.github.fengye.starring.uranium.api.value.impl;
 
 import com.github.fengye.starring.uranium.api.value.Numbers;
 
-public class NumberValue extends Numbers<Number> {
-    public NumberValue(String name, Number value, Number min, Number max, Number inc) {
+public class DoubleValue extends Numbers<Double> {
+    public DoubleValue(String name, Double value, Double min, Double max, Double inc) {
         super(name, value, min, max, inc);
     }
 }

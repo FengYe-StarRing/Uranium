@@ -3,6 +3,10 @@ package net.minecraft.client.entity;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.SlowDownEvent;
 import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
+import com.github.fengye.starring.uranium.api.event.impl.motion.EventState;
+import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
+import com.github.fengye.starring.uranium.api.event.impl.motion.MotionPostEvent;
+import com.github.fengye.starring.uranium.api.event.impl.motion.MotionPreEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -725,6 +729,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
     public void onLivingUpdate()
     {
         Client.instance.eventManager.callEvent(new UpdateEvent());
+        Client.instance.eventManager.callEvent(new MotionPreEvent());
 
         if (this.sprintingTicksLeft > 0)
         {
@@ -814,7 +819,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
         this.pushOutOfBlocks(this.posX + (double)this.width * 0.35D, this.getEntityBoundingBox().minY + 0.5D, this.posZ + (double)this.width * 0.35D);
         boolean flag3 = (float)this.getFoodStats().getFoodLevel() > 6.0F || this.capabilities.allowFlying;
 
-        if (this.onGround && !flag1 && !flag2 && this.movementInput.moveForward >= f && !this.isSprinting() && flag3 && !this.isUsingItem() && !this.isPotionActive(Potion.blindness))
+        if (this.onGround && !flag1 && !flag2 && this.movementInput.moveForward >= f && !this.isSprinting() && flag3 && !this.isPotionActive(Potion.blindness))
         {
             if (this.sprintToggleTimer <= 0 && !this.mc.gameSettings.keyBindSprint.isKeyDown())
             {
@@ -826,7 +831,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
             }
         }
 
-        if (!this.isSprinting() && this.movementInput.moveForward >= f && flag3 && !this.isUsingItem() && !this.isPotionActive(Potion.blindness) && this.mc.gameSettings.keyBindSprint.isKeyDown())
+        if (!this.isSprinting() && this.movementInput.moveForward >= f && flag3 && !this.isPotionActive(Potion.blindness) && this.mc.gameSettings.keyBindSprint.isKeyDown())
         {
             this.setSprinting(true);
         }
@@ -922,5 +927,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
             this.capabilities.isFlying = false;
             this.sendPlayerAbilities();
         }
+
+        Client.instance.eventManager.callEvent(new MotionPostEvent());
     }
 }

@@ -6,6 +6,7 @@ public class KeyEvent extends Event {
     private int key;
 
     public KeyEvent(int key) {
+        super(KeyEvent.class);
         this.key = key;
     }
 

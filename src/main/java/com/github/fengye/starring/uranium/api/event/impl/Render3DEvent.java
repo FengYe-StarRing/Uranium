@@ -6,6 +6,7 @@ public class Render3DEvent extends Event {
     private final float partialTicks;
 
     public Render3DEvent(float partialTicks) {
+        super(Render3DEvent.class);
         this.partialTicks = partialTicks;
     }
 

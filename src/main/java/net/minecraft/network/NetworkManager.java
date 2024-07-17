@@ -1,15 +1,16 @@
 package net.minecraft.network;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.packet.PacketRecieveEvent;
+import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.connection.UserConnectionImpl;
 import com.viaversion.viaversion.protocol.ProtocolPipelineImpl;
-import de.florianmichael.vialoadingbase.ViaLoadingBase;
 import de.florianmichael.vialoadingbase.netty.event.CompressionReorderEvent;
 import de.florianmichael.viamcp.MCPVLBPipeline;
-import de.florianmichael.viamcp.ViaMCP;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelException;
@@ -156,6 +157,12 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
 
     protected void channelRead0(ChannelHandlerContext p_channelRead0_1_, Packet p_channelRead0_2_) throws Exception
     {
+        PacketRecieveEvent packetRecieveEvent = new PacketRecieveEvent(p_channelRead0_2_);
+        Client.instance.eventManager.callEvent(packetRecieveEvent);
+        if(packetRecieveEvent.isCancelled()) {
+            return;
+        }
+
         if (this.channel.isOpen())
         {
             try
@@ -181,6 +188,17 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
     }
 
     public void sendPacket(Packet packetIn)
+    {
+        PacketSendEvent packetSendEvent = new PacketSendEvent(packetIn);
+        Client.instance.eventManager.callEvent(packetSendEvent);
+        if(packetSendEvent.isCancelled()) {
+            return;
+        }
+
+        sendPacketNoEvent(packetSendEvent.getPacket());
+    }
+
+    public void sendPacketNoEvent(Packet packetIn)
     {
         if (this.isChannelOpen())
         {
