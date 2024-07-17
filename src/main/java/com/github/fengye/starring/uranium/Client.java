@@ -1,10 +1,11 @@
 package com.github.fengye.starring.uranium;
 
-import com.github.fengye.starring.uranium.listenable.module.impl.move.Sprint;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.manager.impl.EventManager;
 import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
 import com.github.fengye.starring.uranium.manager.impl.ModuleManager;
+import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
+import de.florianmichael.viamcp.ViaMCP;
 
 public class Client extends Manager {
     public static Client instance = new Client();
@@ -34,9 +35,17 @@ public class Client extends Manager {
         moduleManager.init();
 
         name = languageManager.getText("Client.Name");
+
+        initViaMCP();
     }
 
     public String getName() {
         return name;
+    }
+
+    private void initViaMCP() {
+        ViaMCP.create();
+        ViaMCP.INSTANCE.initAsyncSlider();
+        ViaMCP.INSTANCE.getAsyncVersionSlider().setVersion(ProtocolVersion.v1_8.getVersion());
     }
 }

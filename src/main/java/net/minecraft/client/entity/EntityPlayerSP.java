@@ -1,6 +1,7 @@
 package net.minecraft.client.entity;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.SlowDownEvent;
 import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
@@ -798,8 +799,12 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
         if (this.isUsingItem() && !this.isRiding())
         {
-            this.movementInput.moveStrafe *= 0.2F;
-            this.movementInput.moveForward *= 0.2F;
+            float strafeMul = 0.2F;
+            float forwardMul = 0.2F;
+            SlowDownEvent event = new SlowDownEvent(strafeMul,forwardMul);
+            Client.instance.eventManager.callEvent(event);
+            this.movementInput.moveStrafe *= event.getStrafe();
+            this.movementInput.moveForward *= event.getForward();
             this.sprintToggleTimer = 0;
         }
 

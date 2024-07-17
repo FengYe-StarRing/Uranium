@@ -11,3 +11,6 @@ Module.Category.Misc=Misc
 
 L.Module.Sprint=Sprint
 L.Module.Sprint.Description=Automatically sprints all the time.
+
+L.Module.NoSlow=NoSlow
+L.Module.Sprint.Description=Cancel the player's deceleration effect.

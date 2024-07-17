@@ -11,3 +11,6 @@ Module.Category.Misc=杂项
 
 L.Module.Sprint=冲刺
 L.Module.Sprint.Description=始终自动冲刺。
+
+L.Module.NoSlow=无减速
+L.Module.Sprint.Description=取消玩家的减速效果。

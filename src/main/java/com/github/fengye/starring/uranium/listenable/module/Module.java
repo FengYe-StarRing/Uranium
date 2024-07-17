@@ -27,7 +27,6 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         description = lang.getText("L.Module." + NAME + ".Description");
         keyBind = info.keyBind();
         canEnable = info.canEnable();
-        state = true;
     }
 
     @Override
