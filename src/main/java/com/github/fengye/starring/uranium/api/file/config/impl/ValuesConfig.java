@@ -10,6 +10,7 @@ import com.github.fengye.starring.uranium.listenable.module.Module;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.IntBuffer;
 import java.nio.file.Files;
 
 // ModuleName|ValueName|Value
@@ -31,15 +32,15 @@ public class ValuesConfig extends Config {
             String valueData = data[2];
             for (Module module : Client.instance.moduleManager.getModules()) {
                 if(module.T_NAME.equals(moduleName)) {
-                    for (Value value : module.getValues()) {
-                        switch (valueName) {
-                            case "Enabled":
-                                module.setEnabled(Boolean.valueOf(valueData));
-                                break;
-                            case "KeyBind":
-                                module.setKeyBind(Integer.valueOf(valueData));
-                                break;
-                            default:
+                    switch (valueName) {
+                        case "Enabled":
+                            module.setEnabled(Boolean.valueOf(valueData));
+                            break;
+                        case "KeyBind":
+                            module.setKeyBind(Integer.valueOf(valueData));
+                            break;
+                        default:
+                            for (Value value : module.getValues()) {
                                 if(value.getName().equals(valueName)) {
                                     if(value instanceof Numbers) {
                                         value.set(Double.valueOf(valueData));
@@ -51,8 +52,8 @@ public class ValuesConfig extends Config {
                                         value.set(Boolean.valueOf(valueData));
                                     }
                                 }
-                                break;
-                        }
+                            }
+                            break;
                     }
                 }
             }
@@ -65,7 +66,7 @@ public class ValuesConfig extends Config {
         for (Module module : Client.instance.moduleManager.getModules()) {
             String prefix = module.T_NAME + "|";
             String postfix = "\n";
-            data = "# " + module.T_NAME + postfix;
+            data = data.concat("# " + module.T_NAME + postfix);
             data = data.concat(prefix + "Enabled|" + module.isEnable()) + postfix;
             data = data.concat(prefix + "KeyBind|" + module.getKeyBind()) + postfix;
             for (Value<?> value : module.getValues()) {
