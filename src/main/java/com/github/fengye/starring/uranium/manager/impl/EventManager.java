@@ -28,9 +28,7 @@ public class EventManager extends Manager {
         List<Method> methods = JavaUtils.getDeclaredMethods(JavaUtils.getClassLoader(listenable));
         for (Method method : methods) {
             if (method.isAnnotationPresent(EventHandle.class) && method.getParameterTypes().length == 1) {
-                if (!method.isAccessible()) {
-                    method.setAccessible(true);
-                }
+                method.setAccessible(true);
                 Class<? extends Event> eventClass = (Class<? extends Event>) method.getParameterTypes()[0];
                 EventHandle eventHandle = method.getAnnotation(EventHandle.class);
                 handleMethods.add(new HandleMethod(listenable,eventClass,eventHandle,method));

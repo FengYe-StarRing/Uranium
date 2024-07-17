@@ -2,12 +2,15 @@ package com.github.fengye.starring.uranium.listenable.module;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.Listenable;
+import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
+import java.util.List;
+
 public abstract class Module extends MinecraftInstance implements Listenable {
-    public final String NAME;
+    public final String T_NAME;
     private final String name;
     private final String description;
     private final Category category;
@@ -20,14 +23,13 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         ModuleInfo info = JavaUtils.getClassLoader(this).getAnnotation(ModuleInfo.class);
         LanguageManager lang = Client.instance.languageManager;
 
-        NAME = info.name();
+        T_NAME = info.name();
 
         category = info.category();
-        name = lang.getText("L.Module." + NAME);
-        description = lang.getText("L.Module." + NAME + ".Description");
+        name = lang.getText("L.Module." + T_NAME);
+        description = lang.getText("L.Module." + T_NAME + ".Description");
         keyBind = info.keyBind();
         canEnable = info.canEnable();
-        state = true;
     }
 
     @Override
@@ -69,5 +71,18 @@ public abstract class Module extends MinecraftInstance implements Listenable {
 
     public boolean isEnable() {
         return state;
+    }
+
+    public String getTag() {
+        return "";
+    }
+
+    public List<Value<?>> getValues() {
+        updateValues();
+        return JavaUtils.getValues(this);
+    }
+
+    public void updateValues() {
+
     }
 }

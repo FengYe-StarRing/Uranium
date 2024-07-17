@@ -17,4 +17,12 @@ public class ModeValue extends Value<Enum<?>> {
     public String getAsString() {
         return get().name();
     }
+
+    public void set(String mode) {
+        for (Enum<?> anEnum : MODES) {
+            if(anEnum.name().equals(mode)) {
+                set(anEnum);
+            }
+        }
+    }
 }

@@ -5,36 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/motion/EventState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/motion/MotionEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/motion/MotionPostEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/motion/MotionPreEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketRecieveEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketSendEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/FloatValue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/noslow/NoSlowMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/C09Utils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/PacketUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/ClientFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/impl/ValuesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/CancellableEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/CancellableEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/KeyEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/KeyEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/Render2DEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/Render2DEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/Render3DEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/Render3DEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/SlowDownEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/SlowDownEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/TickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/TickEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/UpdateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/UpdateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Priority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/Priority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/Value.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/ModeValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/ModeValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/NumberValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/DoubleValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/NoSlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/NoSlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/Minecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/Minecraft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/entity/EntityPlayerSP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/entity/EntityPlayerSP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/network/NetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/network/NetworkManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +88,9 @@
       <recent name="D:\Administrator\Project\Uranium\libs" />
       <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\Lang" />
       <recent name="D:\Administrator\Project\Uranium\src\main\resources" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="com.github.fengye.starring.uranium.manager.impl" />
     </key>
   </component>
   <component name="RunManager" selected="应用程序.Nuclear Fission">
@@ -216,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721189828810</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="...">
+      <option name="closed" value="true" />
+      <created>1721198053891</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1721198053891</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,8 +229,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加Optfine" />
-    <MESSAGE value="..." />
     <MESSAGE value="ViaVersion" />
-    <option name="LAST_COMMIT_MESSAGE" value="ViaVersion" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
 </project>

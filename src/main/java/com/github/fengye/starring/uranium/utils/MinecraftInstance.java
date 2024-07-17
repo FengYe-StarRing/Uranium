@@ -3,6 +3,7 @@ package com.github.fengye.starring.uranium.utils;
 import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
+import com.github.fengye.starring.uranium.api.event.Priority;
 import de.florianmichael.vialoadingbase.ViaLoadingBase;
 import de.florianmichael.viamcp.ViaMCP;
 import net.minecraft.client.Minecraft;
@@ -10,10 +11,13 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.network.Packet;
 
+import java.io.File;
+
 public class MinecraftInstance implements Listenable {
     public static Minecraft mc;
     public static EntityPlayerSP thePlayer;
     public static WorldClient theWorld;
+    public static File mcDataDir;
 
     public static boolean isV189() {
         return getVersion() == ViaMCP.NATIVE_VERSION;
@@ -36,10 +40,11 @@ public class MinecraftInstance implements Listenable {
         return true;
     }
 
-    @EventHandle
+    @EventHandle(priority = Priority.HIGHEST)
     private void onEvent(Event event) {
         mc = Minecraft.getMinecraft();
         thePlayer = mc.thePlayer;
         theWorld = mc.theWorld;
+        mcDataDir = mc.mcDataDir;
     }
 }

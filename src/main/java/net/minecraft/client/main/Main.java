@@ -22,8 +22,6 @@ public class Main
 {
     public static void main(String[] p_main_0_)
     {
-        Client.instance.init();
-
         System.setProperty("java.net.preferIPv4Stack", "true");
         OptionParser optionparser = new OptionParser();
         optionparser.allowsUnrecognizedOptions();
