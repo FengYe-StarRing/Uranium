@@ -5,33 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/BlockBBEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/misc/Protocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/ProtocolUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/UseUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/impl/ElementsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/render/HUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/HudManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/Element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/Horizontal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/Side.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/Vertical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/impl/Logo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketRecieveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketRecieveEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketSendEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/event/impl/packet/PacketSendEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/ModeValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/ModeValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/NoSlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/NoSlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ModuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ModuleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/clickgui/csgo/CSGOClickUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/clickgui/csgo/CSGOClickUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/C09Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/C09Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/RenderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/RenderUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/block/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/block/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/block/BlockLadder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/block/BlockLadder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/block/BlockPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/block/BlockPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/entity/EntityLivingBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/entity/EntityLivingBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/entity/player/EntityPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/entity/player/EntityPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/network/NetworkManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/network/NetworkManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/network/play/client/C08PacketPlayerBlockPlacement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/network/play/client/C08PacketPlayerBlockPlacement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" afterDir="false" />
@@ -85,17 +70,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Administrator/Project/Uranium/src/main/resources/assets/minecraft/Uranium",
-    "project.structure.last.edited": "库",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Administrator/Project/Uranium/src/main/resources/assets/minecraft/Uranium&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;库&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium" />
@@ -112,10 +97,12 @@
       <recent name="com.github.fengye.starring.uranium.manager.impl" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.github.fengye.starring.uranium.ui.hud" />
+      <recent name="com.github.fengye.starring.uranium.ui.hud.impl" />
       <recent name="com.github.fengye.starring.uranium.ui.clickgui.csgo" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Purification">
+  <component name="RunManager" selected="应用程序.Nuclear Fission">
     <configuration name="Nuclear Fission" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Start" />
       <module name="Uranium.test" />
@@ -259,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721288196995</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="...">
+      <option name="closed" value="true" />
+      <created>1721297705345</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1721297705345</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

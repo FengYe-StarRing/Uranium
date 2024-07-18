@@ -9,6 +9,7 @@ import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.impl.misc.Protocol;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.render.ClickGui;
+import com.github.fengye.starring.uranium.listenable.module.impl.render.HUD;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
@@ -29,7 +30,8 @@ public class ModuleManager extends Manager implements Listenable {
         Client.instance.eventManager.registerListener(this);
         // Render
         registerModules(new Module[]{
-                new ClickGui()
+                new ClickGui(),
+                new HUD()
         });
         // Movement
         registerModules(new Module[]{
@@ -39,6 +41,11 @@ public class ModuleManager extends Manager implements Listenable {
         // Misc
         registerModules(new Module[]{
                 new Protocol()
+        });
+        modules.sort((mod, mod1) -> {
+            int char0 = mod.getName().charAt(0);
+            int char1 = mod1.getName().charAt(0);
+            return -Integer.compare(char1, char0);
         });
     }
 

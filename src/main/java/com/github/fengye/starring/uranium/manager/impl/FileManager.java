@@ -5,6 +5,7 @@ import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.file.config.Config;
+import com.github.fengye.starring.uranium.api.file.config.impl.ElementsConfig;
 import com.github.fengye.starring.uranium.api.file.config.impl.ValuesConfig;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
@@ -19,6 +20,7 @@ public class FileManager extends Manager implements Listenable {
     private File configDir = null;
     private File userDataDir = null;
     private Config valuesConfig = null;
+    private Config elementsConfig = null;
     private boolean init = false;
 
     public FileManager() {
@@ -40,7 +42,7 @@ public class FileManager extends Manager implements Listenable {
     @EventHandle
     private void onEvent(Event event) {
         initDir();
-        if(init) {
+        if(init && !Client.instance.isStop()) {
             saveAllConfigs();
         }
     }
@@ -67,6 +69,9 @@ public class FileManager extends Manager implements Listenable {
         {
             if(valuesConfig == null) {
                 valuesConfig = new ValuesConfig(configDir,"Values.txt");
+            }
+            if(elementsConfig == null) {
+                elementsConfig = new ElementsConfig(configDir,"Elements.txt");
             }
             if(!init) {
                 loadAllConfigs();

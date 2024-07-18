@@ -17,3 +17,5 @@ L.Module.ClickGui=點擊介面
 L.Module.ClickGui.Description=打開點擊介面。
 L.Module.Protocol=协议
 L.Module.Protocol.Description=将协议修复为 xxx版。
+L.Module.HUD=顯示器
+L.Module.HUD.Description=切換顯示器的可見性。

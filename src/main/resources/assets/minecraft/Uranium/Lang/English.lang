@@ -16,4 +16,6 @@ L.Module.Sprint.Description=Cancel the player's deceleration effect.
 L.Module.ClickGui=ClickGui
 L.Module.ClickGui.Description=Open the ClickGui.
 L.Module.Protocol=Protocol
-L.Module.Protocol.Description=fix protocol to xxx version
+L.Module.Protocol.Description=fix protocol to xxx version.
+L.Module.HUD=HUD
+L.Module.HUD.Description=Toggle visibility of the HUD.

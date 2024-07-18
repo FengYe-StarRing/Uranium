@@ -17,3 +17,5 @@ L.Module.ClickGui=インタフェースをクリック
 L.Module.ClickGui.Description=クリックインタフェースを開きます。
 L.Module.Protocol=プロトコル
 L.Module.Protocol.Description=プロトコルをxxxバージョンに修正する。
+L.Module.HUD=HUD
+L.Module.HUD.Description=HUDの可視性を切り替えます。

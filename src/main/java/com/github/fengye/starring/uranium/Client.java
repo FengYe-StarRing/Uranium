@@ -22,8 +22,10 @@ public class Client extends Manager {
     public ModuleManager moduleManager;
     public FileManager fileManager;
     public FontManager fontManager;
+    public HudManager hudManager;
 
     private String name;
+    private boolean stop = false;
 
     public Client() {
         super("Client");
@@ -31,16 +33,17 @@ public class Client extends Manager {
 
     public void init() {
         super.init();
-
         languageManager = new LanguageManager();
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
         fileManager = new FileManager();
         fontManager = new FontManager();
+        hudManager = new HudManager();
 
         languageManager.init();
         eventManager.init();
         moduleManager.init();
+        hudManager.init();
         fileManager.init();
         fontManager.init();
 
@@ -65,10 +68,15 @@ public class Client extends Manager {
     }
 
     public void stop() {
+        stop = true;
         fileManager.saveAllConfigs();
     }
 
     public static String getVersion() {
         return VERSION;
+    }
+
+    public boolean isStop() {
+        return stop;
     }
 }
