@@ -3,7 +3,7 @@ package net.minecraft.network;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.packet.PacketRecieveEvent;
 import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
-import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.viaversion.viaversion.api.connection.UserConnection;
@@ -396,7 +396,7 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
                 }
 
                 p_initChannel_1_.pipeline().addLast((String)"timeout", (ChannelHandler)(new ReadTimeoutHandler(30))).addLast((String)"splitter", (ChannelHandler)(new MessageDeserializer2())).addLast((String)"decoder", (ChannelHandler)(new MessageDeserializer(EnumPacketDirection.CLIENTBOUND))).addLast((String)"prepender", (ChannelHandler)(new MessageSerializer2())).addLast((String)"encoder", (ChannelHandler)(new MessageSerializer(EnumPacketDirection.SERVERBOUND))).addLast((String)"packet_handler", (ChannelHandler)networkmanager);
-                if (p_initChannel_1_ instanceof SocketChannel && !MinecraftInstance.isV189()) {
+                if (p_initChannel_1_ instanceof SocketChannel && !ProtocolUtils.isV189()) {
                     final UserConnection user = new UserConnectionImpl(p_initChannel_1_, true);
                     new ProtocolPipelineImpl(user);
                     p_initChannel_1_.pipeline().addLast(new MCPVLBPipeline(user));

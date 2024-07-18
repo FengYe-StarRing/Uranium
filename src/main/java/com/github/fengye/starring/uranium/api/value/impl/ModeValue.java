@@ -25,4 +25,22 @@ public class ModeValue extends Value<Enum<?>> {
             }
         }
     }
+
+    public void switchMode(boolean left) {
+        int index = 0;
+        for (Enum<?> mode : MODES) {
+            if(getAsString().equals(mode.name())) {
+                break;
+            }
+            index++;
+        }
+        index += left ? -1 : 1;
+        if(index == -1) {
+            index = MODES.length - 1;
+        }
+        if(index == MODES.length) {
+            index = 0;
+        }
+        set(MODES[index]);
+    }
 }

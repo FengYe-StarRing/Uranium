@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.Callable;
+
+import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -2030,7 +2032,16 @@ public abstract class Entity implements ICommandSender
 
     public float getCollisionBorderSize()
     {
-        return 0.1F;
+        float size;
+        ProtocolUtils.Versions fixToVersion = ProtocolUtils.fixToVersion();
+        if(ProtocolUtils.thanV1_9(fixToVersion)) {
+            // 1.9及以上
+            size = 0F;
+        } else {
+            // 1.8及以下
+            size = 0.1F;
+        }
+        return size;
     }
 
     /**

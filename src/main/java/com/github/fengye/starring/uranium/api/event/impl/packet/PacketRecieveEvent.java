@@ -4,6 +4,6 @@ import net.minecraft.network.Packet;
 
 public class PacketRecieveEvent extends PacketEvent {
     public PacketRecieveEvent(Packet<?> packet) {
-        super(packet);
+        super(packet,PacketState.Recieve);
     }
 }

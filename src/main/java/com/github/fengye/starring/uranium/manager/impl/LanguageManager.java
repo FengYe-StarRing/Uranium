@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LanguageManager extends Manager {
-    private final ModeValue languageValue = new ModeValue("Language",LangMode.values(),LangMode.English);
+    private final ModeValue languageValue = new ModeValue("Language", Languages.values(), Languages.English);
 
     public LanguageManager() {
         super("LanguageManager");
@@ -26,15 +26,15 @@ public class LanguageManager extends Manager {
         load(getLang());
     }
 
-    private String getLangPath(LangMode mode) {
+    private String getLangPath(Languages mode) {
         return mode.name() + ".lang";
     }
 
-    private InputStream getLangStream(LangMode mode) {
+    private InputStream getLangStream(Languages mode) {
         return JavaUtils.getStream(Client.RESOURCES + "/Lang/" + getLangPath(mode));
     }
 
-    public String getText(LangMode mode,String pack) {
+    public String getText(Languages mode, String pack) {
         List<String> packs = mode.getPacks();
         List<String> texts = mode.getTexts();
         if(packs == null || texts == null) {
@@ -57,10 +57,10 @@ public class LanguageManager extends Manager {
     }
 
     public String getText(String pack) {
-        return getText(LangMode.valueOf(languageValue.getAsString()),pack);
+        return getText(Languages.valueOf(languageValue.getAsString()),pack);
     }
 
-    public void load(LangMode mode) {
+    public void load(Languages mode) {
         List<String> packs = new ArrayList<>();
         List<String> texts = new ArrayList<>();
         InputStream buffer = getLangStream(mode);
@@ -98,11 +98,11 @@ public class LanguageManager extends Manager {
         mode.setTexts(texts);
     }
 
-    public LangMode getLang() {
-        return LangMode.valueOf(languageValue.getAsString());
+    public Languages getLang() {
+        return Languages.valueOf(languageValue.getAsString());
     }
 
-    public enum LangMode {
+    public enum Languages {
         English,Chinese,Japanese,TChinese;
 
         private List<String> packs = null;

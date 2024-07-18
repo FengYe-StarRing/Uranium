@@ -4,7 +4,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.util.ResourceLocation;
 
+import java.awt.*;
+
 import static com.github.fengye.starring.uranium.utils.MinecraftInstance.mc;
+import static com.github.fengye.starring.uranium.utils.render.R2DUtils.glColor;
 import static org.lwjgl.opengl.GL11.*;
 
 public class RenderUtils {
@@ -75,5 +78,49 @@ public class RenderUtils {
 
     public static void drawRect2(double x, double y, double x2, double y2, int color) {
         Gui.drawRect((int) x, (int) y, (int) x2, (int) y2, color);
+    }
+
+    public static void drawRect(float x,float y,float x2,float y2,int color) {
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_LINE_SMOOTH);
+
+        glColor(color);
+        glBegin(GL_QUADS);
+
+        glVertex2f(x2, y);
+        glVertex2f(x, y);
+        glVertex2f(x, y2);
+        glVertex2f(x2, y2);
+        glEnd();
+
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDisable(GL_LINE_SMOOTH);
+    }
+
+    public static void drawRect(int x,int y,int x2,int y2,int color) {
+        glEnable(GL_BLEND);
+        glDisable(GL_TEXTURE_2D);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_LINE_SMOOTH);
+
+        glColor(color);
+        glBegin(GL_QUADS);
+
+        glVertex2i(x2, y);
+        glVertex2i(x, y);
+        glVertex2i(x, y2);
+        glVertex2i(x2, y2);
+        glEnd();
+
+        glEnable(GL_TEXTURE_2D);
+        glDisable(GL_BLEND);
+        glDisable(GL_LINE_SMOOTH);
+    }
+
+    public static void drawRect(float x,float y,float x2,float y2,Color color) {
+        drawRect(x, y, x2, y2, color.getRGB());
     }
 }

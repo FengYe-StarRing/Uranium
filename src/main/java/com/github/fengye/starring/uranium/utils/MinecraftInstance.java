@@ -4,8 +4,6 @@ import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
-import de.florianmichael.vialoadingbase.ViaLoadingBase;
-import de.florianmichael.viamcp.ViaMCP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -18,14 +16,6 @@ public class MinecraftInstance implements Listenable {
     public static EntityPlayerSP thePlayer;
     public static WorldClient theWorld;
     public static File mcDataDir;
-
-    public static boolean isV189() {
-        return getVersion() == ViaMCP.NATIVE_VERSION;
-    }
-
-    public static int getVersion() {
-        return ViaLoadingBase.getInstance().getTargetVersion().getVersion();
-    }
 
     public static void sendPacket(Packet<?> packet) {
         mc.getNetHandler().getNetworkManager().sendPacket(packet);

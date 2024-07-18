@@ -2,6 +2,8 @@ package net.minecraft.block;
 
 import java.util.List;
 import java.util.Random;
+
+import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
@@ -83,42 +85,71 @@ public class BlockPane extends Block
         boolean flag2 = this.canPaneConnectToBlock(worldIn.getBlockState(pos.west()).getBlock());
         boolean flag3 = this.canPaneConnectToBlock(worldIn.getBlockState(pos.east()).getBlock());
 
-        if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
-        {
-            if (flag2)
-            {
-                this.setBlockBounds(0.0F, 0.0F, 0.4375F, 0.5F, 1.0F, 0.5625F);
-                super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+        ProtocolUtils.Versions fix = ProtocolUtils.fixToVersion();
+        if(ProtocolUtils.thanV1_9(fix)) {
+            // 1.9及以上
+            float f = 0.4375F;
+            float f1 = 0.5625F;
+            float f2 = 0.4375F;
+            float f3 = 0.5625F;
+            if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1)) {
+                if (flag2) {
+                    f = 0.0F;
+                }
+            } else if (flag2) {
+                f = 0.0F;
+                f1 = 1.0F;
             }
-            else if (flag3)
-            {
-                this.setBlockBounds(0.5F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
-                super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+            if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1)) {
+                if (flag) {
+                    f2 = 0.0F;
+                } else if (flag1) {
+                    f3 = 1.0F;
+                }
+            } else if (flag) {
+                f2 = 0.0F;
+                f3 = 1.0F;
             }
-        }
-        else
-        {
-            this.setBlockBounds(0.0F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
+            this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
             super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
-        }
-
-        if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
-        {
-            if (flag)
+        } else {
+            // 1.8及以下
+            if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
             {
-                this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 0.5F);
+                if (flag2)
+                {
+                    this.setBlockBounds(0.0F, 0.0F, 0.4375F, 0.5F, 1.0F, 0.5625F);
+                    super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+                }
+                else if (flag3)
+                {
+                    this.setBlockBounds(0.5F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
+                    super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+                }
+            }
+            else
+            {
+                this.setBlockBounds(0.0F, 0.0F, 0.4375F, 1.0F, 1.0F, 0.5625F);
                 super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
             }
-            else if (flag1)
+            if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
             {
-                this.setBlockBounds(0.4375F, 0.0F, 0.5F, 0.5625F, 1.0F, 1.0F);
+                if (flag)
+                {
+                    this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 0.5F);
+                    super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+                }
+                else if (flag1)
+                {
+                    this.setBlockBounds(0.4375F, 0.0F, 0.5F, 0.5625F, 1.0F, 1.0F);
+                    super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+                }
+            }
+            else
+            {
+                this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 1.0F);
                 super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
             }
-        }
-        else
-        {
-            this.setBlockBounds(0.4375F, 0.0F, 0.0F, 0.5625F, 1.0F, 1.0F);
-            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
         }
     }
 
@@ -141,38 +172,62 @@ public class BlockPane extends Block
         boolean flag2 = this.canPaneConnectToBlock(worldIn.getBlockState(pos.west()).getBlock());
         boolean flag3 = this.canPaneConnectToBlock(worldIn.getBlockState(pos.east()).getBlock());
 
-        if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
-        {
-            if (flag2)
-            {
+        ProtocolUtils.Versions fix = ProtocolUtils.fixToVersion();
+        if(ProtocolUtils.thanV1_9(fix)) {
+            // 1.9及以上
+            if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1)) {
+                if (flag2) {
+                    f = 0.0F;
+                }
+            } else if (flag2) {
                 f = 0.0F;
-            }
-            else if (flag3)
-            {
                 f1 = 1.0F;
             }
-        }
-        else
-        {
-            f = 0.0F;
-            f1 = 1.0F;
-        }
 
-        if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
-        {
-            if (flag)
-            {
+            if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1)) {
+                if (flag) {
+                    f2 = 0.0F;
+                } else if (flag1) {
+                    f3 = 1.0F;
+                }
+            } else if (flag) {
                 f2 = 0.0F;
-            }
-            else if (flag1)
-            {
                 f3 = 1.0F;
             }
-        }
-        else
-        {
-            f2 = 0.0F;
-            f3 = 1.0F;
+        } else {
+            // 1.8及以下
+            if ((!flag2 || !flag3) && (flag2 || flag3 || flag || flag1))
+            {
+                if (flag2)
+                {
+                    f = 0.0F;
+                }
+                else if (flag3)
+                {
+                    f1 = 1.0F;
+                }
+            }
+            else
+            {
+                f = 0.0F;
+                f1 = 1.0F;
+            }
+            if ((!flag || !flag1) && (flag2 || flag3 || flag || flag1))
+            {
+                if (flag)
+                {
+                    f2 = 0.0F;
+                }
+                else if (flag1)
+                {
+                    f3 = 1.0F;
+                }
+            }
+            else
+            {
+                f2 = 0.0F;
+                f3 = 1.0F;
+            }
         }
 
         this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);

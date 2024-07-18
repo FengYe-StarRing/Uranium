@@ -1,5 +1,6 @@
 package net.minecraft.block;
 
+import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -43,7 +44,15 @@ public class BlockLadder extends Block
 
         if (iblockstate.getBlock() == this)
         {
-            float f = 0.125F;
+            float f;
+            ProtocolUtils.Versions fix = ProtocolUtils.fixToVersion();
+            if(ProtocolUtils.thanV1_9(fix)) {
+                // 1.9及以上
+                f = 0.1875F;
+            } else {
+                // 1.8及以下
+                f = 0.125F;
+            }
 
             switch ((EnumFacing)iblockstate.getValue(FACING))
             {

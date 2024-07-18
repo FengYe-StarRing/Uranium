@@ -15,3 +15,5 @@ L.Module.NoSlow=無減速
 L.Module.Sprint.Description=プレイヤーの減速効果をキャンセルします。
 L.Module.ClickGui=インタフェースをクリック
 L.Module.ClickGui.Description=クリックインタフェースを開きます。
+L.Module.Protocol=プロトコル
+L.Module.Protocol.Description=プロトコルをxxxバージョンに修正する。

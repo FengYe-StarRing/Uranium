@@ -1,5 +1,6 @@
 package net.minecraft.entity;
 
+import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Maps;
@@ -1965,17 +1966,27 @@ public abstract class EntityLivingBase extends Entity
             this.motionZ *= 0.98D;
         }
 
-        if (Math.abs(this.motionX) < 0.005D)
+        double minimumMotion;
+        ProtocolUtils.Versions fixToVersion = ProtocolUtils.fixToVersion();
+        if(ProtocolUtils.thanV1_9(fixToVersion)) {
+            // 1.9及以上
+            minimumMotion = 0.003D;
+        } else {
+            // 1.8及以下
+            minimumMotion = 0.005D;
+        }
+
+        if (Math.abs(this.motionX) < minimumMotion)
         {
             this.motionX = 0.0D;
         }
 
-        if (Math.abs(this.motionY) < 0.005D)
+        if (Math.abs(this.motionY) < minimumMotion)
         {
             this.motionY = 0.0D;
         }
 
-        if (Math.abs(this.motionZ) < 0.005D)
+        if (Math.abs(this.motionZ) < minimumMotion)
         {
             this.motionZ = 0.0D;
         }

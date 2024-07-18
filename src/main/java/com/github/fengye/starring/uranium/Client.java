@@ -3,7 +3,9 @@ package com.github.fengye.starring.uranium;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.manager.impl.*;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
+import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
 import de.florianmichael.viamcp.ViaMCP;
 
@@ -44,6 +46,8 @@ public class Client extends Manager {
 
         eventManager.registerListener(new MinecraftInstance());
         eventManager.registerListener(new C09Utils());
+        eventManager.registerListener(new UseUtils());
+        eventManager.registerListener(new ProtocolUtils());
 
         name = languageManager.getText(T_NAME);
 

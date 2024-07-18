@@ -249,10 +249,7 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
 							x + 44 - mc.fontRendererObj.getStringWidth(((ModeValue) value).getAsString()) / 2F, mY + 1, -1);
                     if (this.isStringHovered(x, mY - 5, x + 100, mY + 15, mouseX, mouseY)) {
                         if (Mouse.isButtonDown(0) && !this.previousmouse) {
-                            Enum current = (Enum) value.get();
-                            int next = current.ordinal() + 1 >= ((ModeValue) value).getMODES().length ? 0
-                                    : current.ordinal() + 1;
-                            value.set(((ModeValue) value).getMODES()[next]);
+                            ((ModeValue) value).switchMode(false);
                             this.previousmouse = true;
                         }
                         if (!Mouse.isButtonDown(0)) {

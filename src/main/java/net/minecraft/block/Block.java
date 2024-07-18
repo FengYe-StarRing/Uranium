@@ -2,6 +2,9 @@ package net.minecraft.block;
 
 import java.util.List;
 import java.util.Random;
+
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.BlockBBEvent;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -32,6 +35,8 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import static com.github.fengye.starring.uranium.utils.MinecraftInstance.thePlayer;
 
 public class Block
 {
@@ -436,7 +441,7 @@ public class Block
         return this.isBlockContainer;
     }
 
-    protected final void setBlockBounds(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+    public final void setBlockBounds(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
     {
         this.minX = (double)minX;
         this.minY = (double)minY;
@@ -489,6 +494,15 @@ public class Block
     public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List<AxisAlignedBB> list, Entity collidingEntity)
     {
         AxisAlignedBB axisalignedbb = this.getCollisionBoundingBox(worldIn, pos, state);
+
+        if(collidingEntity == thePlayer) {
+            BlockBBEvent blockBBEvent = new BlockBBEvent(this,pos,axisalignedbb);
+            Client.instance.eventManager.callEvent(blockBBEvent);
+            if(blockBBEvent.isCancelled()) {
+                return;
+            }
+            axisalignedbb = blockBBEvent.getAxisAlignedBB();
+        }
 
         if (axisalignedbb != null && mask.intersectsWith(axisalignedbb))
         {

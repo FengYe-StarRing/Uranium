@@ -10,11 +10,6 @@ import net.minecraft.network.play.client.C09PacketHeldItemChange;
 public class C09Utils extends PacketUtils implements Listenable {
     private static int slot = -1;
 
-    @Override
-    public boolean handleEvents() {
-        return super.handleEvents();
-    }
-
     public static int getSlot() {
         if(slot == -1) {
             slot = thePlayer.inventory.currentItem;

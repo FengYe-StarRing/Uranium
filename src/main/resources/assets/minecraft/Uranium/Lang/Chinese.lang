@@ -15,3 +15,5 @@ L.Module.NoSlow=无减速
 L.Module.Sprint.Description=取消玩家的减速效果。
 L.Module.ClickGui=点击界面
 L.Module.ClickGui.Description=打开点击界面。
+L.Module.Protocol=协议
+L.Module.Protocol.Description=将协议修复为xxx版本。

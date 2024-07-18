@@ -6,6 +6,7 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
+import com.github.fengye.starring.uranium.listenable.module.impl.misc.Protocol;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.render.ClickGui;
 import com.github.fengye.starring.uranium.manager.Manager;
@@ -34,6 +35,10 @@ public class ModuleManager extends Manager implements Listenable {
         registerModules(new Module[]{
                 new Sprint(),
                 new NoSlow()
+        });
+        // Misc
+        registerModules(new Module[]{
+                new Protocol()
         });
     }
 

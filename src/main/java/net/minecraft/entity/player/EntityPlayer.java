@@ -1,5 +1,6 @@
 package net.minecraft.entity.player;
 
+import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
@@ -223,7 +224,8 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public boolean isUsingItem()
     {
-        return this.itemInUse != null;
+//        return this.itemInUse != null;
+        return UseUtils.isUsingItem();
     }
 
     /**

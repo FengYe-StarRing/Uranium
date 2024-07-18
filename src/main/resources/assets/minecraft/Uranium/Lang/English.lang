@@ -15,3 +15,5 @@ L.Module.NoSlow=NoSlow
 L.Module.Sprint.Description=Cancel the player's deceleration effect.
 L.Module.ClickGui=ClickGui
 L.Module.ClickGui.Description=Open the ClickGui.
+L.Module.Protocol=Protocol
+L.Module.Protocol.Description=fix protocol to xxx version
