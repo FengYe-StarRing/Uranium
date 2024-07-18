@@ -12,7 +12,7 @@ public class C09Utils extends PacketUtils implements Listenable {
 
     @Override
     public boolean handleEvents() {
-        return true;
+        return super.handleEvents();
     }
 
     public static int getSlot() {
@@ -35,5 +35,43 @@ public class C09Utils extends PacketUtils implements Listenable {
         if(packet instanceof C09PacketHeldItemChange) {
             slot = ((C09PacketHeldItemChange) packet).getSlotId();
         }
+    }
+
+    public static void switchItem(SwitchItemMode mode,boolean interval) {
+        int slot = getSlot();
+        int n;
+        switch (mode) {
+            case Switch:
+                sendPacket(new C09PacketHeldItemChange(slot % 8 + 1));
+                if(interval) {
+                    sendInterval();
+                }
+                sendPacket(new C09PacketHeldItemChange(slot));
+                break;
+            case Change:
+                sendPacket(new C09PacketHeldItemChange((slot % 8 + 2) % 8));
+                if(interval) {
+                    sendInterval();
+                }
+                sendPacket(new C09PacketHeldItemChange(slot));
+                break;
+            case SwitchAll:
+                n = slot;
+                for(int i = 0;i < 8;i++) {
+                    n++;
+                    if(n >= 8) {
+                        n = 0;
+                    }
+                    sendPacket(new C09PacketHeldItemChange(n));
+                    if(!(i == 7)) {
+                        sendInterval();
+                    }
+                }
+                break;
+        }
+    }
+
+    public enum SwitchItemMode {
+        Switch,Change,SwitchAll
     }
 }

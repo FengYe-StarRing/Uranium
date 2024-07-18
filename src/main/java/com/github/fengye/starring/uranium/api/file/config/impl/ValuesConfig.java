@@ -10,7 +10,6 @@ import com.github.fengye.starring.uranium.listenable.module.Module;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.IntBuffer;
 import java.nio.file.Files;
 
 // ModuleName|ValueName|Value
@@ -67,10 +66,10 @@ public class ValuesConfig extends Config {
             String prefix = module.T_NAME + "|";
             String postfix = "\n";
             data = data.concat("# " + module.T_NAME + postfix);
-            data = data.concat(prefix + "Enabled|" + module.isEnable()) + postfix;
+            data = data.concat(prefix + "Enabled|" + module.isEnabled()) + postfix;
             data = data.concat(prefix + "KeyBind|" + module.getKeyBind()) + postfix;
             for (Value<?> value : module.getValues()) {
-                data = data.concat(prefix + value.T_NAME + "|" + value.get() + postfix);
+                data = data.concat(prefix + value.getName() + "|" + value.get() + postfix);
             }
         }
         Files.write(getFile().toPath(),data.getBytes());

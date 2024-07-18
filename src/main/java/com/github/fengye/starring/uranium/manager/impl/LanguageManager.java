@@ -7,6 +7,9 @@ import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +39,8 @@ public class LanguageManager extends Manager {
         List<String> texts = mode.getTexts();
         if(packs == null || texts == null) {
             load(mode);
+            packs = mode.getPacks();
+            texts = mode.getTexts();
         }
         if(packs == null || texts == null) {
             return null;
@@ -58,7 +63,8 @@ public class LanguageManager extends Manager {
     public void load(LangMode mode) {
         List<String> packs = new ArrayList<>();
         List<String> texts = new ArrayList<>();
-        InputStream stream = getLangStream(mode);
+        InputStream buffer = getLangStream(mode);
+        Reader stream = new InputStreamReader(buffer,StandardCharsets.UTF_8);
         String data = "";
         try {
             int ch = stream.read();

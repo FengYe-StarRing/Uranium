@@ -15,7 +15,7 @@ public class ModeValue extends Value<Enum<?>> {
     }
 
     public String getAsString() {
-        return get().name();
+        return String.valueOf(get());
     }
 
     public void set(String mode) {

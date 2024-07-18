@@ -130,7 +130,7 @@ public class RenderDragon extends RenderLiving<EntityDragon>
         GlStateManager.shadeModel(7425);
         float f7 = 0.0F - ((float)dragon.ticksExisted + p_180574_8_) * 0.01F;
         float f8 = MathHelper.sqrt_float(f2 * f2 + f3 * f3 + f4 * f4) / 32.0F - ((float)dragon.ticksExisted + p_180574_8_) * 0.01F;
-        worldrenderer.func_181668_a(5, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181668_a(5, DefaultVertexFormats.POSITION_TEX_COLOR);
         int i = 8;
 
         for (int j = 0; j <= 8; ++j)

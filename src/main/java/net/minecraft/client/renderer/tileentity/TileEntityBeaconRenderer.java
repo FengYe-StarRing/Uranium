@@ -68,7 +68,7 @@ public class TileEntityBeaconRenderer extends TileEntitySpecialRenderer<TileEnti
                     double d13 = 1.0D;
                     double d14 = -1.0D + d1;
                     double d15 = (double)((float)tileentitybeacon$beamsegment.getHeight() * f) * 2.5D + d14;
-                    worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+                    worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
                     worldrenderer.func_181662_b(x + d4, y + (double)k, z + d5).func_181673_a(1.0D, d15).func_181666_a(f1, f2, f3, 1.0F).func_181675_d();
                     worldrenderer.func_181662_b(x + d4, y + (double)i, z + d5).func_181673_a(1.0D, d14).func_181666_a(f1, f2, f3, 1.0F).func_181675_d();
                     worldrenderer.func_181662_b(x + d6, y + (double)i, z + d7).func_181673_a(0.0D, d14).func_181666_a(f1, f2, f3, 1.0F).func_181675_d();
@@ -101,7 +101,7 @@ public class TileEntityBeaconRenderer extends TileEntitySpecialRenderer<TileEnti
                     d11 = 1.0D;
                     d12 = -1.0D + d1;
                     d13 = (double)((float)tileentitybeacon$beamsegment.getHeight() * f) + d12;
-                    worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+                    worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
                     worldrenderer.func_181662_b(x + 0.2D, y + (double)k, z + 0.2D).func_181673_a(1.0D, d13).func_181666_a(f1, f2, f3, 0.125F).func_181675_d();
                     worldrenderer.func_181662_b(x + 0.2D, y + (double)i, z + 0.2D).func_181673_a(1.0D, d12).func_181666_a(f1, f2, f3, 0.125F).func_181675_d();
                     worldrenderer.func_181662_b(x + 0.8D, y + (double)i, z + 0.2D).func_181673_a(0.0D, d12).func_181666_a(f1, f2, f3, 0.125F).func_181675_d();

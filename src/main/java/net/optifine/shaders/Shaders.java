@@ -4928,7 +4928,7 @@ public class Shaders
         double d3 = -d0;
         double d4 = 16.0D;
         double d5 = -cameraPositionY;
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION);
         worldrenderer.func_181662_b(d2, d5, d3).func_181675_d();
         worldrenderer.func_181662_b(d2, d4, d3).func_181675_d();
         worldrenderer.func_181662_b(d3, d4, d2).func_181675_d();

@@ -11,6 +11,7 @@ Module.Category.Misc=雜項
 
 L.Module.Sprint=衝刺
 L.Module.Sprint.Description=始終自動衝刺。
-
 L.Module.NoSlow=無减速
 L.Module.Sprint.Description=取消玩家的减速效果。
+L.Module.ClickGui=點擊介面
+L.Module.ClickGui.Description=打開點擊介面。

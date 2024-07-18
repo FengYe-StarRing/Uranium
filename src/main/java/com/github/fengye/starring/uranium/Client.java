@@ -1,10 +1,7 @@
 package com.github.fengye.starring.uranium;
 
 import com.github.fengye.starring.uranium.manager.Manager;
-import com.github.fengye.starring.uranium.manager.impl.EventManager;
-import com.github.fengye.starring.uranium.manager.impl.FileManager;
-import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
-import com.github.fengye.starring.uranium.manager.impl.ModuleManager;
+import com.github.fengye.starring.uranium.manager.impl.*;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
@@ -15,13 +12,14 @@ public class Client extends Manager {
 
     public static final String T_NAME = "Client.Name";
     public static final String RESOURCES = "Uranium";
-    public static final String VERSION = "1.0";
+    private static final String VERSION = "1.0";
 
     // Manager
     public LanguageManager languageManager;
     public EventManager eventManager;
     public ModuleManager moduleManager;
     public FileManager fileManager;
+    public FontManager fontManager;
 
     private String name;
 
@@ -36,11 +34,13 @@ public class Client extends Manager {
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
         fileManager = new FileManager();
+        fontManager = new FontManager();
 
         languageManager.init();
         eventManager.init();
         moduleManager.init();
         fileManager.init();
+        fontManager.init();
 
         eventManager.registerListener(new MinecraftInstance());
         eventManager.registerListener(new C09Utils());
@@ -50,8 +50,8 @@ public class Client extends Manager {
         initViaMCP();
     }
 
-    public String getName() {
-        return name;
+    public static String getName() {
+        return instance.name;
     }
 
     private void initViaMCP() {
@@ -62,5 +62,9 @@ public class Client extends Manager {
 
     public void stop() {
         fileManager.saveAllConfigs();
+    }
+
+    public static String getVersion() {
+        return VERSION;
     }
 }

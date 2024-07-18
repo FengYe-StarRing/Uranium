@@ -38,7 +38,7 @@ public class GuiStreamIndicator
                 Tessellator tessellator = Tessellator.getInstance();
                 WorldRenderer worldrenderer = tessellator.getWorldRenderer();
                 GlStateManager.color(0.0F, 0.0F, 0.0F, (0.65F + 0.35000002F * this.field_152443_c) / 2.0F);
-                worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+                worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION);
                 worldrenderer.func_181662_b((double)l, (double)j1, 0.0D).func_181675_d();
                 worldrenderer.func_181662_b((double)p_152437_1_, (double)j1, 0.0D).func_181675_d();
                 worldrenderer.func_181662_b((double)p_152437_1_, (double)i1, 0.0D).func_181675_d();

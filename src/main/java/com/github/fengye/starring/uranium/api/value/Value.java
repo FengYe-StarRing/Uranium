@@ -1,14 +1,12 @@
 package com.github.fengye.starring.uranium.api.value;
 
 public abstract class Value<V> {
-    public final String T_NAME;
     private String name;
     private V value;
     private boolean display;
 
     public Value(String name,V value) {
-        T_NAME = name;
-        this.name = T_NAME;
+        this.name = name;
         this.value = value;
         display = true;
     }

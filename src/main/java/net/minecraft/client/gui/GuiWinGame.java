@@ -149,7 +149,7 @@ public class GuiWinGame extends GuiScreen
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         this.mc.getTextureManager().bindTexture(Gui.optionsBackground);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
         int i = this.width;
         float f = 0.0F - ((float)this.field_146581_h + p_146575_3_) * 0.5F * this.field_146578_s;
         float f1 = (float)this.height - ((float)this.field_146581_h + p_146575_3_) * 0.5F * this.field_146578_s;
@@ -233,7 +233,7 @@ public class GuiWinGame extends GuiScreen
         GlStateManager.blendFunc(0, 769);
         int j1 = this.width;
         int k1 = this.height;
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
         worldrenderer.func_181662_b(0.0D, (double)k1, (double)this.zLevel).func_181673_a(0.0D, 1.0D).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();
         worldrenderer.func_181662_b((double)j1, (double)k1, (double)this.zLevel).func_181673_a(1.0D, 1.0D).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();
         worldrenderer.func_181662_b((double)j1, 0.0D, (double)this.zLevel).func_181673_a(1.0D, 0.0D).func_181666_a(1.0F, 1.0F, 1.0F, 1.0F).func_181675_d();

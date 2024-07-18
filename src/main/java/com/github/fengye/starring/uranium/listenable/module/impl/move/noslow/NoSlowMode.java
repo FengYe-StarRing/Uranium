@@ -19,6 +19,6 @@ public class NoSlowMode {
     }
 
     public void onMotion(MotionEvent event) {
-        System.out.println(event.getState());
+
     }
 }

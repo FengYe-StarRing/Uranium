@@ -3,7 +3,6 @@ package net.minecraft.client;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
 import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
-import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -205,7 +204,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private ServerData currentServerData;
 
     /** The RenderEngine instance used by Minecraft */
-    private TextureManager renderEngine;
+    public TextureManager renderEngine;
 
     /**
      * Set to 'this' in Minecraft constructor; used by some settings get methods
@@ -677,8 +676,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
             try
             {
-                inputstream = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icon/Icon_16x16.png"));
-                inputstream1 = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icon/Icon_32x32.png"));
+                inputstream = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icons/Icon_16x16.png"));
+                inputstream1 = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icons/Icon_32x32.png"));
 
                 if (inputstream != null && inputstream1 != null)
                 {
@@ -925,7 +924,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
         worldrenderer.func_181662_b(0.0D, (double)this.displayHeight, 0.0D).func_181673_a(0.0D, 0.0D).func_181669_b(255, 255, 255, 255).func_181675_d();
         worldrenderer.func_181662_b((double)this.displayWidth, (double)this.displayHeight, 0.0D).func_181673_a(0.0D, 0.0D).func_181669_b(255, 255, 255, 255).func_181675_d();
         worldrenderer.func_181662_b((double)this.displayWidth, 0.0D, 0.0D).func_181673_a(0.0D, 0.0D).func_181669_b(255, 255, 255, 255).func_181675_d();
@@ -949,7 +948,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         WorldRenderer worldrenderer = Tessellator.getInstance().getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
         worldrenderer.func_181662_b((double)p_181536_1_, (double)(p_181536_2_ + p_181536_6_), 0.0D).func_181673_a((double)((float)p_181536_3_ * f), (double)((float)(p_181536_4_ + p_181536_6_) * f1)).func_181669_b(p_181536_7_, p_181536_8_, p_181536_9_, p_181536_10_).func_181675_d();
         worldrenderer.func_181662_b((double)(p_181536_1_ + p_181536_5_), (double)(p_181536_2_ + p_181536_6_), 0.0D).func_181673_a((double)((float)(p_181536_3_ + p_181536_5_) * f), (double)((float)(p_181536_4_ + p_181536_6_) * f1)).func_181669_b(p_181536_7_, p_181536_8_, p_181536_9_, p_181536_10_).func_181675_d();
         worldrenderer.func_181662_b((double)(p_181536_1_ + p_181536_5_), (double)p_181536_2_, 0.0D).func_181673_a((double)((float)(p_181536_3_ + p_181536_5_) * f), (double)((float)p_181536_4_ * f1)).func_181669_b(p_181536_7_, p_181536_8_, p_181536_9_, p_181536_10_).func_181675_d();

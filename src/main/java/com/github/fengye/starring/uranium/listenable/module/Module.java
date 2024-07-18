@@ -7,6 +7,7 @@ import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Module extends MinecraftInstance implements Listenable {
@@ -15,6 +16,7 @@ public abstract class Module extends MinecraftInstance implements Listenable {
     private final String description;
     private final Category category;
     private final boolean canEnable;
+    private final List<Value<?>> addedValues = new ArrayList<>();
 
     private boolean state = false;
     private int keyBind;
@@ -30,6 +32,9 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         description = lang.getText("L.Module." + T_NAME + ".Description");
         keyBind = info.keyBind();
         canEnable = info.canEnable();
+
+        addedValues.clear();
+        updateAddedValues();
     }
 
     @Override
@@ -63,13 +68,19 @@ public abstract class Module extends MinecraftInstance implements Listenable {
 
     public void setEnabled(boolean state) {
         this.state = state;
+        if(state) {
+            onEnable();
+            this.state = canEnable;
+        } else {
+            onDisable();
+        }
     }
 
     public void setEnabled() {
         setEnabled(!state);
     }
 
-    public boolean isEnable() {
+    public boolean isEnabled() {
         return state;
     }
 
@@ -78,11 +89,31 @@ public abstract class Module extends MinecraftInstance implements Listenable {
     }
 
     public List<Value<?>> getValues() {
+        List<Value<?>> values = new ArrayList<>();
+        values.addAll(JavaUtils.getValues(this));
+        values.addAll(addedValues);
         updateValues();
-        return JavaUtils.getValues(this);
+        return values;
     }
 
     public void updateValues() {
+
+    }
+
+    public void updateAddedValues() {
+
+    }
+
+    public void addValue(Enum<?> mode,Value<?> value) {
+        value.setName(mode.name().concat("-".concat(value.getName())));
+        addedValues.add(value);
+    }
+
+    public void onEnable() {
+
+    }
+
+    public void onDisable() {
 
     }
 }

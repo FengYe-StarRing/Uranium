@@ -1077,4 +1077,24 @@ public class WorldRenderer
             return this.stateVertexFormat;
         }
     }
+
+    public WorldRenderer pos(double p_181662_1_, double p_181662_3_, double p_181662_5_) {
+        return func_181662_b(p_181662_1_,p_181662_3_,p_181662_5_);
+    }
+
+    public void begin(int p_181668_1_, VertexFormat p_181668_2_) {
+        func_181668_a(p_181668_1_,p_181668_2_);
+    }
+
+    public void endVertex() {
+        func_181675_d();
+    }
+
+    public WorldRenderer color(int red, int green, int blue, int alpha) {
+        return func_181669_b(red,green,blue,alpha);
+    }
+
+    public WorldRenderer tex(double u, double v) {
+        return func_181673_a(u,v);
+    }
 }

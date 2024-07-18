@@ -73,7 +73,7 @@ public class Gui
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         GlStateManager.color(f, f1, f2, f3);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181705_e);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION);
         worldrenderer.func_181662_b((double)left, (double)bottom, 0.0D).func_181675_d();
         worldrenderer.func_181662_b((double)right, (double)bottom, 0.0D).func_181675_d();
         worldrenderer.func_181662_b((double)right, (double)top, 0.0D).func_181675_d();
@@ -81,6 +81,10 @@ public class Gui
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
+    }
+
+    public static void drawRect(float left, float top, float right, float bottom, float color) {
+        drawRect((int) left,(int) top,(int) right,(int) bottom,(int) color);
     }
 
     /**

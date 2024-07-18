@@ -229,7 +229,7 @@ public abstract class Render<T extends Entity> implements IEntityRenderer
             double d4 = z - d1;
             Tessellator tessellator = Tessellator.getInstance();
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+            worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
 
             for (BlockPos blockpos : BlockPos.getAllInBoxMutable(new BlockPos(i, k, i1), new BlockPos(j, l, j1)))
             {

@@ -186,7 +186,7 @@ public class LoadingScreenRenderer implements IProgressUpdate
                     {
                         this.mc.getTextureManager().bindTexture(Gui.optionsBackground);
                         float f = 32.0F;
-                        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181709_i);
+                        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX_COLOR);
                         worldrenderer.func_181662_b(0.0D, (double)l, 0.0D).func_181673_a(0.0D, (double)((float)l / f)).func_181669_b(64, 64, 64, 255).func_181675_d();
                         worldrenderer.func_181662_b((double)k, (double)l, 0.0D).func_181673_a((double)((float)k / f), (double)((float)l / f)).func_181669_b(64, 64, 64, 255).func_181675_d();
                         worldrenderer.func_181662_b((double)k, 0.0D, 0.0D).func_181673_a((double)((float)k / f), 0.0D).func_181669_b(64, 64, 64, 255).func_181675_d();

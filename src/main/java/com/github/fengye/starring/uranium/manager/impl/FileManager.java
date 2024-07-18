@@ -52,7 +52,7 @@ public class FileManager extends Manager implements Listenable {
         String clientName = Client.instance.languageManager.getText(LanguageManager.LangMode.English,Client.T_NAME);
         {
             if(configDir == null) {
-                configDir = new File(mcDataDir,clientName + "-" + Client.VERSION);
+                configDir = new File(mcDataDir,clientName + "-" + Client.getVersion());
             }
             if(userDataDir == null) {
                 userDataDir = new File(mcDataDir,clientName + "-UserData");

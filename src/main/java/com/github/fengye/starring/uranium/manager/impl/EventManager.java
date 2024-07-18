@@ -47,9 +47,14 @@ public class EventManager extends Manager {
             if(eventClass != JavaUtils.getClassLoader(event) && eventClass != Event.class && eventClass != event.getaClass()) {
                 continue;
             }
+//            try {
+//                handleMethod.getMethod().invoke(l,event);
+//            } catch (IllegalAccessException | InvocationTargetException ignored) {}
             try {
                 handleMethod.getMethod().invoke(l,event);
-            } catch (IllegalAccessException | InvocationTargetException ignored) {}
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
         }
         return event;
     }

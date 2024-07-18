@@ -4,8 +4,10 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
+import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
+import com.github.fengye.starring.uranium.listenable.module.impl.render.ClickGui;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
@@ -24,6 +26,10 @@ public class ModuleManager extends Manager implements Listenable {
         super.init();
         modules.clear();
         Client.instance.eventManager.registerListener(this);
+        // Render
+        registerModules(new Module[]{
+                new ClickGui()
+        });
         // Movement
         registerModules(new Module[]{
                 new Sprint(),
@@ -68,5 +74,15 @@ public class ModuleManager extends Manager implements Listenable {
                 module.setEnabled();
             }
         }
+    }
+
+    public List<Module> getModulesInType(Category category) {
+        List<Module> modules = new ArrayList<>();
+        for (Module module : this.modules) {
+            if(category.equals(module.getCategory())) {
+                modules.add(module);
+            }
+        }
+        return modules;
     }
 }
