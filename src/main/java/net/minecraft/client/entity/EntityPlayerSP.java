@@ -1,6 +1,7 @@
 package net.minecraft.client.entity;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.impl.ChatEvent;
 import com.github.fengye.starring.uranium.api.event.impl.SlowDownEvent;
 import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
 import com.github.fengye.starring.uranium.api.event.impl.motion.EventState;
@@ -304,6 +305,11 @@ public class EntityPlayerSP extends AbstractClientPlayer
      */
     public void sendChatMessage(String message)
     {
+        ChatEvent chatEvent = new ChatEvent(message, ChatEvent.ChatMode.Self);
+        Client.instance.eventManager.callEvent(chatEvent);
+        if(chatEvent.isCancelled()) {
+            return;
+        }
         this.sendQueue.addToSendQueue(new C01PacketChatMessage(message));
     }
 

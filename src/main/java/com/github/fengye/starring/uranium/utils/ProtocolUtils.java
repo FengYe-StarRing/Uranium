@@ -47,7 +47,7 @@ public class ProtocolUtils implements Listenable {
         return Versions.valueOf(Protocol.modeValue.getAsString());
     }
 
-    @EventHandle(priority = Priority.HIGHEST)
+    @EventHandle(priority = Priority.MINIMUM)
     private void onPacketSend(PacketSendEvent event) {
         Packet<?> packet = event.getPacket();
         if(packet == null || event.isCancelled()) {

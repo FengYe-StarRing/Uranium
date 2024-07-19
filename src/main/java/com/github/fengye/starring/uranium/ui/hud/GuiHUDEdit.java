@@ -12,7 +12,7 @@ import java.awt.*;
 import java.util.List;
 
 public class GuiHUDEdit extends GuiScreen {
-    private float lastX = Float.MAX_VALUE, lastY = Float.MAX_VALUE, moveX = 0, moveY = 0;
+    private float lastX = getDefault(), lastY = getDefault(), moveX = 0, moveY = 0;
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -70,5 +70,9 @@ public class GuiHUDEdit extends GuiScreen {
                 moveY = 0;
             }
         }
+    }
+
+    private float getDefault() {
+        return Float.MAX_VALUE;
     }
 }

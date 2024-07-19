@@ -23,6 +23,7 @@ public class Client extends Manager {
     public FileManager fileManager;
     public FontManager fontManager;
     public HUDManager hudManager;
+    public CommandManager commandManager;
 
     private String name;
     private boolean stop = false;
@@ -39,6 +40,7 @@ public class Client extends Manager {
         hudManager = new HUDManager();
         fileManager = new FileManager();
         fontManager = new FontManager();
+        commandManager = new CommandManager();
 
         languageManager.init();
         eventManager.init();
@@ -46,6 +48,7 @@ public class Client extends Manager {
         hudManager.init();
         fileManager.init();
         fontManager.init();
+        commandManager.init();
 
         eventManager.registerListener(new MinecraftInstance());
         eventManager.registerListener(new C09Utils());

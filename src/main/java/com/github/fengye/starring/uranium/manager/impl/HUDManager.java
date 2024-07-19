@@ -24,10 +24,7 @@ public class HUDManager extends Manager {
                 Logo.class,
                 Arraylist.class
         });
-        addElements(new Element[]{
-                new Logo(),
-                new Arraylist()
-        });
+        reset();
     }
 
     private void registerElement(Class<? extends Element> cls) {
@@ -58,7 +55,7 @@ public class HUDManager extends Manager {
         elements.add(element);
     }
 
-    private String getElementNameByClass(Class<? extends Element> cls) {
+    public String getElementNameByClass(Class<? extends Element> cls) {
         String[] strArray = cls.getName().split("\\.");
         return strArray[strArray.length - 1];
     }
@@ -92,5 +89,17 @@ public class HUDManager extends Manager {
             }
         }
         return null;
+    }
+
+    public List<Class<? extends Element>> getElementClasses() {
+        return elementClasses;
+    }
+
+    public void reset() {
+        elements.clear();
+        addElements(new Element[]{
+                new Logo(),
+                new Arraylist()
+        });
     }
 }
