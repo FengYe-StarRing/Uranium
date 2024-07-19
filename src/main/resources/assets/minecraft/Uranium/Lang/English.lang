@@ -23,3 +23,4 @@ L.Module.HUDEditGui=HUDEditGui
 L.Module.HUDEditGui.Description=Edit hud elements.
 
 HUD.Element.Logo=Logo
+HUD.Element.Arraylist=Arraylist

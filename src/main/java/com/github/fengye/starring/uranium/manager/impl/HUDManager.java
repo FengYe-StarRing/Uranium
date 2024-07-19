@@ -1,6 +1,7 @@
 package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.manager.Manager;
+import com.github.fengye.starring.uranium.ui.hud.element.Border;
 import com.github.fengye.starring.uranium.ui.hud.element.Element;
 import com.github.fengye.starring.uranium.ui.hud.element.impl.*;
 import org.lwjgl.opengl.GL11;
@@ -43,7 +44,12 @@ public class HUDManager extends Manager {
         for (Element element : elements) {
             GL11.glPushMatrix();
             GL11.glTranslated(element.getX(), element.getY(), 0.0);
-            element.render();
+            Border border = element.render();
+            if(border != null) {
+                border.setX(element.getX() + border.getX());
+                border.setY(element.getY() + border.getY());
+            }
+            element.setBorder(border);
             GL11.glPopMatrix();
         }
     }

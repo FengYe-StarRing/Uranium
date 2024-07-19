@@ -11,6 +11,7 @@ public abstract class Element {
     private final String name;
     private float x,y;
     private final Side side;
+    private Border border;
 
     public Element(String name,float x,float y,Side side) {
         T_NAME = name;
@@ -20,8 +21,8 @@ public abstract class Element {
         this.side = side;
     }
 
-    public void render() {
-
+    public Border render() {
+        return null;
     }
 
     public float getX() {
@@ -50,5 +51,13 @@ public abstract class Element {
 
     public void setY(float y) {
         this.y = y;
+    }
+
+    public Border getBorder() {
+        return border;
+    }
+
+    public void setBorder(Border border) {
+        this.border = border;
     }
 }

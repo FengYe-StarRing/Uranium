@@ -268,7 +268,6 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                 }
             }
         }
-
     }
 
     public boolean isStringHovered(float f, float y, float g, float y2, int mouseX, int mouseY) {

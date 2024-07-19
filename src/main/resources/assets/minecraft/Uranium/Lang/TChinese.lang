@@ -23,3 +23,4 @@ L.Module.HUDEditGui=顯示器編輯介面
 L.Module.HUDEditGui.Description=編輯顯示器的元素。
 
 HUD.Element.Logo=浮水印
+HUD.Element.Arraylist=功能清單

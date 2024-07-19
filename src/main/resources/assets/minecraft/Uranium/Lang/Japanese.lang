@@ -23,3 +23,4 @@ L.Module.HUDEditGui=HUD編集インタフェース
 L.Module.HUDEditGui.Description=HUD要素を編集します。
 
 HUD.Element.Logo=フラグ
+HUD.Element.Arraylist=機能リスト
