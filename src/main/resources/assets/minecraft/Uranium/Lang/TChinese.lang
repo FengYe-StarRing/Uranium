@@ -12,10 +12,14 @@ Module.Category.Misc=雜項
 L.Module.Sprint=衝刺
 L.Module.Sprint.Description=始終自動衝刺。
 L.Module.NoSlow=無减速
-L.Module.Sprint.Description=取消玩家的减速效果。
+L.Module.NoSlow.Description=取消玩家的减速效果。
 L.Module.ClickGui=點擊介面
 L.Module.ClickGui.Description=打開點擊介面。
 L.Module.Protocol=协议
 L.Module.Protocol.Description=将协议修复为 xxx版。
 L.Module.HUD=顯示器
 L.Module.HUD.Description=切換顯示器的可見性。
+L.Module.HUDEditGui=顯示器編輯介面
+L.Module.HUDEditGui.Description=編輯顯示器的元素。
+
+HUD.Element.Logo=浮水印

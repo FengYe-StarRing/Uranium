@@ -12,10 +12,14 @@ Module.Category.Misc=その他
 L.Module.Sprint=ダッシュ
 L.Module.Sprint.Description=常に自動ダッシュ。
 L.Module.NoSlow=無減速
-L.Module.Sprint.Description=プレイヤーの減速効果をキャンセルします。
+L.Module.NoSlow.Description=プレイヤーの減速効果をキャンセルします。
 L.Module.ClickGui=インタフェースをクリック
 L.Module.ClickGui.Description=クリックインタフェースを開きます。
 L.Module.Protocol=プロトコル
 L.Module.Protocol.Description=プロトコルをxxxバージョンに修正する。
 L.Module.HUD=HUD
 L.Module.HUD.Description=HUDの可視性を切り替えます。
+L.Module.HUDEditGui=HUD編集インタフェース
+L.Module.HUDEditGui.Description=HUD要素を編集します。
+
+HUD.Element.Logo=フラグ

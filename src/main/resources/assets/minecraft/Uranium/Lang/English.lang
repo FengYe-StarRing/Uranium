@@ -12,10 +12,14 @@ Module.Category.Misc=Misc
 L.Module.Sprint=Sprint
 L.Module.Sprint.Description=Automatically sprints all the time.
 L.Module.NoSlow=NoSlow
-L.Module.Sprint.Description=Cancel the player's deceleration effect.
+L.Module.NoSlow.Description=Cancel the player's deceleration effect.
 L.Module.ClickGui=ClickGui
 L.Module.ClickGui.Description=Open the ClickGui.
 L.Module.Protocol=Protocol
 L.Module.Protocol.Description=fix protocol to xxx version.
 L.Module.HUD=HUD
 L.Module.HUD.Description=Toggle visibility of the HUD.
+L.Module.HUDEditGui=HUDEditGui
+L.Module.HUDEditGui.Description=Edit hud elements.
+
+HUD.Element.Logo=Logo

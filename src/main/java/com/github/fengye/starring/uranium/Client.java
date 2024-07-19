@@ -22,7 +22,7 @@ public class Client extends Manager {
     public ModuleManager moduleManager;
     public FileManager fileManager;
     public FontManager fontManager;
-    public HudManager hudManager;
+    public HUDManager hudManager;
 
     private String name;
     private boolean stop = false;
@@ -38,7 +38,7 @@ public class Client extends Manager {
         moduleManager = new ModuleManager();
         fileManager = new FileManager();
         fontManager = new FontManager();
-        hudManager = new HudManager();
+        hudManager = new HUDManager();
 
         languageManager.init();
         eventManager.init();
@@ -78,5 +78,11 @@ public class Client extends Manager {
 
     public boolean isStop() {
         return stop;
+    }
+
+    public static void reload() {
+        instance.stop();
+        instance = new Client();
+        instance.init();
     }
 }

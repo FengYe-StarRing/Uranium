@@ -4,19 +4,24 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.ui.font.FastUniFontRenderer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
 import java.io.InputStream;
 
 public class FontManager extends Manager {
+    public static FontRenderer mcFont;
+    public static FastUniFontRenderer harmony17;
     public static FastUniFontRenderer harmony18;
     public static FastUniFontRenderer harmony24;
 
     public FontManager() {
         super("FontManager");
+        mcFont = Minecraft.getMinecraft().fontRendererObj;
         // Harmony
         String harmony = "HarmonyOS_Sans_SC.ttf";
+        harmony17 = getFastUniFont(17,harmony);
         harmony18 = getFastUniFont(18,harmony);
         harmony24 = getFastUniFont(24,harmony);
     }
