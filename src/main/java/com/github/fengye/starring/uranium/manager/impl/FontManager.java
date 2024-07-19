@@ -15,6 +15,7 @@ public class FontManager extends Manager {
     public static FastUniFontRenderer harmony17;
     public static FastUniFontRenderer harmony18;
     public static FastUniFontRenderer harmony24;
+    public static FastUniFontRenderer harmony36;
 
     public FontManager() {
         super("FontManager");
@@ -24,6 +25,7 @@ public class FontManager extends Manager {
         harmony17 = getFastUniFont(17,harmony);
         harmony18 = getFastUniFont(18,harmony);
         harmony24 = getFastUniFont(24,harmony);
+        harmony36 = getFastUniFont(36,harmony);
     }
 
     @Override

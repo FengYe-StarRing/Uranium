@@ -179,7 +179,6 @@ public class GlyphCache {
      * @param size the new point size
      */
     void setDefaultFont(String name, int size, boolean antiAlias) {
-//        System.out.println("BetterFonts loading font \"" + name + "\"");
         usedFonts.clear();
         usedFonts.add(FontManager.getFonts(size, "HarmonyOS_Sans_SC.ttf")); //size 1 > 72
 
@@ -189,7 +188,6 @@ public class GlyphCache {
     }
 
     void setDefaultFont(Font font, int size, boolean antiAlias) {
-//        System.out.println("BetterFonts loading font \"" + name + "\"");
         usedFonts.clear();
         usedFonts.add(font); //size 1 > 72
 
@@ -245,7 +243,6 @@ public class GlyphCache {
             Font font = iterator.next();
             if (font.canDisplayUpTo(text, start, limit) != start) {
                 /* If found, add this font to the usedFonts list so it can be looked up faster next time */
-//                System.out.println("BetterFonts loading font \"" + font.getFontName() + "\"");
                 usedFonts.add(font);
 
                 /* Return a font instance of the proper point size and style; allFonts has only 1pt sized plain style fonts */

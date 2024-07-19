@@ -12,6 +12,10 @@ import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;
 public class HUD extends Module {
     private final OptionValue elementValue = new OptionValue("Element",true);
 
+    public HUD() {
+        setEnabled(true);
+    }
+
     @EventHandle
     private void onRender2D(Render2DEvent event) {
         if(elementValue.get()) {

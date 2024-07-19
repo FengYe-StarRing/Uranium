@@ -7,6 +7,7 @@ import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
 import com.github.fengye.starring.uranium.listenable.module.Module;
+import com.github.fengye.starring.uranium.manager.impl.ModuleManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ public class ValuesConfig extends Config {
 
     @Override
     public void loadConfig() throws IOException {
+        ModuleManager moduleManager = Client.instance.moduleManager;
         for (String line : Files.readAllLines(getFile().toPath())) {
             String[] data = line.split("\\|");
             if(data.length != 3) {
@@ -29,7 +31,7 @@ public class ValuesConfig extends Config {
             String moduleName = data[0];
             String valueName = data[1];
             String valueData = data[2];
-            for (Module module : Client.instance.moduleManager.getModules()) {
+            for (Module module : moduleManager.getModules()) {
                 if(module.T_NAME.equals(moduleName)) {
                     switch (valueName) {
                         case "Enabled":

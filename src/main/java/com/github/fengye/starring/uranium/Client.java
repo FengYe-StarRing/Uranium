@@ -36,9 +36,9 @@ public class Client extends Manager {
         languageManager = new LanguageManager();
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
+        hudManager = new HUDManager();
         fileManager = new FileManager();
         fontManager = new FontManager();
-        hudManager = new HUDManager();
 
         languageManager.init();
         eventManager.init();

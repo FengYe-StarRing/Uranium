@@ -2,7 +2,8 @@ package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.ui.hud.element.Element;
-import com.github.fengye.starring.uranium.ui.hud.element.impl.Logo;
+import com.github.fengye.starring.uranium.ui.hud.element.impl.*;
+import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,13 @@ public class HUDManager extends Manager {
     public void init() {
         super.init();
         registerElements(new Class[]{
-                Logo.class
+                Logo.class,
+                Arraylist.class
         });
-        addElement(Logo.class);
+        addElements(new Element[]{
+                new Logo(),
+                new Arraylist()
+        });
     }
 
     private void registerElement(Class<? extends Element> cls) {
@@ -35,40 +40,51 @@ public class HUDManager extends Manager {
     }
 
     public void render() {
-//        for (Element element : elements) {
-//            GL11.glPushMatrix();
-//            GL11.glTranslated(element.getXY()[0], element.getXY()[1], 0.0);
-//            element.render();
-//            GL11.glPopMatrix();
-//        }
-    }
-
-    public void addElement(String name) {
-        for (Class<? extends Element> elementClass : elementClasses) {
-            if(getElementClassName(elementClass).equals(name)) {
-                try {
-                    elements.add(elementClass.newInstance());
-                } catch (InstantiationException | IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+        for (Element element : elements) {
+            GL11.glPushMatrix();
+            GL11.glTranslated(element.getX(), element.getY(), 0.0);
+            element.render();
+            GL11.glPopMatrix();
         }
     }
 
-    public void addElement(Class<? extends Element> cls) {
-        try {
-            elements.add(cls.newInstance());
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+    public void addElement(Element element) {
+        elements.add(element);
     }
 
-    private String getElementClassName(Class<? extends Element> cls) {
+    private String getElementNameByClass(Class<? extends Element> cls) {
         String[] strArray = cls.getName().split("\\.");
         return strArray[strArray.length - 1];
     }
 
     public List<Element> getElements() {
         return elements;
+    }
+
+    public void addElements(Element[] elements) {
+        for (Element element : elements) {
+            addElement(element);
+        }
+    }
+
+    public Element newElement(String name) {
+        try {
+            Class<? extends Element> cls = getElementClassByName(name);
+            if(cls == null) {
+                return null;
+            }
+            return cls.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            return null;
+        }
+    }
+
+    private Class<? extends Element> getElementClassByName(String name) {
+        for (Class<? extends Element> elementClass : elementClasses) {
+            if(getElementNameByClass(elementClass).equals(name)) {
+                return elementClass;
+            }
+        }
+        return null;
     }
 }
