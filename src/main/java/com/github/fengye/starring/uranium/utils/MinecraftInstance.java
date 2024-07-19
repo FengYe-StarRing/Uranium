@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.network.Packet;
+import net.minecraft.util.ChatComponentText;
 
 import java.io.File;
 
@@ -36,5 +37,12 @@ public class MinecraftInstance implements Listenable {
         thePlayer = mc.thePlayer;
         theWorld = mc.theWorld;
         mcDataDir = mc.mcDataDir;
+    }
+
+    public static void sendMessage(String message) {
+        if(thePlayer == null) {
+            return;
+        }
+        thePlayer.addChatMessage(new ChatComponentText(message));
     }
 }

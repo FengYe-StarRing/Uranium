@@ -1,5 +1,6 @@
 package com.github.fengye.starring.uranium.manager.impl;
 
+import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.command.Command;
 import com.github.fengye.starring.uranium.api.command.impl.Toggle;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
@@ -7,19 +8,27 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
 import com.github.fengye.starring.uranium.api.event.impl.ChatEvent;
 import com.github.fengye.starring.uranium.manager.Manager;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommandManager extends Manager implements Listenable {
     private final List<Command> commands = new ArrayList<>();
-    private final String prefix = ".";
 
     public CommandManager() {
         super("CommandManager");
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        commands.clear();
         registerCommands(new Command[]{
                 new Toggle()
         });
+        Client.instance.eventManager.registerListener(this);
     }
 
     @Override
@@ -33,6 +42,21 @@ public class CommandManager extends Manager implements Listenable {
             return;
         }
         String message = event.getMessage();
+        if(message.charAt(0) == '.') {
+            String[] buffer = message.substring(1).split(" ");
+            List<String> args = new ArrayList<>(Arrays.asList(buffer));
+            args.remove(0);
+            for (Command command : commands) {
+                for (String alias : command.getAlias()) {
+                    if(alias.equals(buffer[0])) {
+                        if(command.execute(args.toArray(new String[0]))) {
+                            MinecraftInstance.sendMessage(command.getSyntax());
+                        }
+                    }
+                }
+            }
+            event.cancelEvent();
+        }
     }
 
     private void registerCommand(Command command) {

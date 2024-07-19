@@ -25,7 +25,7 @@ public abstract class Command {
         return help;
     }
 
-    public void execute(String[] args) {
-
+    public boolean execute(String[] args) {
+        return false;
     }
 }
