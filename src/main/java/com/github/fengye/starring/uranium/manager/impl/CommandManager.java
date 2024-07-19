@@ -48,7 +48,7 @@ public class CommandManager extends Manager implements Listenable {
             args.remove(0);
             for (Command command : commands) {
                 for (String alias : command.getAlias()) {
-                    if(alias.equals(buffer[0])) {
+                    if(alias.equalsIgnoreCase(buffer[0])) {
                         if(command.execute(args.toArray(new String[0]))) {
                             MinecraftInstance.sendMessage(command.getSyntax());
                         }

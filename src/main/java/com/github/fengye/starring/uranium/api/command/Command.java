@@ -1,8 +1,9 @@
 package com.github.fengye.starring.uranium.api.command;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 
-public abstract class Command {
+public abstract class Command extends MinecraftInstance {
     private final String[] alias;
     private final String syntax;
     private final String help;

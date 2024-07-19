@@ -19,6 +19,11 @@ public class Toggle extends Command {
         for (Module module : Client.instance.moduleManager.getModules()) {
             if(arg.equals(module.T_NAME) || arg.equals(module.getName())) {
                 module.setEnabled();
+                if(module.isEnabled()) {
+                    sendMessage(arg + " was enabled");
+                } else {
+                    sendMessage(arg + " was disabled");
+                }
                 error = false;
             }
         }
