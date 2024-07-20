@@ -24,3 +24,6 @@ L.Module.HUDEditGui.Description=编辑显示器的元素。
 
 HUD.Element.Logo=水印
 HUD.Element.Arraylist=功能列表
+
+Command.Help.Toggle=切换指定模块的开关。
+Command.Help.Say=发送聊天信息。

@@ -24,3 +24,6 @@ L.Module.HUDEditGui.Description=Edit hud elements.
 
 HUD.Element.Logo=Logo
 HUD.Element.Arraylist=Arraylist
+
+Command.Help.Toggle=Switch the switch of the specified module.
+Command.Help.Say=Send chat messages.

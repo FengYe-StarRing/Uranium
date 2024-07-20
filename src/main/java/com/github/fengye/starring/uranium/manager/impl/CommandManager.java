@@ -2,11 +2,14 @@ package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.command.Command;
+import com.github.fengye.starring.uranium.api.command.impl.ModuleCommand;
+import com.github.fengye.starring.uranium.api.command.impl.Say;
 import com.github.fengye.starring.uranium.api.command.impl.Toggle;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
 import com.github.fengye.starring.uranium.api.event.impl.ChatEvent;
+import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 
@@ -26,8 +29,18 @@ public class CommandManager extends Manager implements Listenable {
         super.init();
         commands.clear();
         registerCommands(new Command[]{
-                new Toggle()
+                new Toggle(),
+                new Say()
         });
+        for (Module module : Client.instance.moduleManager.getModules()) {
+            String[] alias;
+            if(module.getName().equals(module.T_NAME)) {
+                alias = new String[]{module.T_NAME};
+            } else {
+                alias = new String[]{module.T_NAME,module.getName()};
+            }
+            registerCommand(new ModuleCommand(alias,module));
+        }
         Client.instance.eventManager.registerListener(this);
     }
 
@@ -50,7 +63,7 @@ public class CommandManager extends Manager implements Listenable {
                 for (String alias : command.getAlias()) {
                     if(alias.equalsIgnoreCase(buffer[0])) {
                         if(command.execute(args.toArray(new String[0]))) {
-                            MinecraftInstance.sendMessage(command.getSyntax());
+                            MinecraftInstance.sendMessage('.' + command.getSyntax());
                         }
                     }
                 }

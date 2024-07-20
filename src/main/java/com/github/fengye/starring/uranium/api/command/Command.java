@@ -11,7 +11,11 @@ public abstract class Command extends MinecraftInstance {
     public Command(String name,String[] alias,String syntax) {
         this.alias = alias;
         this.syntax = syntax;
-        help = Client.instance.languageManager.getText(name);
+        if(name != null) {
+            help = Client.instance.languageManager.getText("Command.Help." + name);
+        } else {
+            help = null;
+        }
     }
 
     public String[] getAlias() {

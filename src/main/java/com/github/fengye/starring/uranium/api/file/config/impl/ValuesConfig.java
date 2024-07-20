@@ -47,7 +47,7 @@ public class ValuesConfig extends Config {
                                         value.set(Double.valueOf(valueData));
                                     }
                                     if(value instanceof ModeValue) {
-                                        value.set(valueData);
+                                        ((ModeValue)value).set(valueData);
                                     }
                                     if(value instanceof OptionValue) {
                                         value.set(Boolean.valueOf(valueData));
