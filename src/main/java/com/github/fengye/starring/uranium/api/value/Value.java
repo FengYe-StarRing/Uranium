@@ -34,4 +34,6 @@ public abstract class Value<V> {
     public void setDisplay(boolean display) {
         this.display = display;
     }
+
+    public abstract void setAuto(String value); // 自动适配
 }

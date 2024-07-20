@@ -63,20 +63,12 @@ public class ModuleCommand extends Command {
             return false;
         } else if(length == 2) {
             String newValue = args[1];
-            Value value = getValue(name);
+            Value<?> value = getValue(name);
             if(value == null) {
                 sendMessage("未找到名为'" + name + "'的参数");
                 return false;
             }
-            if(value instanceof Numbers) {
-                value.set(Double.valueOf(newValue));
-            }
-            if(value instanceof ModeValue) {
-                ((ModeValue)value).set(newValue);
-            }
-            if(value instanceof OptionValue) {
-                value.set(Boolean.valueOf(newValue));
-            }
+            value.setAuto(newValue);
             sendMessage("已将'" + name + "'的值设置为 " + value.get());
             return false;
         }

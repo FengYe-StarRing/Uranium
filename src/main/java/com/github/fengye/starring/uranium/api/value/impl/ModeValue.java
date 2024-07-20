@@ -43,4 +43,9 @@ public class ModeValue extends Value<Enum<?>> {
         }
         set(MODES[index]);
     }
+
+    @Override
+    public void setAuto(String value) {
+        set(value);
+    }
 }

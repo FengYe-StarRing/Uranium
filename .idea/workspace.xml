@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/ModuleCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/Say.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/Help.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/ModuleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/ModuleCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/impl/ElementsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/impl/ElementsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/impl/ValuesConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/config/impl/ValuesConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/Numbers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/Numbers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/ModeValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/ModeValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/OptionValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/value/impl/OptionValue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721446989473</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="...">
+      <option name="closed" value="true" />
+      <created>1721460614784</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1721460614784</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -4,11 +4,13 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 
 public abstract class Command extends MinecraftInstance {
+    private final String name;
     private final String[] alias;
     private final String syntax;
     private final String help;
 
     public Command(String name,String[] alias,String syntax) {
+        this.name = name;
         this.alias = alias;
         this.syntax = syntax;
         if(name != null) {
@@ -32,5 +34,9 @@ public abstract class Command extends MinecraftInstance {
 
     public boolean execute(String[] args) {
         return false;
+    }
+
+    public String getName() {
+        return name;
     }
 }

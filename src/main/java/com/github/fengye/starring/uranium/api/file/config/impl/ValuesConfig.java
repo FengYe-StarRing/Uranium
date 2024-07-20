@@ -2,10 +2,7 @@ package com.github.fengye.starring.uranium.api.file.config.impl;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.file.config.Config;
-import com.github.fengye.starring.uranium.api.value.Numbers;
 import com.github.fengye.starring.uranium.api.value.Value;
-import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
-import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.manager.impl.ModuleManager;
 
@@ -41,17 +38,9 @@ public class ValuesConfig extends Config {
                             module.setKeyBind(Integer.parseInt(valueData));
                             break;
                         default:
-                            for (Value value : module.getValues()) {
+                            for (Value<?> value : module.getValues()) {
                                 if(value.getName().equals(valueName)) {
-                                    if(value instanceof Numbers) {
-                                        value.set(Double.valueOf(valueData));
-                                    }
-                                    if(value instanceof ModeValue) {
-                                        ((ModeValue)value).set(valueData);
-                                    }
-                                    if(value instanceof OptionValue) {
-                                        value.set(Boolean.valueOf(valueData));
-                                    }
+                                    value.setAuto(valueData);
                                 }
                             }
                             break;

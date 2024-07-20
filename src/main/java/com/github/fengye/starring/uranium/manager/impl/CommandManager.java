@@ -2,6 +2,7 @@ package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.command.Command;
+import com.github.fengye.starring.uranium.api.command.impl.Help;
 import com.github.fengye.starring.uranium.api.command.impl.ModuleCommand;
 import com.github.fengye.starring.uranium.api.command.impl.Say;
 import com.github.fengye.starring.uranium.api.command.impl.Toggle;
@@ -30,7 +31,8 @@ public class CommandManager extends Manager implements Listenable {
         commands.clear();
         registerCommands(new Command[]{
                 new Toggle(),
-                new Say()
+                new Say(),
+                new Help()
         });
         for (Module module : Client.instance.moduleManager.getModules()) {
             String[] alias;
@@ -63,7 +65,10 @@ public class CommandManager extends Manager implements Listenable {
                 for (String alias : command.getAlias()) {
                     if(alias.equalsIgnoreCase(buffer[0])) {
                         if(command.execute(args.toArray(new String[0]))) {
-                            MinecraftInstance.sendMessage('.' + command.getSyntax());
+                            String syntax = command.getSyntax();
+                            if(syntax != null) {
+                                MinecraftInstance.sendMessage('.' + syntax);
+                            }
                         }
                     }
                 }
@@ -80,5 +85,9 @@ public class CommandManager extends Manager implements Listenable {
         for (Command command : commands) {
             registerCommand(command);
         }
+    }
+
+    public List<Command> getCommands() {
+        return commands;
     }
 }

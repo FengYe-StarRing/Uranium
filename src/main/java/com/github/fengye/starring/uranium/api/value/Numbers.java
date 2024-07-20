@@ -23,4 +23,9 @@ public abstract class Numbers<T extends Number> extends Value<T>{
     public T getInc() {
         return inc;
     }
+
+    @Override
+    public void setAuto(String value) {
+        set((T)Double.valueOf(value));
+    }
 }

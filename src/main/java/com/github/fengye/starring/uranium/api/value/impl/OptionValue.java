@@ -6,4 +6,9 @@ public class OptionValue extends Value<Boolean> {
     public OptionValue(String name, Boolean value) {
         super(name, value);
     }
+
+    @Override
+    public void setAuto(String value) {
+        set(Boolean.valueOf(value));
+    }
 }
