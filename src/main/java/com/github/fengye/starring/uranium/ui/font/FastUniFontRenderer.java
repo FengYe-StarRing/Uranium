@@ -19,6 +19,7 @@ import org.apache.commons.io.IOUtils;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -114,8 +115,10 @@ public class FastUniFontRenderer implements IResourceManagerReloadListener, IBFF
     private boolean strikethroughStyle;
     private boolean blend = false;
     private StringCache stringCache;
+    private Font font;
 
     public FastUniFontRenderer(Font font, int size, boolean antiAlias) {
+        this.font = font;
         ResourceLocation res = new ResourceLocation("textures/font/ascii.png");
         this.gameSettings = Minecraft.getMinecraft().gameSettings;
         locationFontTextureBase = res;
@@ -593,10 +596,12 @@ public class FastUniFontRenderer implements IResourceManagerReloadListener, IBFF
      * Draws the specified string.
      */
     public int drawString(String text, float x, int y, int color) {
+        y += getHeight(text);
         return this.drawString(text, x, (float) y, color, false);
     }
 
     public int drawString(String text, float x, float y, int color) {
+        y += getHeight(text);
         this.drawString(text, x, y, color, false);
         return getStringWidth(text);
     }
@@ -605,7 +610,7 @@ public class FastUniFontRenderer implements IResourceManagerReloadListener, IBFF
      * Draws the specified string.
      */
     public int drawString(String text, float x, float y, int color, boolean dropShadow) {
-        y -= 2f;
+        y -= getHeight(text) / 2F;
         this.enableAlpha();
         this.resetStyles();
         int i;
@@ -1179,5 +1184,36 @@ public class FastUniFontRenderer implements IResourceManagerReloadListener, IBFF
 
     public void drawCenteredStringWithShadow(String s, float x, float y, int textColor) {
         drawString(s, x - getStringWidth(s) / 2f, y, textColor, true);
+    }
+
+    public int getHeight(char ch) {
+        int imgSize = 512;
+        BufferedImage bufferedImage = new BufferedImage(imgSize, imgSize, 2);
+        Graphics2D g = (Graphics2D) bufferedImage.getGraphics();
+        g.setFont(font);
+        g.setColor(new Color(255, 255, 255, 0));
+        g.fillRect(0, 0, imgSize, imgSize);
+        g.setColor(Color.WHITE);
+        g.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, true ? RenderingHints.VALUE_FRACTIONALMETRICS_ON : RenderingHints.VALUE_FRACTIONALMETRICS_OFF);
+        g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, true ? RenderingHints.VALUE_TEXT_ANTIALIAS_ON : RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, true ? RenderingHints.VALUE_ANTIALIAS_ON : RenderingHints.VALUE_ANTIALIAS_OFF);
+        FontMetrics fontMetrics = g.getFontMetrics();
+        Rectangle2D dimensions = fontMetrics.getStringBounds(String.valueOf(ch), g);
+        if(Character.isLowerCase(ch)) {
+            return ((dimensions.getBounds().height - 8) / 2) / 2;
+        } else {
+            return (dimensions.getBounds().height - 16) / 2;
+        }
+    }
+
+    public int getHeight(String s) {
+        int height = 0;
+        for (char c : s.toCharArray()) {
+            int chHeight = getHeight(c);
+            if(chHeight > height) {
+                height = chHeight;
+            }
+        }
+        return height;
     }
 }

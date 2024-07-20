@@ -9,4 +9,9 @@ import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 @ModuleInfo(name = "Protocol",category = Category.Misc)
 public class Protocol extends Module {
     public static final ModeValue modeValue = new ModeValue("Mode",ProtocolUtils.Versions.values(), ProtocolUtils.Versions.v1_8);
+
+    @Override
+    public String getTag() {
+        return ProtocolUtils.Versions.valueOf(modeValue.getAsString()).getName();
+    }
 }

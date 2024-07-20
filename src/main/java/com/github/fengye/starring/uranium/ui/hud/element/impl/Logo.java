@@ -16,8 +16,8 @@ public class Logo extends Element {
 
     @Override
     public Border render() {
-        FastUniFontRenderer font = FontManager.harmony36;
+        FastUniFontRenderer font = FontManager.harmony48;
         font.drawString(Client.getName(),0,0, Color.cyan.getRGB());
-        return new Border(0,0,100,100);
+        return new Border(0,0,font.getStringWidth(Client.getName()),font.getHeight(Client.getName()));
     }
 }
