@@ -1,8 +1,11 @@
 package com.github.fengye.starring.uranium.ui.font;
 
+import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.manager.impl.FontManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -10,6 +13,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
@@ -180,7 +184,7 @@ public class GlyphCache {
      */
     void setDefaultFont(String name, int size, boolean antiAlias) {
         usedFonts.clear();
-        usedFonts.add(FontManager.getFonts(size, "HarmonyOS_Sans_SC.ttf")); //size 1 > 72
+        usedFonts.add(getFonts(size, "HarmonyOS_Sans_SC.ttf")); //size 1 > 72
 
         fontSize = size;
         antiAliasEnabled = antiAlias;
@@ -546,6 +550,18 @@ public class GlyphCache {
         imageBuffer.clear();
         imageBuffer.put(imageData);
         imageBuffer.flip();
+    }
+
+    public static Font getFonts(int size, String name) {
+        Font font;
+        try {
+            InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation(Client.RESOURCES + "/Fonts/" + name)).getInputStream();
+            font = Font.createFont(0, is);
+            font = font.deriveFont(Font.PLAIN, size);
+        } catch (Exception ex) {
+            font = new Font("default", Font.PLAIN, size);
+        }
+        return font;
     }
 
     /**

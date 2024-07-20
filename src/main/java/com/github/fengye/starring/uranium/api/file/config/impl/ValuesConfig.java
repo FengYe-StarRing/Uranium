@@ -60,7 +60,7 @@ public class ValuesConfig extends Config {
             data = data.concat(prefix + "Enabled|" + module.isEnabled()) + postfix;
             data = data.concat(prefix + "KeyBind|" + module.getKeyBind()) + postfix;
             for (Value<?> value : module.getValues()) {
-                data = data.concat(prefix + value.getName() + "|" + value.get() + postfix);
+                data = data.concat(prefix + value.getName() + "|" + value.getAsString() + postfix);
             }
         }
         Files.write(getFile().toPath(),data.getBytes());

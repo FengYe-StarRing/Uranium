@@ -4,14 +4,15 @@
 package com.github.fengye.starring.uranium.ui.clickgui.csgo;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.value.ArrayValue;
 import com.github.fengye.starring.uranium.api.value.Numbers;
 import com.github.fengye.starring.uranium.api.value.Value;
-import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
+import com.github.fengye.starring.uranium.api.value.impl.TextValue;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.manager.impl.FontManager;
-import com.github.fengye.starring.uranium.ui.font.FastUniFontRenderer;
+import com.github.fengye.starring.uranium.ui.font.FontRender;
 import com.github.fengye.starring.uranium.utils.render.R2DUtils;
 import com.github.fengye.starring.uranium.utils.render.RenderUtils;
 import net.minecraft.client.gui.FontRenderer;
@@ -40,7 +41,7 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        FastUniFontRenderer font = FontManager.harmony17;
+        FontRender font = FontManager.harmony17;
         FontRenderer mcFont = FontManager.mcFont;
         if (isHovered(startX, startY - 25, startX + 400, startY + 25, mouseX, mouseY) && Mouse.isButtonDown(0)) {
             if (moveX == 0 && moveY == 0) {
@@ -245,18 +246,18 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                     }
                     mY += 20;
                 }
-                if (value instanceof ModeValue) {
+                if (value instanceof ArrayValue) {
                     float x = startX + 300;
                     mcFont.drawStringWithShadow(value.getName(), startX + 210, mY, -1);
                     RenderUtils.drawRect2(x - 5, mY - 5, x + 90, mY + 15,
                             new Color(56, 56, 56, (int) opacity.getOpacity()).getRGB());
                     R2DUtils.drawBorderedRect(x - 5, mY - 5, x + 90, mY + 15,
                             new Color(101, 81, 255, (int) opacity.getOpacity()).getRGB(), 2);
-                    mcFont.drawStringWithShadow(((ModeValue) value).getAsString(),
-							x + 44 - mcFont.getStringWidth(((ModeValue) value).getAsString()) / 2F, mY + 1, -1);
+                    mcFont.drawStringWithShadow(((ArrayValue<?>) value).getAsString(),
+							x + 44 - mcFont.getStringWidth(((ArrayValue<?>) value).getAsString()) / 2F, mY + 1, -1);
                     if (this.isStringHovered(x, mY - 5, x + 100, mY + 15, mouseX, mouseY)) {
                         if (Mouse.isButtonDown(0) && !this.previousmouse) {
-                            ((ModeValue) value).switchMode(false);
+                            ((ArrayValue<?>) value).switchMode(false);
                             this.previousmouse = true;
                         }
                         if (!Mouse.isButtonDown(0)) {
@@ -264,6 +265,16 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                         }
 
                     }
+                    mY += 25;
+                }
+                if (value instanceof TextValue) {
+                    float x = startX + 300;
+                    mcFont.drawStringWithShadow(value.getName(), startX + 210, mY, -1);
+                    RenderUtils.drawRect2(x - 5, mY - 5, x + 90, mY + 15,
+                            new Color(56, 56, 56, (int) opacity.getOpacity()).getRGB());
+                    R2DUtils.drawBorderedRect(x - 5, mY - 5, x + 90, mY + 15,
+                            new Color(101, 81, 255, (int) opacity.getOpacity()).getRGB(), 2);
+                    mcFont.drawStringWithShadow(((TextValue) value).get(), x + 44 - mcFont.getStringWidth(((TextValue) value).get()) / 2F, mY + 1, -1);
                     mY += 25;
                 }
             }

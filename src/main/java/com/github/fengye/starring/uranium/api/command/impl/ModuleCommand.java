@@ -1,9 +1,9 @@
 package com.github.fengye.starring.uranium.api.command.impl;
 
 import com.github.fengye.starring.uranium.api.command.Command;
+import com.github.fengye.starring.uranium.api.value.ArrayValue;
 import com.github.fengye.starring.uranium.api.value.Numbers;
 import com.github.fengye.starring.uranium.api.value.Value;
-import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 
@@ -36,7 +36,7 @@ public class ModuleCommand extends Command {
             }
             sendMessage("参数列表:");
             for (Value<?> value : values) {
-                sendMessage(value.getName() + ": " + value.get());
+                sendMessage(value.getName() + ": " + value.getAsString());
             }
             return false;
         } else if(length == 1) {
@@ -50,16 +50,19 @@ public class ModuleCommand extends Command {
                 Numbers<?> numbers = (Numbers<?>) value;
                 allValues = allValues.concat(numbers.getMin() + " ~ " + numbers.getMax());
             }
-            if(value instanceof ModeValue) {
-                ModeValue modeValue = (ModeValue) value;
-                for (Enum<?> mode : modeValue.getMODES()) {
-                    allValues = allValues.concat(mode.name() + ' ');
+            if(value instanceof ArrayValue<?>) {
+                ArrayValue<?> arrayValue = (ArrayValue<?>) value;
+                for (String s : arrayValue.getModesAsStr()) {
+                    allValues = allValues.concat(s + ' ');
                 }
             }
             if(value instanceof OptionValue) {
                 allValues = "true false";
             }
-            sendMessage("参数'" + value.getName() + "'的值为" + value.get() + " 所有值: " + allValues);
+            if(allValues.isEmpty()) {
+                allValues = "All";
+            }
+            sendMessage("参数'" + value.getName() + "'的值为" + value.getAsString() + " 所有值: " + allValues);
             return false;
         } else if(length == 2) {
             String newValue = args[1];
@@ -69,7 +72,7 @@ public class ModuleCommand extends Command {
                 return false;
             }
             value.setAuto(newValue);
-            sendMessage("已将'" + name + "'的值设置为 " + value.get());
+            sendMessage("已将'" + name + "'的值设置为 " + value.getAsString());
             return false;
         }
         return true;

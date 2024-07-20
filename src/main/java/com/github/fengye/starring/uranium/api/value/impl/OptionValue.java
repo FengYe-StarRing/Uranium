@@ -11,4 +11,9 @@ public class OptionValue extends Value<Boolean> {
     public void setAuto(String value) {
         set(Boolean.valueOf(value));
     }
+
+    @Override
+    public String getAsString() {
+        return String.valueOf(get());
+    }
 }

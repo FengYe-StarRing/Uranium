@@ -36,10 +36,10 @@ public class Client extends Manager {
         super.init();
         languageManager = new LanguageManager();
         eventManager = new EventManager();
+        fontManager = new FontManager();
         moduleManager = new ModuleManager();
         hudManager = new HUDManager();
         fileManager = new FileManager();
-        fontManager = new FontManager();
         commandManager = new CommandManager();
 
         languageManager.init();

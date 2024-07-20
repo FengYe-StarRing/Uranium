@@ -36,4 +36,6 @@ public abstract class Value<V> {
     }
 
     public abstract void setAuto(String value); // 自动适配
+
+    public abstract String getAsString();
 }

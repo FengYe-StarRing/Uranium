@@ -81,7 +81,7 @@ public class ElementsConfig extends Config {
             data = data.concat(prefix + "Horizontal|" + element.getSide().getHorizontal() + postfix);
             data = data.concat(prefix + "Vertical|" + element.getSide().getVertical() + postfix);
             for (Value<?> value : element.getValues()) {
-                data = data.concat(prefix + value.getName() + "|" + value.get() + postfix);
+                data = data.concat(prefix + value.getName() + "|" + value.getAsString() + postfix);
             }
             data = data.concat("}" + postfix);
         }
