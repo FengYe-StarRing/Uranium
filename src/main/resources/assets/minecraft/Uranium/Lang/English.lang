@@ -27,3 +27,5 @@ HUD.Element.Arraylist=Arraylist
 
 Command.Help.Toggle=Switch the switch of the specified module.
 Command.Help.Say=Send chat messages.
+Command.Help.Binds=Manage all key binds.
+Command.Help.Config=Manage all configs.

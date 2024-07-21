@@ -11,6 +11,7 @@ import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.render.*;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import org.lwjgl.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,5 +97,24 @@ public class ModuleManager extends Manager implements Listenable {
             }
         }
         return modules;
+    }
+
+    public List<Module> getModulesHaveKey() {
+        List<Module> modules = new ArrayList<>();
+        for (Module module : this.modules) {
+            if(module.getKeyBind() != Keyboard.KEY_NONE) {
+                modules.add(module);
+            }
+        }
+        return modules;
+    }
+
+    public Module getModuleByName(String name) {
+        for (Module module : modules) {
+            if(module.getName().equals(name) || module.T_NAME.equals(name)) {
+                return module;
+            }
+        }
+        return null;
     }
 }

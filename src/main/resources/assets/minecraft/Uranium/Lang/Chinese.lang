@@ -27,3 +27,5 @@ HUD.Element.Arraylist=功能列表
 
 Command.Help.Toggle=切换指定模块的开关。
 Command.Help.Say=发送聊天信息。
+Command.Help.Binds=管理所有按键绑定。
+Command.Help.Config=管理所有配置。

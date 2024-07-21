@@ -4,11 +4,14 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
+import com.github.fengye.starring.uranium.api.file.ClientFile;
 import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.file.config.impl.ElementsConfig;
 import com.github.fengye.starring.uranium.api.file.config.impl.ValuesConfig;
 import com.github.fengye.starring.uranium.manager.Manager;
+import com.github.fengye.starring.uranium.utils.misc.DateUtils;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import com.github.fengye.starring.uranium.utils.timer.Timer;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,11 +20,18 @@ import java.lang.reflect.Field;
 import static com.github.fengye.starring.uranium.utils.MinecraftInstance.mcDataDir;
 
 public class FileManager extends Manager implements Listenable {
-    private File configDir = null;
-    private File userDataDir = null;
-    private Config valuesConfig = null;
-    private Config elementsConfig = null;
+    public File mainDir = null;
+    public File userDataDir = null;
+    public File cacheDataDir = null;
+    public File logsDir = null;
+    public File configDir = null;
+    public Config valuesConfig = null;
+    public Config elementsConfig = null;
+    public ClientFile logsFile = null;
+
     private boolean init = false;
+    private final Timer saveTimer = new Timer();
+    private final int saveInterval = 15 * 1000;
 
     public FileManager() {
         super("FileManager");
@@ -31,6 +41,7 @@ public class FileManager extends Manager implements Listenable {
     public void init() {
         super.init();
         init = false;
+        saveTimer.reset();
         Client.instance.eventManager.registerListener(this);
     }
 
@@ -42,7 +53,7 @@ public class FileManager extends Manager implements Listenable {
     @EventHandle
     private void onEvent(Event event) {
         initDir();
-        if(init && !Client.instance.isStop()) {
+        if(init && !Client.instance.isStop() && saveTimer.hasTimePassed(saveInterval)) {
             saveAllConfigs();
         }
     }
@@ -53,55 +64,76 @@ public class FileManager extends Manager implements Listenable {
         }
         String clientName = Client.instance.languageManager.getText(LanguageManager.Languages.English,Client.T_NAME);
         {
-            if(configDir == null) {
-                configDir = new File(mcDataDir,clientName + "-" + Client.getVersion());
+            if(mainDir == null) {
+                mainDir = new File(mcDataDir,clientName + "-" + Client.getVersion());
             }
             if(userDataDir == null) {
                 userDataDir = new File(mcDataDir,clientName + "-UserData");
             }
-            if(!configDir.exists()) {
-                configDir.mkdirs();
+            if(cacheDataDir == null) {
+                cacheDataDir = new File(mcDataDir,clientName + "-CacheData");
+            }
+            if(logsDir == null) {
+                logsDir = new File(cacheDataDir, "logs");
+            }
+            if(configDir == null) {
+                configDir = new File(mainDir, "config");
+            }
+            if(!mainDir.exists()) {
+                mainDir.mkdirs();
             }
             if(!userDataDir.exists()) {
                 userDataDir.mkdirs();
             }
+            if(!cacheDataDir.exists()) {
+                cacheDataDir.mkdirs();
+            }
+            if(!logsDir.exists()) {
+                logsDir.mkdirs();
+            }
+            if(!configDir.exists()) {
+                configDir.mkdirs();
+            }
         }
         {
             if(valuesConfig == null) {
-                valuesConfig = new ValuesConfig(configDir,"Values.txt");
+                valuesConfig = new ValuesConfig(mainDir,"Values.txt");
             }
             if(elementsConfig == null) {
-                elementsConfig = new ElementsConfig(configDir,"Elements.txt");
+                elementsConfig = new ElementsConfig(mainDir,"Elements.txt");
             }
             if(!init) {
                 loadAllConfigs();
+            }
+            if(logsFile == null) {
+                logsFile = new ClientFile(logsDir, DateUtils.getDefaultTime(DateUtils.fileFormat) + ".txt");
             }
         }
         init = true;
     }
 
     private void loadAllConfigs() {
-        for (Field field : JavaUtils.getFields(this, Config.class)) {
+        for (Config config : JavaUtils.getConfigs(this)) {
             try {
-                Config config = ((Config) field.get(this));
                 if(!config.hasFile()) {
                     config.createFile();
                 } else {
                     config.loadConfig();
                 }
-            } catch (IOException | IllegalAccessException ignored) {}
+            } catch (IOException ignored) {}
         }
     }
 
     public void saveAllConfigs() {
-        for (Field field : JavaUtils.getFields(this, Config.class)) {
+        for (Config config : JavaUtils.getConfigs(this)) {
             try {
-                Config config = ((Config) field.get(this));
                 if(!config.hasFile()) {
                     config.createFile();
+                } else {
+                    config.saveConfig();
                 }
-                config.saveConfig();
-            } catch (IOException | IllegalAccessException ignored) {}
+            } catch (IOException ignored) {}
         }
+        saveTimer.reset();
     }
 }

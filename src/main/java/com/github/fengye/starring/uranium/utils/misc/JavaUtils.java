@@ -1,6 +1,7 @@
 package com.github.fengye.starring.uranium.utils.misc;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.ui.font.FontRender;
 import net.minecraft.util.ResourceLocation;
@@ -74,6 +75,20 @@ public class JavaUtils {
                 Object object = field.get(obj);
                 if(object instanceof FontRender) {
                     list.add((FontRender) object);
+                }
+            } catch (IllegalAccessException ignored) {}
+        }
+        return list;
+    }
+
+    public static List<Config> getConfigs(Object obj) {
+        List<Config> list = new ArrayList<>();
+        for (Field field : getDeclaredFields(obj.getClass())) {
+            field.setAccessible(true);
+            try {
+                Object object = field.get(obj);
+                if(object instanceof Config) {
+                    list.add((Config) object);
                 }
             } catch (IllegalAccessException ignored) {}
         }

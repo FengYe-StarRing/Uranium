@@ -2,10 +2,7 @@ package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.command.Command;
-import com.github.fengye.starring.uranium.api.command.impl.Help;
-import com.github.fengye.starring.uranium.api.command.impl.ModuleCommand;
-import com.github.fengye.starring.uranium.api.command.impl.Say;
-import com.github.fengye.starring.uranium.api.command.impl.Toggle;
+import com.github.fengye.starring.uranium.api.command.impl.*;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
@@ -32,7 +29,9 @@ public class CommandManager extends Manager implements Listenable {
         registerCommands(new Command[]{
                 new Toggle(),
                 new Say(),
-                new Help()
+                new Help(),
+                new Binds(),
+                new Config()
         });
         for (Module module : Client.instance.moduleManager.getModules()) {
             String[] alias;

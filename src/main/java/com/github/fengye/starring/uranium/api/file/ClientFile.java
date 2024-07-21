@@ -2,6 +2,7 @@ package com.github.fengye.starring.uranium.api.file;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class ClientFile {
     private final File dir;
@@ -37,5 +38,20 @@ public class ClientFile {
 
     public String getPath() {
         return path;
+    }
+
+    public void writeLine(String content) {
+        write(content + '\n');
+    }
+
+    public void write(String content) {
+        try {
+            if(!hasFile()) {
+                createFile();
+            }
+            Files.write(getFile().toPath(),content.getBytes());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -27,3 +27,5 @@ HUD.Element.Arraylist=機能リスト
 
 Command.Help.Toggle=指定したモジュールのスイッチを切り替えます。
 Command.Help.Say=チャットメッセージを送信。
+Command.Help.Binds=すべてのキー・バインドの管理。
+Command.Help.Config=すべての構成の管理。

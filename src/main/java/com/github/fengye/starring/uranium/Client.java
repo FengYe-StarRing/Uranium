@@ -4,6 +4,8 @@ import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.manager.impl.*;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.ProtocolUtils;
+import com.github.fengye.starring.uranium.utils.misc.DateUtils;
+import com.github.fengye.starring.uranium.utils.misc.log.LogUtils;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
 import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
@@ -24,6 +26,7 @@ public class Client extends Manager {
     public FontManager fontManager;
     public HUDManager hudManager;
     public CommandManager commandManager;
+    public ConfigManager configManager;
 
     private String name;
     private boolean stop = false;
@@ -41,6 +44,7 @@ public class Client extends Manager {
         hudManager = new HUDManager();
         fileManager = new FileManager();
         commandManager = new CommandManager();
+        configManager = new ConfigManager();
 
         languageManager.init();
         eventManager.init();
@@ -49,6 +53,7 @@ public class Client extends Manager {
         fileManager.init();
         fontManager.init();
         commandManager.init();
+        configManager.init();
 
         eventManager.registerListener(new MinecraftInstance());
         eventManager.registerListener(new C09Utils());
@@ -72,6 +77,7 @@ public class Client extends Manager {
 
     public void stop() {
         stop = true;
+        LogUtils.print("Stopping " + name + " Client...");
         fileManager.saveAllConfigs();
     }
 
