@@ -1,4 +1,4 @@
-package com.github.fengye.starring.uranium.utils.misc;
+package com.github.fengye.starring.uranium.utils.timer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateUtils {
@@ -57,5 +59,12 @@ public class DateUtils {
 
     public static String getDefaultTime() {
         return getDefaultTime(renderFormat);
+    }
+
+    public static String changeFormat(String date,String format,String targetFormat) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
+        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern(targetFormat);
+        return dateTime.format(newFormatter);
     }
 }

@@ -66,7 +66,7 @@ public class ZipWordUtils {
         return new BufferedReader(new InputStreamReader(zis));
     }
 
-    public static void unzipFile(ZipInputStream zis, File destDir) {
+    public static boolean unzipFile(ZipInputStream zis, File destDir) {
         if (!destDir.exists()) {
             destDir.mkdir();
         }
@@ -85,8 +85,9 @@ public class ZipWordUtils {
             }
             zis.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            return false;
         }
+        return true;
     }
 
     private static void extractFile(ZipInputStream zis, String filePath) throws IOException {
@@ -103,7 +104,11 @@ public class ZipWordUtils {
         return createZipWord(target.getAbsolutePath(),files);
     }
 
-    public static void unzipFile(String zipPath, String dirPath) {
-        unzipFile(getZipInputStream(zipPath),new File(dirPath));
+    public static boolean unzipFile(String zipPath, String dirPath) {
+        ZipInputStream zis = getZipInputStream(zipPath);
+        if(zis == null) {
+            return false;
+        }
+        return unzipFile(zis,new File(dirPath));
     }
 }

@@ -8,7 +8,7 @@ public class Timer {
     public void reset() {
         time = getCurrentTimeMillis();
         tick = 0;
-        count++;
+        count = 0;
     }
 
     private long getCurrentTimeMillis() {

@@ -9,13 +9,12 @@ import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.file.config.impl.ElementsConfig;
 import com.github.fengye.starring.uranium.api.file.config.impl.ValuesConfig;
 import com.github.fengye.starring.uranium.manager.Manager;
-import com.github.fengye.starring.uranium.utils.misc.DateUtils;
+import com.github.fengye.starring.uranium.utils.timer.DateUtils;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import com.github.fengye.starring.uranium.utils.timer.Timer;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 
 import static com.github.fengye.starring.uranium.utils.MinecraftInstance.mcDataDir;
 
@@ -112,11 +111,11 @@ public class FileManager extends Manager implements Listenable {
         init = true;
     }
 
-    private void loadAllConfigs() {
+    public void loadAllConfigs() {
         for (Config config : JavaUtils.getConfigs(this)) {
             try {
                 if(!config.hasFile()) {
-                    config.createFile();
+                    config.create();
                 } else {
                     config.loadConfig();
                 }
@@ -128,7 +127,7 @@ public class FileManager extends Manager implements Listenable {
         for (Config config : JavaUtils.getConfigs(this)) {
             try {
                 if(!config.hasFile()) {
-                    config.createFile();
+                    config.create();
                 } else {
                     config.saveConfig();
                 }

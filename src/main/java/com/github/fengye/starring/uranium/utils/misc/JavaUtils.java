@@ -94,4 +94,8 @@ public class JavaUtils {
         }
         return list;
     }
+
+    public static java.net.URL getResource(String path) {
+        return getClassLoader().getResource("/assets/minecraft/" + path);
+    }
 }

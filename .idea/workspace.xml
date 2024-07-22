@@ -5,24 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/Binds.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ConfigManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/ZipWordUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/timer/Timer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/impl/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/ClientFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/file/ClientFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/CommandManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ModuleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/ModuleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/timer/DateUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/ZipWordUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/ZipWordUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/log/LogUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/log/LogUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/timer/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/timer/Timer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721480619912</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="...">
+      <option name="closed" value="true" />
+      <created>1721564376248</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1721564376248</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

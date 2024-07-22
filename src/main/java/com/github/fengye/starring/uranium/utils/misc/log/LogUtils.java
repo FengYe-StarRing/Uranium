@@ -3,7 +3,7 @@ package com.github.fengye.starring.uranium.utils.misc.log;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.file.ClientFile;
 import com.github.fengye.starring.uranium.manager.impl.FileManager;
-import com.github.fengye.starring.uranium.utils.misc.DateUtils;
+import com.github.fengye.starring.uranium.utils.timer.DateUtils;
 
 public class LogUtils {
     private static String buffer = "";
