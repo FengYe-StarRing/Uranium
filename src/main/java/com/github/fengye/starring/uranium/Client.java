@@ -31,6 +31,7 @@ public class Client extends Manager {
     public HUDManager hudManager;
     public CommandManager commandManager;
     public ConfigManager configManager;
+    public NotificationManager notificationManager;
 
     private String name;
     private boolean stop = false;
@@ -41,9 +42,7 @@ public class Client extends Manager {
 
     public void init() {
         super.init();
-
         load();
-
         initViaMCP();
         initTray();
     }
@@ -72,12 +71,6 @@ public class Client extends Manager {
         return stop;
     }
 
-    public static void reload() {
-        instance.stop();
-        instance = new Client();
-        instance.load();
-    }
-
     public void load() {
         languageManager = new LanguageManager();
         eventManager = new EventManager();
@@ -87,6 +80,7 @@ public class Client extends Manager {
         fileManager = new FileManager();
         commandManager = new CommandManager();
         configManager = new ConfigManager();
+        notificationManager = new NotificationManager();
 
         languageManager.init();
         eventManager.init();
@@ -96,6 +90,7 @@ public class Client extends Manager {
         fontManager.init();
         commandManager.init();
         configManager.init();
+        notificationManager.init();
 
         eventManager.registerListener(new MinecraftInstance());
         eventManager.registerListener(new C09Utils());

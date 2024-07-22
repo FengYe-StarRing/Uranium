@@ -21,9 +21,12 @@ L.Module.HUD=显示器
 L.Module.HUD.Description=切换显示器的可见性。
 L.Module.HUDEditGui=显示器编辑界面
 L.Module.HUDEditGui.Description=编辑显示器的元素。
+L.Module.Timer=变速
+L.Module.Timer.Description=改变整个游戏的速度。
 
 HUD.Element.Logo=水印
 HUD.Element.Arraylist=功能列表
+HUD.Element.Notifications=通知
 
 Command.Help.Toggle=切换指定模块的开关。
 Command.Help.Say=发送聊天信息。

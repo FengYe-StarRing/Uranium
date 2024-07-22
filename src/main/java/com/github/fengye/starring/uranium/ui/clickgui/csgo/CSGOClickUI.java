@@ -164,6 +164,9 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                     continue;
                 }
                 Value value = currentModule.getValues().get(i);
+                if(!value.isDisplay()) {
+                    continue;
+                }
                 if (value instanceof Numbers) {
                     float x = startX + 300;
                     double render = 68.0F

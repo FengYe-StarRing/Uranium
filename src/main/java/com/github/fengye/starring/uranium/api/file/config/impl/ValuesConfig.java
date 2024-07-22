@@ -32,7 +32,11 @@ public class ValuesConfig extends Config {
                 if(module.T_NAME.equals(moduleName)) {
                     switch (valueName) {
                         case "Enabled":
-                            module.setEnabled(Boolean.parseBoolean(valueData));
+                            boolean state = Boolean.parseBoolean(valueData);
+                            if(!state) {
+                                break;
+                            }
+                            module.setEnabled(true);
                             break;
                         case "KeyBind":
                             module.setKeyBind(Integer.parseInt(valueData));

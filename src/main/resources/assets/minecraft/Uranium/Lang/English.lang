@@ -21,9 +21,12 @@ L.Module.HUD=HUD
 L.Module.HUD.Description=Toggle visibility of the HUD.
 L.Module.HUDEditGui=HUDEditGui
 L.Module.HUDEditGui.Description=Edit hud elements.
+L.Module.Timer=Timer
+L.Module.Timer.Description=Changes the speed of the entire game.
 
 HUD.Element.Logo=Logo
 HUD.Element.Arraylist=Arraylist
+HUD.Element.Notification=Notifications
 
 Command.Help.Toggle=Switch the switch of the specified module.
 Command.Help.Say=Send chat messages.

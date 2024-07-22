@@ -1,0 +1,37 @@
+package com.github.fengye.starring.uranium.listenable.module.impl.world.timer;
+
+import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
+import com.github.fengye.starring.uranium.listenable.module.ModuleInMode;
+import com.github.fengye.starring.uranium.listenable.module.impl.world.Timer;
+
+public class TimerMode extends ModuleInMode {
+    private float oldTimerSpeed = 1F;
+
+    public void onUpdate(UpdateEvent event) {
+
+    }
+
+    public void onEnable() {
+
+    }
+
+    public void onDisable() {
+
+    }
+
+    public void setOldTimerSpeed(float oldTimerSpeed) {
+        this.oldTimerSpeed = oldTimerSpeed;
+    }
+
+    public float getOldTimerSpeed() {
+        return oldTimerSpeed;
+    }
+
+    public void setTimerSpeed(float speed) {
+        timer.timerSpeed = speed;
+    }
+
+    public float getTargetTimerSpeed() {
+        return Timer.timerSpeedValue.get().floatValue();
+    }
+}

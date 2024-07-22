@@ -9,6 +9,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.network.Packet;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.Timer;
 
 import java.io.File;
 
@@ -17,6 +18,7 @@ public class MinecraftInstance implements Listenable {
     public static EntityPlayerSP thePlayer;
     public static WorldClient theWorld;
     public static File mcDataDir;
+    public static Timer timer;
 
     public static void sendPacket(Packet<?> packet) {
         mc.getNetHandler().getNetworkManager().sendPacket(packet);
@@ -37,6 +39,7 @@ public class MinecraftInstance implements Listenable {
         thePlayer = mc.thePlayer;
         theWorld = mc.theWorld;
         mcDataDir = mc.mcDataDir;
+        timer = mc.timer;
     }
 
     public static void sendMessage(String message) {

@@ -22,7 +22,8 @@ public class HUDManager extends Manager {
         super.init();
         registerElements(new Class[]{
                 Logo.class,
-                Arraylist.class
+                Arraylist.class,
+                Notifications.class
         });
         reset();
     }
@@ -99,7 +100,8 @@ public class HUDManager extends Manager {
         elements.clear();
         addElements(new Element[]{
                 new Logo(),
-                new Arraylist()
+                new Arraylist(),
+                new Notifications()
         });
     }
 }

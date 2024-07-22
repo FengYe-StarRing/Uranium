@@ -3,6 +3,7 @@ package com.github.fengye.starring.uranium.utils.misc;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.value.Value;
+import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.ui.font.FontRender;
 import net.minecraft.util.ResourceLocation;
 
@@ -97,5 +98,28 @@ public class JavaUtils {
 
     public static java.net.URL getResource(String path) {
         return getClassLoader().getResource("/assets/minecraft/" + path);
+    }
+    public static List<Field> getFields(Object obj) {
+        return getFields(obj,obj.getClass());
+    }
+
+    public static Class<?>[] getDeclaredClasses(Object obj) {
+        return getDeclaredClasses(obj.getClass());
+    }
+
+    public static Class<?>[] getDeclaredClasses(Class<?> cls) {
+        return cls.getDeclaredClasses();
+    }
+
+    public static Field getDeclaredField(Class<?> cls,String name) {
+        try {
+            return cls.getDeclaredField(name);
+        } catch (NoSuchFieldException e) {
+            return null;
+        }
+    }
+
+    public static Field getDeclaredField(Object obj,String name) {
+        return getDeclaredField(obj.getClass(),name);
     }
 }

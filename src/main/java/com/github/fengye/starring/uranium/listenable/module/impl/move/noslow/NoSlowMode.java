@@ -1,9 +1,10 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.move.noslow;
 
 import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
+import com.github.fengye.starring.uranium.listenable.module.ModuleInMode;
 import net.minecraft.item.*;
 
-public class NoSlowMode {
+public class NoSlowMode extends ModuleInMode {
     public static boolean isHolding(ItemStack stack,boolean sword,boolean con,boolean bow) {
         if(stack == null) {
             return false;

@@ -4,16 +4,19 @@ import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.impl.SlowDownEvent;
 import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
 import com.github.fengye.starring.uranium.api.value.Value;
-import com.github.fengye.starring.uranium.api.value.impl.*;
+import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
+import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
+import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.NoSlowMode;
-import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.impl.SwitchItemMode;
-import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.impl.*;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
 import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import net.minecraft.item.ItemStack;
+
+import java.util.List;
 
 @ModuleInfo(name = "NoSlow",category = Category.Movement)
 public class NoSlow extends Module {
@@ -71,11 +74,12 @@ public class NoSlow extends Module {
 
     @Override
     public void updateAddedValues() {
-        for (Modes mode : Modes.values()) {
-            for (Value<?> value : JavaUtils.getValues(mode.getMode())) {
-                addValue(mode,value);
-            }
-        }
+        updateAddedValues(Modes.values());
+    }
+
+    @Override
+    public void updateValues(List<Value<?>> values) {
+        updateValues(modeValue,values);
     }
 
     private enum Modes {

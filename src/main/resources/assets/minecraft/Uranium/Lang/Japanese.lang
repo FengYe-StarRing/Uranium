@@ -21,9 +21,12 @@ L.Module.HUD=HUD
 L.Module.HUD.Description=HUDの可視性を切り替えます。
 L.Module.HUDEditGui=HUD編集インタフェース
 L.Module.HUDEditGui.Description=HUD要素を編集します。
+L.Module.Timer=速度を変える
+L.Module.Timer.Description=ゲーム全体の速度を変える。
 
 HUD.Element.Logo=フラグ
 HUD.Element.Arraylist=機能リスト
+HUD.Element.Notifications=に知らせる
 
 Command.Help.Toggle=指定したモジュールのスイッチを切り替えます。
 Command.Help.Say=チャットメッセージを送信。

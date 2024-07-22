@@ -9,6 +9,7 @@ import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.impl.misc.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.render.*;
+import com.github.fengye.starring.uranium.listenable.module.impl.world.*;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import org.lwjgl.input.Keyboard;
@@ -38,6 +39,10 @@ public class ModuleManager extends Manager implements Listenable {
         registerModules(new Module[]{
                 new Sprint(),
                 new NoSlow()
+        });
+        // World
+        registerModules(new Module[]{
+                new Timer()
         });
         // Misc
         registerModules(new Module[]{
