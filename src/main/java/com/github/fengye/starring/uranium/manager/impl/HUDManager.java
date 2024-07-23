@@ -1,9 +1,9 @@
 package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.manager.Manager;
-import com.github.fengye.starring.uranium.ui.hud.element.Border;
-import com.github.fengye.starring.uranium.ui.hud.element.Element;
+import com.github.fengye.starring.uranium.ui.hud.element.*;
 import com.github.fengye.starring.uranium.ui.hud.element.impl.*;
+import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
@@ -40,8 +40,13 @@ public class HUDManager extends Manager {
 
     public void render() {
         for (Element element : elements) {
+            Side side = element.getSide();
+            Horizontal horizontal = side.getHorizontal();
+            Vertical vertical = side.getVertical();
+            double lockX = horizontal == Horizontal.Left ? element.getX() : ScreenUtils.getWidth() - element.getY();
+            double lockY = vertical == Vertical.Up ? element.getY() : ScreenUtils.getHeight() - element.getY();
             GL11.glPushMatrix();
-            GL11.glTranslated(element.getX(), element.getY(), 0.0);
+            GL11.glTranslated(lockX, lockY, 0.0);
             Border border = element.render();
             if(border != null) {
                 border.setX(element.getX() + border.getX());

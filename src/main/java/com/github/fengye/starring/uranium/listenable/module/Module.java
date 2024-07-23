@@ -5,6 +5,8 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
+import com.github.fengye.starring.uranium.manager.impl.NotificationManager;
+import com.github.fengye.starring.uranium.ui.notification.Notification;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
@@ -76,6 +78,7 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         } else {
             onDisable();
         }
+        NotificationManager.post(name,new String[]{state ? "Enabled" : "Disabled"}, Notification.NotificationType.INFO);
     }
 
     public void setEnabled() {

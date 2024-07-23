@@ -10,7 +10,7 @@ public class Side {
     }
 
     public static Side toDefault() {
-        return new Side(Horizontal.Normal,Vertical.Normal);
+        return new Side(Horizontal.Left,Vertical.Up);
     }
 
     public Horizontal getHorizontal() {
