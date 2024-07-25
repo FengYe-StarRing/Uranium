@@ -18,6 +18,6 @@ public class Logo extends Element {
     public Border render() {
         FontRender font = FontManager.harmony48;
         font.drawString(Client.getName(),0,0, Color.cyan.getRGB());
-        return new Border(0,0,font.getStringWidth(Client.getName()),font.getHeight(Client.getName()));
+        return new Border(0,0,font.getStringWidth(Client.getName()),font.getHeight());
     }
 }

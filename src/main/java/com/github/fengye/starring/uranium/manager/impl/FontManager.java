@@ -7,6 +7,7 @@ import com.github.fengye.starring.uranium.ui.font.FontRender;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
@@ -34,11 +35,11 @@ public class FontManager extends Manager {
         mcFont = Minecraft.getMinecraft().fontRendererObj;
         // Harmony
         String harmony = "Harmony.ttf";
-        harmony17 = loadFont(17,harmony);
-        harmony18 = loadFont(18,harmony);
-        harmony24 = loadFont(24,harmony);
-        harmony36 = loadFont(36,harmony);
-        harmony48 = loadFont(48,harmony);
+        harmony17 = loadFont(harmony,17);
+        harmony18 = loadFont(harmony,18);
+        harmony24 = loadFont(harmony,24);
+        harmony36 = loadFont(harmony,36);
+        harmony48 = loadFont(harmony,48);
         // Alibaba
         String alibaba = "Alibaba.ttf";
         // Facon
@@ -52,16 +53,18 @@ public class FontManager extends Manager {
         super.init();
     }
 
-    public static FontRender loadFont(int size, String name) {
+    public static FontRender loadFont(String location, float size) {
         Font font;
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+        size = size * ((float) sr.getScaleFactor() / 2);
         try {
-            InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation(Client.RESOURCES + "/Fonts/" + name)).getInputStream();
+            InputStream is = Minecraft.getMinecraft().getResourceManager().getResource(getFontLocation(location)).getInputStream();
             font = Font.createFont(0, is);
             font = font.deriveFont(Font.PLAIN, size);
-        } catch (Exception ex) {
-            font = new Font("default", Font.PLAIN, size);
+        } catch (Exception e) {
+            font = new Font("Default", Font.PLAIN, +10);
         }
-        return new FontRender(font, size, true);
+        return new FontRender(font);
     }
 
     public FontRender getFont(String name,int size) {
@@ -106,5 +109,9 @@ public class FontManager extends Manager {
 
     public String getFontInfo(FontInfo info) {
         return info.name() + info.size();
+    }
+
+    public static ResourceLocation getFontLocation(String name) {
+        return new ResourceLocation(Client.RESOURCES + "/Fonts/" + name);
     }
 }

@@ -40,17 +40,19 @@ public class HUDManager extends Manager {
 
     public void render() {
         for (Element element : elements) {
-            Side side = element.getSide();
-            Horizontal horizontal = side.getHorizontal();
-            Vertical vertical = side.getVertical();
-            double lockX = horizontal == Horizontal.Left ? element.getX() : ScreenUtils.getWidth() - element.getY();
-            double lockY = vertical == Vertical.Up ? element.getY() : ScreenUtils.getHeight() - element.getY();
+//            Side side = element.getSide();
+//            Horizontal horizontal = side.getHorizontal();
+//            Vertical vertical = side.getVertical();
+//            float lockX = horizontal == Horizontal.Left ? element.getX() : ScreenUtils.getWidth() - element.getY();
+//            float lockY = vertical == Vertical.Up ? element.getY() : ScreenUtils.getHeight() - element.getY();
+            float lockX = element.getX();
+            float lockY = element.getY();
             GL11.glPushMatrix();
             GL11.glTranslated(lockX, lockY, 0.0);
             Border border = element.render();
             if(border != null) {
-                border.setX(element.getX() + border.getX());
-                border.setY(element.getY() + border.getY());
+                border.setX(lockX + border.getX());
+                border.setY(lockY + border.getY());
             }
             element.setBorder(border);
             GL11.glPopMatrix();

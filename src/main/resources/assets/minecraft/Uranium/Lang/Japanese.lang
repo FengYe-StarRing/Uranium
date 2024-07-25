@@ -23,6 +23,12 @@ L.Module.HUDEditGui=HUD編集インタフェース
 L.Module.HUDEditGui.Description=HUD要素を編集します。
 L.Module.Timer=速度を変える
 L.Module.Timer.Description=ゲーム全体の速度を変える。
+L.Module.WorldState=世界の状態
+L.Module.WorldState.Description=世界の状態を変更。
+L.Module.FullBright=フルライト
+L.Module.FullBright.Description=ゲームの明るさを変更します。
+L.Module.KillAura=殺戮の輪
+L.Module.KillAura.Description=あなたの周りのターゲットを自動的に攻撃します。
 
 HUD.Element.Logo=フラグ
 HUD.Element.Arraylist=機能リスト

@@ -23,6 +23,12 @@ L.Module.HUDEditGui=HUDEditGui
 L.Module.HUDEditGui.Description=Edit hud elements.
 L.Module.Timer=Timer
 L.Module.Timer.Description=Changes the speed of the entire game.
+L.Module.WorldState=WorldState
+L.Module.WorldState.Description=Change the state of the world.
+L.Module.FullBright=FullBright
+L.Module.FullBright.Description=Brightens up the world around you.
+L.Module.KillAura=KillAura
+L.Module.KillAura.Description=Automatically attacks targets around you.
 
 HUD.Element.Logo=Logo
 HUD.Element.Arraylist=Arraylist

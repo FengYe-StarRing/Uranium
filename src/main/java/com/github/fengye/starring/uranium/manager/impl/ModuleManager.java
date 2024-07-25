@@ -6,6 +6,7 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
+import com.github.fengye.starring.uranium.listenable.module.impl.combat.KillAura;
 import com.github.fengye.starring.uranium.listenable.module.impl.misc.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.render.*;
@@ -29,11 +30,16 @@ public class ModuleManager extends Manager implements Listenable {
         super.init();
         modules.clear();
         Client.instance.eventManager.registerListener(this);
+        // Combat
+        registerModules(new Module[]{
+                new KillAura()
+        });
         // Render
         registerModules(new Module[]{
                 new ClickGui(),
                 new HUD(),
-                new HUDEditGui()
+                new HUDEditGui(),
+                new FullBright()
         });
         // Movement
         registerModules(new Module[]{
@@ -42,7 +48,8 @@ public class ModuleManager extends Manager implements Listenable {
         });
         // World
         registerModules(new Module[]{
-                new Timer()
+                new Timer(),
+                new WorldState()
         });
         // Misc
         registerModules(new Module[]{

@@ -18,6 +18,6 @@ public class HyalineMode extends Notification {
         Horizontal horizontal = side.getHorizontal();
         FontRender font = FontManager.harmony18;
         font.drawString(getTitle(),0,y, Color.cyan.getRGB());
-        return font.getHeight(getTitle());
+        return font.getHeight();
     }
 }

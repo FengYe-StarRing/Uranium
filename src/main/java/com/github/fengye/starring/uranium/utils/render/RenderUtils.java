@@ -123,4 +123,14 @@ public class RenderUtils {
     public static void drawRect(float x,float y,float x2,float y2,Color color) {
         drawRect(x, y, x2, y2, color.getRGB());
     }
+
+    public static void drawLine(double x,double y,double x1,double y1,float width) {
+        glDisable(GL_TEXTURE_2D);
+        glLineWidth(width);
+        glBegin(GL_LINES);
+        glVertex2d(x, y);
+        glVertex2d(x1, y1);
+        glEnd();
+        glEnable(GL_TEXTURE_2D);
+    }
 }

@@ -56,6 +56,9 @@ public class ElementsConfig extends Config {
                     case "Vertical":
                         element.getSide().setVertical(Vertical.valueOf(valueData));
                         break;
+                    case "Lock":
+                        element.setLock(Boolean.parseBoolean(valueData));
+                        break;
                     default:
                         for (Value<?> value : element.getValues()) {
                             if(value.getName().equals(valueName)) {
@@ -80,6 +83,7 @@ public class ElementsConfig extends Config {
             data = data.concat(prefix + "Y|" + element.getY() + postfix);
             data = data.concat(prefix + "Horizontal|" + element.getSide().getHorizontal() + postfix);
             data = data.concat(prefix + "Vertical|" + element.getSide().getVertical() + postfix);
+            data = data.concat(prefix + "Lock|" + element.isLock() + postfix);
             for (Value<?> value : element.getValues()) {
                 data = data.concat(prefix + value.getName() + "|" + value.getAsString() + postfix);
             }

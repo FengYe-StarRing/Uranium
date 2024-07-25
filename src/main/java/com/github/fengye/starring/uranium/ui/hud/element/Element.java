@@ -12,6 +12,7 @@ public abstract class Element {
     private float x,y;
     private final Side side;
     private Border border;
+    private boolean lock;
 
     public Element(String name,float x,float y,Side side) {
         T_NAME = name;
@@ -59,5 +60,13 @@ public abstract class Element {
 
     public void setBorder(Border border) {
         this.border = border;
+    }
+
+    public boolean isLock() {
+        return lock;
+    }
+
+    public void setLock(boolean lock) {
+        this.lock = lock;
     }
 }
