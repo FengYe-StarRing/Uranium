@@ -6,7 +6,6 @@ import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
 import com.github.fengye.starring.uranium.manager.impl.NotificationManager;
-import com.github.fengye.starring.uranium.ui.notification.Notification;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
@@ -78,7 +77,7 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         } else {
             onDisable();
         }
-        NotificationManager.post(name,new String[]{state ? "Enabled" : "Disabled"}, Notification.NotificationType.INFO);
+        NotificationManager.post(name,new String[]{"Was " + (state ? "enabled" : "disabled")}, NotificationManager.NotifType.Info);
     }
 
     public void setEnabled() {
@@ -109,7 +108,20 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         for (Value<?> value : values) {
             String[] levels = value.getName().split("-");
             if(levels.length >= 2) {
-                value.setDisplay(levels[0].equals(modeValue.getAsString()));
+                String level1 = levels[0];
+                {
+                    boolean b = true;
+                    for (String s : modeValue.getModesAsStr()) {
+                        if (s.equals(level1)) {
+                            b = false;
+                            break;
+                        }
+                    }
+                    if(b) {
+                        continue;
+                    }
+                }
+                value.setDisplay(level1.equals(modeValue.getAsString()));
             }
         }
     }

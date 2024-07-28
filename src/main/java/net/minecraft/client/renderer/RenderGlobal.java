@@ -1822,7 +1822,7 @@ public class RenderGlobal implements IWorldAccess, IResourceManagerReloadListene
             if (Config.isSunTexture())
             {
                 this.renderEngine.bindTexture(locationSunPng);
-                worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+                worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
                 worldrenderer.func_181662_b((double)(-f16), 100.0D, (double)(-f16)).func_181673_a(0.0D, 0.0D).func_181675_d();
                 worldrenderer.func_181662_b((double)f16, 100.0D, (double)(-f16)).func_181673_a(1.0D, 0.0D).func_181675_d();
                 worldrenderer.func_181662_b((double)f16, 100.0D, (double)f16).func_181673_a(1.0D, 1.0D).func_181675_d();
@@ -1842,7 +1842,7 @@ public class RenderGlobal implements IWorldAccess, IResourceManagerReloadListene
                 float f21 = (float)(i1 + 0) / 2.0F;
                 float f23 = (float)(k + 1) / 4.0F;
                 float f14 = (float)(i1 + 1) / 2.0F;
-                worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+                worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
                 worldrenderer.func_181662_b((double)(-f16), -100.0D, (double)f16).func_181673_a((double)f23, (double)f14).func_181675_d();
                 worldrenderer.func_181662_b((double)f16, -100.0D, (double)f16).func_181673_a((double)f19, (double)f14).func_181675_d();
                 worldrenderer.func_181662_b((double)f16, -100.0D, (double)(-f16)).func_181673_a((double)f19, (double)f21).func_181675_d();
@@ -2388,7 +2388,7 @@ public class RenderGlobal implements IWorldAccess, IResourceManagerReloadListene
             float f4 = 0.0F;
             float f5 = 0.0F;
             float f6 = 128.0F;
-            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+            worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
             worldrenderer.setTranslation(-d2, -d3, -d4);
             double d5 = Math.max((double)MathHelper.floor_double(d4 - d0), worldborder.minZ());
             double d6 = Math.min((double)MathHelper.ceiling_double_int(d4 + d0), worldborder.maxZ());

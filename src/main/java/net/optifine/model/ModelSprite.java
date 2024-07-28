@@ -80,14 +80,14 @@ public class ModelSprite
         double d1 = (double)(MathHelper.abs(f1) * (texHeight / 16.0F));
         WorldRenderer worldrenderer = tess.getWorldRenderer();
         GL11.glNormal3f(0.0F, 0.0F, -1.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b(0.0D, d1, 0.0D).func_181673_a((double)minU, (double)maxV).func_181675_d();
         worldrenderer.func_181662_b(d0, d1, 0.0D).func_181673_a((double)maxU, (double)maxV).func_181675_d();
         worldrenderer.func_181662_b(d0, 0.0D, 0.0D).func_181673_a((double)maxU, (double)minV).func_181675_d();
         worldrenderer.func_181662_b(0.0D, 0.0D, 0.0D).func_181673_a((double)minU, (double)minV).func_181675_d();
         tess.draw();
         GL11.glNormal3f(0.0F, 0.0F, 1.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b(0.0D, 0.0D, (double)width).func_181673_a((double)minU, (double)minV).func_181675_d();
         worldrenderer.func_181662_b(d0, 0.0D, (double)width).func_181673_a((double)maxU, (double)minV).func_181675_d();
         worldrenderer.func_181662_b(d0, d1, (double)width).func_181673_a((double)maxU, (double)maxV).func_181675_d();
@@ -96,7 +96,7 @@ public class ModelSprite
         float f2 = 0.5F * f / (float)sizeX;
         float f3 = 0.5F * f1 / (float)sizeY;
         GL11.glNormal3f(-1.0F, 0.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
 
         for (int i = 0; i < sizeX; ++i)
         {
@@ -110,7 +110,7 @@ public class ModelSprite
 
         tess.draw();
         GL11.glNormal3f(1.0F, 0.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
 
         for (int j = 0; j < sizeX; ++j)
         {
@@ -125,7 +125,7 @@ public class ModelSprite
 
         tess.draw();
         GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
 
         for (int k = 0; k < sizeY; ++k)
         {
@@ -140,7 +140,7 @@ public class ModelSprite
 
         tess.draw();
         GL11.glNormal3f(0.0F, -1.0F, 0.0F);
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
 
         for (int l = 0; l < sizeY; ++l)
         {

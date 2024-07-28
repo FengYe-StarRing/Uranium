@@ -1,11 +1,8 @@
 package com.github.fengye.starring.uranium.utils.misc;
 
-import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.value.Value;
-import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.ui.font.FontRender;
-import net.minecraft.util.ResourceLocation;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -29,10 +26,6 @@ public class JavaUtils {
 
     public static List<Method> getDeclaredMethods(Class<?> cls) {
         return Arrays.asList(cls.getDeclaredMethods());
-    }
-
-    public static ResourceLocation getResourceLocation(String path) {
-        return new ResourceLocation(Client.RESOURCES + path);
     }
 
     public static List<Field> getDeclaredFields(Class<?> cls) {

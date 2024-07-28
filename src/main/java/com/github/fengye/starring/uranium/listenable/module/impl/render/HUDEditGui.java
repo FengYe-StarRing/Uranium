@@ -1,6 +1,5 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.render;
 
-import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;

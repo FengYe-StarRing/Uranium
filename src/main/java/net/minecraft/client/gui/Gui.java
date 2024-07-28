@@ -145,7 +145,7 @@ public class Gui
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b((double)(x + 0), (double)(y + height), (double)this.zLevel).func_181673_a((double)((float)(textureX + 0) * f), (double)((float)(textureY + height) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(x + width), (double)(y + height), (double)this.zLevel).func_181673_a((double)((float)(textureX + width) * f), (double)((float)(textureY + height) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(x + width), (double)(y + 0), (double)this.zLevel).func_181673_a((double)((float)(textureX + width) * f), (double)((float)(textureY + 0) * f1)).func_181675_d();
@@ -162,7 +162,7 @@ public class Gui
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b((double)(xCoord + 0.0F), (double)(yCoord + (float)maxV), (double)this.zLevel).func_181673_a((double)((float)(minU + 0) * f), (double)((float)(minV + maxV) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(xCoord + (float)maxU), (double)(yCoord + (float)maxV), (double)this.zLevel).func_181673_a((double)((float)(minU + maxU) * f), (double)((float)(minV + maxV) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(xCoord + (float)maxU), (double)(yCoord + 0.0F), (double)this.zLevel).func_181673_a((double)((float)(minU + maxU) * f), (double)((float)(minV + 0) * f1)).func_181675_d();
@@ -177,7 +177,7 @@ public class Gui
     {
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b((double)(xCoord + 0), (double)(yCoord + heightIn), (double)this.zLevel).func_181673_a((double)textureSprite.getMinU(), (double)textureSprite.getMaxV()).func_181675_d();
         worldrenderer.func_181662_b((double)(xCoord + widthIn), (double)(yCoord + heightIn), (double)this.zLevel).func_181673_a((double)textureSprite.getMaxU(), (double)textureSprite.getMaxV()).func_181675_d();
         worldrenderer.func_181662_b((double)(xCoord + widthIn), (double)(yCoord + 0), (double)this.zLevel).func_181673_a((double)textureSprite.getMaxU(), (double)textureSprite.getMinV()).func_181675_d();
@@ -194,7 +194,7 @@ public class Gui
         float f1 = 1.0F / textureHeight;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b((double)x, (double)(y + height), 0.0D).func_181673_a((double)(u * f), (double)((v + (float)height) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(x + width), (double)(y + height), 0.0D).func_181673_a((double)((u + (float)width) * f), (double)((v + (float)height) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(x + width), (double)y, 0.0D).func_181673_a((double)((u + (float)width) * f), (double)(v * f1)).func_181675_d();
@@ -211,7 +211,7 @@ public class Gui
         float f1 = 1.0F / tileHeight;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b((double)x, (double)(y + height), 0.0D).func_181673_a((double)(u * f), (double)((v + (float)vHeight) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(x + width), (double)(y + height), 0.0D).func_181673_a((double)((u + (float)uWidth) * f), (double)((v + (float)vHeight) * f1)).func_181675_d();
         worldrenderer.func_181662_b((double)(x + width), (double)y, 0.0D).func_181673_a((double)((u + (float)uWidth) * f), (double)(v * f1)).func_181675_d();

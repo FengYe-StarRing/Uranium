@@ -147,7 +147,7 @@ public abstract class Render<T extends Entity> implements IEntityRenderer
             worldrenderer.setBlockLayer(EnumWorldBlockLayer.SOLID);
         }
 
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
 
         while (f3 > 0.0F)
         {

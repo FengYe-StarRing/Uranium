@@ -1,5 +1,6 @@
 package com.github.fengye.starring.uranium.utils;
 
+import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
@@ -11,6 +12,7 @@ import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.Packet;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Timer;
 import net.minecraft.world.WorldServer;
 
@@ -34,6 +36,10 @@ public class MinecraftInstance implements Listenable {
 
     public static void sendPacketNoEvent(Packet<?> packet) {
         mc.getNetHandler().getNetworkManager().sendPacketNoEvent(packet);
+    }
+
+    public static ResourceLocation getResourceLocation(String path) {
+        return new ResourceLocation(Client.RESOURCES + path);
     }
 
     @Override
@@ -65,5 +71,9 @@ public class MinecraftInstance implements Listenable {
             return;
         }
         thePlayer.addChatMessage(new ChatComponentText(message));
+    }
+
+    public static int getFPS() {
+        return Minecraft.getDebugFPS();
     }
 }

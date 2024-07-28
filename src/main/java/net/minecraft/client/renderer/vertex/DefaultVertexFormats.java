@@ -19,7 +19,7 @@ public class DefaultVertexFormats
     public static final VertexFormat field_181704_d = new VertexFormat();
     public static final VertexFormat POSITION = new VertexFormat();
     public static final VertexFormat field_181706_f = new VertexFormat();
-    public static final VertexFormat field_181707_g = new VertexFormat();
+    public static final VertexFormat POSITION_TEX = new VertexFormat();
     public static final VertexFormat field_181708_h = new VertexFormat();
     public static final VertexFormat POSITION_TEX_COLOR = new VertexFormat();
     public static final VertexFormat field_181710_j = new VertexFormat();
@@ -101,8 +101,8 @@ public class DefaultVertexFormats
         POSITION.func_181721_a(field_181713_m);
         field_181706_f.func_181721_a(field_181713_m);
         field_181706_f.func_181721_a(field_181714_n);
-        field_181707_g.func_181721_a(field_181713_m);
-        field_181707_g.func_181721_a(field_181715_o);
+        POSITION_TEX.func_181721_a(field_181713_m);
+        POSITION_TEX.func_181721_a(field_181715_o);
         field_181708_h.func_181721_a(field_181713_m);
         field_181708_h.func_181721_a(field_181717_q);
         field_181708_h.func_181721_a(field_181718_r);

@@ -3,7 +3,7 @@ package net.minecraft.client;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
 import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
-import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -676,8 +676,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
             try
             {
-                inputstream = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icons/Icon_16x16.png"));
-                inputstream1 = this.mcDefaultResourcePack.getResourceStream(JavaUtils.getResourceLocation("/Icons/Icon_32x32.png"));
+                inputstream = this.mcDefaultResourcePack.getResourceStream(MinecraftInstance.getResourceLocation("/Icons/Icon_16x16.png"));
+                inputstream1 = this.mcDefaultResourcePack.getResourceStream(MinecraftInstance.getResourceLocation("/Icons/Icon_32x32.png"));
 
                 if (inputstream != null && inputstream1 != null)
                 {

@@ -4,6 +4,7 @@ import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
+import com.github.fengye.starring.uranium.listenable.special.Palette;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
@@ -22,6 +23,8 @@ public class EventManager extends Manager {
     public void init() {
         super.init();
         handleMethods.clear();
+
+        registerListener(new Palette());
     }
 
     public void registerListener(Listenable listenable) {

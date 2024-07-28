@@ -12,16 +12,16 @@ public class Timer {
     }
 
     private long getCurrentTimeMillis() {
-        count++;
         return System.currentTimeMillis();
     }
 
-    public boolean hasTimePassed(long MS) {
+    public boolean hasTimePassed(long ms) {
         count++;
-        return getCurrentTimeMillis() >= time + MS;
+        return getCurrentTimeMillis() >= time + ms;
     }
 
     public boolean hasTickPassed(long tick) {
+        count++;
         return tick >= this.tick;
     }
 

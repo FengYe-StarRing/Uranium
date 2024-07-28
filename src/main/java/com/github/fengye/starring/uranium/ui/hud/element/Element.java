@@ -3,6 +3,7 @@ package com.github.fengye.starring.uranium.ui.hud.element;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 
 import java.util.List;
 
@@ -68,5 +69,30 @@ public abstract class Element {
 
     public void setLock(boolean lock) {
         this.lock = lock;
+    }
+
+    public void lock(float x,float y) {
+        if(!isLock()) {
+            return;
+        }
+        Side side = getSide();
+        Horizontal horizontal = side.getHorizontal();
+        Vertical vertical = side.getVertical();
+        if(isLock()) {
+            switch (horizontal) {
+                case Left:
+                    break;
+                case Right:
+                    setX(ScreenUtils.getWidth() - x);
+                    break;
+            }
+            switch (vertical) {
+                case Up:
+                    break;
+                case Down:
+                    setY(ScreenUtils.getHeight() - y);
+                    break;
+            }
+        }
     }
 }

@@ -64,7 +64,7 @@ public class GuiStreamIndicator
         float f4 = (float)(p_152436_3_ + 16) * 0.015625F;
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b((double)(p_152436_1_ - 16 - p_152436_4_), (double)(p_152436_2_ + 16), (double)f).func_181673_a((double)f1, (double)f4).func_181675_d();
         worldrenderer.func_181662_b((double)(p_152436_1_ - p_152436_4_), (double)(p_152436_2_ + 16), (double)f).func_181673_a((double)f3, (double)f4).func_181675_d();
         worldrenderer.func_181662_b((double)(p_152436_1_ - p_152436_4_), (double)(p_152436_2_ + 0), (double)f).func_181673_a((double)f3, (double)f2).func_181675_d();

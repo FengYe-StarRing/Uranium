@@ -19,8 +19,6 @@ import java.util.regex.Pattern;
 public class FontManager extends Manager {
     public static FontRenderer mcFont;
 
-    @FontInfo(name = "Harmony", size = 17)
-    public static FontRender harmony17;
     @FontInfo(name = "Harmony", size = 18)
     public static FontRender harmony18;
     @FontInfo(name = "Harmony", size = 24)
@@ -30,22 +28,50 @@ public class FontManager extends Manager {
     @FontInfo(name = "Harmony", size = 48)
     public static FontRender harmony48;
 
+    @FontInfo(name = "RobotoBold",size = 12)
+    public static FontRender robotoBold12;
+    @FontInfo(name = "RobotoBold",size = 16)
+    public static FontRender robotoBold16;
+    @FontInfo(name = "RobotoBold",size = 18)
+    public static FontRender robotoBold18;
+    @FontInfo(name = "RobotoBold",size = 24)
+    public static FontRender robotoBold24;
+    @FontInfo(name = "RobotoBold",size = 36)
+    public static FontRender robotoBold36;
+
+    @FontInfo(name = "Alibaba",size = 12)
+    public static FontRender alibaba12;
+    @FontInfo(name = "Alibaba",size = 16)
+    public static FontRender alibaba16;
+    @FontInfo(name = "Alibaba",size = 18)
+    public static FontRender alibaba18;
+    @FontInfo(name = "Alibaba",size = 24)
+    public static FontRender alibaba24;
+
     public FontManager() {
         super("FontManager");
         mcFont = Minecraft.getMinecraft().fontRendererObj;
         // Harmony
         String harmony = "Harmony.ttf";
-        harmony17 = loadFont(harmony,17);
         harmony18 = loadFont(harmony,18);
         harmony24 = loadFont(harmony,24);
         harmony36 = loadFont(harmony,36);
         harmony48 = loadFont(harmony,48);
         // Alibaba
         String alibaba = "Alibaba.ttf";
+        alibaba12 = loadFont(alibaba,12);
+        alibaba16 = loadFont(alibaba,16);
+        alibaba18 = loadFont(alibaba,18);
+        alibaba24 = loadFont(alibaba,24);
         // Facon
         String facon = "Facon.ttf";
         // RobotoBold
         String robotoBold = "RobotoBold.ttf";
+        robotoBold12 = loadFont(robotoBold,12);
+        robotoBold16 = loadFont(robotoBold,16);
+        robotoBold18 = loadFont(robotoBold,18);
+        robotoBold24 = loadFont(robotoBold,24);
+        robotoBold36 = loadFont(robotoBold,36);
     }
 
     @Override

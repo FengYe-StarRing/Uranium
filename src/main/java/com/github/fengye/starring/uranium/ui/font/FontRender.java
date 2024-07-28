@@ -307,19 +307,19 @@ public final class FontRender {
         return (int) x;
     }
 
-    private void drawCharWithShadow(char c, double x, double y, int color) {
+    public void drawCharWithShadow(char c, double x, double y, int color) {
         final int alpha = ColorUtils.getAlpha(color);
 
         drawChar(c, x + 0.5, y + 0.5, alpha < 200 ? ColorUtils.reAlpha(SHADOW_COLOR, alpha) : SHADOW_COLOR);
         drawChar(c, x, y, color);
     }
 
-    private void drawChar(char c, double x, double y, int color) {
+    public void drawChar(char c, double x, double y, int color) {
         preDraw();
         GLUtils.color(color);
 
         x *= 2.0;
-        y *= 2.0;
+//        y *= 2.0;
 
         getGlyph(c).draw(x, y, false);
 

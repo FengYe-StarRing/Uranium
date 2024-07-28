@@ -933,7 +933,7 @@ public class GuiIngame extends Gui
         this.mc.getTextureManager().bindTexture(pumpkinBlurTexPath);
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b(0.0D, (double)p_180476_1_.getScaledHeight(), -90.0D).func_181673_a(0.0D, 1.0D).func_181675_d();
         worldrenderer.func_181662_b((double)p_180476_1_.getScaledWidth(), (double)p_180476_1_.getScaledHeight(), -90.0D).func_181673_a(1.0D, 1.0D).func_181675_d();
         worldrenderer.func_181662_b((double)p_180476_1_.getScaledWidth(), 0.0D, -90.0D).func_181673_a(1.0D, 0.0D).func_181675_d();
@@ -990,7 +990,7 @@ public class GuiIngame extends Gui
             this.mc.getTextureManager().bindTexture(vignetteTexPath);
             Tessellator tessellator = Tessellator.getInstance();
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-            worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+            worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
             worldrenderer.func_181662_b(0.0D, (double)p_180480_2_.getScaledHeight(), -90.0D).func_181673_a(0.0D, 1.0D).func_181675_d();
             worldrenderer.func_181662_b((double)p_180480_2_.getScaledWidth(), (double)p_180480_2_.getScaledHeight(), -90.0D).func_181673_a(1.0D, 1.0D).func_181675_d();
             worldrenderer.func_181662_b((double)p_180480_2_.getScaledWidth(), 0.0D, -90.0D).func_181673_a(1.0D, 0.0D).func_181675_d();
@@ -1025,7 +1025,7 @@ public class GuiIngame extends Gui
         float f3 = textureatlassprite.getMaxV();
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.func_181668_a(7, DefaultVertexFormats.field_181707_g);
+        worldrenderer.func_181668_a(7, DefaultVertexFormats.POSITION_TEX);
         worldrenderer.func_181662_b(0.0D, (double)p_180474_2_.getScaledHeight(), -90.0D).func_181673_a((double)f, (double)f3).func_181675_d();
         worldrenderer.func_181662_b((double)p_180474_2_.getScaledWidth(), (double)p_180474_2_.getScaledHeight(), -90.0D).func_181673_a((double)f2, (double)f3).func_181675_d();
         worldrenderer.func_181662_b((double)p_180474_2_.getScaledWidth(), 0.0D, -90.0D).func_181673_a((double)f2, (double)f1).func_181675_d();

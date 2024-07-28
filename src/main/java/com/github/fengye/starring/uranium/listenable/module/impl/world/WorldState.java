@@ -39,7 +39,7 @@ public class WorldState extends Module {
     private void onUpdate(UpdateEvent event) {
         WorldInfo worldInfo = serverWorld.getWorldInfo();
         if(changeWeatherValue.get()) {
-            int i = 0;
+            int i = 100;
             switch ((WeatherModes)weatherValue.get()) {
                 case Clear:
                     worldInfo.setCleanWeatherTime(i);
