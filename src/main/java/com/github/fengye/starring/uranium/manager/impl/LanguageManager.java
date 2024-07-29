@@ -34,7 +34,7 @@ public class LanguageManager extends Manager {
         return JavaUtils.getStream(Client.RESOURCES + "/Lang/" + getLangPath(mode));
     }
 
-    public String getText(Languages mode, String pack) {
+    public String getTranslate(Languages mode, String pack) {
         List<String> packs = mode.getPacks();
         List<String> texts = mode.getTexts();
         if(packs == null || texts == null) {
@@ -56,8 +56,8 @@ public class LanguageManager extends Manager {
         return text;
     }
 
-    public String getText(String pack) {
-        return getText(Languages.valueOf(languageValue.getAsString()),pack);
+    public String getTranslate(String pack) {
+        return getTranslate(Languages.valueOf(languageValue.getAsString()),pack);
     }
 
     public void load(Languages mode) {

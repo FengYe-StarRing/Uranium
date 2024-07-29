@@ -1,10 +1,19 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.listenable.special.Palette;
+import com.github.fengye.starring.uranium.manager.impl.FontManager;
+import com.github.fengye.starring.uranium.ui.font.FontRender;
+import com.github.fengye.starring.uranium.utils.misc.MouseUtils;
+import com.github.fengye.starring.uranium.utils.render.ColorUtils;
+import com.github.fengye.starring.uranium.utils.render.RenderUtils;
+import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+
+import java.awt.*;
 
 public class GuiButton extends Gui
 {
@@ -33,6 +42,8 @@ public class GuiButton extends Gui
     public boolean visible;
     protected boolean hovered;
 
+    private final FontRender font = FontManager.alibaba18;
+
     public GuiButton(int buttonId, int x, int y, String buttonText)
     {
         this(buttonId, x, y, 200, 20, buttonText);
@@ -40,8 +51,6 @@ public class GuiButton extends Gui
 
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText)
     {
-        this.width = 200;
-        this.height = 20;
         this.enabled = true;
         this.visible = true;
         this.id = buttonId;
@@ -50,6 +59,17 @@ public class GuiButton extends Gui
         this.width = widthIn;
         this.height = heightIn;
         this.displayString = buttonText;
+    }
+
+    public GuiButton(int buttonId, int x, int y, boolean autoWidth,boolean autoHeight, String buttonText) {
+        this.enabled = true;
+        this.visible = true;
+        this.id = buttonId;
+        this.xPosition = x;
+        this.yPosition = y;
+        this.displayString = buttonText;
+        this.width = autoWidth ? font.getStringWidth(buttonText) + 8 : 200;
+        this.height = autoHeight ? 20 : 20;
     }
 
     /**
@@ -75,33 +95,26 @@ public class GuiButton extends Gui
     /**
      * Draws this button to the screen.
      */
-    public void drawButton(Minecraft mc, int mouseX, int mouseY)
-    {
-        if (this.visible)
-        {
-            FontRenderer fontrenderer = mc.fontRendererObj;
-            mc.getTextureManager().bindTexture(buttonTextures);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
-            int i = this.getHoverState(this.hovered);
-            GlStateManager.enableBlend();
-            GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-            GlStateManager.blendFunc(770, 771);
-            this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + i * 20, this.width / 2, this.height);
-            this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + i * 20, this.width / 2, this.height);
+    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        if(this.visible) {
+            int x1 = xPosition;
+            int y1 = yPosition;
+            int width = this.width;
+            int height = this.height;
+            int x2 = xPosition + width;
+            int y2 = yPosition + height;
+
+            BlurUtils.drawShadowBlur(x1,y1,width,height);
+            Color rectColor = this.enabled ? Palette.getColor1() : Palette.getColor2();
+            RenderUtils.drawBorder(x1,y1,x2,y2,ColorUtils.transparent(rectColor));
+
+            if(MouseUtils.isHovered(x1,y1,x2,y2)) {
+                RenderUtils.drawRect(x1,y1,x2,y2,ColorUtils.transparent(255,255,255));
+            }
+
             this.mouseDragged(mc, mouseX, mouseY);
-            int j = 14737632;
 
-            if (!this.enabled)
-            {
-                j = 10526880;
-            }
-            else if (this.hovered)
-            {
-                j = 16777120;
-            }
-
-            this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
+            font.drawCenteredString(displayString,x1 + width / 2F,y1 + height / 2F - font.getStringHeight(displayString) / 2F, Color.white.getRGB());
         }
     }
 
@@ -153,5 +166,21 @@ public class GuiButton extends Gui
     public void setWidth(int width)
     {
         this.width = width;
+    }
+
+    public static String getButtonName(String name) {
+        return Client.instance.languageManager.getTranslate("Ui.Gui.Button." + name);
+    }
+
+    public FontRender getFont() {
+        return font;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getButtonHeight() {
+        return this.height;
     }
 }

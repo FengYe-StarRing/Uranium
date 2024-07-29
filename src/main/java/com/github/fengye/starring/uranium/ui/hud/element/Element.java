@@ -17,7 +17,7 @@ public abstract class Element {
 
     public Element(String name,float x,float y,Side side) {
         T_NAME = name;
-        this.name = Client.instance.languageManager.getText("HUD.Element." + T_NAME);
+        this.name = Client.instance.languageManager.getTranslate("HUD.Element." + T_NAME);
         this.x = x;
         this.y = y;
         this.side = side;
@@ -81,6 +81,7 @@ public abstract class Element {
         if(isLock()) {
             switch (horizontal) {
                 case Left:
+                    setX(x);
                     break;
                 case Right:
                     setX(ScreenUtils.getWidth() - x);
@@ -88,6 +89,7 @@ public abstract class Element {
             }
             switch (vertical) {
                 case Up:
+                    setY(y);
                     break;
                 case Down:
                     setY(ScreenUtils.getHeight() - y);

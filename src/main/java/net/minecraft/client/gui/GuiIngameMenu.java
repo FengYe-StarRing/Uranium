@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import java.io.IOException;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
@@ -58,16 +59,16 @@ public class GuiIngameMenu extends GuiScreen
 
                 if (flag)
                 {
-                    this.mc.displayGuiScreen(new GuiMainMenu());
+                    this.mc.displayGuiScreen(new GuiLogin());
                 }
                 else if (flag1)
                 {
                     RealmsBridge realmsbridge = new RealmsBridge();
-                    realmsbridge.switchToRealms(new GuiMainMenu());
+                    realmsbridge.switchToRealms(new GuiLogin());
                 }
                 else
                 {
-                    this.mc.displayGuiScreen(new GuiMultiplayer(new GuiMainMenu()));
+                    this.mc.displayGuiScreen(new GuiMultiplayer(new GuiLogin()));
                 }
 
             case 2:

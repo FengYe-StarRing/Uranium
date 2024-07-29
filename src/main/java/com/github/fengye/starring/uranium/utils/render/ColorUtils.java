@@ -14,8 +14,8 @@ public class ColorUtils {
         return hue + speed;
     }
 
-    public static Color transparent(int r,int g,int b,int transparency) {
-        return new Color(r,g,b,transparency * 80);
+    public static Color transparent(int r,int g,int b,float transparency) {
+        return new Color(r,g,b,(int)(transparency * 80));
     }
 
     public static Color transparent(int r,int g,int b) {
@@ -24,5 +24,13 @@ public class ColorUtils {
 
     public static Color transparent() {
         return transparent(0,0,0);
+    }
+
+    public static Color transparent(int transparency) {
+        return transparent(0,0,0,transparency);
+    }
+
+    public static Color transparent(Color color) {
+        return transparent(color.getRed(),color.getGreen(),color.getBlue());
     }
 }

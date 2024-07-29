@@ -31,8 +31,8 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         T_NAME = info.name();
 
         category = info.category();
-        name = lang.getText("L.Module." + T_NAME);
-        description = lang.getText("L.Module." + T_NAME + ".Description");
+        name = lang.getTranslate("L.Module." + T_NAME);
+        description = lang.getTranslate("L.Module." + T_NAME + ".Description");
         keyBind = info.keyBind();
         canEnable = info.canEnable();
 
@@ -77,7 +77,8 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         } else {
             onDisable();
         }
-        NotificationManager.post(name,new String[]{"Was " + (state ? "enabled" : "disabled")}, NotificationManager.NotifType.Info);
+        NotificationManager.NotifType type = state ? NotificationManager.NotifType.Success : NotificationManager.NotifType.Error;
+        NotificationManager.post(name,new String[]{"Was " + (state ? "enabled" : "disabled")}, type);
     }
 
     public void setEnabled() {

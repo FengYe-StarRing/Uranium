@@ -3,6 +3,7 @@ package net.minecraft.client;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
 import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
+import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -50,7 +51,6 @@ import net.minecraft.client.gui.GuiControls;
 import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMemoryErrorScreen;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSleepMP;
@@ -568,11 +568,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         if (this.serverName != null)
         {
-            this.displayGuiScreen(new GuiConnecting(new GuiMainMenu(), this, this.serverName, this.serverPort));
+            this.displayGuiScreen(new GuiConnecting(new GuiLogin(), this, this.serverName, this.serverPort));
         }
         else
         {
-            this.displayGuiScreen(new GuiMainMenu());
+            this.displayGuiScreen(new GuiLogin());
         }
 
         this.renderEngine.deleteTexture(this.mojangLogo);
@@ -976,14 +976,14 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         if (guiScreenIn == null && this.theWorld == null)
         {
-            guiScreenIn = new GuiMainMenu();
+            guiScreenIn = new GuiLogin();
         }
         else if (guiScreenIn == null && this.thePlayer.getHealth() <= 0.0F)
         {
             guiScreenIn = new GuiGameOver();
         }
 
-        if (guiScreenIn instanceof GuiMainMenu)
+        if (guiScreenIn instanceof GuiLogin)
         {
             this.gameSettings.showDebugInfo = false;
             this.ingameGUI.getChatGUI().clearChatMessages();

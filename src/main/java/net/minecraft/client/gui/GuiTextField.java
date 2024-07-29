@@ -1,5 +1,10 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.listenable.special.Palette;
+import com.github.fengye.starring.uranium.utils.render.ColorUtils;
+import com.github.fengye.starring.uranium.utils.render.RenderUtils;
+import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;
+import com.github.fengye.starring.uranium.utils.timer.Timer;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import net.minecraft.client.renderer.GlStateManager;
@@ -57,6 +62,9 @@ public class GuiTextField extends Gui
     private GuiPageButtonList.GuiResponder field_175210_x;
     private Predicate<String> field_175209_y = Predicates.<String>alwaysTrue();
 
+    private final Timer revisionLineTimer = new Timer();
+    private boolean revisionLine;
+
     public GuiTextField(int componentId, FontRenderer fontrendererObj, int x, int y, int par5Width, int par6Height)
     {
         this.id = componentId;
@@ -65,6 +73,8 @@ public class GuiTextField extends Gui
         this.yPosition = y;
         this.width = par5Width;
         this.height = par6Height;
+        revisionLineTimer.reset();
+        revisionLine = true;
     }
 
     public void func_175207_a(GuiPageButtonList.GuiResponder p_175207_1_)
@@ -517,6 +527,11 @@ public class GuiTextField extends Gui
             String s = this.fontRendererInstance.trimStringToWidth(this.text.substring(this.lineScrollOffset), this.getWidth());
             this.setCursorPosition(this.fontRendererInstance.trimStringToWidth(s, i).length() + this.lineScrollOffset);
         }
+
+        if(flag) {
+            revisionLine = true;
+            revisionLineTimer.reset();
+        }
     }
 
     /**
@@ -526,10 +541,19 @@ public class GuiTextField extends Gui
     {
         if (this.getVisible())
         {
-            if (this.getEnableBackgroundDrawing())
-            {
-                drawRect(this.xPosition - 1, this.yPosition - 1, this.xPosition + this.width + 1, this.yPosition + this.height + 1, -6250336);
-                drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, -16777216);
+            int x1 = xPosition;
+            int y1 = yPosition;
+            int width = this.width;
+            int height = this.height;
+            int x2 = xPosition + width;
+            int y2 = yPosition + height;
+            if (this.getEnableBackgroundDrawing()) {
+                boolean pitchOn = isFocused();
+                BlurUtils.drawShadowBlur(x1,y1,width,height);
+                RenderUtils.drawBorder(x1,y1,x2,y2,ColorUtils.transparent(isEnabled ? Palette.getColor1() : Palette.getColor2()));
+                if(pitchOn) {
+                    RenderUtils.drawRect(x1,y1,x2,y2, ColorUtils.transparent(255,255,255));
+                }
             }
 
             int i = this.isEnabled ? this.enabledColor : this.disabledColor;
@@ -579,7 +603,13 @@ public class GuiTextField extends Gui
                 }
                 else
                 {
-                    this.fontRendererInstance.drawStringWithShadow("_", (float)k1, (float)i1, i);
+                    if(revisionLineTimer.hasTimePassed(500)) {
+                        revisionLine = !revisionLine;
+                        revisionLineTimer.reset();
+                    }
+                    if(revisionLine) {
+                        this.fontRendererInstance.drawStringWithShadow("|", (float)k1, (float)i1, i);
+                    }
                 }
             }
 

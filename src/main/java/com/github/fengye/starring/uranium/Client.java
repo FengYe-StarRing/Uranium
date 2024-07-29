@@ -20,6 +20,7 @@ public class Client extends Manager {
     public static final String T_NAME = "Client.Name";
     public static final String RESOURCES = "Uranium";
     private static final String VERSION = "1.0";
+    private static final String AUTHOR = "枫叶星环";
     private static TrayIcon trayIcon;
 
     // Manager
@@ -97,7 +98,7 @@ public class Client extends Manager {
         eventManager.registerListener(new UseUtils());
         eventManager.registerListener(new ProtocolUtils());
 
-        name = languageManager.getText(T_NAME);
+        name = languageManager.getTranslate(T_NAME);
     }
 
     public static void initTray() {
@@ -120,5 +121,13 @@ public class Client extends Manager {
 
     public static void displayTray(String text) {
         displayTray(text, TrayIcon.MessageType.INFO);
+    }
+
+    public static String getText(String pack) {
+        return instance.languageManager.getTranslate("Text." + pack);
+    }
+
+    public static String getAuthor() {
+        return AUTHOR;
     }
 }

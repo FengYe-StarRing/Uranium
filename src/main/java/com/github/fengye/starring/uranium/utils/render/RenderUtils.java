@@ -1,6 +1,8 @@
 package com.github.fengye.starring.uranium.utils.render;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -9,10 +11,11 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
-import static com.github.fengye.starring.uranium.utils.MinecraftInstance.mc;
 import static org.lwjgl.opengl.GL11.*;
 
 public class RenderUtils {
+    public static Minecraft mc = Minecraft.getMinecraft();
+
     public static void drawRect(float x,float y,float x2,float y2,int color) {
         float f = (color >> 24 & 0xFF) / 255.0F;
         float f1 = (color >> 16 & 0xFF) / 255.0F;
@@ -99,6 +102,12 @@ public class RenderUtils {
         drawRect(x,y,x + width,y + height,color);
     }
 
+    public static void drawShadow(float x,float y,float width,float height,int whileNumber) {
+        for(int i = 0;i < whileNumber;i++) {
+            drawShadow(x,y,width,height);
+        }
+    }
+
     public static void drawTexturedRect(float x,float y,float width,float height,String image) {
         GL11.glPushMatrix();
         boolean enableBlend = GL11.glIsEnabled(3042);
@@ -109,7 +118,7 @@ public class RenderUtils {
         if (!disableAlpha) {
             GL11.glDisable(3008);
         }
-        mc.getTextureManager().bindTexture(new ResourceLocation(Client.RESOURCES + "/Shaders/" + image + ".png"));
+        mc.getTextureManager().bindTexture(MinecraftInstance.getResourceLocation("/Shaders/" + image + ".png"));
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         drawModalRectWithCustomSizedTexture(x, y, 0.0f, 0.0f, width, height, width, height);
         if (!enableBlend) {
@@ -149,7 +158,11 @@ public class RenderUtils {
         drawBorder(x1,y1,x2,y2,true,true,true,true,color,color,color,color);
     }
 
-    public static void drawRound(float x, float y, float x1, float y1, float radius, Color color) {
+    public static void drawBorder(float x1,float y1,float x2,float y2,boolean top,boolean bottom,boolean left,boolean right,Color color) {
+        drawBorder(x1,y1,x2,y2,top,bottom,left,right,color,color,color,color);
+    }
+
+    public static void drawRoundRect(float x, float y, float x1, float y1, float radius, Color color) {
         GL11.glPushAttrib(0);
         GL11.glScaled(0.5D, 0.5D, 0.5D);
         GlStateManager.enableBlend();
@@ -190,5 +203,75 @@ public class RenderUtils {
 
     public static void setColor(int color) {
         setColor(color, (float) (color >> 24 & 255) / 255.0F);
+    }
+
+    public static void drawGradientRect(double left, double top, double right, double bottom, int col1, int col2,int i) {
+        float f = (col1 >> 24 & 0xFF) / 255.0F;
+        float f1 = (col1 >> 16 & 0xFF) / 255.0F;
+        float f2 = (col1 >> 8 & 0xFF) / 255.0F;
+        float f3 = (col1 & 0xFF) / 255.0F;
+
+        float f4 = (col2 >> 24 & 0xFF) / 255.0F;
+        float f5 = (col2 >> 16 & 0xFF) / 255.0F;
+        float f6 = (col2 >> 8 & 0xFF) / 255.0F;
+        float f7 = (col2 & 0xFF) / 255.0F;
+        GL11.glEnable(3042);
+        GL11.glDisable(3553);
+        GL11.glBlendFunc(770, 771);
+        GL11.glEnable(2848);
+        GL11.glShadeModel(7425);
+
+        GL11.glPushMatrix();
+        GL11.glBegin(7);
+        GL11.glColor4f(f1, f2, f3, f);
+        GL11.glVertex2d(left, top);
+        GL11.glVertex2d(left, bottom);
+
+        GL11.glColor4f(f5, f6, f7, f4);
+        GL11.glVertex2d(right, bottom);
+        GL11.glVertex2d(right, top);
+        GL11.glEnd();
+        GL11.glPopMatrix();
+
+        GL11.glEnable(3553);
+        GL11.glDisable(3042);
+        GL11.glDisable(2848);
+        GL11.glShadeModel(7424);
+        GL11.glColor4d(255, 255, 255, 255);
+    }
+
+    public static void drawGradientRect(float x, float y, float x2, float y2, int col1, int col2) {
+        float f = (col1 >> 24 & 0xFF) / 255.0F;
+        float f1 = (col1 >> 16 & 0xFF) / 255.0F;
+        float f2 = (col1 >> 8 & 0xFF) / 255.0F;
+        float f3 = (col1 & 0xFF) / 255.0F;
+        float f4 = (col2 >> 24 & 0xFF) / 255.0F;
+        float f5 = (col2 >> 16 & 0xFF) / 255.0F;
+        float f6 = (col2 >> 8 & 0xFF) / 255.0F;
+        float f7 = (col2 & 0xFF) / 255.0F;
+
+        glEnable(3042);
+        glDisable(3553);
+        GL11.glBlendFunc(770, 771);
+        glEnable(2848);
+        GL11.glShadeModel(7425);
+
+        GL11.glPushMatrix();
+        GL11.glBegin(7);
+        GL11.glColor4f(f1, f2, f3, f);
+        GL11.glVertex2d(x, y);
+        GL11.glVertex2d(x, y2);
+        GL11.glColor4f(f5, f6, f7, f4);
+        GL11.glVertex2d(x2, y2);
+        GL11.glVertex2d(x2, y);
+        GL11.glEnd();
+        GL11.glPopMatrix();
+
+        glEnable(3553);
+        glDisable(3042);
+        glDisable(2848);
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+        GL11.glColor4f(1, 1, 1, 1);
     }
 }

@@ -40,11 +40,6 @@ public class HUDManager extends Manager {
 
     public void render() {
         for (Element element : elements) {
-//            Side side = element.getSide();
-//            Horizontal horizontal = side.getHorizontal();
-//            Vertical vertical = side.getVertical();
-//            float lockX = horizontal == Horizontal.Left ? element.getX() : ScreenUtils.getWidth() - element.getY();
-//            float lockY = vertical == Vertical.Up ? element.getY() : ScreenUtils.getHeight() - element.getY();
             float lockX = element.getX();
             float lockY = element.getY();
             GL11.glPushMatrix();
@@ -110,5 +105,15 @@ public class HUDManager extends Manager {
                 new Arraylist(),
                 new Notifications()
         });
+    }
+
+    public List<Element> getElementByName(String name) {
+        List<Element> elementList = new ArrayList<>();
+        for (Element element : elements) {
+            if(name.equals(element.T_NAME)) {
+                elementList.add(element);
+            }
+        }
+        return elementList;
     }
 }

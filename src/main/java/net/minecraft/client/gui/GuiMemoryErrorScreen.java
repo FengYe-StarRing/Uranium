@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import java.io.IOException;
 import net.minecraft.client.resources.I18n;
 
@@ -23,7 +24,7 @@ public class GuiMemoryErrorScreen extends GuiScreen
     {
         if (button.id == 0)
         {
-            this.mc.displayGuiScreen(new GuiMainMenu());
+            this.mc.displayGuiScreen(new GuiLogin());
         }
         else if (button.id == 1)
         {

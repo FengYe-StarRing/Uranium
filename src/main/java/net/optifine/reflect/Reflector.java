@@ -13,7 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiEnchantment;
 import net.minecraft.client.gui.GuiHopper;
-import net.minecraft.client.gui.GuiMainMenu;
+import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiBeacon;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
@@ -310,7 +310,7 @@ public class Reflector
     public static ReflectorField GuiFurnace_tileFurnace = new ReflectorField(GuiFurnace, IInventory.class);
     public static ReflectorClass GuiHopper = new ReflectorClass(GuiHopper.class);
     public static ReflectorField GuiHopper_hopperInventory = new ReflectorField(GuiHopper, IInventory.class, 1);
-    public static ReflectorClass GuiMainMenu = new ReflectorClass(GuiMainMenu.class);
+    public static ReflectorClass GuiMainMenu = new ReflectorClass(GuiLogin.class);
     public static ReflectorField GuiMainMenu_splashText = new ReflectorField(GuiMainMenu, String.class);
     public static ReflectorClass Minecraft = new ReflectorClass(Minecraft.class);
     public static ReflectorField Minecraft_defaultResourcePack = new ReflectorField(Minecraft, DefaultResourcePack.class);

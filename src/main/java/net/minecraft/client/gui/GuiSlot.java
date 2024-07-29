@@ -1,5 +1,8 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.utils.render.ColorUtils;
+import com.github.fengye.starring.uranium.utils.render.RenderUtils;
+import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -7,6 +10,8 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.input.Mouse;
+
+import java.awt.*;
 
 public abstract class GuiSlot
 {
@@ -233,7 +238,7 @@ public abstract class GuiSlot
             GlStateManager.disableFog();
             Tessellator tessellator = Tessellator.getInstance();
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-            this.drawContainerBackground(tessellator);
+//            this.drawContainerBackground(tessellator);
             int k = this.left + this.width / 2 - this.getListWidth() / 2 + 2;
             int l = this.top + 4 - (int)this.amountScrolled;
 
@@ -245,8 +250,8 @@ public abstract class GuiSlot
             this.drawSelectionBox(k, l, mouseXIn, mouseYIn);
             GlStateManager.disableDepth();
             int i1 = 4;
-            this.overlayBackground(0, this.top, 255, 255);
-            this.overlayBackground(this.bottom, this.height, 255, 255);
+//            this.overlayBackground(0, this.top, 255, 255);
+//            this.overlayBackground(this.bottom, this.height, 255, 255);
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
             GlStateManager.disableAlpha();
@@ -302,6 +307,9 @@ public abstract class GuiSlot
             GlStateManager.shadeModel(7424);
             GlStateManager.enableAlpha();
             GlStateManager.disableBlend();
+
+            BlurUtils.drawBlurRect(0,0,width,top);
+            BlurUtils.drawBlurRect(0,bottom,width,height);
         }
     }
 

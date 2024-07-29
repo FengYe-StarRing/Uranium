@@ -1,5 +1,10 @@
 package net.minecraft.client.gui;
 
+import com.github.fengye.starring.uranium.listenable.special.ClientSetting;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.misc.MouseUtils;
+import com.github.fengye.starring.uranium.utils.render.RenderUtils;
+import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -37,6 +42,7 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ResourceLocation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -667,7 +673,8 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
         }
         else
         {
-            this.drawBackground(tint);
+            mc.getTextureManager().bindTexture(ClientSetting.getBackground());
+            RenderUtils.drawModalRectWithCustomSizedTexture(0, 0, MouseUtils.getMouseX() / 60f, MouseUtils.getMouseY() / 60f, ScreenUtils.getWidth(), ScreenUtils.getHeight(), ScreenUtils.getWidth() * 1.02f, ScreenUtils.getHeight() * 1.02f);
         }
     }
 

@@ -31,7 +31,6 @@ public class Notifications extends Element {
     @Override
     public Border render() {
         lock(3,3);
-        updateNotifs();
         drawNotifs();
         return null;
     }
@@ -65,7 +64,7 @@ public class Notifications extends Element {
         return NotificationManager.getNotifs();
     }
 
-    private void updateNotifs() {
+    public void updateNotifs() {
         int targetY = 0;
         int interval = 4;
         Side side = getSide();
@@ -81,10 +80,10 @@ public class Notifications extends Element {
             boolean hasTime = notif.hasTime();
             int targetX = hasTime ? borderWidth : 0;
             if(x != targetX) {
-                x = AnimationUtils.move(x,targetX,borderWidth);
+                x = AnimationUtils.move(x,targetX,borderWidth * 2);
             }
             if(y != targetY) {
-                y = AnimationUtils.move(y,targetY,borderHeight * notifs.size());
+                y = AnimationUtils.move(y,targetY,borderHeight * notifs.size() * 2);
             }
             if(x == targetX) {
                 if(y == targetY && !notif.countdownEnable) {
@@ -112,6 +111,7 @@ public class Notifications extends Element {
     private void drawNotifs() {
         Side side = getSide();
         Horizontal horizontal = side.getHorizontal();
+        Vertical vertical = side.getVertical();
         for (NotificationManager.Notif notif : getNotifs()) {
             int x = notif.getX();
             int y = notif.getY();
@@ -123,13 +123,15 @@ public class Notifications extends Element {
             String[] texts = notif.getTexts();
             if(horizontal == Horizontal.Right) {
                 x -= borderWidth;
+            }
+            if(vertical == Vertical.Down) {
                 y -= borderHeight;
             }
             int x2 = x + borderWidth;
             int y2 = y + borderHeight;
             Color transparent1 = ColorUtils.transparent();
             RenderUtils.drawShadow(x,y,borderWidth,borderHeight,transparent1);
-            RenderUtils.drawRound(x,y,x2,y2,4,transparent1);
+            RenderUtils.drawRoundRect(x,y,x2,y2,4,transparent1);
             {
                 // 画X轴的内容
                 int startX = x + intervalX;
@@ -139,7 +141,7 @@ public class Notifications extends Element {
                 }
                 // 画Y轴的内容
                 int color = Color.gray.getRGB();
-                int startY = y + intervalY * 2;
+                int startY = y + intervalY;
                 drawTitleFont.drawString(title,startX, startY,Color.white.getRGB());
                 startY += drawTitleFont.getStringHeight(title) + drawIntervalY;
                 for (String text : texts) {

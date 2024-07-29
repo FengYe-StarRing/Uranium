@@ -143,6 +143,10 @@ public final class FontRender {
         return drawString(s, x - getStringWidth(s) / 2.0F, y, color);
     }
 
+    public int drawCenteredString(String s, float x, float y, Color color) {
+        return drawCenteredString(s,x,y,color.getRGB());
+    }
+
     public int drawStringWithShadowDirectly(String s, float x, float y, int color) {
         final int alpha = ColorUtils.getAlpha(color);
 
@@ -192,6 +196,7 @@ public final class FontRender {
     public int drawString(String s, float x, float y,int color) {
         return renderString(s, x, y, color, false);
     }
+
     public int drawString(String s, float x, float y,int color, boolean shadow) {
         if (shadow) {
             final int alpha = ColorUtils.getAlpha(color);
@@ -199,6 +204,10 @@ public final class FontRender {
         }
 
         return renderString(s, x, y, color, false);
+    }
+
+    public int drawString(String s, float x, float y,Color color) {
+        return drawString(s,x,y,color.getRGB());
     }
 
     private int renderString(String s, float x, float y, int color, boolean shadow) {
@@ -210,7 +219,8 @@ public final class FontRender {
 
         float factor = (float) (new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor());
         x *= factor;
-        y = (y - 3.4F) * factor;
+//        y = (y - 3.4F) * factor;
+        y = y * factor - 3.4F;
 
         preDraw();
         GLUtils.color(color);
@@ -315,15 +325,20 @@ public final class FontRender {
     }
 
     public void drawChar(char c, double x, double y, int color) {
-        preDraw();
-        GLUtils.color(color);
+//        preDraw();
+//        GLUtils.color(color);
+//
+//        x *= 2.0;
+////        y *= 2.0;
+//
+//        getGlyph(c).draw(x, y, false);
+//
+//        postDraw();
+        drawString(String.valueOf(c), (float) x, (float) y,color);
+    }
 
-        x *= 2.0;
-//        y *= 2.0;
-
-        getGlyph(c).draw(x, y, false);
-
-        postDraw();
+    public void drawChar(char c, double x, double y, Color color) {
+        drawChar(c,x,y,color.getRGB());
     }
 
     private void drawGlyph(Glyph glyph, double x, double y, boolean bold, boolean strikethrough, boolean underline, boolean italic) {

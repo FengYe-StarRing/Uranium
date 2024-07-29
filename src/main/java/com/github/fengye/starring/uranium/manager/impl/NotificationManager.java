@@ -1,6 +1,13 @@
 package com.github.fengye.starring.uranium.manager.impl;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.EventHandle;
+import com.github.fengye.starring.uranium.api.event.Listenable;
+import com.github.fengye.starring.uranium.api.event.Priority;
+import com.github.fengye.starring.uranium.api.event.impl.Render2DEvent;
 import com.github.fengye.starring.uranium.manager.Manager;
+import com.github.fengye.starring.uranium.ui.hud.element.Element;
+import com.github.fengye.starring.uranium.ui.hud.element.impl.Notifications;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.timer.Timer;
 import net.minecraft.util.ResourceLocation;
@@ -10,14 +17,20 @@ import java.util.List;
 
 import static com.github.fengye.starring.uranium.utils.MinecraftInstance.theWorld;
 
-public class NotificationManager extends Manager {
+public class NotificationManager extends Manager implements Listenable {
     private static final List<Notif> notifs = new ArrayList<>();
 
     public NotificationManager() {
         super("NotificationManager");
     }
 
-    public static void post(String title,String[] texts,NotifType type) {
+    @Override
+    public void init() {
+        super.init();
+        Client.instance.eventManager.registerListener(this);
+    }
+
+    public static void post(String title, String[] texts, NotifType type) {
         if(theWorld == null) {
             return;
         }
@@ -33,6 +46,19 @@ public class NotificationManager extends Manager {
             }
         }
         notifs.add(new Notif(title,texts2,type));
+    }
+
+    @Override
+    public boolean handleEvents() {
+        return true;
+    }
+
+    @EventHandle(priority = Priority.HIGHEST)
+    private void onRender2D(Render2DEvent event) {
+        List<Element> elements = Client.instance.hudManager.getElementByName("Notifications");
+        if(!elements.isEmpty()) {
+            ((Notifications)elements.get(0)).updateNotifs();
+        }
     }
 
     public static class Notif {
@@ -97,7 +123,11 @@ public class NotificationManager extends Manager {
     }
 
     public enum NotifType {
-        Info("Info"),Warning("Warning"),Error("Error"),None(null);
+        Info("Info"),
+        Warning("Warning"),
+        Error("Error"),
+        None(null),
+        Success("Success");
 
         private final ResourceLocation icon;
 

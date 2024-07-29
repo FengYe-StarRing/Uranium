@@ -61,7 +61,7 @@ public class FileManager extends Manager implements Listenable {
         if(mcDataDir == null) {
             return;
         }
-        String clientName = Client.instance.languageManager.getText(LanguageManager.Languages.English,Client.T_NAME);
+        String clientName = Client.instance.languageManager.getTranslate(LanguageManager.Languages.English,Client.T_NAME);
         {
             if(mainDir == null) {
                 mainDir = new File(mcDataDir,clientName + "-" + Client.getVersion());

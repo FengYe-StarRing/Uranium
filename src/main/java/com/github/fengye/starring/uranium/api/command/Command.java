@@ -14,7 +14,7 @@ public abstract class Command extends MinecraftInstance {
         this.alias = alias;
         this.syntax = syntax;
         if(name != null) {
-            help = Client.instance.languageManager.getText("Command.Help." + name);
+            help = Client.instance.languageManager.getTranslate("Command.Help." + name);
         } else {
             help = null;
         }

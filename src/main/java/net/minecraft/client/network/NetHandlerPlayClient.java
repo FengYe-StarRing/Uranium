@@ -1,5 +1,6 @@
 package net.minecraft.client.network;
 
+import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
@@ -22,7 +23,6 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiDownloadTerrain;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMerchant;
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiScreen;
@@ -807,7 +807,7 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
         }
         else
         {
-            this.gameController.displayGuiScreen(new GuiDisconnected(new GuiMultiplayer(new GuiMainMenu()), "disconnect.lost", reason));
+            this.gameController.displayGuiScreen(new GuiDisconnected(new GuiMultiplayer(new GuiLogin()), "disconnect.lost", reason));
         }
     }
 

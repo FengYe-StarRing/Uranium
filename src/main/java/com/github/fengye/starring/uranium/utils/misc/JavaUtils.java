@@ -3,6 +3,7 @@ package com.github.fengye.starring.uranium.utils.misc;
 import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.ui.font.FontRender;
+import net.minecraft.client.gui.GuiTextField;
 
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -114,5 +115,19 @@ public class JavaUtils {
 
     public static Field getDeclaredField(Object obj,String name) {
         return getDeclaredField(obj.getClass(),name);
+    }
+
+    public static List<GuiTextField> getGuiTextFields(Object obj) {
+        List<GuiTextField> list = new ArrayList<>();
+        for (Field field : getDeclaredFields(obj.getClass())) {
+            field.setAccessible(true);
+            try {
+                Object object = field.get(obj);
+                if(object instanceof GuiTextField) {
+                    list.add((GuiTextField) object);
+                }
+            } catch (IllegalAccessException ignored) {}
+        }
+        return list;
     }
 }

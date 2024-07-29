@@ -38,3 +38,17 @@ Command.Help.Toggle=指定したモジュールのスイッチを切り替えま
 Command.Help.Say=チャットメッセージを送信。
 Command.Help.Binds=すべてのキー・バインドの管理。
 Command.Help.Config=すべての構成の管理。
+
+Ui.Gui.Button.Exit=アウトレット
+Ui.Gui.Button.Login=ログイン＃ログイン＃
+Ui.Gui.Button.SinglePlayer=シングルゲーム
+Ui.Gui.Button.MultiPlayer=マルチプレイヤー
+Ui.Gui.Button.AltManager=アカウント管理
+Ui.Gui.Button.Option=オプション
+Ui.Gui.Button.Personalization=設定のパーソナライズ
+Ui.Gui.Button.UpdateLogs=更新ログ
+Ui.Gui.Button.GoBack=リターンマッチ
+
+Text.Username=ユーザー名
+Text.Password=パスワード
+Text.ComingSoon=お楽しみに

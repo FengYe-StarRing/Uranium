@@ -38,3 +38,17 @@ Command.Help.Toggle=切换指定模块的开关。
 Command.Help.Say=发送聊天信息。
 Command.Help.Binds=管理所有按键绑定。
 Command.Help.Config=管理所有配置。
+
+Ui.Gui.Button.Exit=退出
+Ui.Gui.Button.Login=登录
+Ui.Gui.Button.SinglePlayer=单人游戏
+Ui.Gui.Button.MultiPlayer=多人游戏
+Ui.Gui.Button.AltManager=账号管理
+Ui.Gui.Button.Option=选项
+Ui.Gui.Button.Personalization=个性化设置
+Ui.Gui.Button.UpdateLogs=更新日志
+Ui.Gui.Button.GoBack=返回
+
+Text.Username=用户名
+Text.Password=密码
+Text.ComingSoon=敬请期待

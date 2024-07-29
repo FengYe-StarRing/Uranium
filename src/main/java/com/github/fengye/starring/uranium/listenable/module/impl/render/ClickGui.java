@@ -4,7 +4,7 @@ import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;
-import com.github.fengye.starring.uranium.ui.clickgui.ClientClickGui;
+import com.github.fengye.starring.uranium.ui.gui.game.GuiClientClick;
 import net.minecraft.client.gui.GuiScreen;
 import org.lwjgl.input.Keyboard;
 
@@ -18,7 +18,7 @@ public class ClickGui extends Module {
     }
 
     private enum Modes {
-        Client(ClientClickGui.class);
+        Client(GuiClientClick.class);
 
         private final Class<? extends GuiScreen> gui;
 

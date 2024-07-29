@@ -5,10 +5,14 @@ import net.minecraft.client.gui.ScaledResolution;
 
 public class ScreenUtils {
     public static int getWidth() {
-        return (new ScaledResolution(Minecraft.getMinecraft())).getScaledWidth();
+        return getScaledResolution().getScaledWidth();
     }
 
     public static int getHeight() {
-        return (new ScaledResolution(Minecraft.getMinecraft())).getScaledHeight();
+        return getScaledResolution().getScaledHeight();
+    }
+
+    public static ScaledResolution getScaledResolution() {
+        return new ScaledResolution(Minecraft.getMinecraft());
     }
 }

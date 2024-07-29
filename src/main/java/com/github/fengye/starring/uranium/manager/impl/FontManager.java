@@ -38,6 +38,8 @@ public class FontManager extends Manager {
     public static FontRender robotoBold24;
     @FontInfo(name = "RobotoBold",size = 36)
     public static FontRender robotoBold36;
+    @FontInfo(name = "RobotoBold",size = 48)
+    public static FontRender robotoBold48;
 
     @FontInfo(name = "Alibaba",size = 12)
     public static FontRender alibaba12;
@@ -47,6 +49,10 @@ public class FontManager extends Manager {
     public static FontRender alibaba18;
     @FontInfo(name = "Alibaba",size = 24)
     public static FontRender alibaba24;
+    @FontInfo(name = "Alibaba",size = 36)
+    public static FontRender alibaba36;
+    @FontInfo(name = "Alibaba",size = 48)
+    public static FontRender alibaba48;
 
     public FontManager() {
         super("FontManager");
@@ -63,6 +69,8 @@ public class FontManager extends Manager {
         alibaba16 = loadFont(alibaba,16);
         alibaba18 = loadFont(alibaba,18);
         alibaba24 = loadFont(alibaba,24);
+        alibaba36 = loadFont(alibaba,36);
+        alibaba48 = loadFont(alibaba,48);
         // Facon
         String facon = "Facon.ttf";
         // RobotoBold
@@ -72,6 +80,7 @@ public class FontManager extends Manager {
         robotoBold18 = loadFont(robotoBold,18);
         robotoBold24 = loadFont(robotoBold,24);
         robotoBold36 = loadFont(robotoBold,36);
+        robotoBold48 = loadFont(robotoBold,48);
     }
 
     @Override

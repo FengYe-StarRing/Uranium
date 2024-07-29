@@ -38,3 +38,17 @@ Command.Help.Toggle=切換指定模塊的開關。
 Command.Help.Say=發送聊天資訊。
 Command.Help.Binds=管理所有按键綁定。
 Command.Help.Config=管理所有配寘。
+
+Ui.Gui.Button.Exit=退出
+Ui.Gui.Button.Login=登录
+Ui.Gui.Button.SinglePlayer=單人遊戲
+Ui.Gui.Button.MultiPlayer=多人遊戲
+Ui.Gui.Button.AltManager=帳號管理
+Ui.Gui.Button.Option=選項
+Ui.Gui.Button.Personalization=個性化設定
+Ui.Gui.Button.UpdateLogs=更新日誌
+Ui.Gui.Button.GoBack=返回
+
+Text.Username=用戶名
+Text.Password=密碼
+Text.ComingSoon=敬請期待

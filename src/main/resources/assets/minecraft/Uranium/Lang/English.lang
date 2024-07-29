@@ -38,3 +38,17 @@ Command.Help.Toggle=Switch the switch of the specified module.
 Command.Help.Say=Send chat messages.
 Command.Help.Binds=Manage all key binds.
 Command.Help.Config=Manage all configs.
+
+Ui.Gui.Button.Exit=Exit
+Ui.Gui.Button.Login=Login
+Ui.Gui.Button.SinglePlayer=SinglePlayer
+Ui.Gui.Button.MultiPlayer=MultiPlayer
+Ui.Gui.Button.AltManager=AltManager
+Ui.Gui.Button.Option=Option
+Ui.Gui.Button.Personalization=Personalization
+Ui.Gui.Button.UpdateLogs=UpdateLogs
+Ui.Gui.Button.GoBack=GoBack
+
+Text.Username=Username
+Text.Password=Password
+Text.ComingSoon=Coming soon

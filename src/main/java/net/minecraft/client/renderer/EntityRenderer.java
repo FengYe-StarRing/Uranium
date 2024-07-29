@@ -2,6 +2,7 @@ package net.minecraft.client.renderer;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.Render3DEvent;
+import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.gson.JsonSyntaxException;
@@ -20,7 +21,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.GuiDownloadTerrain;
-import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.particle.EffectRenderer;
@@ -2698,9 +2698,9 @@ public class EntityRenderer implements IResourceManagerReloadListener
             }
         }
 
-        if (this.mc.currentScreen instanceof GuiMainMenu)
+        if (this.mc.currentScreen instanceof GuiLogin)
         {
-            this.updateMainMenu((GuiMainMenu)this.mc.currentScreen);
+            this.updateMainMenu((GuiLogin)this.mc.currentScreen);
         }
 
         if (this.updatedWorld != world)
@@ -2738,7 +2738,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
         }
     }
 
-    private void updateMainMenu(GuiMainMenu p_updateMainMenu_1_)
+    private void updateMainMenu(GuiLogin p_updateMainMenu_1_)
     {
         try
         {
