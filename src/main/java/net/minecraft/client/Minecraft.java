@@ -3,7 +3,9 @@ package net.minecraft.client;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
 import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
+import com.github.fengye.starring.uranium.manager.impl.FontManager;
 import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
+import com.github.fengye.starring.uranium.ui.gui.base.Splash;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -492,8 +494,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.mcResourceManager.registerReloadListener(this.mcLanguageManager);
         this.refreshResources();
         this.renderEngine = new TextureManager(this.mcResourceManager);
-        this.mcResourceManager.registerReloadListener(this.renderEngine);
-        this.drawSplashScreen(this.renderEngine);
+        Splash.ctm = getTextureManager();
+        Splash.drawSplash();
+        Splash.setProgress(0);
         this.initStream();
         this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
         this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
@@ -501,20 +504,17 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.mcResourceManager.registerReloadListener(this.mcSoundHandler);
         this.mcMusicTicker = new MusicTicker(this);
         this.fontRendererObj = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii.png"), this.renderEngine, false);
-
         if (this.gameSettings.language != null)
         {
             this.fontRendererObj.setUnicodeFlag(this.isUnicode());
             this.fontRendererObj.setBidiFlag(this.mcLanguageManager.isCurrentLanguageBidirectional());
         }
-
         this.standardGalacticFontRenderer = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii_sga.png"), this.renderEngine, false);
         this.mcResourceManager.registerReloadListener(this.fontRendererObj);
         this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
         this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
         this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
-        AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat()
-        {
+        AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat() {
             public String formatString(String p_74535_1_)
             {
                 try
@@ -550,6 +550,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.mcResourceManager.registerReloadListener(this.modelManager);
         this.renderItem = new RenderItem(this.renderEngine, this.modelManager);
         this.renderManager = new RenderManager(this.renderEngine, this.renderItem);
+        Splash.setProgress(1);
         this.itemRenderer = new ItemRenderer(this);
         this.mcResourceManager.registerReloadListener(this.renderItem);
         this.entityRenderer = new EntityRenderer(this, this.mcResourceManager);
@@ -562,9 +563,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         GlStateManager.viewport(0, 0, this.displayWidth, this.displayHeight);
         this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
         this.checkGLError("Post startup");
-        this.ingameGUI = new GuiIngame(this);
-
         Client.instance.init();
+        Splash.setProgress(2);
+        this.ingameGUI = new GuiIngame(this);
 
         if (this.serverName != null)
         {

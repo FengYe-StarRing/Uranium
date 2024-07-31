@@ -4,11 +4,9 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.listenable.special.Palette;
 import com.github.fengye.starring.uranium.manager.impl.FontManager;
 import com.github.fengye.starring.uranium.ui.font.FontRender;
-import com.github.fengye.starring.uranium.ui.hud.element.Horizontal;
-import com.github.fengye.starring.uranium.ui.hud.element.Side;
-import com.github.fengye.starring.uranium.ui.hud.element.Vertical;
+import com.github.fengye.starring.uranium.utils.mouse.ScrollBarUtils;
 import com.github.fengye.starring.uranium.utils.render.ColorUtils;
-import com.github.fengye.starring.uranium.utils.render.DraggUtils;
+import com.github.fengye.starring.uranium.utils.mouse.DraggUtils;
 import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;
 
 import java.awt.*;
@@ -26,6 +24,7 @@ public class GuiUpdateLogs extends BaseScreen {
     private static boolean needInit = true;
 
     private static final FontRender font = FontManager.alibaba18;
+    private static final ScrollBarUtils scrollBar = new ScrollBarUtils();
     private final DraggUtils dragg = new DraggUtils();
 
     @Override
@@ -34,12 +33,13 @@ public class GuiUpdateLogs extends BaseScreen {
             initLogs();
         }
         shadowWidth = getLogsWidth();
-        shadowHeight = getLogsHeight();
+        shadowHeight = getShadowHeight();
         if(needInit) {
             initShadow();
         } else if((shadowX + shadowWidth >= width || shadowY + shadowHeight >= height) || (shadowX + shadowWidth <= 0 || shadowY + shadowHeight <= 0)) {
             initShadow();
         }
+        scrollBar.set(getValidIndex(),getIndex());
         addGoBackButton(0);
         super.initGui();
     }
@@ -60,10 +60,29 @@ public class GuiUpdateLogs extends BaseScreen {
         Palette.RainbowSpeeds rainbowMode = Palette.RainbowSpeeds.Normal;
         float hue = Palette.getHue(rainbowMode);
         boolean rainbow = false;
+        int index = 0;
+        int index2 = 0;
         for (String log : logs) {
             String outLog = log;
             Color color = Color.white;
             List<String> tags = analysis(log);
+            if(index < scrollBar.getUsedIndex()) {
+                boolean flag = false;
+                for (String tag : tags) {
+                    if(tag.equals("NoNewLine")) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if(flag) {
+                    continue;
+                }
+                index++;
+                continue;
+            }
+            if(index2 > scrollBar.getValidIndex()) {
+                break;
+            }
             boolean noNewLine = false;
             for (String tag : tags) {
                 boolean needBreak = false;
@@ -116,18 +135,23 @@ public class GuiUpdateLogs extends BaseScreen {
             }
             if(!noNewLine) {
                 startY += font.getStringHeight(log);
+                startX = shadowX;
+                index2++;
             } else {
                 if(!rainbow) {
                     startX += font.getStringWidth(outLog);
                 }
             }
         }
+        scrollBar.update();
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     private void initLogs() {
         logs = new String[] {
-                "铀的开发人员: " + Client.getAuthor(),
+                "[NoNewLine]铀的开发人员: ",
+                "[Rainbow][NoNewLine]" + Client.getAuthor(),
+                "[StopRainbow],more...",
                 "[Text][+]新增,[-]删减,[~]修改或修复,[!]重大信息",
                 "<当前>",
                 "[!]请遵守GPL3.0开源协议,特别禁止花雨庭圈钱狗魔改闭源圈钱行为,否则你将受到惩罚!",
@@ -162,8 +186,8 @@ public class GuiUpdateLogs extends BaseScreen {
         return width;
     }
 
-    private int getLogsHeight() {
-        return height - height / 3;
+    private int getShadowHeight() {
+        return this.height - this.height / 3;
     }
 
     private void initShadow() {
@@ -184,5 +208,38 @@ public class GuiUpdateLogs extends BaseScreen {
 
     private String replaceAll(String log,String delete) {
         return log.replaceAll("\\[" + delete + "\\]","");
+    }
+
+    private int getValidIndex() {
+        int height = shadowHeight;
+        int h = 0;
+        int index = 0;
+        for (String log : logs) {
+            h += font.getStringHeight(log);
+            if(h >= height) {
+                break;
+            }
+            index++;
+        }
+        return index;
+    }
+
+    private int getIndex() {
+        int index = 0;
+        for (String log : logs) {
+            List<String> tags = analysis(log);
+            boolean flag = false;
+            for (String tag : tags) {
+                if(tag.equals("NoNewLine")) {
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag) {
+                continue;
+            }
+            index++;
+        }
+        return index;
     }
 }

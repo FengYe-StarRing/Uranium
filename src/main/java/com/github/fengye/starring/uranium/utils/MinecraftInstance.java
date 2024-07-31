@@ -8,10 +8,12 @@ import com.github.fengye.starring.uranium.api.event.Priority;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.Packet;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.MovementInput;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Timer;
 import net.minecraft.world.WorldServer;
@@ -25,6 +27,8 @@ public class MinecraftInstance implements Listenable {
     public static File mcDataDir;
     public static Timer timer;
     public static GameSettings gameSettings;
+    public static NetHandlerPlayClient netHandler;
+    public static MovementInput movementInput;
 
     public static MinecraftServer serverMc;
     public static WorldServer serverWorld;
@@ -52,10 +56,14 @@ public class MinecraftInstance implements Listenable {
         mc = Minecraft.getMinecraft();
         if(mc != null) {
             thePlayer = mc.thePlayer;
+            if(thePlayer != null) {
+                movementInput = thePlayer.movementInput;
+            }
             theWorld = mc.theWorld;
             mcDataDir = mc.mcDataDir;
             timer = mc.timer;
             gameSettings = mc.gameSettings;
+            netHandler = mc.getNetHandler();
         }
         serverMc = MinecraftServer.getServer();
         if(serverMc != null) {

@@ -36,21 +36,21 @@ public class C09Utils extends PacketUtils implements Listenable {
         int slot = getSlot();
         int n;
         switch (mode) {
-            case Switch:
+            case SwitchA:
                 sendPacket(new C09PacketHeldItemChange(slot % 8 + 1));
                 if(interval) {
                     sendInterval();
                 }
                 sendPacket(new C09PacketHeldItemChange(slot));
                 break;
-            case Change:
+            case SwitchB:
                 sendPacket(new C09PacketHeldItemChange((slot % 8 + 2) % 8));
                 if(interval) {
                     sendInterval();
                 }
                 sendPacket(new C09PacketHeldItemChange(slot));
                 break;
-            case SwitchAll:
+            case SwitchC:
                 n = slot;
                 for(int i = 0;i < 8;i++) {
                     n++;
@@ -67,6 +67,6 @@ public class C09Utils extends PacketUtils implements Listenable {
     }
 
     public enum SwitchItemMode {
-        Switch,Change,SwitchAll
+        SwitchA,SwitchB,SwitchC
     }
 }

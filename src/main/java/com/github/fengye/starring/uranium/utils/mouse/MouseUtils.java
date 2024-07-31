@@ -1,8 +1,7 @@
-package com.github.fengye.starring.uranium.utils.misc;
+package com.github.fengye.starring.uranium.utils.mouse;
 
 import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Mouse;
 
 public class MouseUtils {
@@ -29,5 +28,13 @@ public class MouseUtils {
     public static int getMouseY() {
         int height = ScreenUtils.getScaledResolution().getScaledHeight();
         return height - Mouse.getY() * height / Minecraft.getMinecraft().displayHeight - 1;
+    }
+
+    public static int getDWheel() {
+        return Mouse.getDWheel();
+    }
+
+    public static int getEventDWheel() {
+        return Mouse.getEventDWheel();
     }
 }

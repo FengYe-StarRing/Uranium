@@ -4,7 +4,7 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.manager.impl.HUDManager;
 import com.github.fengye.starring.uranium.ui.hud.element.Border;
 import com.github.fengye.starring.uranium.ui.hud.element.Element;
-import com.github.fengye.starring.uranium.utils.render.DraggUtils;
+import com.github.fengye.starring.uranium.utils.mouse.DraggUtils;
 import com.github.fengye.starring.uranium.utils.render.RenderUtils;
 import net.minecraft.client.gui.GuiScreen;
 

@@ -5,68 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8f5b2e8a-17ba-48e7-a9c3-511ed60fc34e" name="更改" comment="...">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/special/ClientSetting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/buttons/BorderlessButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/BaseScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/GuiComingSoon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/GuiLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/GuiMainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/GuiUpdateLogs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/blur/BlurUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/blur/GaussianBlur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/blur/ShaderUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/blur/StencilUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Backgrounds/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Gui/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/NotifIcons/Success.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Shaders/gaussian.frag" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Shaders/vertex.vsh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/world/timer/impl/BalanceMode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/Splash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/game/clickgui/csgo/AnimationUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/game/clickgui/csgo/CSGOClickUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/game/clickgui/csgo/R2DUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/entity/MovementUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/mouse/ScrollBarUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/BlinkUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/api/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Module.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/Module.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/noslow/impl/SwitchItemMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/move/noslow/impl/SwitchItemMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/render/ClickGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/render/ClickGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/world/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/world/Timer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/world/timer/TimerMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/module/impl/world/timer/TimerMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/special/ClientSetting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/special/Personalization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/special/Palette.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/listenable/special/Palette.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/EventManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FontManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/FontManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/HUDManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/HUDManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/LanguageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/NotificationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/manager/impl/NotificationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/clickgui/ClientClickGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/game/GuiClientClick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/font/FontRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/font/FontRender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/element/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/element/Element.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/element/impl/Logo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/element/impl/Logo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/element/impl/Notifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/element/impl/Notifications.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/JavaUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/MouseUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/MouseUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/ColorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/ColorUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/DraggUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/DraggUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/RenderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/RenderUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/ScreenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/ScreenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/buttons/BorderlessButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/buttons/BorderlessButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/GuiUpdateLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/base/GuiUpdateLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/gui/game/GuiClientClick.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/GuiHUDEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/ui/hud/GuiHUDEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/MinecraftInstance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/misc/MouseUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/mouse/MouseUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/C09Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/packet/C09Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/render/DraggUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/fengye/starring/uranium/utils/mouse/DraggUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/florianmichael/viamcp/gui/AsyncVersionSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/florianmichael/viamcp/gui/AsyncVersionSlider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/Minecraft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/Minecraft.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiGameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiGameOver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiIngameMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiIngameMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiMainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiOldMainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiMemoryErrorScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiMemoryErrorScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/gui/GuiTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/network/NetHandlerPlayClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/network/NetHandlerPlayClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/renderer/EntityRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/renderer/EntityRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/realms/Realms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/realms/Realms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/optifine/reflect/Reflector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/optifine/reflect/Reflector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/ClickIcons/Combat.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/CategoryIcons/Combat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/ClickIcons/Misc.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/CategoryIcons/Misc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/ClickIcons/Movement.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/CategoryIcons/Movement.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/ClickIcons/Player.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/CategoryIcons/Player.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/ClickIcons/Render.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/CategoryIcons/Render.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/ClickIcons/World.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/CategoryIcons/World.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Chinese.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/English.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/Japanese.lang" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/minecraft/Uranium/Lang/TChinese.lang" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/minecraft/client/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/minecraft/client/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,9 +62,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="AnnotationType" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -123,7 +91,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Administrator/Project/Uranium/src/main/resources/assets/minecraft/Uranium/NotifIcons&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Administrator/Desktop/水影源码/水影源码/LiquidBounce-fb2e2966baf388d559299a2d312a8639efef623d&quot;,
     &quot;project.structure.last.edited&quot;: &quot;库&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -132,13 +100,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\NotifIcons" />
       <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\Backgrounds" />
+      <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\NotifIcons" />
       <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\Gui" />
       <recent name="D:\Administrator\Project\Uranium\src\main\resources\assets\minecraft\Uranium\Shaders" />
       <recent name="D:\Administrator\Project\Uranium\src\main\java\com\github\fengye\starring\uranium\utils\render" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="com.github.fengye.starring.uranium.ui.gui.game.clickgui.csgo.R2DUtils" />
       <recent name="com.github.fengye.starring.uranium.utils.MinecraftInstance" />
       <recent name="com.github.fengye.starring.uranium.ui.font.FontRender" />
       <recent name="com.github.fengye.starring.uranium.utils.ProtocolUtils" />
@@ -443,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722153786611</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="...">
+      <option name="closed" value="true" />
+      <created>1722260204926</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1722260204926</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

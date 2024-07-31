@@ -17,13 +17,17 @@
  */
 package de.florianmichael.viamcp.gui;
 
+import com.github.fengye.starring.uranium.listenable.special.Palette;
+import com.github.fengye.starring.uranium.utils.render.ColorUtils;
+import com.github.fengye.starring.uranium.utils.render.RenderUtils;
+import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
 import de.florianmichael.vialoadingbase.ViaLoadingBase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
 
+import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 
@@ -73,10 +77,20 @@ public class AsyncVersionSlider extends GuiButton {
                 ViaLoadingBase.getInstance().reload(values.get((int) (this.sliderValue * (values.size() - 1))));
             }
 
-            mc.getTextureManager().bindTexture(buttonTextures);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)), this.yPosition, 0, 66, 4, 20);
-            this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)) + 4, this.yPosition, 196, 66, 4, 20);
+//            mc.getTextureManager().bindTexture(buttonTextures);
+//            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+//            this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)), this.yPosition, 0, 66, 4, 20);
+//            this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)) + 4, this.yPosition, 196, 66, 4, 20);
+
+            int x1 = this.xPosition + (int)(this.sliderValue * (float)(this.width - 8));
+            int y1 = this.yPosition;
+            int width = 8;
+            int height = 20;
+            int x2 = x1 + width;
+            int y2 = y1 + height;
+            BlurUtils.drawShadowBlur(x1, y1, width, height);
+            Color rectColor = this.enabled ? Palette.getColor1() : Palette.getColor2();
+            RenderUtils.drawBorder(x1,y1,x2,y2, ColorUtils.transparent(rectColor));
         }
     }
 

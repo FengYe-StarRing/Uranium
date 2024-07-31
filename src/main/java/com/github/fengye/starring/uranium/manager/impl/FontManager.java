@@ -36,6 +36,8 @@ public class FontManager extends Manager {
     public static FontRender robotoBold18;
     @FontInfo(name = "RobotoBold",size = 24)
     public static FontRender robotoBold24;
+    @FontInfo(name = "RobotoBold",size = 30)
+    public static FontRender robotoBold30;
     @FontInfo(name = "RobotoBold",size = 36)
     public static FontRender robotoBold36;
     @FontInfo(name = "RobotoBold",size = 48)
@@ -45,10 +47,14 @@ public class FontManager extends Manager {
     public static FontRender alibaba12;
     @FontInfo(name = "Alibaba",size = 16)
     public static FontRender alibaba16;
+    @FontInfo(name = "Alibaba",size = 16)
+    public static FontRender alibaba17;
     @FontInfo(name = "Alibaba",size = 18)
     public static FontRender alibaba18;
     @FontInfo(name = "Alibaba",size = 24)
     public static FontRender alibaba24;
+    @FontInfo(name = "Alibaba",size = 28)
+    public static FontRender alibaba28;
     @FontInfo(name = "Alibaba",size = 36)
     public static FontRender alibaba36;
     @FontInfo(name = "Alibaba",size = 48)
@@ -67,8 +73,10 @@ public class FontManager extends Manager {
         String alibaba = "Alibaba.ttf";
         alibaba12 = loadFont(alibaba,12);
         alibaba16 = loadFont(alibaba,16);
+        alibaba17 = loadFont(alibaba,17);
         alibaba18 = loadFont(alibaba,18);
         alibaba24 = loadFont(alibaba,24);
+        alibaba28 = loadFont(alibaba,28);
         alibaba36 = loadFont(alibaba,36);
         alibaba48 = loadFont(alibaba,48);
         // Facon
@@ -79,6 +87,7 @@ public class FontManager extends Manager {
         robotoBold16 = loadFont(robotoBold,16);
         robotoBold18 = loadFont(robotoBold,18);
         robotoBold24 = loadFont(robotoBold,24);
+        robotoBold30 = loadFont(robotoBold,30);
         robotoBold36 = loadFont(robotoBold,36);
         robotoBold48 = loadFont(robotoBold,48);
     }

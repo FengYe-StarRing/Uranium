@@ -2,6 +2,8 @@ package com.github.fengye.starring.uranium.listenable.module.impl.world;
 
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
+import com.github.fengye.starring.uranium.api.event.impl.packet.PacketRecieveEvent;
+import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
@@ -16,7 +18,7 @@ import java.util.List;
 @ModuleInfo(name = "Timer", category = Category.World)
 public class Timer extends Module {
     private final ModeValue modeValue = new ModeValue("Mode",Modes.values(),Modes.Vanilla);
-    public static final NumberValue timerSpeedValue = new NumberValue("TimerSpeed", 2, 0.05, 10, 0.05);
+    public static final NumberValue speedValue = new NumberValue("Speed", 2, 0.05, 10, 0.05);
 
     @Override
     public void onEnable() {
@@ -51,8 +53,19 @@ public class Timer extends Module {
         updateValues(modeValue,values);
     }
 
+    @EventHandle
+    private void onPacketSend(PacketSendEvent event) {
+        getMode().onPacketSend(event);
+    }
+
+    @EventHandle
+    private void onPacketRecieve(PacketRecieveEvent event) {
+        getMode().onPacketRecieve(event);
+    }
+
     private enum Modes {
-        Vanilla(new VanillaMode());
+        Vanilla(new VanillaMode()),
+        Balance(new BalanceMode());
 
         private final TimerMode MODE;
 

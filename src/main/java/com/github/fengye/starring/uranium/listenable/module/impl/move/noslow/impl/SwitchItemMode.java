@@ -7,7 +7,7 @@ import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.NoS
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
 
 public class SwitchItemMode extends NoSlowMode {
-    private final ModeValue switchModeValue = new ModeValue("SwitchMode",C09Utils.SwitchItemMode.values(), C09Utils.SwitchItemMode.Switch);
+    private final ModeValue switchModeValue = new ModeValue("SwitchMode",C09Utils.SwitchItemMode.values(), C09Utils.SwitchItemMode.SwitchA);
     private final OptionValue preValue = new OptionValue("Pre",false);
     private final OptionValue postValue = new OptionValue("Post",true);
     private final OptionValue antiCheckValue = new OptionValue("AntiCheck",false);

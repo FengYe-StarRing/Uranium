@@ -5,6 +5,7 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
 import com.github.fengye.starring.uranium.api.value.impl.ColorValue;
 import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.render.ColorUtils;
 
 import java.awt.*;
@@ -37,23 +38,30 @@ public class Palette implements Listenable {
 
     @EventHandle
     private void onTick(TickEvent event) {
-        hue1 = ColorUtils.addHue(hue1,rainbowSpeed1.get().floatValue());
-        hue2 = ColorUtils.addHue(hue2,rainbowSpeed2.get().floatValue());
+        hue1 = ColorUtils.addHue(hue1,getRainbowSpeed(RainbowSpeeds.Slow));
+        hue2 = ColorUtils.addHue(hue2,getRainbowSpeed(RainbowSpeeds.Normal));
+        hue3 = ColorUtils.addHue(hue2,getRainbowSpeed(RainbowSpeeds.Fast));
         rainbow1 = ColorUtils.getRainbowColor(hue1);
         rainbow2 = ColorUtils.getRainbowColor(hue2);
+        rainbow3 = ColorUtils.getRainbowColor(hue3);
     }
 
     public static float getHue(RainbowSpeeds mode) {
+        float ret = 0;
         switch (mode) {
             case Slow:
-                return hue1;
+                ret =  hue1;
+                break;
             case Normal:
-                return hue2;
+                ret =  hue2;
+                break;
             case Fast:
-                return hue3;
+                ret =  hue3;
+                break;
             default:
-                return 0;
+                return ret;
         }
+        return ret / MinecraftInstance.timer.timerSpeed;
     }
 
     public static Color getRainbow(RainbowSpeeds mode) {

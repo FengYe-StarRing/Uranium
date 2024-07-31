@@ -1,7 +1,7 @@
 package com.github.fengye.starring.uranium.ui.buttons;
 
 import com.github.fengye.starring.uranium.ui.font.FontRender;
-import com.github.fengye.starring.uranium.utils.misc.MouseUtils;
+import com.github.fengye.starring.uranium.utils.mouse.MouseUtils;
 import com.github.fengye.starring.uranium.utils.render.AnimationUtils;
 import com.github.fengye.starring.uranium.utils.render.RenderUtils;
 import net.minecraft.client.Minecraft;

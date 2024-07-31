@@ -4,7 +4,7 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.listenable.special.Palette;
 import com.github.fengye.starring.uranium.manager.impl.FontManager;
 import com.github.fengye.starring.uranium.ui.font.FontRender;
-import com.github.fengye.starring.uranium.utils.misc.MouseUtils;
+import com.github.fengye.starring.uranium.utils.mouse.MouseUtils;
 import com.github.fengye.starring.uranium.utils.render.ColorUtils;
 import com.github.fengye.starring.uranium.utils.render.RenderUtils;
 import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;

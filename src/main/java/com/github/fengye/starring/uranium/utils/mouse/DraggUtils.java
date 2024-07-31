@@ -1,6 +1,4 @@
-package com.github.fengye.starring.uranium.utils.render;
-
-import com.github.fengye.starring.uranium.utils.misc.MouseUtils;
+package com.github.fengye.starring.uranium.utils.mouse;
 
 public class DraggUtils {
     private int lastX = getDefault(), lastY = getDefault(), moveX = 0, moveY = 0;
