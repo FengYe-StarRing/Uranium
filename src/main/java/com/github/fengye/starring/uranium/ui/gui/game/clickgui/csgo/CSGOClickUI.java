@@ -81,14 +81,14 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
 //                RenderUtils.drawBorder(x1,y1,x2,y2,new Color(40, 40, 40, (int) opacity.getOpacity()));
             }
         }
-		FontManager.harmony18.drawCenteredString(Client.getName() + " " + Client.getVersion(), startX + 30, startY + 4, -1);
-		for (int i = 0; i < Category.values().length; i++) {
+        FontManager.harmony18.drawCenteredString(Client.getName() + " " + Client.getVersion(), startX + 30, startY + 4, -1);
+        for (int i = 0; i < Category.values().length; i++) {
             Category[] iterator = Category.values();
             if (iterator[i] == currentModuleType) {
                 R2DUtils.drawFilledCircle(startX + 30, startY + 30 + i * 40, 15, ColorUtils.transparent(255,255,255).getRGB(), 5);
             }
-			RenderUtils.drawImage(iterator[i].getIcon(), (int) (startX + 20), (int) (startY + 20 + i * 40), 20, 20);
-			try {
+            RenderUtils.drawImage(iterator[i].getIcon(), (int) (startX + 20), (int) (startY + 20 + i * 40), 20, 20);
+            try {
                 if (this.isCategoryHovered(startX + 15, startY + 15 + i * 40, startX + 45, startY + 45 + i * 40, mouseX,
                         mouseY) && Mouse.isButtonDown(0)) {
                     currentModuleType = iterator[i];
@@ -158,7 +158,7 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                         startX + 100 + (mcFont.getStringWidth(module.getName())),
                         mY + 8 + mcFont.FONT_HEIGHT, mouseX, mouseY)) {
                     if (!this.previousmouse && Mouse.isButtonDown(0)) {
-						module.setEnabled(!module.isEnabled());
+                        module.setEnabled(!module.isEnabled());
                         previousmouse = true;
                     }
                     if (!this.previousmouse && Mouse.isButtonDown(1)) {
@@ -278,16 +278,31 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                     R2DUtils.drawBorderedRect(x - 5, mY - 5, x + 90, mY + 15,
                             new Color(101, 81, 255, (int) opacity.getOpacity()).getRGB(), 2);
                     mcFont.drawStringWithShadow(((ArrayValue<?>) value).getAsString(),
-							x + 44 - mcFont.getStringWidth(((ArrayValue<?>) value).getAsString()) / 2F, mY + 1, -1);
-                    if (this.isStringHovered(x, mY - 5, x + 100, mY + 15, mouseX, mouseY)) {
-                        if (Mouse.isButtonDown(0) && !this.previousmouse) {
-                            ((ArrayValue<?>) value).switchMode(false);
-                            this.previousmouse = true;
+                            x + 44 - mcFont.getStringWidth(((ArrayValue<?>) value).getAsString()) / 2F, mY + 1, -1);
+                    {
+                        float y1 = mY - 5;
+                        int width = 100;
+                        float x2 = x + width;
+                        int height = 15;
+                        float y2 = mY + height;
+                        if (this.isStringHovered(x, y1, x2 - width / 2F, y2, mouseX, mouseY)) {
+                            if (Mouse.isButtonDown(0) && !this.previousmouse) {
+                                ((ArrayValue<?>) value).switchMode(true);
+                                this.previousmouse = true;
+                            }
+                            if (!Mouse.isButtonDown(0)) {
+                                this.previousmouse = false;
+                            }
                         }
-                        if (!Mouse.isButtonDown(0)) {
-                            this.previousmouse = false;
+                        if (this.isStringHovered(x2 - width / 2F, y1, x2, y2, mouseX, mouseY)) {
+                            if (Mouse.isButtonDown(0) && !this.previousmouse) {
+                                ((ArrayValue<?>) value).switchMode(false);
+                                this.previousmouse = true;
+                            }
+                            if (!Mouse.isButtonDown(0)) {
+                                this.previousmouse = false;
+                            }
                         }
-
                     }
                     mY += 25;
                 }
@@ -306,28 +321,28 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
     }
 
     public boolean isStringHovered(float f, float y, float g, float y2, int mouseX, int mouseY) {
-		return mouseX >= f && mouseX <= g && mouseY >= y && mouseY <= y2;
-	}
+        return mouseX >= f && mouseX <= g && mouseY >= y && mouseY <= y2;
+    }
 
     public boolean isSettingsButtonHovered(float x, float y, float x2, float y2, int mouseX, int mouseY) {
-		return mouseX >= x && mouseX <= x2 && mouseY >= y && mouseY <= y2;
-	}
+        return mouseX >= x && mouseX <= x2 && mouseY >= y && mouseY <= y2;
+    }
 
     public boolean isButtonHovered(float f, float y, float g, float y2, int mouseX, int mouseY) {
-		return mouseX >= f && mouseX <= g && mouseY >= y && mouseY <= y2;
-	}
+        return mouseX >= f && mouseX <= g && mouseY >= y && mouseY <= y2;
+    }
 
     public boolean isCheckBoxHovered(float f, float y, float g, float y2, int mouseX, int mouseY) {
-		return mouseX >= f && mouseX <= g && mouseY >= y && mouseY <= y2;
-	}
+        return mouseX >= f && mouseX <= g && mouseY >= y && mouseY <= y2;
+    }
 
     public boolean isCategoryHovered(float x, float y, float x2, float y2, int mouseX, int mouseY) {
-		return mouseX >= x && mouseX <= x2 && mouseY >= y && mouseY <= y2;
-	}
+        return mouseX >= x && mouseX <= x2 && mouseY >= y && mouseY <= y2;
+    }
 
     public boolean isHovered(float x, float y, float x2, float y2, int mouseX, int mouseY) {
-		return mouseX >= x && mouseX <= x2 && mouseY >= y && mouseY <= y2;
-	}
+        return mouseX >= x && mouseX <= x2 && mouseY >= y && mouseY <= y2;
+    }
 
     @Override
     public void onGuiClosed() {
