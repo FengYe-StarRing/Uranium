@@ -37,4 +37,32 @@ public class MouseUtils {
     public static int getEventDWheel() {
         return Mouse.getEventDWheel();
     }
+
+    public static boolean isRightClickDown() {
+        return isButtonDown(1);
+    }
+
+    public static boolean isNoClickDown() {
+        return isButtonDown(-1);
+    }
+
+    public static int getEventButton() {
+        return Mouse.getEventButton();
+    }
+
+    public static boolean getEventButtonState() {
+        return Mouse.getEventButtonState();
+    }
+
+    public static boolean isRightClickDown(int b) {
+        return b == 1;
+    }
+
+    public static boolean isLeftClickDown(int b) {
+        return b == 0;
+    }
+
+    public static boolean isNoClickDown(int b) {
+        return b == -1;
+    }
 }
