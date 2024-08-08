@@ -1,6 +1,5 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.move.noslow;
 
-import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInMode;
 import net.minecraft.item.*;
 
@@ -17,9 +16,5 @@ public class NoSlowMode extends ModuleInMode {
             return true;
         }
         return item instanceof ItemBow && bow;
-    }
-
-    public void onMotion(MotionEvent event) {
-
     }
 }

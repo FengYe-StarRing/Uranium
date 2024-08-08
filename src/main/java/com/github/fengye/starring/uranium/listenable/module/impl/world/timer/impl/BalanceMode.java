@@ -1,8 +1,9 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.world.timer.impl;
 
-import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketRecieveEvent;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
+import com.github.fengye.starring.uranium.api.event.game.UpdateEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketRecieveEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
+import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
 import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
 import com.github.fengye.starring.uranium.listenable.module.impl.world.timer.TimerMode;
 import com.github.fengye.starring.uranium.utils.entity.MovementUtils;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class BalanceMode extends TimerMode {
     private final OptionValue autoShutOffValue = new OptionValue("AutoShutOff",true);
+    private final NumberValue maxTimeValue = new NumberValue("MaxTime",0,0,110,1);
 
     private final Timer balanceTimeTimer = new Timer();
     private final List<Integer> packets = new ArrayList<>();
@@ -37,9 +39,6 @@ public class BalanceMode extends TimerMode {
     @Override
     public void onPacketRecieve(PacketRecieveEvent event) {
         Packet<?> packet = event.getPacket();
-        if(MovementUtils.isMoving()) {
-            return;
-        }
         if(packet instanceof S32PacketConfirmTransaction) {
             packets.add(BlinkUtils.collect(event));
         }
@@ -47,6 +46,16 @@ public class BalanceMode extends TimerMode {
 
     @Override
     public void onUpdate(UpdateEvent event) {
+        if(canBalanced()) {
+            long time = (long) (maxTimeValue.get() * 1000);
+            if(time > 0) {
+                if(balanceTimeTimer.hasTimePassed(time)) {
+                    balanceEnd();
+                }
+            }
+        } else {
+            balanceTimeTimer.reset();
+        }
         if(inBalanceMoving()) {
             setTimerSpeed();
         } else {

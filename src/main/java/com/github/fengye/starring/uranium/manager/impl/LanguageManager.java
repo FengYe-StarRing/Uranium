@@ -1,20 +1,19 @@
 package com.github.fengye.starring.uranium.manager.impl;
 
 import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.file.ClientFile;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LanguageManager extends Manager {
-    private final ModeValue languageValue = new ModeValue("Language", Languages.values(), Languages.English);
+    public static final ModeValue languageValue = new ModeValue("Language", Languages.values(), Languages.English);
+    public static ClientFile settingFile;
 
     public LanguageManager() {
         super("LanguageManager");
@@ -23,6 +22,16 @@ public class LanguageManager extends Manager {
     @Override
     public void init() {
         super.init();
+        {
+            File dir = new File("C:/Users/Administrator/AppData/Local/" + getTranslate(Languages.English,Client.T_NAME));
+            if(!dir.exists()) {
+                dir.mkdirs();
+            }
+            settingFile = new ClientFile(dir,"Language.txt");
+            for (String line : settingFile.readAllLines()) {
+                languageValue.set(line);
+            }
+        }
         load(getLang());
     }
 

@@ -3,7 +3,6 @@ package com.github.fengye.starring.uranium.manager.impl;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.ui.hud.element.*;
 import com.github.fengye.starring.uranium.ui.hud.element.impl.*;
-import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
@@ -107,10 +106,20 @@ public class HUDManager extends Manager {
         });
     }
 
-    public List<Element> getElementByName(String name) {
+    public List<Element> getElements(String name) {
         List<Element> elementList = new ArrayList<>();
         for (Element element : elements) {
             if(name.equals(element.T_NAME)) {
+                elementList.add(element);
+            }
+        }
+        return elementList;
+    }
+
+    public List<Element> getElements(Class<? extends Element> cls) {
+        List<Element> elementList = new ArrayList<>();
+        for (Element element : elements) {
+            if(element.getClass() == cls) {
                 elementList.add(element);
             }
         }

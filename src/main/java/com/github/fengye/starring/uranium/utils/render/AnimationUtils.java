@@ -5,7 +5,7 @@ import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 public class AnimationUtils {
     public static int move(int cur, int target, int speed) {
         int fps = MinecraftInstance.getFPS();
-        if(cur != target) {
+        if(cur != target && speed != 0) {
             float bufferMove = (float) speed / fps;
             int move = (bufferMove < 1 && bufferMove > 0) ? 1 : (int) bufferMove;
             int ret = cur + (target > cur ? move : -move);

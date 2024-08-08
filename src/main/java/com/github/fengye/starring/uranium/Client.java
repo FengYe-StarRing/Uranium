@@ -1,18 +1,26 @@
 package com.github.fengye.starring.uranium;
 
+import com.github.fengye.starring.uranium.listenable.special.Palette;
+import com.github.fengye.starring.uranium.listenable.special.Personalization;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.manager.impl.*;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import com.github.fengye.starring.uranium.utils.misc.WebUtils;
 import com.github.fengye.starring.uranium.utils.misc.log.LogUtils;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
+import com.github.fengye.starring.uranium.utils.packet.PositionUtils;
 import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
 import de.florianmichael.viamcp.ViaMCP;
+import org.lwjgl.opengl.Display;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Client extends Manager {
     public static Client instance = new Client();
@@ -21,6 +29,7 @@ public class Client extends Manager {
     public static final String RESOURCES = "Uranium";
     private static final String VERSION = "1.0";
     private static final String AUTHOR = "枫叶星环";
+    private static final String[] titles = new String[3];
     private static TrayIcon trayIcon;
 
     // Manager
@@ -36,6 +45,7 @@ public class Client extends Manager {
 
     private String name;
     private boolean stop = false;
+    private String hitokoto;
 
     public Client() {
         super("Client");
@@ -97,8 +107,14 @@ public class Client extends Manager {
         eventManager.registerListener(new C09Utils());
         eventManager.registerListener(new UseUtils());
         eventManager.registerListener(new ProtocolUtils());
+        eventManager.registerListener(new PositionUtils());
+
+        eventManager.registerListener(new Palette());
+        eventManager.registerListener(new Personalization());
 
         name = languageManager.getTranslate(T_NAME);
+        setTitle(name + ' ' + VERSION,0);
+        setTitle(hitokoto = getRandomHitokoto(),1);
     }
 
     public static void initTray() {
@@ -129,5 +145,38 @@ public class Client extends Manager {
 
     public static String getAuthor() {
         return AUTHOR;
+    }
+
+    public static String getTitle() {
+        String title = "";
+        List<String> bufferList = new ArrayList<>();
+        for (String s : titles) {
+            if(s == null || s.isEmpty()) {
+                continue;
+            }
+            bufferList.add(s);
+        }
+        for(int i = 0;i < bufferList.size();i++) {
+            String text = bufferList.get(i);
+            title = title.concat(text + (i == bufferList.size() - 1 ? "" : " | "));
+        }
+        return title;
+    }
+
+    public static void setTitle(String text,int index) {
+        titles[index] = text;
+        Display.setTitle(getTitle());
+    }
+
+    public static String getRandomHitokoto() {
+        try {
+            return WebUtils.get("https://v1.hitokoto.cn/?&encode=text");
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    public String getHitokoto() {
+        return hitokoto;
     }
 }

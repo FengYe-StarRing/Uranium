@@ -28,7 +28,7 @@ import java.awt.*;
 
 public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
     public static Category currentModuleType = Category.Combat;
-    public static Module currentModule = null;
+    public static Module currentModule = Client.instance.moduleManager.getModulesInType(currentModuleType).isEmpty() ? null : Client.instance.moduleManager.getModulesInType(currentModuleType).get(0);
     public static float startX = 20, startY = 20;
     public int moduleStart = 0;
     public int valueStart = 0;
@@ -43,7 +43,7 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         FontRender font = FontManager.alibaba17;
-        FontRenderer mcFont = FontManager.mcFont;
+        FontRender mcFont = FontManager.mcFont;
 
         dragg.setDragCondition(0,startX, startY - 25, startX + 400, startY + 25);
         dragg.drag(true);
@@ -156,7 +156,7 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                 }
                 if (isSettingsButtonHovered(startX + 90, mY,
                         startX + 100 + (mcFont.getStringWidth(module.getName())),
-                        mY + 8 + mcFont.FONT_HEIGHT, mouseX, mouseY)) {
+                        mY + 8 + mcFont.getHeight(), mouseX, mouseY)) {
                     if (!this.previousmouse && Mouse.isButtonDown(0)) {
                         module.setEnabled(!module.isEnabled());
                         previousmouse = true;
@@ -171,7 +171,7 @@ public class CSGOClickUI extends GuiScreen implements GuiYesNoCallback {
                 }
                 if (isSettingsButtonHovered(startX + 90, mY,
                         startX + 100 + (mcFont.getStringWidth(module.getName())),
-                        mY + 8 + mcFont.FONT_HEIGHT, mouseX, mouseY) && Mouse.isButtonDown(1)) {
+                        mY + 8 + mcFont.getHeight(), mouseX, mouseY) && Mouse.isButtonDown(1)) {
                     currentModule = module;
                     valueStart = 0;
                 }

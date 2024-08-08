@@ -4,6 +4,7 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
+import com.github.fengye.starring.uranium.api.event.client.SaveEvent;
 import com.github.fengye.starring.uranium.api.file.ClientFile;
 import com.github.fengye.starring.uranium.api.file.config.Config;
 import com.github.fengye.starring.uranium.api.file.config.impl.ElementsConfig;
@@ -15,6 +16,7 @@ import com.github.fengye.starring.uranium.utils.timer.Timer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import static com.github.fengye.starring.uranium.utils.MinecraftInstance.mcDataDir;
 
@@ -40,6 +42,7 @@ public class FileManager extends Manager implements Listenable {
     public void init() {
         super.init();
         init = false;
+        initDir();
         saveTimer.reset();
         Client.instance.eventManager.registerListener(this);
     }
@@ -54,13 +57,11 @@ public class FileManager extends Manager implements Listenable {
         initDir();
         if(init && !Client.instance.isStop() && saveTimer.hasTimePassed(saveInterval)) {
             saveAllConfigs();
+            Client.instance.eventManager.callEvent(new SaveEvent());
         }
     }
 
     private void initDir() {
-        if(mcDataDir == null) {
-            return;
-        }
         String clientName = Client.instance.languageManager.getTranslate(LanguageManager.Languages.English,Client.T_NAME);
         {
             if(mainDir == null) {

@@ -23,7 +23,7 @@ public class GuiMainMenu extends BaseScreen implements GuiYesNoCallback {
             }
         }
         {
-            String[] strings = new String[]{"Personalization","UpdateLogs"};
+            String[] strings = new String[]{"ClientSetting","UpdateLogs"};
             int buttonIntervalX = width / (strings.length + 1);
             int startX = buttonIntervalX;
             for (String string : strings) {

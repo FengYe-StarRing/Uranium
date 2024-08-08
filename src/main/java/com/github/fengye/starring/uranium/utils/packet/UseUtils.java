@@ -4,7 +4,7 @@ import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.Packet;

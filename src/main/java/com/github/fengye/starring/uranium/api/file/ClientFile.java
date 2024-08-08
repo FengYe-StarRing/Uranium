@@ -3,6 +3,7 @@ package com.github.fengye.starring.uranium.api.file;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,16 +48,22 @@ public class ClientFile {
         return path;
     }
 
-    public void writeLine(String content) {
-        write(content + '\n');
+    public void writeLine(String content,OpenOption... options) {
+        write(content + '\n',options);
+    }
+
+    public void write(String content, OpenOption... options) {
+        try {
+            Files.write(getFile().toPath(),content.getBytes(), options);
+        } catch (IOException ignored) {}
     }
 
     public void write(String content) {
-        try {
-            Files.write(getFile().toPath(),content.getBytes(), StandardOpenOption.APPEND,StandardOpenOption.CREATE);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        write(content,StandardOpenOption.APPEND,StandardOpenOption.CREATE);
+    }
+
+    public void writeLine(String content) {
+        writeLine(content,StandardOpenOption.APPEND,StandardOpenOption.CREATE);
     }
 
     public void delete() {
@@ -64,6 +71,9 @@ public class ClientFile {
     }
 
     public List<String> readAllLines() {
+        if(!hasFile()) {
+            return new ArrayList<>();
+        }
         try {
             return Files.readAllLines(getFile().toPath());
         } catch (IOException e) {

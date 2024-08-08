@@ -23,9 +23,6 @@ public class EventManager extends Manager {
     public void init() {
         super.init();
         handleMethods.clear();
-
-        registerListener(new Palette());
-        registerListener(new Personalization());
     }
 
     public void registerListener(Listenable listenable) {
@@ -51,9 +48,6 @@ public class EventManager extends Manager {
             if(eventClass != JavaUtils.getClassLoader(event) && eventClass != Event.class && eventClass != event.getaClass()) {
                 continue;
             }
-//            try {
-//                handleMethod.getMethod().invoke(l,event);
-//            } catch (IllegalAccessException | InvocationTargetException ignored) {}
             try {
                 handleMethod.getMethod().invoke(l,event);
             } catch (IllegalAccessException | InvocationTargetException e) {

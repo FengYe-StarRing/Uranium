@@ -43,7 +43,7 @@ public class GuiLogin extends GuiScreen implements GuiYesNoCallback {
         int buttonY = shadowY + shadowHeight - buttonIntervalY - (buttonHeight + buttonIntervalY) * 3;
         {
             int width = shadowWidth - shadowWidth / 2;
-            FontRenderer mcFont = FontManager.mcFont;
+            FontRenderer mcFont = FontManager.getMcFont();
             inputUsername = new GuiTextField(0,mcFont,startX,buttonY,width,buttonHeight) {
                 @Override
                 public void drawTextBox() {

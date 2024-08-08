@@ -1,8 +1,8 @@
 package net.minecraft.network;
 
 import com.github.fengye.starring.uranium.Client;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketRecieveEvent;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketRecieveEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
 import com.github.fengye.starring.uranium.utils.ProtocolUtils;
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;

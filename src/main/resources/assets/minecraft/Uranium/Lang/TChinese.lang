@@ -29,6 +29,14 @@ L.Module.FullBright=全亮
 L.Module.FullBright.Description=更改遊戲的亮度。
 L.Module.KillAura=杀戮光环
 L.Module.KillAura.Description=自動攻擊你周圍的目標。
+L.Module.Targeting=目標針對
+L.Module.Targeting.Description=針對某群體。
+L.Module.DebugTool=調試工具
+L.Module.DebugTool.Description=調試工具。
+L.Module.Disabler=禁用器
+L.Module.Disabler.Description=禁用一些反作弊功能。
+L.Module.Criticals=刀爆
+L.Module.Criticals.Description=攻擊時自動打出暴擊。
 
 HUD.Element.Logo=浮水印
 HUD.Element.Arraylist=功能清單
@@ -45,7 +53,7 @@ Ui.Gui.Button.SinglePlayer=單人遊戲
 Ui.Gui.Button.MultiPlayer=多人遊戲
 Ui.Gui.Button.AltManager=帳號管理
 Ui.Gui.Button.Option=選項
-Ui.Gui.Button.Personalization=個性化設定
+Ui.Gui.Button.ClientSetting=用戶端設定
 Ui.Gui.Button.UpdateLogs=更新日誌
 Ui.Gui.Button.GoBack=返回
 

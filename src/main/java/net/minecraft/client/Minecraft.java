@@ -1,9 +1,8 @@
 package net.minecraft.client;
 
 import com.github.fengye.starring.uranium.Client;
-import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
-import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
-import com.github.fengye.starring.uranium.manager.impl.FontManager;
+import com.github.fengye.starring.uranium.api.event.game.KeyEvent;
+import com.github.fengye.starring.uranium.api.event.game.TickEvent;
 import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import com.github.fengye.starring.uranium.ui.gui.base.Splash;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
@@ -563,6 +562,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         GlStateManager.viewport(0, 0, this.displayWidth, this.displayHeight);
         this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
         this.checkGLError("Post startup");
+        new MinecraftInstance().init(null);
         Client.instance.init();
         Splash.setProgress(2);
         this.ingameGUI = new GuiIngame(this);

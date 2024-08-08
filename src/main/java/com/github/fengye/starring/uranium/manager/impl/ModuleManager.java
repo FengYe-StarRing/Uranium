@@ -3,9 +3,10 @@ package com.github.fengye.starring.uranium.manager.impl;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
-import com.github.fengye.starring.uranium.api.event.impl.KeyEvent;
+import com.github.fengye.starring.uranium.api.event.game.KeyEvent;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
+import com.github.fengye.starring.uranium.listenable.module.impl.combat.Criticals;
 import com.github.fengye.starring.uranium.listenable.module.impl.combat.KillAura;
 import com.github.fengye.starring.uranium.listenable.module.impl.misc.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
@@ -32,7 +33,8 @@ public class ModuleManager extends Manager implements Listenable {
         Client.instance.eventManager.registerListener(this);
         // Combat
         registerModules(new Module[]{
-                new KillAura()
+                new KillAura(),
+                new Criticals()
         });
         // Render
         registerModules(new Module[]{
@@ -49,11 +51,14 @@ public class ModuleManager extends Manager implements Listenable {
         // World
         registerModules(new Module[]{
                 new Timer(),
-                new WorldState()
+                new WorldState(),
+                new Disabler()
         });
         // Misc
         registerModules(new Module[]{
-                new Protocol()
+                new Protocol(),
+                new Targeting(),
+                new DebugTool()
         });
         modules.sort((mod, mod1) -> {
             int char0 = mod.getName().charAt(0);

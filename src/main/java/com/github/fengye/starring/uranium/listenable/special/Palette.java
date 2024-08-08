@@ -1,14 +1,20 @@
 package com.github.fengye.starring.uranium.listenable.special;
 
+import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
-import com.github.fengye.starring.uranium.api.event.impl.TickEvent;
+import com.github.fengye.starring.uranium.api.event.client.SaveEvent;
+import com.github.fengye.starring.uranium.api.event.game.TickEvent;
+import com.github.fengye.starring.uranium.api.file.ClientFile;
+import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.api.value.impl.ColorValue;
 import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import com.github.fengye.starring.uranium.utils.render.ColorUtils;
 
 import java.awt.*;
+import java.nio.file.StandardOpenOption;
 
 public class Palette implements Listenable {
     public static final ColorValue r1 = new ColorValue("Red",0);
@@ -26,10 +32,25 @@ public class Palette implements Listenable {
     private static float hue1 = 0;
     private static float hue2 = 0;
     private static float hue3 = 0;
+    private static ClientFile file;
 
     private static Color rainbow1 = ColorUtils.getRainbowColor(hue1);
     private static Color rainbow2 = ColorUtils.getRainbowColor(hue2);
     private static Color rainbow3 = ColorUtils.getRainbowColor(hue3);
+
+    public Palette() {
+        file = new ClientFile(Client.instance.fileManager.userDataDir, "Palette.txt");
+        for (String line : file.readAllLines()) {
+            String[] strings = line.split("\\|");
+            String name = strings[0];
+            String valueData = strings[1];
+            for (Value<?> value : JavaUtils.getValues(this)) {
+                if(value.getName().equals(name)) {
+                    value.setAuto(valueData);
+                }
+            }
+        }
+    }
 
     @Override
     public boolean handleEvents() {
@@ -61,7 +82,7 @@ public class Palette implements Listenable {
             default:
                 return ret;
         }
-        return ret / MinecraftInstance.timer.timerSpeed;
+        return ret;
     }
 
     public static Color getRainbow(RainbowSpeeds mode) {
@@ -86,15 +107,30 @@ public class Palette implements Listenable {
     }
 
     public static float getRainbowSpeed(RainbowSpeeds mode) {
+        float add;
         switch (mode) {
             case Slow:
-                return rainbowSpeed1.get().floatValue();
+                add = rainbowSpeed1.get().floatValue();
+                break;
             case Normal:
-                return rainbowSpeed2.get().floatValue();
+                add = rainbowSpeed2.get().floatValue();
+                break;
             case Fast:
-                return rainbowSpeed3.get().floatValue();
+                add = rainbowSpeed3.get().floatValue();
+                break;
             default:
-                return 0;
+                add = 0;
+        }
+        return add / MinecraftInstance.timer.timerSpeed;
+    }
+
+    @EventHandle
+    private void onSave(SaveEvent event) {
+        file.create();
+        for (Value<?> value : JavaUtils.getValues(this)) {
+            String name = value.getName();
+            String valueData = value.getAsString();
+            file.writeLine(name + "|" + valueData);
         }
     }
 

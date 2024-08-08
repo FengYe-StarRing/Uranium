@@ -4,16 +4,14 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.manager.impl.HUDManager;
 import com.github.fengye.starring.uranium.ui.hud.element.Border;
 import com.github.fengye.starring.uranium.ui.hud.element.Element;
-import com.github.fengye.starring.uranium.utils.mouse.DraggUtils;
 import com.github.fengye.starring.uranium.utils.render.RenderUtils;
+import com.github.fengye.starring.uranium.utils.render.blur.BlurUtils;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.awt.*;
 import java.util.List;
 
 public class GuiHUDEdit extends GuiScreen {
-    private final DraggUtils borders = new DraggUtils();
-
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         borders(mouseX,mouseY);
@@ -35,11 +33,11 @@ public class GuiHUDEdit extends GuiScreen {
             Color color = Color.black;
             RenderUtils.drawBorder(x1,y1,x2,y2,color);
             {
-                borders.setDragCondition(0,x1,y1,x2,y2);
-                borders.drag(mouseX,mouseY,true);
-                element.setX(element.getX() + borders.getMoveX());
-                element.setY(element.getY() + borders.getMoveY());
-                borders.drag(mouseX,mouseY,false);
+                element.dragg.setDragCondition(0,x1,y1,x2,y2);
+                element.dragg.drag(mouseX,mouseY,true);
+                element.setX(element.getX() + element.dragg.getMoveX());
+                element.setY(element.getY() + element.dragg.getMoveY());
+                element.dragg.drag(mouseX,mouseY,false);
             }
         }
     }

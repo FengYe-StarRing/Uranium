@@ -1,8 +1,9 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.move;
 
 import com.github.fengye.starring.uranium.api.event.EventHandle;
-import com.github.fengye.starring.uranium.api.event.impl.SlowDownEvent;
-import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
+import com.github.fengye.starring.uranium.api.event.game.SlowDownEvent;
+import com.github.fengye.starring.uranium.api.event.game.motion.MotionEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
@@ -11,7 +12,7 @@ import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.NoSlowMode;
-import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.impl.*;
+import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.impl.SwitchItemMode;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
 import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,16 @@ public class NoSlow extends Module {
     private final NumberValue consumeForwardValue = new NumberValue("ConsumeForward",1,0,1,0.1);
     private final NumberValue bowStrafeValue = new NumberValue("BowStrafe",1,0,1,0.1);
     private final NumberValue bowForwardValue = new NumberValue("BowForward",1,0,1,0.1);
+
+    @Override
+    public void onEnable() {
+        getBypassMode().onEnable();
+    }
+
+    @Override
+    public void onDisable() {
+        getBypassMode().onDisable();
+    }
 
     @EventHandle
     private void onSlowDown(SlowDownEvent event) {
@@ -80,6 +91,16 @@ public class NoSlow extends Module {
     @Override
     public void updateValues(List<Value<?>> values) {
         updateValues(modeValue,values);
+    }
+
+    @EventHandle
+    private void onPacketSend(PacketSendEvent event) {
+        getBypassMode().onPacketSend(event);
+    }
+
+    @Override
+    public String getTag() {
+        return modeValue.getAsString();
     }
 
     private enum Modes {

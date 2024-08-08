@@ -32,7 +32,11 @@ public class Notifications extends Element {
     public Border render() {
         lock(3,3);
         drawNotifs();
-        return null;
+        {
+            NotificationManager.Notif notif = new NotificationManager.Notif("Notifications",new String[]{}, NotificationManager.NotifType.Info);
+            int width = getBorderWidth(notif),height = getBorderHeight(notif);
+            return new Border(-(width / 2),-(height / 2),width,height);
+        }
     }
 
     private int getBorderWidth(NotificationManager.Notif notif) {
@@ -68,6 +72,7 @@ public class Notifications extends Element {
         int targetY = 0;
         int interval = 4;
         Side side = getSide();
+        Horizontal horizontal = side.getHorizontal();
         Vertical vertical = side.getVertical();
         int index = 0;
         List<Integer> removes = new ArrayList<>();
@@ -78,7 +83,7 @@ public class Notifications extends Element {
             int borderWidth = getBorderWidth(notif);
             int borderHeight = getBorderHeight(notif);
             boolean hasTime = notif.hasTime();
-            int targetX = hasTime ? borderWidth : 0;
+            int targetX = hasTime ? (horizontal.equals(Horizontal.Left) ? -borderWidth : borderWidth) : 0;
             if(x != targetX) {
                 x = AnimationUtils.move(x,targetX,borderWidth * 2);
             }

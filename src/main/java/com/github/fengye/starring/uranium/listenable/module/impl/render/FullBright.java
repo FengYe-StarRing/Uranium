@@ -1,7 +1,7 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.render;
 
 import com.github.fengye.starring.uranium.api.event.EventHandle;
-import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
+import com.github.fengye.starring.uranium.api.event.game.UpdateEvent;
 import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;

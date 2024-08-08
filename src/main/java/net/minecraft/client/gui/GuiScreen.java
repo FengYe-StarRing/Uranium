@@ -672,7 +672,13 @@ public abstract class GuiScreen extends Gui implements GuiYesNoCallback
         else
         {
             mc.getTextureManager().bindTexture(Personalization.getBackground());
-            RenderUtils.drawModalRectWithCustomSizedTexture(0, 0, MouseUtils.getMouseX() / 60f, MouseUtils.getMouseY() / 60f, ScreenUtils.getWidth(), ScreenUtils.getHeight(), ScreenUtils.getWidth() * 1.02f, ScreenUtils.getHeight() * 1.02f);
+            float u = 0,v = 0,mul = 1;
+            if(Personalization.backgroundShakeValue.get()) {
+                u = MouseUtils.getMouseX() / 60F;
+                v = MouseUtils.getMouseY() / 60F;
+                mul = 1.02F;
+            }
+            RenderUtils.drawModalRectWithCustomSizedTexture(0, 0, u, v, ScreenUtils.getWidth(), ScreenUtils.getHeight(), ScreenUtils.getWidth() * mul, ScreenUtils.getHeight() * mul);
         }
     }
 

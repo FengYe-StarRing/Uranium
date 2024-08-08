@@ -17,7 +17,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FontManager extends Manager {
-    public static FontRenderer mcFont;
+    @FontInfo(name = "McFont", size = 17)
+    public static FontRender mcFont;
 
     @FontInfo(name = "Harmony", size = 18)
     public static FontRender harmony18;
@@ -51,6 +52,8 @@ public class FontManager extends Manager {
     public static FontRender alibaba17;
     @FontInfo(name = "Alibaba",size = 18)
     public static FontRender alibaba18;
+    @FontInfo(name = "Alibaba",size = 20)
+    public static FontRender alibaba20;
     @FontInfo(name = "Alibaba",size = 24)
     public static FontRender alibaba24;
     @FontInfo(name = "Alibaba",size = 28)
@@ -59,6 +62,11 @@ public class FontManager extends Manager {
     public static FontRender alibaba36;
     @FontInfo(name = "Alibaba",size = 48)
     public static FontRender alibaba48;
+
+    @FontInfo(name = "Baloo",size = 18)
+    public static FontRender baloo18;
+    @FontInfo(name = "Baloo",size = 24)
+    public static FontRender baloo24;
 
     public FontManager() {
         super("FontManager");
@@ -75,6 +83,7 @@ public class FontManager extends Manager {
         alibaba16 = loadFont(alibaba,16);
         alibaba17 = loadFont(alibaba,17);
         alibaba18 = loadFont(alibaba,18);
+        alibaba20 = loadFont(alibaba,20);
         alibaba24 = loadFont(alibaba,24);
         alibaba28 = loadFont(alibaba,28);
         alibaba36 = loadFont(alibaba,36);
@@ -90,6 +99,10 @@ public class FontManager extends Manager {
         robotoBold30 = loadFont(robotoBold,30);
         robotoBold36 = loadFont(robotoBold,36);
         robotoBold48 = loadFont(robotoBold,48);
+        // Baloo
+        String baloo = "Baloo.ttf";
+        baloo18 = loadFont(baloo,18);
+        baloo24 = loadFont(baloo,24);
     }
 
     @Override
@@ -157,5 +170,9 @@ public class FontManager extends Manager {
 
     public static ResourceLocation getFontLocation(String name) {
         return new ResourceLocation(Client.RESOURCES + "/Fonts/" + name);
+    }
+
+    public static FontRenderer getMcFont() {
+        return (FontRenderer) mcFont;
     }
 }

@@ -1,8 +1,8 @@
 package com.github.fengye.starring.uranium.listenable.module.impl.world;
 
 import com.github.fengye.starring.uranium.api.event.EventHandle;
-import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketRecieveEvent;
+import com.github.fengye.starring.uranium.api.event.game.UpdateEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketRecieveEvent;
 import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.api.value.impl.NumberValue;
 import com.github.fengye.starring.uranium.api.value.impl.OptionValue;
@@ -37,6 +37,9 @@ public class WorldState extends Module {
 
     @EventHandle
     private void onUpdate(UpdateEvent event) {
+        if(serverWorld == null) {
+            return;
+        }
         WorldInfo worldInfo = serverWorld.getWorldInfo();
         if(changeWeatherValue.get()) {
             int i = 100;

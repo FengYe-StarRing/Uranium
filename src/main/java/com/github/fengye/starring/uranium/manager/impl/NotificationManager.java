@@ -4,9 +4,10 @@ import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
-import com.github.fengye.starring.uranium.api.event.impl.Render2DEvent;
+import com.github.fengye.starring.uranium.api.event.game.Render2DEvent;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.ui.hud.element.Element;
+import com.github.fengye.starring.uranium.ui.hud.element.Horizontal;
 import com.github.fengye.starring.uranium.ui.hud.element.impl.Notifications;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.timer.Timer;
@@ -55,7 +56,7 @@ public class NotificationManager extends Manager implements Listenable {
 
     @EventHandle(priority = Priority.HIGHEST)
     private void onRender2D(Render2DEvent event) {
-        List<Element> elements = Client.instance.hudManager.getElementByName("Notifications");
+        List<Element> elements = Client.instance.hudManager.getElements("Notifications");
         if(!elements.isEmpty()) {
             ((Notifications)elements.get(0)).updateNotifs();
         }
@@ -76,7 +77,12 @@ public class NotificationManager extends Manager implements Listenable {
             this.title = title;
             this.texts = texts;
             this.type = type;
-            x = 50;
+            List<Element> renders = Client.instance.hudManager.getElements(Notifications.class);
+            if(!renders.isEmpty()) {
+                x = renders.get(0).getSide().getHorizontal().equals(Horizontal.Left) ? -50 : 50;
+            } else {
+                x = 50;
+            }
             y = 0;
         }
 

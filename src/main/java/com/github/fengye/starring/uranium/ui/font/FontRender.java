@@ -1,6 +1,7 @@
 package com.github.fengye.starring.uranium.ui.font;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -14,7 +15,7 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Random;
 
-public final class FontRender {
+public class FontRender {
     public static boolean SecondaryFontAntiAliasing = true;
 
     private static final HashMap<Integer, Font> SECONDARY_FONT_MAP = new HashMap<>();
@@ -60,6 +61,16 @@ public final class FontRender {
     }
 
     public FontRender(Font font, boolean antiAliasing, boolean fractionalMetrics) {
+        if(font == null) {
+            this.font = null;
+            this.secondaryFont = null;
+            this.fontSize = 0;
+            this.imageSize = 0;
+            this.halfHeight = 0;
+            this.antiAliasing = false;
+            this.fractionalMetrics = false;
+            return;
+        }
         this.font = font;
         this.fontSize = font.getSize();
         this.imageSize = font.getSize() + (font.getSize() / 4);
@@ -124,11 +135,12 @@ public final class FontRender {
     }
 
     public int getCharWidth(char c) {
-        return getGlyph(c).halfWidth;
+//        return getGlyph(c).halfWidth;
+        return getStringWidth(String.valueOf(c));
     }
 
     public int getHeight() {
-        return halfHeight;
+        return isMcFont() ? ((FontRenderer) this).FONT_HEIGHT : halfHeight;
     }
 
     public int getHalfHeight() {
@@ -193,8 +205,12 @@ public final class FontRender {
         return Math.max(renderString(s, x + 0.5F, y + 0.5F, alpha < 200 ? ColorUtils.reAlpha(SHADOW_COLOR, alpha) : SHADOW_COLOR, true), renderString(s, x, y, color, false));
     }
 
+    public int drawStringWithShadow(String s, float x, float y, Color color) {
+        return drawStringWithShadow(s,x,y,color.getRGB());
+    }
+
     public int drawString(String s, float x, float y,int color) {
-        return renderString(s, x, y, color, false);
+        return isMcFont() ? ((FontRenderer) this).drawString(s,(int)x,(int)y,color) : renderString(s, x, y, color, false);
     }
 
     public int drawString(String s, float x, float y,int color, boolean shadow) {
@@ -476,5 +492,9 @@ public final class FontRender {
 
     public int getStringHeight(String s) {
         return halfHeight;
+    }
+
+    private boolean isMcFont() {
+        return this instanceof FontRenderer;
     }
 }

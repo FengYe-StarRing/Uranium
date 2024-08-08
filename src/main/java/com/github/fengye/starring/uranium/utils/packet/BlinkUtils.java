@@ -1,7 +1,7 @@
 package com.github.fengye.starring.uranium.utils.packet;
 
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketEvent;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketState;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketState;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.INetHandlerPlayClient;
 
@@ -90,6 +90,9 @@ public class BlinkUtils extends PacketUtils {
     }
 
     public static int collect(PacketEvent event) {
+        if(event.isCancelled()) {
+            return -1;
+        }
         event.cancelEvent();
         return collect(event.getPacket(),event.getState());
     }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.github.fengye.starring.uranium.Client;
-import com.github.fengye.starring.uranium.api.event.impl.BlockBBEvent;
+import com.github.fengye.starring.uranium.api.event.game.BlockBBEvent;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

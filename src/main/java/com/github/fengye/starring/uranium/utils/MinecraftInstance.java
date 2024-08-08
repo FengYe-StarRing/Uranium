@@ -52,7 +52,7 @@ public class MinecraftInstance implements Listenable {
     }
 
     @EventHandle(priority = Priority.HIGHEST)
-    private void onEvent(Event event) {
+    public void init(Event event) {
         mc = Minecraft.getMinecraft();
         if(mc != null) {
             thePlayer = mc.thePlayer;

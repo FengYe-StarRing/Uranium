@@ -6,7 +6,7 @@ import com.github.fengye.starring.uranium.api.command.impl.*;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
-import com.github.fengye.starring.uranium.api.event.impl.ChatEvent;
+import com.github.fengye.starring.uranium.api.event.game.ChatEvent;
 import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;

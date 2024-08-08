@@ -3,6 +3,7 @@ package com.github.fengye.starring.uranium.ui.hud.element;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.value.Value;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
+import com.github.fengye.starring.uranium.utils.mouse.DraggUtils;
 import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public abstract class Element {
     private final Side side;
     private Border border;
     private boolean lock;
+    public final DraggUtils dragg = new DraggUtils();
 
     public Element(String name,float x,float y,Side side) {
         T_NAME = name;

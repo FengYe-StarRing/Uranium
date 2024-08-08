@@ -1,5 +1,6 @@
 package com.github.fengye.starring.uranium.utils.render.blur;
 
+import com.github.fengye.starring.uranium.listenable.special.Personalization;
 import com.github.fengye.starring.uranium.utils.render.RenderUtils;
 
 import java.awt.*;
@@ -7,6 +8,9 @@ import java.awt.*;
 public class BlurUtils {
 
     public static void drawBlurRect(float x, float y, float width, float height,float radius) {
+        if(!canBlur()) {
+            return;
+        }
         StencilUtil.initStencilToWrite();
         RenderUtils.drawRect(x, y, x + width, y + height, new Color(0).getRGB());
         StencilUtil.readStencilBuffer(1);
@@ -19,6 +23,9 @@ public class BlurUtils {
     }
 
     public static void drawBlurRoundRect(float x, float y, float width, float height,float radius,int blurRadius) {
+        if(!canBlur()) {
+            return;
+        }
         StencilUtil.initStencilToWrite();
         RenderUtils.drawRoundRect(x, y, x + width, y + height, radius, new Color(-2));
         StencilUtil.readStencilBuffer(1);
@@ -41,5 +48,9 @@ public class BlurUtils {
 
     public static void drawShadowBlur(float x, float y, float width, float height,int whileNumber) {
         drawShadowBlur(x,y,width,height,10,whileNumber);
+    }
+
+    private static boolean canBlur() {
+        return Personalization.enableBlurValue.get();
     }
 }

@@ -1,13 +1,11 @@
 package net.minecraft.client.entity;
 
 import com.github.fengye.starring.uranium.Client;
-import com.github.fengye.starring.uranium.api.event.impl.ChatEvent;
-import com.github.fengye.starring.uranium.api.event.impl.SlowDownEvent;
-import com.github.fengye.starring.uranium.api.event.impl.UpdateEvent;
-import com.github.fengye.starring.uranium.api.event.impl.motion.EventState;
-import com.github.fengye.starring.uranium.api.event.impl.motion.MotionEvent;
-import com.github.fengye.starring.uranium.api.event.impl.motion.MotionPostEvent;
-import com.github.fengye.starring.uranium.api.event.impl.motion.MotionPreEvent;
+import com.github.fengye.starring.uranium.api.event.game.ChatEvent;
+import com.github.fengye.starring.uranium.api.event.game.SlowDownEvent;
+import com.github.fengye.starring.uranium.api.event.game.UpdateEvent;
+import com.github.fengye.starring.uranium.api.event.game.motion.MotionPostEvent;
+import com.github.fengye.starring.uranium.api.event.game.motion.MotionPreEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;

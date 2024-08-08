@@ -29,6 +29,14 @@ L.Module.FullBright=FullBright
 L.Module.FullBright.Description=Brightens up the world around you.
 L.Module.KillAura=KillAura
 L.Module.KillAura.Description=Automatically attacks targets around you.
+L.Module.Targeting=Targeting
+L.Module.Targeting.Description=Targeting a certain group.
+L.Module.DebugTool=DebugTool
+L.Module.DebugTool.Description=Debug tool.
+L.Module.Disabler=Disabler
+L.Module.Disabler.Description=Disables some anti cheats.
+L.Module.Criticals=Criticals
+L.Module.Criticals.Description=Auto hit crit in attack.
 
 HUD.Element.Logo=Logo
 HUD.Element.Arraylist=Arraylist
@@ -45,7 +53,7 @@ Ui.Gui.Button.SinglePlayer=SinglePlayer
 Ui.Gui.Button.MultiPlayer=MultiPlayer
 Ui.Gui.Button.AltManager=AltManager
 Ui.Gui.Button.Option=Option
-Ui.Gui.Button.Personalization=Personalization
+Ui.Gui.Button.ClientSetting=ClientSetting
 Ui.Gui.Button.UpdateLogs=UpdateLogs
 Ui.Gui.Button.GoBack=GoBack
 

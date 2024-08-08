@@ -2,7 +2,7 @@ package com.github.fengye.starring.uranium.utils.packet;
 
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
-import com.github.fengye.starring.uranium.api.event.impl.packet.PacketSendEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C09PacketHeldItemChange;
@@ -36,21 +36,21 @@ public class C09Utils extends PacketUtils implements Listenable {
         int slot = getSlot();
         int n;
         switch (mode) {
-            case SwitchA:
+            case A:
                 sendPacket(new C09PacketHeldItemChange(slot % 8 + 1));
                 if(interval) {
                     sendInterval();
                 }
                 sendPacket(new C09PacketHeldItemChange(slot));
                 break;
-            case SwitchB:
+            case B:
                 sendPacket(new C09PacketHeldItemChange((slot % 8 + 2) % 8));
                 if(interval) {
                     sendInterval();
                 }
                 sendPacket(new C09PacketHeldItemChange(slot));
                 break;
-            case SwitchC:
+            case C:
                 n = slot;
                 for(int i = 0;i < 8;i++) {
                     n++;
@@ -67,6 +67,6 @@ public class C09Utils extends PacketUtils implements Listenable {
     }
 
     public enum SwitchItemMode {
-        SwitchA,SwitchB,SwitchC
+        A, B, C
     }
 }
