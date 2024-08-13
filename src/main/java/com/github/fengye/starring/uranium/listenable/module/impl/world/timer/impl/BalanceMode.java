@@ -72,7 +72,7 @@ public class BalanceMode extends TimerMode {
         if(packet instanceof C03PacketPlayer) {
             C03PacketPlayer c03 = (C03PacketPlayer) packet;
             if(canBalanced()) {
-                if(inBalanceMoving()) {
+                if(inBalanceMoving() && !event.isCancelled()) {
                     balance--;
                 } else {
                     if(!c03.getRotating() && !c03.isMoving()) {

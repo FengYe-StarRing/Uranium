@@ -224,8 +224,7 @@ public abstract class EntityPlayer extends EntityLivingBase
      */
     public boolean isUsingItem()
     {
-//        return this.itemInUse != null;
-        return UseUtils.isUsingItem();
+        return this.itemInUse != null;
     }
 
     /**

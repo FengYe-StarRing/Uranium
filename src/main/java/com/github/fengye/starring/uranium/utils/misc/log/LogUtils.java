@@ -13,8 +13,9 @@ public class LogUtils {
         if(file == null) {
             buffer = buffer.concat(log);
         } else {
-            if(!buffer.isEmpty()) {
+            if(buffer != null && !buffer.isEmpty()) {
                 log = buffer.concat(log);
+                buffer = null;
             }
             file.write(log);
         }

@@ -189,21 +189,10 @@ public class NetworkManager extends SimpleChannelInboundHandler<Packet>
 
     public void sendPacket(Packet packetIn)
     {
-        PacketSendEvent packetSendEvent = new PacketSendEvent(packetIn);
-        Client.instance.eventManager.callEvent(packetSendEvent);
-        if(packetSendEvent.isCancelled()) {
-            return;
-        }
-
-        sendPacketNoEvent(packetSendEvent.getPacket());
-    }
-
-    public void sendPacketNoEvent(Packet packetIn)
-    {
         if (this.isChannelOpen())
         {
             this.flushOutboundQueue();
-            this.dispatchPacket(packetIn, (GenericFutureListener <? extends Future <? super Void >> [])null);
+            this.dispatchPacket(packetIn, null);
         }
         else
         {

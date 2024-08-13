@@ -117,7 +117,7 @@ public class Notifications extends Element {
         Side side = getSide();
         Horizontal horizontal = side.getHorizontal();
         Vertical vertical = side.getVertical();
-        for (NotificationManager.Notif notif : getNotifs()) {
+        for (NotificationManager.Notif notif : new ArrayList<>(getNotifs())) {
             int x = notif.getX();
             int y = notif.getY();
             int borderWidth = getBorderWidth(notif);

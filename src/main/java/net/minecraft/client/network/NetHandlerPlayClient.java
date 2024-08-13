@@ -1,5 +1,7 @@
 package net.minecraft.client.network;
 
+import com.github.fengye.starring.uranium.Client;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
 import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.FutureCallback;
@@ -813,6 +815,11 @@ public class NetHandlerPlayClient implements INetHandlerPlayClient
 
     public void addToSendQueue(Packet p_147297_1_)
     {
+        PacketSendEvent packetSendEvent = new PacketSendEvent(p_147297_1_);
+        Client.instance.eventManager.callEvent(packetSendEvent);
+        if(packetSendEvent.isCancelled()) {
+            return;
+        }
         this.netManager.sendPacket(p_147297_1_);
     }
 

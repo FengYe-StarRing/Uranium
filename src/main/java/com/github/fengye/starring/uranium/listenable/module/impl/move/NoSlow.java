@@ -13,6 +13,7 @@ import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.NoSlowMode;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.noslow.impl.SwitchItemMode;
+import com.github.fengye.starring.uranium.utils.entity.MovementUtils;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
 import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import net.minecraft.item.ItemStack;
@@ -70,7 +71,7 @@ public class NoSlow extends Module {
 
     @EventHandle
     private void onMotion(MotionEvent event) {
-        if(effectiveItem() && UseUtils.isUsingItem()) {
+        if(effectiveItem() && UseUtils.isUsingItem() && MovementUtils.isMoving()) {
             getBypassMode().onMotion(event);
         }
     }

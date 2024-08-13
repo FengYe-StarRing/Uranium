@@ -31,7 +31,7 @@ public class NotificationManager extends Manager implements Listenable {
         Client.instance.eventManager.registerListener(this);
     }
 
-    public static void post(String title, String[] texts, NotifType type) {
+    public static void post(String title, String[] texts, NotifType type,double time) {
         if(theWorld == null) {
             return;
         }
@@ -46,7 +46,11 @@ public class NotificationManager extends Manager implements Listenable {
                 index++;
             }
         }
-        notifs.add(new Notif(title,texts2,type));
+        notifs.add(new Notif(title,texts2,type,time));
+    }
+
+    public static void post(String title, String[] texts, NotifType type) {
+        post(title,texts,type,5);
     }
 
     @Override
@@ -72,6 +76,7 @@ public class NotificationManager extends Manager implements Listenable {
         private final Timer countdownTimer = new Timer();
         public boolean countdownEnable = false;
         public boolean toBeDeleted = false;
+        public long countdownTime = 5000;
 
         public Notif(String title,String[] texts,NotifType type) {
             this.title = title;
@@ -84,6 +89,11 @@ public class NotificationManager extends Manager implements Listenable {
                 x = 50;
             }
             y = 0;
+        }
+
+        public Notif(String title,String[] texts,NotifType type,double time) {
+            this(title,texts,type);
+            countdownTime = (long) (time * 1000);
         }
 
         public String getTitle() {
@@ -115,7 +125,7 @@ public class NotificationManager extends Manager implements Listenable {
         }
 
         public boolean hasTime() { // 获取的是百分比
-            return countdownTimer.hasTimePassed(5 * 1000) && countdownEnable;
+            return countdownTimer.hasTimePassed(countdownTime) && countdownEnable;
         }
 
         public void enableTimer() {

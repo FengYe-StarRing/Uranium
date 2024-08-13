@@ -3,9 +3,11 @@ package net.minecraft.client;
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.game.KeyEvent;
 import com.github.fengye.starring.uranium.api.event.game.TickEvent;
+import com.github.fengye.starring.uranium.api.event.game.WorldChangeEvent;
 import com.github.fengye.starring.uranium.ui.gui.base.GuiLogin;
 import com.github.fengye.starring.uranium.ui.gui.base.Splash;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.packet.PacketUtils;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -247,7 +249,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     public EntityRenderer entityRenderer;
 
     /** Mouse left click counter */
-    private int leftClickCounter;
+    public int leftClickCounter;
 
     /** Display width */
     private int tempDisplayWidth;
@@ -1505,11 +1507,13 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         }
     }
 
-    private void clickMouse()
+    public void clickMouse()
     {
         if (this.leftClickCounter <= 0)
         {
-            this.thePlayer.swingItem();
+            if (objectMouseOver != null && objectMouseOver.typeOfHit != MovingObjectPosition.MovingObjectType.ENTITY) {
+                PacketUtils.swingItem(true);
+            }
 
             if (this.objectMouseOver == null)
             {
@@ -1553,7 +1557,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     /**
      * Called when user clicked he's mouse right button (place)
      */
-    private void rightClickMouse()
+    public void rightClickMouse()
     {
         if (!this.playerController.func_181040_m())
         {
@@ -2331,6 +2335,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
      */
     public void loadWorld(WorldClient worldClientIn)
     {
+        WorldChangeEvent worldChangeEvent = new WorldChangeEvent();
+        Client.instance.eventManager.callEvent(worldChangeEvent);
         this.loadWorld(worldClientIn, "");
     }
 

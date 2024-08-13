@@ -8,9 +8,9 @@ import net.minecraft.network.play.INetHandlerPlayClient;
 
 public class S2FPacketSetSlot implements Packet<INetHandlerPlayClient>
 {
-    private int windowId;
-    private int slot;
-    private ItemStack item;
+    public int windowId;
+    public int slot;
+    public ItemStack item;
 
     public S2FPacketSetSlot()
     {

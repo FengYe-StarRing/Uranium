@@ -10,6 +10,7 @@ import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import com.github.fengye.starring.uranium.utils.misc.WebUtils;
 import com.github.fengye.starring.uranium.utils.misc.log.LogUtils;
 import com.github.fengye.starring.uranium.utils.packet.C09Utils;
+import com.github.fengye.starring.uranium.utils.packet.C0BUtils;
 import com.github.fengye.starring.uranium.utils.packet.PositionUtils;
 import com.github.fengye.starring.uranium.utils.packet.UseUtils;
 import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
@@ -108,6 +109,7 @@ public class Client extends Manager {
         eventManager.registerListener(new UseUtils());
         eventManager.registerListener(new ProtocolUtils());
         eventManager.registerListener(new PositionUtils());
+        eventManager.registerListener(new C0BUtils());
 
         eventManager.registerListener(new Palette());
         eventManager.registerListener(new Personalization());

@@ -1,10 +1,14 @@
 package com.github.fengye.starring.uranium.api.event;
 
-public class CancellableEvent extends Event{
+public abstract class CancellableEvent extends Event{
     private boolean cancelled = false;
 
-    public CancellableEvent() {
-        super(CancellableEvent.class);
+    public CancellableEvent(Class<?> aClass) {
+        super(aClass);
+    }
+
+    public CancellableEvent(Class<?>[] aClasses) {
+        super(aClasses);
     }
 
     public boolean isCancelled() {

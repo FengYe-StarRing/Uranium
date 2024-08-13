@@ -1,5 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.packet.PositionUtils;
 import com.google.common.collect.Lists;
 import java.nio.FloatBuffer;
 import java.util.List;
@@ -166,6 +168,10 @@ public abstract class RendererLivingEntity<T extends EntityLivingBase> extends R
                 }
 
                 float f7 = entity.prevRotationPitch + (entity.rotationPitch - entity.prevRotationPitch) * partialTicks;
+                EntityPlayerSP thePlayer = MinecraftInstance.thePlayer;
+                if(entity == thePlayer) {
+                    f7 = PositionUtils.getPitch();
+                }
                 this.renderLivingAt(entity, x, y, z);
                 float f8 = this.handleRotationFloat(entity, partialTicks);
                 this.rotateCorpse(entity, f8, f, partialTicks);

@@ -79,7 +79,7 @@ public class Timer extends Module {
     @Override
     public String getTag() {
         String tag = getMode().getTag();
-        return modeValue.getAsString() + ((tag != null && !tag.isEmpty()) ? "-" + tag : "");
+        return tag == null || tag.isEmpty() ? modeValue.getAsString() : tag;
     }
 
     private enum Modes {

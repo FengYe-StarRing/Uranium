@@ -8,6 +8,7 @@ public class PacketEvent extends CancellableEvent {
     private final PacketState state;
 
     public PacketEvent(Packet<?> packet,PacketState state) {
+        super(new Class[]{PacketEvent.class,state.equals(PacketState.Send) ? PacketSendEvent.class : PacketRecieveEvent.class});
         this.packet = packet;
         this.state = state;
     }

@@ -15,6 +15,7 @@ public class AttackEvent extends CancellableEvent {
     }
 
     public AttackEvent(Entity target) {
+        super(AttackEvent.class);
         this.target = target;
     }
 }

@@ -7,15 +7,13 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.network.Packet;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.MovementInput;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Timer;
+import net.minecraft.util.*;
 import net.minecraft.world.WorldServer;
 
 import java.io.File;
@@ -29,17 +27,19 @@ public class MinecraftInstance implements Listenable {
     public static GameSettings gameSettings;
     public static NetHandlerPlayClient netHandler;
     public static MovementInput movementInput;
+    public static MovingObjectPosition objectMouseOver;
+    public static GuiScreen currentScreen;
 
     public static MinecraftServer serverMc;
     public static WorldServer serverWorld;
     public static WorldServer[] worldServers;
 
-    public static void sendPacket(Packet<?> packet) {
+    public static void sendPacketNoEvent(Packet<?> packet) {
         mc.getNetHandler().getNetworkManager().sendPacket(packet);
     }
 
-    public static void sendPacketNoEvent(Packet<?> packet) {
-        mc.getNetHandler().getNetworkManager().sendPacketNoEvent(packet);
+    public static void sendPacket(Packet<?> packet) {
+        mc.getNetHandler().addToSendQueue(packet);
     }
 
     public static ResourceLocation getResourceLocation(String path) {
@@ -64,6 +64,8 @@ public class MinecraftInstance implements Listenable {
             timer = mc.timer;
             gameSettings = mc.gameSettings;
             netHandler = mc.getNetHandler();
+            objectMouseOver = mc.objectMouseOver;
+            currentScreen = mc.currentScreen;
         }
         serverMc = MinecraftServer.getServer();
         if(serverMc != null) {

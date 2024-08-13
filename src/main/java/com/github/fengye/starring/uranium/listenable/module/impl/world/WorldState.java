@@ -24,9 +24,6 @@ public class WorldState extends Module {
     @EventHandle
     private void onPacketRecieve(PacketRecieveEvent event) {
         Packet<?> packet = event.getPacket();
-        if(event.isCancelled() || packet == null) {
-            return;
-        }
         if(packet instanceof S03PacketTimeUpdate) {
             S03PacketTimeUpdate s03 = (S03PacketTimeUpdate) packet;
             if(changeTimeValue.get()) {
@@ -35,39 +32,36 @@ public class WorldState extends Module {
         }
     }
 
-    @EventHandle
-    private void onUpdate(UpdateEvent event) {
-        if(serverWorld == null) {
-            return;
-        }
-        WorldInfo worldInfo = serverWorld.getWorldInfo();
-        if(changeWeatherValue.get()) {
-            int i = 100;
-            switch ((WeatherModes)weatherValue.get()) {
-                case Clear:
-                    worldInfo.setCleanWeatherTime(i);
-                    worldInfo.setRainTime(0);
-                    worldInfo.setThunderTime(0);
-                    worldInfo.setRaining(false);
-                    worldInfo.setThundering(false);
-                    break;
-                case Rain:
-                    worldInfo.setCleanWeatherTime(0);
-                    worldInfo.setRainTime(i);
-                    worldInfo.setThunderTime(i);
-                    worldInfo.setRaining(true);
-                    worldInfo.setThundering(false);
-                    break;
-                case Thunder:
-                    worldInfo.setCleanWeatherTime(0);
-                    worldInfo.setRainTime(i);
-                    worldInfo.setThunderTime(i);
-                    worldInfo.setRaining(true);
-                    worldInfo.setThundering(true);
-                    break;
-            }
-        }
-    }
+//    @EventHandle
+//    private void onUpdate(UpdateEvent event) {
+//        WorldInfo worldInfo = serverWorld.getWorldInfo();
+//        if(changeWeatherValue.get()) {
+//            int i = 100;
+//            switch ((WeatherModes)weatherValue.get()) {
+//                case Clear:
+//                    worldInfo.setCleanWeatherTime(i);
+//                    worldInfo.setRainTime(0);
+//                    worldInfo.setThunderTime(0);
+//                    worldInfo.setRaining(false);
+//                    worldInfo.setThundering(false);
+//                    break;
+//                case Rain:
+//                    worldInfo.setCleanWeatherTime(0);
+//                    worldInfo.setRainTime(i);
+//                    worldInfo.setThunderTime(i);
+//                    worldInfo.setRaining(true);
+//                    worldInfo.setThundering(false);
+//                    break;
+//                case Thunder:
+//                    worldInfo.setCleanWeatherTime(0);
+//                    worldInfo.setRainTime(i);
+//                    worldInfo.setThunderTime(i);
+//                    worldInfo.setRaining(true);
+//                    worldInfo.setThundering(true);
+//                    break;
+//            }
+//        }
+//    }
 
     private enum WeatherModes {
         Clear,Rain,Thunder

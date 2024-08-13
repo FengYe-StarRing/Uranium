@@ -7,6 +7,7 @@ public class ChatEvent extends CancellableEvent {
     private final ChatMode MODE;
 
     public ChatEvent(String message,ChatMode mode) {
+        super(ChatEvent.class);
         this.message = message;
         MODE = mode;
     }

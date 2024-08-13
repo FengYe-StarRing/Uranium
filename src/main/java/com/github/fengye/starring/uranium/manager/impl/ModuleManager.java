@@ -6,8 +6,7 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.game.KeyEvent;
 import com.github.fengye.starring.uranium.listenable.module.Category;
 import com.github.fengye.starring.uranium.listenable.module.Module;
-import com.github.fengye.starring.uranium.listenable.module.impl.combat.Criticals;
-import com.github.fengye.starring.uranium.listenable.module.impl.combat.KillAura;
+import com.github.fengye.starring.uranium.listenable.module.impl.combat.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.misc.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.move.*;
 import com.github.fengye.starring.uranium.listenable.module.impl.render.*;
@@ -34,25 +33,33 @@ public class ModuleManager extends Manager implements Listenable {
         // Combat
         registerModules(new Module[]{
                 new KillAura(),
-                new Criticals()
+                new Criticals(),
+                new AutoClicker(),
+                new AntiKnockback(),
+                new SuperKnockback()
         });
         // Render
         registerModules(new Module[]{
                 new ClickGui(),
                 new HUD(),
                 new HUDEditGui(),
-                new FullBright()
+                new FullBright(),
+                new FovWiden(),
+                new Animations()
         });
         // Movement
         registerModules(new Module[]{
                 new Sprint(),
-                new NoSlow()
+                new NoSlow(),
+                new Speed(),
+                new GuiMove()
         });
         // World
         registerModules(new Module[]{
                 new Timer(),
                 new WorldState(),
-                new Disabler()
+                new Disabler(),
+                new AutoDisable()
         });
         // Misc
         registerModules(new Module[]{

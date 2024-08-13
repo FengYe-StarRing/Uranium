@@ -8,7 +8,7 @@ import net.minecraft.network.play.INetHandlerPlayServer;
 
 public class C0BPacketEntityAction implements Packet<INetHandlerPlayServer>
 {
-    private int entityID;
+    public int entityID;
     private Action action;
     private int auxData;
 

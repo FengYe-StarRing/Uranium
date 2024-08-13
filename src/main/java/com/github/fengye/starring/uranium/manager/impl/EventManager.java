@@ -3,8 +3,6 @@ package com.github.fengye.starring.uranium.manager.impl;
 import com.github.fengye.starring.uranium.api.event.Event;
 import com.github.fengye.starring.uranium.api.event.EventHandle;
 import com.github.fengye.starring.uranium.api.event.Listenable;
-import com.github.fengye.starring.uranium.listenable.special.Personalization;
-import com.github.fengye.starring.uranium.listenable.special.Palette;
 import com.github.fengye.starring.uranium.manager.Manager;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
@@ -45,7 +43,14 @@ public class EventManager extends Manager {
                 continue;
             }
             Class<?> eventClass = handleMethod.getEventClass();
-            if(eventClass != JavaUtils.getClassLoader(event) && eventClass != Event.class && eventClass != event.getaClass()) {
+            boolean f = true;
+            for (Class<?> aClass : event.getClasses()) {
+                if (eventClass == aClass) {
+                    f = false;
+                    break;
+                }
+            }
+            if(eventClass != JavaUtils.getClassLoader(event) && eventClass != Event.class && f) {
                 continue;
             }
             try {

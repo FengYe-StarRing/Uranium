@@ -7,6 +7,7 @@ import com.github.fengye.starring.uranium.api.value.impl.ModeValue;
 import com.github.fengye.starring.uranium.manager.impl.LanguageManager;
 import com.github.fengye.starring.uranium.manager.impl.NotificationManager;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
+import com.github.fengye.starring.uranium.utils.SoundFxPlayer;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 
 import java.lang.reflect.Field;
@@ -79,6 +80,9 @@ public abstract class Module extends MinecraftInstance implements Listenable {
         }
         NotificationManager.NotifType type = state ? NotificationManager.NotifType.Success : NotificationManager.NotifType.Error;
         NotificationManager.post(name,new String[]{"Was " + (state ? "enabled" : "disabled")}, type);
+        if(theWorld != null) {
+            SoundFxPlayer.playSound(state ? SoundFxPlayer.SoundType.Enable : SoundFxPlayer.SoundType.Disable);
+        }
     }
 
     public void setEnabled() {

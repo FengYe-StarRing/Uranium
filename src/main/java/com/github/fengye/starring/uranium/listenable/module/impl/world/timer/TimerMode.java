@@ -38,8 +38,4 @@ public class TimerMode extends ModuleInMode {
         }
         timerModule.setEnabled();
     }
-
-    public String getTag() {
-        return null;
-    }
 }

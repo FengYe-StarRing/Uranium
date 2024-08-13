@@ -11,6 +11,7 @@ public class BlockBBEvent extends CancellableEvent {
     private AxisAlignedBB axisAlignedBB;
 
     public BlockBBEvent(Block block,BlockPos pos,AxisAlignedBB axisAlignedBB) {
+        super(BlockBBEvent.class);
         this.block = block;
         this.pos = pos;
         this.axisAlignedBB = axisAlignedBB;

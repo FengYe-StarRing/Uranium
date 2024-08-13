@@ -13,6 +13,7 @@ import com.github.fengye.starring.uranium.listenable.module.impl.combat.critical
 import com.github.fengye.starring.uranium.listenable.module.impl.combat.criticals.impl.HopMode;
 import com.github.fengye.starring.uranium.listenable.module.impl.combat.criticals.impl.JumpMode;
 import com.github.fengye.starring.uranium.listenable.module.impl.combat.criticals.impl.PacketMode;
+import com.github.fengye.starring.uranium.utils.timer.Timer;
 import net.minecraft.entity.Entity;
 
 import java.util.List;
@@ -24,6 +25,14 @@ public class Criticals extends Module {
     public static final ModeValue critPacketModeValue = new ModeValue("CritPacketMode", PacketModes.values(),PacketModes.C04);
     private final NumberValue critParticleNumberValue = new NumberValue("CritParticleNumber",0,0,20,1);
     private final NumberValue enchantedParticleNumber = new NumberValue("EnchantedParticleNumber",1,0,20,1);
+    private final NumberValue delayValue = new NumberValue("Delay",0,0,1000,1);
+
+    private final Timer delayTimer = new Timer();
+
+    @Override
+    public void onEnable() {
+        delayTimer.reset();
+    }
 
     private CriticalsMode getMode() {
         return Modes.valueOf(modeValue.getAsString()).getMode();
@@ -54,7 +63,7 @@ public class Criticals extends Module {
     }
 
     private boolean canCrit() {
-        return thePlayer.onGround;
+        return thePlayer.onGround && delayTimer.hasTimePassed(delayValue.get().longValue());
     }
 
     private void makeCrit(Entity target) {
@@ -74,6 +83,7 @@ public class Criticals extends Module {
                     thePlayer.onEnchantmentCritical(target);
                 }
             }
+            delayTimer.reset();
         }
     }
 

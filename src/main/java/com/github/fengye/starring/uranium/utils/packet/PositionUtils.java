@@ -5,19 +5,15 @@ import com.github.fengye.starring.uranium.api.event.Listenable;
 import com.github.fengye.starring.uranium.api.event.Priority;
 import com.github.fengye.starring.uranium.api.event.game.packet.PacketRecieveEvent;
 import com.github.fengye.starring.uranium.api.event.game.packet.PacketSendEvent;
+import com.github.fengye.starring.uranium.utils.rotation.Rotation;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 
-public class PositionUtils implements Listenable {
-    private double x,y,z;
-    private float yaw,pitch;
-    private boolean moving,rotating,onGround;
-
-    @Override
-    public boolean handleEvents() {
-        return true;
-    }
+public class PositionUtils extends PacketUtils implements Listenable {
+    private static double x,y,z;
+    private static float yaw,pitch;
+    private static boolean moving,rotating,onGround;
 
     @EventHandle(priority = Priority.MINIMUM)
     private void onPacketSend(PacketSendEvent event) {
@@ -49,29 +45,65 @@ public class PositionUtils implements Listenable {
     }
 
     // C03
-    private void setPosition(double x,double y,double z,float yaw,float pitch,boolean moving,boolean rotating,boolean onGround) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.yaw = yaw;
-        this.pitch = pitch;
-        this.moving = moving;
-        this.rotating = rotating;
-        this.onGround = onGround;
+    private static void setPosition(double x,double y,double z,float yaw,float pitch,boolean moving,boolean rotating,boolean onGround) {
+        PositionUtils.x = x;
+        PositionUtils.y = y;
+        PositionUtils.z = z;
+        PositionUtils.yaw = yaw;
+        PositionUtils.pitch = pitch;
+        PositionUtils.moving = moving;
+        PositionUtils.rotating = rotating;
+        PositionUtils.onGround = onGround;
     }
 
     // C04
-    private void setPosition(double x,double y,double z,boolean onGround) {
+    private static void setPosition(double x,double y,double z,boolean onGround) {
         setPosition(x,y,z,yaw,pitch,true,rotating,onGround);
     }
 
     // C05
-    private void setPosition(float yaw,float pitch,boolean onGround) {
+    private static void setPosition(float yaw,float pitch,boolean onGround) {
         setPosition(x,y,z,yaw,pitch,moving,true,onGround);
     }
 
     // C06
-    private void setPosition(double x,double y,double z,float yaw,float pitch,boolean onGround) {
+    private static void setPosition(double x,double y,double z,float yaw,float pitch,boolean onGround) {
         setPosition(x,y,z,yaw,pitch,true,true,onGround);
+    }
+
+    public static double getX() {
+        return x;
+    }
+
+    public static double getY() {
+        return y;
+    }
+
+    public static double getZ() {
+        return z;
+    }
+
+    public static boolean isMoving() {
+        return moving;
+    }
+
+    public static boolean isRotating() {
+        return rotating;
+    }
+
+    public static boolean isOnGround() {
+        return onGround;
+    }
+
+    public static float getYaw() {
+        return yaw;
+    }
+
+    public static float getPitch() {
+        return pitch;
+    }
+
+    public static Rotation getRotation() {
+        return new Rotation(yaw,pitch);
     }
 }

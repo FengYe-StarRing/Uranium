@@ -5,6 +5,10 @@ public class Timer {
     private long tick = 0; // tick
     private long count = 0; // frequency
 
+    public Timer() {
+        reset();
+    }
+
     public void reset() {
         time = getCurrentTimeMillis();
         tick = 0;

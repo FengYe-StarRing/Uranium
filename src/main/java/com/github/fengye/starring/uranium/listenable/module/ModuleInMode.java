@@ -1,6 +1,7 @@
 package com.github.fengye.starring.uranium.listenable.module;
 
 import com.github.fengye.starring.uranium.api.event.game.AttackEvent;
+import com.github.fengye.starring.uranium.api.event.game.TickEvent;
 import com.github.fengye.starring.uranium.api.event.game.UpdateEvent;
 import com.github.fengye.starring.uranium.api.event.game.motion.MotionEvent;
 import com.github.fengye.starring.uranium.api.event.game.packet.PacketRecieveEvent;
@@ -41,6 +42,18 @@ public abstract class ModuleInMode extends MinecraftInstance {
     }
 
     public void onAttack(AttackEvent event) {
+
+    }
+
+    public void updateValues() {
+
+    }
+
+    public String getTag() {
+        return null;
+    }
+
+    public void onTick(TickEvent event) {
 
     }
 }
