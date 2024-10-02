@@ -57,6 +57,7 @@ L.Module.AutoDisable.Description=一部のモジュールを自動的に無効�
 HUD.Element.Logo=フラグ
 HUD.Element.Arraylist=機能リスト
 HUD.Element.Notifications=に知らせる
+HUD.Element.TargetHUD=ターゲット表示
 
 Command.Help.Toggle=指定したモジュールのスイッチを切り替えます。
 Command.Help.Say=チャットメッセージを送信。

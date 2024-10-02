@@ -2,6 +2,7 @@ package com.github.fengye.starring.uranium.utils.packet;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.event.game.AttackEvent;
+import com.github.fengye.starring.uranium.api.event.game.packet.PacketState;
 import com.github.fengye.starring.uranium.listenable.module.impl.misc.Protocol;
 import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.ProtocolUtils;
@@ -51,5 +52,18 @@ public class PacketUtils extends MinecraftInstance {
         } else {
             sendPacket(new C0APacketAnimation());
         }
+    }
+
+    public static PacketState getPacketState(Packet<?> packet) {
+        String name = packet.getClass().getName().split("\\.")[packet.getClass().getName().split("\\.").length - 1].split("\\$")[packet.getClass().getName().split("\\.")[packet.getClass().getName().split("\\.").length - 1].split("\\$").length - 1];
+        return name.toCharArray()[0] == 'C' ? PacketState.Send : PacketState.Recieve;
+    }
+
+    public static boolean isCPacket(Packet<?> packet) {
+        return getPacketState(packet).equals(PacketState.Send);
+    }
+
+    public static boolean isSPacket(Packet<?> packet) {
+        return getPacketState(packet).equals(PacketState.Recieve);
     }
 }

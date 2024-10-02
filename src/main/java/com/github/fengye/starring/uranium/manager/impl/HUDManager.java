@@ -22,7 +22,8 @@ public class HUDManager extends Manager {
         registerElements(new Class[]{
                 Logo.class,
                 Arraylist.class,
-                Notifications.class
+                Notifications.class,
+                TargetHUD.class
         });
         reset();
     }
@@ -102,7 +103,8 @@ public class HUDManager extends Manager {
         addElements(new Element[]{
                 new Logo(),
                 new Arraylist(),
-                new Notifications()
+                new Notifications(),
+                new TargetHUD()
         });
     }
 

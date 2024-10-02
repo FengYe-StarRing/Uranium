@@ -9,8 +9,8 @@ Module.Category.Player=玩家
 Module.Category.World=世界
 Module.Category.Misc=雜項
 
-L.Module.Sprint=衝刺
-L.Module.Sprint.Description=始終自動衝刺。
+L.Module.Sprint=疾跑
+L.Module.Sprint.Description=始終自動疾跑。
 L.Module.NoSlow=無减速
 L.Module.NoSlow.Description=取消玩家的减速效果。
 L.Module.ClickGui=點擊介面
@@ -57,6 +57,7 @@ L.Module.AutoDisable.Description=自動關閉一些模塊。
 HUD.Element.Logo=浮水印
 HUD.Element.Arraylist=功能清單
 HUD.Element.Notifications=通知
+HUD.Element.TargetHUD=目標顯示
 
 Command.Help.Toggle=切換指定模塊的開關。
 Command.Help.Say=發送聊天資訊。

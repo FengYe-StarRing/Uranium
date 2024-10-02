@@ -16,9 +16,9 @@ public class PacketMode extends CriticalsMode {
                 sendCriticalPacket(0.0);
                 break;
             case NCP:
-                sendCriticalPacket(0.11, false);
-                sendCriticalPacket(0.1100013579, false);
-                sendCriticalPacket(0.0000013579, false);
+                sendCriticalPacket(0.11);
+                sendCriticalPacket(0.1100013579);
+                sendCriticalPacket(0.0000013579);
                 break;
         }
     }

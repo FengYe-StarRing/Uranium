@@ -35,6 +35,11 @@ public class Speed extends Module {
         return Modes.valueOf(modeValue.getAsString()).getMode();
     }
 
+    @Override
+    public String getTag() {
+        return modeValue.getAsString();
+    }
+
     private enum Modes {
         Entity(new EntityMode());
 

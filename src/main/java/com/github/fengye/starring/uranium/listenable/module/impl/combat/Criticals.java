@@ -63,25 +63,20 @@ public class Criticals extends Module {
     }
 
     private boolean canCrit() {
-        return thePlayer.onGround && delayTimer.hasTimePassed(delayValue.get().longValue());
+        return thePlayer.onGround && delayTimer.hasTimePassed(delayValue.get().longValue()) && (timingValue.get().equals(TimingModes.Attack) || KillAura.targetActive());
     }
 
     private void makeCrit(Entity target) {
         if(canCrit()) {
+            if(target == null) {
+                target = KillAura.getTarget();
+            }
             getMode().makeCrit();
             for(int i = 0; i < critParticleNumberValue.get(); i++) {
-                if(target == null) {
-
-                } else {
-                    thePlayer.onCriticalHit(target);
-                }
+                thePlayer.onCriticalHit(target);
             }
             for(int i = 0; i < enchantedParticleNumber.get(); i++) {
-                if(target == null) {
-
-                } else {
-                    thePlayer.onEnchantmentCritical(target);
-                }
+                thePlayer.onEnchantmentCritical(target);
             }
             delayTimer.reset();
         }

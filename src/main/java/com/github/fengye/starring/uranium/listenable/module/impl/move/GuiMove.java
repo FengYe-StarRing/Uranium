@@ -24,6 +24,7 @@ public class GuiMove extends Module {
             gameSettings.keyBindRight.pressed = GameSettings.isKeyDown(gameSettings.keyBindRight);
             gameSettings.keyBindJump.pressed = GameSettings.isKeyDown(gameSettings.keyBindJump);
             gameSettings.keyBindSneak.pressed = GameSettings.isKeyDown(gameSettings.keyBindSneak);
+            gameSettings.keyBindSprint.pressed = GameSettings.isKeyDown(gameSettings.keyBindSprint);
         }
     }
 

@@ -2763,7 +2763,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 return;
             }
 
-            Reflector.setFieldValue(p_updateMainMenu_1_, Reflector.GuiMainMenu_splashText, s);
+//            Reflector.setFieldValue(p_updateMainMenu_1_, Reflector.GuiMainMenu_splashText, s);
         }
         catch (Throwable var6)
         {

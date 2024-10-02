@@ -6,7 +6,5 @@ public class HopMode extends CriticalsMode {
     @Override
     public void makeCrit() {
         thePlayer.motionY = 0.1;
-        thePlayer.fallDistance = 0.1F;
-        thePlayer.onGround = false;
     }
 }

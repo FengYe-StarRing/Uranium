@@ -57,6 +57,7 @@ L.Module.AutoDisable.Description=Automatically disable some modules.
 HUD.Element.Logo=Logo
 HUD.Element.Arraylist=Arraylist
 HUD.Element.Notification=Notifications
+HUD.Element.TargetHUD=TargetHUD
 
 Command.Help.Toggle=Switch the switch of the specified module.
 Command.Help.Say=Send chat messages.

@@ -2,13 +2,14 @@ package com.github.fengye.starring.uranium.ui.hud.element;
 
 import com.github.fengye.starring.uranium.Client;
 import com.github.fengye.starring.uranium.api.value.Value;
+import com.github.fengye.starring.uranium.utils.MinecraftInstance;
 import com.github.fengye.starring.uranium.utils.misc.JavaUtils;
 import com.github.fengye.starring.uranium.utils.mouse.DraggUtils;
 import com.github.fengye.starring.uranium.utils.render.ScreenUtils;
 
 import java.util.List;
 
-public abstract class Element {
+public abstract class Element extends MinecraftInstance {
     public final String T_NAME;
     private final String name;
     private float x,y;

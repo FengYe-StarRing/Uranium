@@ -8,7 +8,9 @@ import com.github.fengye.starring.uranium.listenable.module.Module;
 import com.github.fengye.starring.uranium.listenable.module.ModuleInfo;
 import com.github.fengye.starring.uranium.utils.entity.EntityUtils;
 import com.github.fengye.starring.uranium.utils.packet.PacketUtils;
+import com.github.fengye.starring.uranium.utils.packet.PositionUtils;
 import com.github.fengye.starring.uranium.utils.rotation.Rotation;
+import com.github.fengye.starring.uranium.utils.rotation.RotationUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -23,9 +25,12 @@ public class KillAura extends Module {
 
     @Override
     public void onEnable() {
-        targets.clear();
-        target = null;
-        rotation = null;
+        init();
+    }
+
+    @Override
+    public void onDisable() {
+        init();
     }
 
     @EventHandle
@@ -78,7 +83,7 @@ public class KillAura extends Module {
     }
 
     private void updateRotation() {
-//        rotation = RotationUtils.getRotationEntity(target);
+        rotation = new Rotation(PositionUtils.getRotation().getYaw() + 30,-90);
     }
 
     public static boolean targetActive() {
@@ -91,5 +96,11 @@ public class KillAura extends Module {
             updateRotation();
             event.setRotation(rotation);
         }
+    }
+
+    private void init() {
+        targets.clear();
+        target = null;
+        rotation = null;
     }
 }

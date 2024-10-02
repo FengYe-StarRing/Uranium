@@ -49,7 +49,7 @@ public class SuperKnockback extends Module {
     }
 
     private boolean canKB() {
-        return C0BUtils.canSprint() && delayTimer.hasTimePassed(delayValue.get().longValue());
+        return C0BUtils.canSprint() && delayTimer.hasTimePassed(delayValue.get().longValue()) && (timingValue.get().equals(TimingModes.Attack) || KillAura.targetActive());
     }
 
     @EventHandle
